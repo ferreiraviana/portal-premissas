@@ -1,0 +1,6 @@
+{
+  "liveServer.settings.root": "/public",
+  "files.exclude": { "**/.git": true },
+  "editor.wordWrap": "on",
+  "[html]": { "editor.defaultFormatter": "vscode.html-language-features" }
+}

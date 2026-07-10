@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Abrir portal no navegador",
+      "type": "shell",
+      "command": "${command:extension.liveServer.goOnline}",
+      "problemMatcher": []
+    }
+  ]
+}

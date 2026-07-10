@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de Produtos · Premissas &amp; Boas Práticas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141f2e; --surface:#f6f7f9; --card:#fff; --line:#e2e7ec;
+  --text:#22303f; --muted:#5c6b7a; --accent:#0e7c86; --accent-soft:#e7f2f3;
+  --amber:#b26a00; --amber-soft:#fdf3e3; --danger:#a3352c; --danger-soft:#faebe9;
+  --ok:#2e7d4f; --ok-soft:#e8f4ec; --radius:10px;
+  --font-display:'Space Grotesk',sans-serif; --font-body:'Inter',sans-serif; --font-mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-body);background:var(--surface);color:var(--text);line-height:1.6;font-size:15.5px}
+a{color:var(--accent)}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:256px;background:var(--ink);color:#cfd9e4;flex-shrink:0;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{padding:22px 20px 15px;border-bottom:1px solid rgba(255,255,255,.08)}
+.brand h1{font-family:var(--font-display);font-size:1rem;color:#fff;line-height:1.35}
+.brand .tag{display:inline-block;margin-top:8px;font-family:var(--font-mono);font-size:.64rem;color:#8fd3d9;background:rgba(14,124,134,.25);border:1px solid rgba(143,211,217,.35);padding:2px 8px;border-radius:4px}
+nav{padding:12px 10px;flex:1}
+.nav-label{font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:#7c8b9b;padding:13px 12px 5px}
+nav a{display:block;color:#cfd9e4;text-decoration:none;padding:7px 12px;border-radius:7px;font-size:.87rem;margin:1px 0}
+nav a:hover{background:rgba(255,255,255,.07);color:#fff}
+nav a.active{background:var(--accent);color:#fff;font-weight:600}
+.sidebar-foot{padding:13px 20px;font-size:.68rem;color:#7c8b9b;border-top:1px solid rgba(255,255,255,.08)}
+main{flex:1;min-width:0}
+.topbar{background:var(--card);border-bottom:1px solid var(--line);padding:12px 28px;display:flex;gap:14px;align-items:center;position:sticky;top:0;z-index:20;flex-wrap:wrap}
+.search{flex:1;min-width:220px;max-width:480px;position:relative}
+.search input{width:100%;padding:8px 14px 8px 36px;border:1px solid var(--line);border-radius:8px;font-family:var(--font-body);font-size:.88rem;background:var(--surface)}
+.search input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--muted)}
+.personas{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:99px;padding:5px 14px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:var(--font-display)}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.content{padding:30px;max-width:1080px}
+section.page{display:none}
+section.page.visible{display:block;animation:fade .22s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){section.page.visible{animation:none}}
+.crumb{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px}
+h2.page-title{font-family:var(--font-display);font-size:1.6rem;color:var(--ink);margin-bottom:4px}
+p.page-sub{color:var(--muted);margin-bottom:22px;max-width:74ch}
+h3{font-family:var(--font-display);font-size:1.08rem;color:var(--ink);margin:26px 0 12px}
+h4{font-family:var(--font-display);font-size:.95rem;color:var(--ink);margin:14px 0 8px}
+.content p{margin-bottom:12px;max-width:80ch}
+.content ul,.content ol{margin:0 0 14px 22px}
+.content li{margin-bottom:6px}
+.aud{margin-bottom:26px}
+.band{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border-left:3px solid var(--accent);padding-left:10px;margin:26px 0 14px}
+.band .who{font-weight:500;color:var(--muted);text-transform:none;letter-spacing:0;font-size:.74rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:17px 19px;margin-bottom:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:13px}
+.card h4{margin-top:0}
+.card .desc{font-size:.86rem;color:var(--muted)}
+.prm{font-family:var(--font-mono);font-size:.68rem;font-weight:500;background:var(--ink);color:#8fd3d9;padding:2px 7px;border-radius:4px;white-space:nowrap}
+.pill{display:inline-block;font-size:.68rem;font-weight:600;padding:2px 10px;border-radius:99px;margin-right:4px}
+.pill.ob{background:var(--danger-soft);color:var(--danger)}
+.pill.fx{background:#eef0f3;color:#4a5866}
+.pill.up{background:var(--amber-soft);color:var(--amber)}
+.pill.ok2{background:var(--ok-soft);color:var(--ok)}
+.callout{border-radius:var(--radius);padding:12px 16px;margin:12px 0;font-size:.89rem;border:1px solid;display:flex;gap:10px}
+.callout .ico{line-height:1.5}
+.callout.tip{background:var(--accent-soft);border-color:#bcdfe2;color:#0b5f67}
+.callout.warn{background:var(--amber-soft);border-color:#eed6ab;color:#7c4a00}
+.callout.never{background:var(--danger-soft);border-color:#ecc7c3;color:#7e2a23}
+.callout.ok{background:var(--ok-soft);border-color:#c4e2cf;color:#1f5c3a}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-size:.85rem;margin-bottom:16px}
+th{background:var(--ink);color:#fff;text-align:left;padding:9px 13px;font-family:var(--font-display);font-weight:600;font-size:.76rem}
+td{padding:9px 13px;border-top:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#fafbfc}
+.dosdonts{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+@media (max-width:760px){.dosdonts{grid-template-columns:1fr}}
+.dos,.donts{border-radius:var(--radius);padding:16px 18px;border:1px solid}
+.dos{background:var(--ok-soft);border-color:#c4e2cf}
+.donts{background:var(--danger-soft);border-color:#ecc7c3}
+.dos h4{color:var(--ok)}.donts h4{color:var(--danger)}
+.dos ul,.donts ul{margin:8px 0 0 18px;font-size:.88rem}
+.catgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:13px;margin-bottom:8px}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:17px 18px;text-decoration:none;color:var(--text);display:block}
+.prod:hover{border-color:var(--accent);box-shadow:0 2px 12px rgba(14,124,134,.1)}
+.prod .t{font-family:var(--font-display);font-weight:600;color:var(--ink);display:block;margin-bottom:3px}
+.prod .d{font-size:.8rem;color:var(--muted)}
+.prod .meta{margin-top:10px}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:9px}
+summary{padding:12px 16px;cursor:pointer;font-weight:600;font-family:var(--font-display);color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--accent)}
+details[open] summary::after{content:"–"}
+details .body{padding:0 16px 14px;font-size:.89rem}
+.checklist label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:.89rem;cursor:pointer}
+.checklist input{margin-top:4px;accent-color:var(--accent)}
+.hidden-by-search,.hidden-by-persona{display:none!important}
+.no-results{color:var(--muted);font-style:italic;display:none}
+.src{font-size:.78rem;color:var(--muted);margin-top:8px}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-family:var(--font-display);font-weight:600;color:var(--ink);cursor:pointer}
+@media (max-width:880px){
+  .layout{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:static;display:none}
+  .sidebar.open{display:flex}
+  .menu-btn{display:block}
+  .content{padding:20px 16px}
+  .topbar{padding:12px 16px}
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <h1>Catálogo de Produtos<br>Premissas &amp; Boas Práticas</h1>
+    <span class="tag">MSH · v3</span>
+  </div>
+  <nav id="nav">
+    <a href="#inicio" class="active">Catálogo</a>
+    <a href="#comece">Comece por aqui</a>
+    <a href="#radar">Radar de Versões</a>
+    <div class="nav-label">Virtualização</div>
+    <a href="#vmware">VMware vSphere</a>
+    <a href="#xenserver">XenServer / Citrix</a>
+    <div class="nav-label">Sistemas &amp; Diretório</div>
+    <a href="#windows">Windows Server</a>
+    <a href="#ad">Active Directory + DNS</a>
+    <div class="nav-label">Infraestrutura</div>
+    <a href="#storage">Storage (SAN)</a>
+    <a href="#switch">Switch TOR / Rede</a>
+    <div class="nav-label">Proteção de Dados</div>
+    <a href="#veeam">Veeam B&amp;R</a>
+    <a href="#commvault">Commvault</a>
+    <div class="nav-label">Serviços de Projeto</div>
+    <a href="#migracoes">Migrações &amp; Upgrades</a>
+    <div class="nav-label">Biblioteca</div>
+    <a href="#jornada">Jornada do Projeto</a>
+    <a href="#premissas">Premissas (PRM)</a>
+    <a href="#checklists">Checklists</a>
+    <a href="#faq">FAQ e Erros Comuns</a>
+    <a href="#docs">Documentos Originais</a>
+  </nav>
+  <div class="sidebar-foot">Conteúdo interno · Fontes: repo br-msh-problem/premissas + fabricantes (jul/2026)</div>
+</aside>
+
+<main>
+  <div class="topbar">
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰ Menu</button>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="searchBox" type="search" placeholder="Buscar… (ex.: cross vcenter, pagefile, retenção, MTU)" aria-label="Buscar no portal">
+    </div>
+    <div class="personas" role="group" aria-label="Filtrar por perfil">
+      <button class="chip active" data-p="todos">Todos</button>
+      <button class="chip" data-p="prevenda">Pré-venda</button>
+      <button class="chip" data-p="arquitetura">Arquitetura</button>
+      <button class="chip" data-p="tecnico">Técnico</button>
+      <button class="chip" data-p="gestao">Gestão</button>
+    </div>
+  </div>
+
+  <div class="content">
+
+  <!-- ================= CATÁLOGO ================= -->
+  <section class="page visible" id="inicio">
+    <div class="crumb">Início</div>
+    <h2 class="page-title">Catálogo de Produtos</h2>
+    <p class="page-sub">Cada produto reúne, em uma página, tudo que pré-venda, arquitetura, analistas, técnicos e gestores precisam: visão do produto, o que validar antes de vender, pontos críticos de arquitetura (o que pode e o que não pode) e as premissas de implantação. Use os filtros de perfil no topo para ver só o que interessa ao seu papel.</p>
+
+    <h3>Virtualização</h3>
+    <div class="catgrid">
+      <a class="prod" href="#vmware"><span class="t">VMware vSphere</span><span class="d">ESXi, vCenter, Replication e SRM para clouds privadas gerenciadas.</span><div class="meta"><span class="pill up">Premissa a atualizar</span></div></a>
+      <a class="prod" href="#xenserver"><span class="t">XenServer / Citrix</span><span class="d">Pools standalone e HA; alternativa de hypervisor.</span><div class="meta"><span class="pill up">Premissa a atualizar</span></div></a>
+    </div>
+    <h3>Sistemas &amp; Diretório</h3>
+    <div class="catgrid">
+      <a class="prod" href="#windows"><span class="t">Windows Server</span><span class="d">SO gerenciado: hardening, updates, storage e templates.</span><div class="meta"><span class="pill up">Premissa a atualizar</span></div></a>
+      <a class="prod" href="#ad"><span class="t">Active Directory + DNS</span><span class="d">Controladores de domínio e DNS em produção.</span><div class="meta"><span class="pill ok2">Vigente</span></div></a>
+    </div>
+    <h3>Infraestrutura</h3>
+    <div class="catgrid">
+      <a class="prod" href="#storage"><span class="t">Storage (SAN)</span><span class="d">FC e iSCSI: controladoras, multipath, capacidade e snapshots.</span><div class="meta"><span class="pill ok2">Vigente</span></div></a>
+      <a class="prod" href="#switch"><span class="t">Switch TOR / Rede</span><span class="d">Portfólio homologado, hardening e alta disponibilidade.</span><div class="meta"><span class="pill ok2">Vigente</span></div></a>
+    </div>
+    <h3>Proteção de Dados</h3>
+    <div class="catgrid">
+      <a class="prod" href="#veeam"><span class="t">Veeam Backup &amp; Replication</span><span class="d">Backup dedicado, réplicas e imutabilidade.</span><div class="meta"><span class="pill up">Premissa a atualizar</span></div></a>
+      <a class="prod" href="#commvault"><span class="t">Commvault</span><span class="d">Backup dedicado com Media Agents e CommCell.</span><div class="meta"><span class="pill up">Links a atualizar</span></div></a>
+    </div>
+    <h3>Serviços de Projeto</h3>
+    <div class="catgrid">
+      <a class="prod" href="#migracoes"><span class="t">Migrações &amp; Upgrades</span><span class="d">Como escolher a abordagem: Cross vCenter, réplica Veeam, in-place × paralelo, volumetria e cutover.</span><div class="meta"><span class="pill ok2">Novo</span></div></a>
+    </div>
+
+    <h3>Comece pelo seu papel</h3>
+    <div class="catgrid">
+      <a class="prod" href="#jornada" onclick="setPersona('prevenda')"><span class="t">Pré-venda</span><span class="d">O que validar e o que nunca prometer, por produto.</span></a>
+      <a class="prod" href="#migracoes" onclick="setPersona('arquitetura')"><span class="t">Arquitetura</span><span class="d">Pode/não pode, dimensionamento e abordagens de migração.</span></a>
+      <a class="prod" href="#premissas" onclick="setPersona('tecnico')"><span class="t">Analistas &amp; Técnicos</span><span class="d">Premissas de implantação, configurações e checklists.</span></a>
+      <a class="prod" href="#radar" onclick="setPersona('gestao')"><span class="t">Gestão</span><span class="d">Radar de versões, riscos e governança do catálogo.</span></a>
+    </div>
+  </section>
+
+  <!-- ================= COMECE ================= -->
+  <section class="page" id="comece">
+    <div class="crumb">Biblioteca</div>
+    <h2 class="page-title">Comece por aqui</h2>
+    <p class="page-sub">Como o catálogo funciona e o vocabulário essencial, em linguagem simples.</p>
+
+    <div class="band">Como cada página de produto é organizada</div>
+    <table>
+      <tr><th>Seção</th><th>Para quem</th><th>O que traz</th></tr>
+      <tr><td><strong>Visão do produto</strong></td><td>Todos</td><td>O que é, quando usar e situação de versão no fabricante.</td></tr>
+      <tr><td><strong>Pré-venda</strong></td><td>Comercial / Pré-venda / Gestão</td><td>Licenciamento, o que validar antes da proposta, o que nunca prometer.</td></tr>
+      <tr><td><strong>Arquitetura · pode / não pode</strong></td><td>Arquitetura / Gestão</td><td>Pontos críticos de desenho, riscos e restrições dos fabricantes.</td></tr>
+      <tr><td><strong>Implantação · premissas</strong></td><td>Técnicos / Analistas</td><td>Premissas numeradas (PRM) e configurações padrão.</td></tr>
+    </table>
+    <div class="callout tip"><span class="ico">💡</span><span>Os <strong>filtros de perfil</strong> no topo escondem o que não é do seu papel — e a <strong>busca</strong> varre premissas, práticas e FAQ de todos os produtos.</span></div>
+
+    <div class="band">Padrões transversais <span class="who">valem para todo produto</span></div>
+    <div class="grid">
+      <div class="card" data-tags="servicenow runbook eti topologia credenciais documentacao"><h4>Documentação no ServiceNow <span class="prm">PRM-GER-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Runbook (snapshot de configurações), ETI (capacity e serviços acordados), Topologia, dados do equipamento e credenciais no módulo de segurança.</p></div>
+      <div class="card" data-tags="eqxadmin eqxgerencia usuarios senha administrator root"><h4>Usuários padrão Equinix <span class="prm">PRM-GER-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc"><code>eqxadmin</code> e <code>eqxgerencia</code> em todo equipamento; Administrator renomeado/desabilitado; senhas fortes só no ServiceNow.</p></div>
+      <div class="card" data-tags="ntp extntp horario"><h4>NTP Equinix em tudo <span class="prm">PRM-GER-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Todos os componentes sincronizados com os NTPs Equinix (<code>extntp.equinix.com.br</code> e réplicas).</p></div>
+      <div class="card" data-tags="zabbix monitoramento template atlas csr puppet"><h4>Monitoramento Zabbix + Atlas <span class="prm">PRM-GER-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Template padrão da tecnologia, cadastro no CSR e Puppet quando aplicável. Sem monitoramento, sem aceite.</p></div>
+      <div class="card" data-tags="fontes redundantes ilo idrac circuitos"><h4>Redundância física + iLO/iDRAC <span class="prm">PRM-GER-005</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Fontes redundantes em circuitos distintos (STS p/ monofonte); iLO/iDRAC ativa e cadastrada.</p></div>
+      <div class="card" data-tags="firmware bios suu spp drivers"><h4>Firmware antes do software <span class="prm">PRM-GER-006</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">BIOS/firmware/drivers via SUU/SPP antes do SO; BIOS Max Performance; VT/VT-d p/ hypervisors.</p></div>
+      <div class="card" data-tags="versao suporte eogs lifecycle"><h4>Versão com futuro <span class="prm">PRM-GER-007</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Somente versões com fim de suporte a mais de 1 ano da instalação (lifecycle do fabricante).</p></div>
+    </div>
+
+    <div class="band">Glossário rápido</div>
+    <table>
+      <tr><th>Termo</th><th>Em linguagem simples</th></tr>
+      <tr><td><strong>Runbook / ETI</strong></td><td>Runbook = "foto" das configurações. ETI = o que foi combinado com o cliente.</td></tr>
+      <tr><td><strong>TM / OSA</strong></td><td>Modalidades de gerenciamento: Total Management e Administração de SO.</td></tr>
+      <tr><td><strong>In-place × paralelo</strong></td><td>In-place: atualizar por cima do ambiente atual. Paralelo (greenfield): montar novo e migrar — o padrão recomendado.</td></tr>
+      <tr><td><strong>Cutover</strong></td><td>O momento da virada: produção passa do ambiente antigo para o novo.</td></tr>
+      <tr><td><strong>Snapshot</strong></td><td>Foto temporária de VM/volume. Não é backup.</td></tr>
+      <tr><td><strong>Thick / Thin</strong></td><td>Thick = espaço todo reservado (padrão). Thin = sob demanda (não suportado no gerenciamento).</td></tr>
+      <tr><td><strong>MTU 9000</strong></td><td>Pacotes grandes p/ tráfego de storage; precisa estar igual em todo o caminho.</td></tr>
+      <tr><td><strong>Frontend / Backend</strong></td><td>Frontend = volume protegido (licença de backup). Backend = disco para guardar backups + retenção.</td></tr>
+      <tr><td><strong>RPO / RTO</strong></td><td>Quanto dado pode ser perdido / em quanto tempo o serviço volta.</td></tr>
+      <tr><td><strong>Seeding</strong></td><td>Carga inicial dos dados transportada por mídia física ou pré-cópia, para não depender só do link.</td></tr>
+    </table>
+  </section>
+
+  <!-- ================= RADAR ================= -->
+  <section class="page" id="radar">
+    <div class="crumb">Governança</div>
+    <h2 class="page-title">Radar de Versões</h2>
+    <p class="page-sub">Premissa interna × versão atual do fabricante (validado em julho/2026). Guia para novos projetos e para atualização dos documentos.</p>
+    <table>
+      <tr><th>Produto</th><th>Premissa interna referencia</th><th>Fabricante hoje (jul/2026)</th><th>Ação</th></tr>
+      <tr><td><strong>VMware vSphere</strong></td><td>"Acima da 7.0"; templates 6.7/7.0</td><td>vSphere 7 sem suporte desde out/2025; vSphere 8 até out/2027; VCF 9 GA jun/2025; licenciamento Broadcom por core (subscrição)</td><td><span class="pill up">Atualizar</span> Ativar em vSphere 8+</td></tr>
+      <tr><td><strong>XenServer</strong></td><td>"6.0 ou superior"; License Server 11.13</td><td>XenServer 8.4 atual (CH 8.2 CU1 EOL); XenServer 9 lançado; licenciamento só via LAS desde 15/04/2026 (XenCenter YYYY.x, edição Premium)</td><td><span class="pill up">Atualizar</span> Reescrever versão/licença</td></tr>
+      <tr><td><strong>Windows Server</strong></td><td>2016/2019/2022 (pref. 2019)</td><td>2025 GA (nov/2024); 2019 fora do mainstream; 2016 estendido até jan/2027</td><td><span class="pill up">Atualizar</span> Preferencial 2022/2025</td></tr>
+      <tr><td><strong>Veeam B&amp;R</strong></td><td>Era v12 (2023)</td><td>v13 GA nov/2025 (build 13.0.2 mai/2026); Software Appliance Linux; upgrade exige 12.3.1+</td><td><span class="pill up">Atualizar</span> Padronizar v13</td></tr>
+      <tr><td><strong>Commvault</strong></td><td>Docs 11.24</td><td>LTS 11.40 (suporte até dez/2027); 2024E/11.36 até jun/2027</td><td><span class="pill up">Atualizar</span> Corrigir links p/ 11.40</td></tr>
+      <tr><td><strong>Storage / Switch / AD</strong></td><td>Práticas de arquitetura</td><td>Válidas; matrizes/firmwares verificados por projeto</td><td><span class="pill ok2">OK</span></td></tr>
+    </table>
+    <div class="callout tip"><span class="ico">💡</span><span><strong>Regra de ouro (PRM-GER-007):</strong> só ativar versões com fim de suporte a mais de 1 ano — hoje: vSphere 8+, XenServer 8.4+, Windows 2022/2025, VBR 13, Commvault 11.40 LTS.</span></div>
+    <p class="src">Fontes: Broadcom/VMware lifecycle, docs.xenserver.com, Microsoft lifecycle, veeam.com/kb4738, documentation.commvault.com.</p>
+  </section>
+
+  <!-- ================= VMWARE ================= -->
+  <section class="page" id="vmware">
+    <div class="crumb">Catálogo · Virtualização</div>
+    <h2 class="page-title">VMware vSphere</h2>
+    <p class="page-sub">Plataforma de virtualização das clouds privadas gerenciadas (ESXi, vCenter, Replication, SRM). <a href="premissas/Premissa_VMWARE.md">Premissa completa →</a></p>
+
+    <div class="aud" data-aud="todos">
+      <div class="callout warn"><span class="ico">⚠️</span><span><strong>Versões:</strong> vSphere 7 saiu de suporte em out/2025 — novas ativações em <strong>vSphere 8+</strong> (PRM-GER-007). VCF 9 disponível para nuvem privada completa. <span class="pill up">Premissa a atualizar</span></span></div>
+    </div>
+
+    <div class="aud" data-aud="prevenda gestao">
+      <div class="band">Pré-venda <span class="who">· o que validar antes da proposta</span></div>
+      <div class="card"><ul>
+        <li><strong>Licenciamento Broadcom:</strong> subscrição por core físico (mínimo 16 cores/CPU contabilizados) — validar a contagem com a matriz comercial antes de enviar.</li>
+        <li><strong>Hardware:</strong> servidores na HCL/VCG na versão-alvo (PRM-VMW-001); ISO customizada disponível.</li>
+        <li><strong>Capacidade:</strong> memória calculada com reserva por nº de nodes + 8 GB/host (PRM-VMW-004) — não vender "soma das VMs".</li>
+        <li><strong>DR/Replicação:</strong> RPO/RTO definidos na ETI e link dimensionado (PRM-VMW-013).</li>
+      </ul>
+      <div class="callout never"><span class="ico">🚫</span><span><strong>Nunca prometer:</strong> thin provisioning, versão fora de suporte, capacidade bruta como líquida, ou migração sem janela e método definidos (ver <a href="#migracoes">Migrações</a>).</span></div></div>
+    </div>
+
+    <div class="aud" data-aud="arquitetura gestao">
+      <div class="band">Arquitetura <span class="who">· pontos críticos: pode / não pode</span></div>
+      <div class="dosdonts">
+        <div class="dos"><h4>✅ Pode / recomendado</h4><ul>
+          <li>Expandir cluster com hosts idênticos e na HCL; habilitar EVC para misturar gerações de CPU.</li>
+          <li>Migração <strong>paralela</strong> (novo cluster + migração de VMs) para upgrades major — ver <a href="#migracoes">abordagens</a>.</li>
+          <li>Cross vCenter vMotion entre clouds privadas, com pré-requisitos validados (PRM-MIG-003).</li>
+          <li>Tierização de datastores com Storage Profiles; SIOC quando suportado.</li>
+        </ul></div>
+        <div class="donts"><h4>🚫 Não pode / não recomendado</h4><ul>
+          <li><strong>Upgrade in-place major sem plano validado</strong> — herda problemas, rollback difícil; preferir paralelo (PRM-MIG-002).</li>
+          <li>Thin provisioning e snapshots &gt; 72 h (PRM-VMW-010).</li>
+          <li>vCenter em versão inferior à dos hosts; versões mistas de ESXi no cluster além da janela de upgrade.</li>
+          <li>Hardware fora da HCL; LACP nos Standard Switches do padrão.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="tecnico arquitetura">
+      <div class="band">Implantação <span class="who">· premissas técnicas</span></div>
+      <div class="grid">
+        <div class="card" data-tags="vmware hcl vcg quickspecs"><h4>Compatibilidade validada <span class="prm">PRM-VMW-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Servidor e periféricos no VMware Compatibility Guide na versão exata + matriz do fabricante do hardware.</p></div>
+        <div class="card" data-tags="vmware iso customizada hpe dell"><h4>ISO customizada <span class="prm">PRM-VMW-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Mídia customizada HPE/Dell; servidor atualizado via SUU/SPP antes da instalação.</p></div>
+        <div class="card" data-tags="vmware raid so ssd datastore local"><h4>RAID-1 para o SO <span class="prm">PRM-VMW-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">SO em RAID-1 (2× ~300 GB SSD/SAS), nunca para VMs; datastore local RAID-5+ com 20% livre.</p></div>
+        <div class="card" data-tags="vmware memoria reserva nodes 8gb"><h4>Memória por nodes <span class="prm">PRM-VMW-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">RAM das VMs + 8 GB/node, com reserva: 2 nodes = 50%, 3 = 33%, 4 = 25% … 10 = 10%.</p></div>
+        <div class="card" data-tags="vmware vswitch portgroup vlan rede"><h4>Padrão de vSwitches <span class="prm">PRM-VMW-005</span> <span class="pill fx">Flexível</span></h4><p class="desc">vSwitch0 gerência (Mgmt/vMotion/Backup/Replication), vSwitch1+ produção; PortGroups <code>REDE_PROD_VLAN_51</code>; sem LACP.</p></div>
+        <div class="card" data-tags="vmware traffic shaping backup"><h4>QoS do backup <span class="prm">PRM-VMW-006</span> <span class="pill fx">Flexível</span></h4><p class="desc">Traffic shaping no VMKernel de backup: 70% (1 Gb) / 10% (10 Gb).</p></div>
+        <div class="card" data-tags="vmware multipath round robin iscsi mtu 9000"><h4>Multipath e MTU <span class="prm">PRM-VMW-007</span> <span class="pill fx">Flexível</span></h4><p class="desc">Round Robin preferencial; HBAs iguais no cluster; iSCSI com MTU 9000 validado (<code>vmkping -s 8972 -d</code>).</p></div>
+        <div class="card" data-tags="vmware datastore vmdata vmfs 20"><h4>Datastores <span class="prm">PRM-VMW-008</span> <span class="pill fx">Flexível</span></h4><p class="desc"><code>VMDATA_LUN02_TIER2</code>; VMFS atual; livre por faixa: &gt;11 TB ≥5%, 1–10 TB ≥10%, &lt;1 TB ≥15% (padrão 20%).</p></div>
+        <div class="card" data-tags="vmware drs ha admission"><h4>DRS + HA <span class="prm">PRM-VMW-009</span> <span class="pill fx">Flexível</span></h4><p class="desc">DRS Fully Automated; HA com reserva de 1 host; heartbeat automático.</p></div>
+        <div class="card" data-tags="vmware thick thin vmxnet3 lsi hot add"><h4>Padrão de VM <span class="prm">PRM-VMW-010</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Thick Lazy (Eager p/ DB); thin não suportado; VMXNET3; LSI Logic SAS; CPU Hot Add off; Tools atual.</p></div>
+        <div class="card" data-tags="vmware cpu ready 6:1 latencia balloon"><h4>Contadores pós-migração <span class="prm">PRM-VMW-011</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">vCPU:pCPU ≤ 6:1; CPU Ready &lt; 5%; balloon/swap 0; latência &lt; 15 ms; drops 0.</p></div>
+        <div class="card" data-tags="vmware hardening ssh shell lockdown"><h4>Hardening <span class="prm">PRM-VMW-012</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Credenciais no SNOW; SSH/Shell off; timeout 900 s; patches via Lifecycle Manager; DNS A/PTR + NTP.</p></div>
+        <div class="card" data-tags="vmware srm replication rpo failover"><h4>Replicação e DR <span class="prm">PRM-VMW-013</span> <span class="pill fx">Flexível</span></h4><p class="desc">Link p/ RPO/RTO da ETI; datastore de placeholders; failover testado e documentado.</p></div>
+        <div class="card" data-tags="vmware acesso cliente role readonly"><h4>Acesso do cliente <span class="prm">PRM-VMW-014</span> <span class="pill fx">Flexível</span></h4><p class="desc">Grupo CLIENTE + role ACESSO_CLIENTE (ReadOnly ampliada) na raiz do Datacenter.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= XENSERVER ================= -->
+  <section class="page" id="xenserver">
+    <div class="crumb">Catálogo · Virtualização</div>
+    <h2 class="page-title">XenServer / Citrix</h2>
+    <p class="page-sub">Hypervisor Citrix para ambientes standalone e pools em HA. <a href="premissas/Premissa_XenServer.md">Premissa completa →</a></p>
+
+    <div class="aud" data-aud="todos">
+      <div class="callout warn"><span class="ico">⚠️</span><span><strong>Versões e licença:</strong> premissa cita 6.x/7.x (EOL). Atual: <strong>XenServer 8.4</strong> (updates via CDN) e XenServer 9; licenciamento exclusivamente via <strong>LAS</strong> desde 15/04/2026 (XenCenter YYYY.x, edição Premium). <span class="pill up">Premissa a atualizar</span></span></div>
+    </div>
+
+    <div class="aud" data-aud="prevenda gestao">
+      <div class="band">Pré-venda</div>
+      <div class="card"><ul>
+        <li><strong>Licença:</strong> HA exige pool licenciado (Premium, ativação LAS) — incluir no BOM.</li>
+        <li><strong>Hardware:</strong> HCL Citrix obrigatória (PRM-XEN-002); mínimo 3 hosts para HA.</li>
+        <li><strong>Oportunidade:</strong> migrações VMware→XenServer (Conversion Manager) — validar guest OS support na versão-alvo.</li>
+      </ul></div>
+    </div>
+
+    <div class="aud" data-aud="arquitetura gestao">
+      <div class="band">Arquitetura · pode / não pode</div>
+      <div class="dosdonts">
+        <div class="dos"><h4>✅ Pode / recomendado</h4><ul>
+          <li>Pool HA com 3+ hosts licenciados e heartbeat SR ≥ 4 GB.</li>
+          <li>Migração paralela para sair de versões EOL (novo pool + import/Conversion Manager).</li>
+          <li>Bonds dedicados por função; iSCSI em bond próprio 10 Gb.</li>
+        </ul></div>
+        <div class="donts"><h4>🚫 Não pode / não recomendado</h4><ul>
+          <li>Thin provisioning (thick obrigatório) e SR com menos de 20% livre.</li>
+          <li>Mais de 16 vCPUs por core (limite interno; fabricante permite 32).</li>
+          <li>NAT entre hosts e XenCenter; versões EOL (6.x/7.x/CH 8.2).</li>
+          <li>Upgrade in-place saltando major versions fora do caminho suportado.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="tecnico arquitetura">
+      <div class="band">Implantação · premissas técnicas</div>
+      <div class="grid">
+        <div class="card" data-tags="xenserver ha 3 hosts heartbeat licenca pool"><h4>HA: 3 hosts no pool <span class="prm">PRM-XEN-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Pool licenciado com ≥3 hosts; heartbeat SR ≥ 4 GB; tolerância ≥ 1 host.</p></div>
+        <div class="card" data-tags="xenserver hcl hardware"><h4>Hardware na HCL <span class="prm">PRM-XEN-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Processadores, HBAs, storage e switches FC na HCL do XenServer.</p></div>
+        <div class="card" data-tags="xenserver vcpu core 16 memoria 95 overcommit 30 75"><h4>Limites CPU/RAM <span class="prm">PRM-XEN-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">≤16 vCPU/core; standalone: RAM das VMs ≤ 95%; cluster: overcommit 30%, proteção &gt;75% com queda de 1 host.</p></div>
+        <div class="card" data-tags="xenserver thick sr 20 ram latencia 30ms"><h4>Storage thick + 20% <span class="prm">PRM-XEN-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Thick obrigatório; SR 20% livre; VM ocupa disco + RAM no SR; latência &lt; 30 ms.</p></div>
+        <div class="card" data-tags="xenserver bond 6 nics iscsi intel"><h4>Redes em bonds <span class="prm">PRM-XEN-005</span> <span class="pill fx">Flexível</span></h4><p class="desc">6+ NICs (gerência/backup/produção); iSCSI em bond dedicado; preferir Intel.</p></div>
+        <div class="card" data-tags="xenserver multipath wlb ssh ntp zabbix"><h4>Configurações padrão <span class="prm">PRM-XEN-006</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Multipath RR; WLB Maximize Performance; SSH no boot; NTP Equinix; eqxadmin/eqxgerencia; template Zabbix Citrix.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WINDOWS ================= -->
+  <section class="page" id="windows">
+    <div class="crumb">Catálogo · Sistemas &amp; Diretório</div>
+    <h2 class="page-title">Windows Server</h2>
+    <p class="page-sub">SO gerenciado em servidores físicos e virtuais. <a href="premissas/Premissa_Windows.md">Premissa completa →</a></p>
+
+    <div class="aud" data-aud="todos">
+      <div class="callout warn"><span class="ico">⚠️</span><span><strong>Versões:</strong> preferencial atualizado para <strong>2022/2025</strong> (2019 fora do mainstream; 2016 morre em jan/2027). <span class="pill up">Premissa a atualizar</span></span></div>
+    </div>
+
+    <div class="aud" data-aud="prevenda gestao">
+      <div class="band">Pré-venda</div>
+      <div class="card"><ul>
+        <li><strong>Licença + serial:</strong> ambiente nunca é entregue sem serial aplicado — prever licenciamento na proposta.</li>
+        <li><strong>Versão:</strong> 2022/2025 para novas ativações; exceção só com aceite formal (Risk Letter).</li>
+        <li><strong>Upgrade de SO:</strong> vender como <em>novo servidor + migração</em>, não in-place (ver <a href="#migracoes">Migrações</a>).</li>
+      </ul></div>
+    </div>
+
+    <div class="aud" data-aud="arquitetura gestao">
+      <div class="band">Arquitetura · pode / não pode</div>
+      <div class="dosdonts">
+        <div class="dos"><h4>✅ Pode / recomendado</h4><ul>
+          <li>Novo servidor + migração de papéis/dados para trocar de versão (rollback simples).</li>
+          <li>NIC teaming (interfaces da mesma placa física).</li>
+          <li>MPIO Round Robin com FC/iSCSI; disco dedicado para page file grande.</li>
+        </ul></div>
+        <div class="donts"><h4>🚫 Não pode / não recomendado</h4><ul>
+          <li><strong>Upgrade in-place de SO em produção</strong> — risco de drivers/apps herdados; exceções com Risk Letter (PRM-MIG-002).</li>
+          <li>Desativar o serviço de firewall do Windows; serviços com conta administrativa.</li>
+          <li>Page file automático; template com antivírus ou sem sysprep.</li>
+          <li>DNS público em máquina de domínio.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="tecnico arquitetura">
+      <div class="band">Implantação · premissas técnicas</div>
+      <div class="grid">
+        <div class="card" data-tags="windows eqxadmin administrator servicos senha"><h4>Contas e privilégio mínimo <span class="prm">PRM-WIN-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Administrator→<code>eqxadmin</code>; <code>eqxgerencia</code>; serviços nunca administrativos; senha ≥12 chars; lockout ativo.</p></div>
+        <div class="card" data-tags="windows ntfs 100gb particao"><h4>Discos e partições <span class="prm">PRM-WIN-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">NTFS; C: ≥100 GB; dados em D:.</p></div>
+        <div class="card" data-tags="windows pagefile ram kernel dump"><h4>Page file calculado <span class="prm">PRM-WIN-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">1–10 GB RAM → 1,5×+128 MB; 10–32 → RAM+128 MB; &gt;32 → 32 GB+128 MB; máx 20% do C:; Kernel Memory Dump.</p></div>
+        <div class="card" data-tags="windows rdp nla 3389 nat pa"><h4>RDP seguro <span class="prm">PRM-WIN-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">NAT em 3389+X sequenciais; NLA; acesso pelas PAs; cliente só no grupo Remote Desktop Users.</p></div>
+        <div class="card" data-tags="windows wsus update"><h4>Updates via WSUS <span class="prm">PRM-WIN-005</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">WSUS Equinix, download-only 22h, sem restart automático; críticas aplicadas na entrega.</p></div>
+        <div class="card" data-tags="windows uac firewall auditoria 512"><h4>Segurança básica <span class="prm">PRM-WIN-006</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">UAC on; firewall nunca desativado; auditoria ativa; logs 512 MB com sobrescrita.</p></div>
+        <div class="card" data-tags="windows mpio 64k hba"><h4>MPIO e HBA <span class="prm">PRM-WIN-007</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">MPIO Round Robin; HBA 64k em storage compartilhado; NodeTimeout 3 s.</p></div>
+        <div class="card" data-tags="windows sysprep template sid"><h4>Templates <span class="prm">PRM-WIN-008</span> <span class="pill ob">Obrigatório</span></h4><p class="desc"><code>sysprep /generalize</code> sempre; sem antivírus no template; SIDs verificados.</p></div>
+        <div class="card" data-tags="windows zabbix puppet dns fabricante"><h4>Agentes e programas <span class="prm">PRM-WIN-009</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Puppet/Zabbix/SNMP; DNS Equinix ou do AD; OMSA/SSA; utilitários padrão.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AD ================= -->
+  <section class="page" id="ad">
+    <div class="crumb">Catálogo · Sistemas &amp; Diretório</div>
+    <h2 class="page-title">Active Directory + DNS</h2>
+    <p class="page-sub">Controladores de domínio e DNS gerenciados. Base: premissa Windows. <a href="premissas/Premissa_Active_Directory.md">Premissa completa →</a></p>
+
+    <div class="aud" data-aud="prevenda gestao">
+      <div class="band">Pré-venda</div>
+      <div class="card"><ul>
+        <li><strong>Sempre 2 DCs</strong> por site em produção — propostas com 1 DC só com aceite de risco.</li>
+        <li><strong>Host exclusivo:</strong> AD não divide servidor com SQL/IIS — dimensionar VMs próprias.</li>
+        <li><strong>Acesso:</strong> cliente sem acesso administrativo ao DC; se exigir, entrega com Risk Letter.</li>
+      </ul></div>
+    </div>
+
+    <div class="aud" data-aud="arquitetura gestao">
+      <div class="band">Arquitetura · pode / não pode</div>
+      <div class="dosdonts">
+        <div class="dos"><h4>✅ Pode / recomendado</h4><ul>
+          <li>Trocar versão promovendo <strong>novo DC</strong>, transferindo FSMO e despromovendo o antigo.</li>
+          <li>DCs virtuais com antiafinidade (hosts físicos distintos).</li>
+          <li>Nível funcional elevado ao máximo que os DCs permitirem (≥2012 R2).</li>
+        </ul></div>
+        <div class="donts"><h4>🚫 Não pode / não recomendado</h4><ul>
+          <li><strong>Nunca restaurar/clonar DC por snapshot</strong> — causa USN rollback e corrompe a replicação.</li>
+          <li>Upgrade in-place de DC; DC único em produção; funções acumuladas no DC.</li>
+          <li>Sincronizar horário do DC pelo hypervisor; DNS público em membros do domínio.</li>
+          <li>Estender o domínio interno do cliente sem análise (não recomendado).</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="tecnico arquitetura">
+      <div class="band">Implantação · premissas técnicas</div>
+      <div class="grid">
+        <div class="card" data-tags="ad exclusivo dedicado"><h4>Host exclusivo <span class="prm">PRM-AD-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Somente AD DS + DNS; AD FS/CS em servidores próprios.</p></div>
+        <div class="card" data-tags="ad 2 dcs anti afinidade replicacao"><h4>Redundância de DCs <span class="prm">PRM-AD-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">≥2 DCs/site com antiafinidade; replicação inter-site ≤5 min; subnets no Sites and Services.</p></div>
+        <div class="card" data-tags="ad fsmo pdc rid schema infra gc"><h4>FSMOs distribuídas <span class="prm">PRM-AD-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">PDC+RID juntos; Schema+DNM com GC; Infrastructure fora de GC; owners no CI.</p></div>
+        <div class="card" data-tags="ad administrator dsrm risk"><h4>Contas e acesso <span class="prm">PRM-AD-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Administrator desabilitado; DSRM no SNOW; cliente sem admin (ou Risk Letter).</p></div>
+        <div class="card" data-tags="ad gpo wsus ntp senha 14 60 lockout"><h4>GPOs padrão <span class="prm">PRM-AD-005</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">GPO Equinix (WSUS/NTP NT5DS); senha 14 chars/60 dias/24 histórico; lockout 6; auditoria de DC.</p></div>
+        <div class="card" data-tags="ad dns forwarder reversa scavenging"><h4>DNS padrão <span class="prm">PRM-AD-006</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Forwarders Equinix; zona reversa integrada; aging/scavenging; só DNS internos nos membros.</p></div>
+        <div class="card" data-tags="ad virtual time sync local nivel funcional"><h4>DCs virtuais e domínio <span class="prm">PRM-AD-007</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Time sync do hypervisor off; domínio interno (.local); nível ≥2012 R2.</p></div>
+        <div class="card" data-tags="ad dcdiag repadmin netlogon sysvol portas"><h4>Health check <span class="prm">PRM-AD-008</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">DCDIAG/repadmin no Runbook; NETLOGON/SYSVOL ok; portas AD liberadas; template Zabbix AD.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STORAGE ================= -->
+  <section class="page" id="storage">
+    <div class="crumb">Catálogo · Infraestrutura</div>
+    <h2 class="page-title">Storage (SAN FC / iSCSI)</h2>
+    <p class="page-sub">Armazenamento dedicado ou compartilhado. <a href="premissas/Premissa_storage.md">Premissa completa →</a></p>
+
+    <div class="aud" data-aud="prevenda gestao">
+      <div class="band">Pré-venda</div>
+      <div class="card"><ul>
+        <li><strong>Bruto ≠ líquido:</strong> margem mínima de 20% após formatação/paridade/hotspare (PRM-STG-003).</li>
+        <li><strong>iSCSI:</strong> exige rede 10 GbE e VLANs próprias — validar com o cliente antes de propor.</li>
+        <li><strong>Remote call:</strong> suporte automático do fabricante precisa de conectividade liberada.</li>
+      </ul></div>
+    </div>
+
+    <div class="aud" data-aud="arquitetura gestao">
+      <div class="band">Arquitetura · pode / não pode</div>
+      <div class="dosdonts">
+        <div class="dos"><h4>✅ Pode / recomendado</h4><ul>
+          <li>Tierização com Storage Profiles (Balanced / Max Efficiency / Max Performance).</li>
+          <li>CHAP bidirecional no iSCSI quando suportado; switches dedicados para storage.</li>
+          <li>Migração de dados por replicação do próprio storage ou por réplica Veeam (ver <a href="#migracoes">Migrações</a>).</li>
+        </ul></div>
+        <div class="donts"><h4>🚫 Não pode / não recomendado</h4><ul>
+          <li>RAID-0 (proibido) e discos fora da matriz do fabricante.</li>
+          <li>SATA/NL para dados quentes (só cold data).</li>
+          <li>Gerência exposta sem firewall; STP nas portas de iSCSI.</li>
+          <li>Snapshot de storage como backup.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="tecnico arquitetura">
+      <div class="band">Implantação · premissas técnicas</div>
+      <div class="grid">
+        <div class="card" data-tags="storage controladoras fabric a b"><h4>2 controladoras, 2 fabrics <span class="prm">PRM-STG-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">≥2 controladoras × 2 portas em fabrics distintas; LUNs por todas as controladoras.</p></div>
+        <div class="card" data-tags="storage raid0 hotspare homologados nl"><h4>Discos e proteção <span class="prm">PRM-STG-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Sem RAID-0; hotspare por tipo/gaveta; só discos homologados; NL apenas cold data.</p></div>
+        <div class="card" data-tags="storage 20 margem liquida"><h4>Margem 20% <span class="prm">PRM-STG-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Capacidade líquida com folga ≥20% após perdas de proteção.</p></div>
+        <div class="card" data-tags="storage iscsi 10gbe mtu 9000 vlan stp chap"><h4>iSCSI bem-feito <span class="prm">PRM-STG-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">10 GbE; VLAN/subnet própria; STP off nas portas; MTU 9000 validado; CHAP quando suportado.</p></div>
+        <div class="card" data-tags="storage snapshot bp daily oddp"><h4>Perfis de snapshot <span class="prm">PRM-STG-005</span> <span class="pill fx">Flexível</span></h4><p class="desc"><code>BP_Daily</code> (18h/25h) e <code>ODDP_Daily</code> (3/3h/4h) nos volumes.</p></div>
+        <div class="card" data-tags="storage remote call infosight cloudiq firmware"><h4>Suporte do fabricante <span class="prm">PRM-STG-006</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Remote call ativo; firmwares/gerenciador atuais; InfoSight/CloudIQ + Zabbix.</p></div>
+        <div class="card" data-tags="storage hardening senha portas"><h4>Hardening <span class="prm">PRM-STG-007</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Senhas no SNOW; eqxadmin/eqxgerencia; portas mínimas; logs habilitados.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SWITCH ================= -->
+  <section class="page" id="switch">
+    <div class="crumb">Catálogo · Infraestrutura</div>
+    <h2 class="page-title">Switch TOR / Rede</h2>
+    <p class="page-sub">Switches topo de rack para racks gerenciados. <a href="premissas/Premissa_Switch.md">Premissa completa →</a></p>
+
+    <div class="aud" data-aud="prevenda gestao">
+      <div class="band">Pré-venda</div>
+      <div class="card"><ul>
+        <li><strong>Somente portfólio homologado</strong> (Dell, Juniper, Cisco, HPE/Aruba) com SFPs certificadas.</li>
+        <li><strong>HA:</strong> stacking/VSX/VLT/Virtual Chassis — Juniper VC exige 2 licenças (master/backup) no BOM.</li>
+      </ul></div>
+    </div>
+
+    <div class="aud" data-aud="arquitetura gestao">
+      <div class="band">Arquitetura · pode / não pode</div>
+      <div class="dosdonts">
+        <div class="dos"><h4>✅ Pode / recomendado</h4><ul>
+          <li>HA por par (VSX/VLT/VC) com links redundantes por servidor.</li>
+          <li>Jumbo frames fim a fim para redes de storage.</li>
+        </ul></div>
+        <div class="donts"><h4>🚫 Não pode / não recomendado</h4><ul>
+          <li>Subir firmware sem ler release notes; stack com versões mistas.</li>
+          <li>Native VLAN default; Telnet/HTTP habilitados; SFP não homologada.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="tecnico arquitetura">
+      <div class="band">Implantação · premissas técnicas</div>
+      <div class="grid">
+        <div class="card" data-tags="switch portfolio sfp homologado"><h4>Modelos homologados <span class="prm">PRM-SW-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Portfólio/custom certified com SFPs e cabos de stack do fabricante.</p></div>
+        <div class="card" data-tags="switch hostname ntp gmt"><h4>Identidade e horário <span class="prm">PRM-SW-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Hostname <code>SWRK01-RACK.IBX</code>; NTP Equinix; GMT-3.</p></div>
+        <div class="card" data-tags="switch telnet ssh v2 acl timeout"><h4>Hardening <span class="prm">PRM-SW-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Telnet/HTTP/HTTPS/finger/BOOTP off; SSHv2 timeout 10 min com ACL.</p></div>
+        <div class="card" data-tags="switch firmware release notes stack"><h4>Versão recomendada <span class="prm">PRM-SW-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Firmware recomendado pelo fabricante; release notes lidos; stack em versão única.</p></div>
+        <div class="card" data-tags="switch bpdu root guard storm native vlan"><h4>Proteções L2 <span class="prm">PRM-SW-005</span> <span class="pill fx">Flexível</span></h4><p class="desc">BPDU/Root Guard; storm-control; native VLAN não-default; descrições nas portas.</p></div>
+        <div class="card" data-tags="switch vsx vlt virtual chassis licenca"><h4>Alta disponibilidade <span class="prm">PRM-SW-006</span> <span class="pill fx">Flexível</span></h4><p class="desc">Stacking/VSX/VLT/VC conforme fabricante; licenças redundantes.</p></div>
+        <div class="card" data-tags="switch eletrica sts reguas"><h4>Elétrica e rack <span class="prm">PRM-SW-007</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">2 réguas independentes; STS p/ monofonte; corredores quente/frio.</p></div>
+        <div class="card" data-tags="switch snmp syslog backup config"><h4>Monitoração e backup <span class="prm">PRM-SW-008</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">SNMP/Zabbix; syslog; backup de config; cadastro completo no SNOW.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VEEAM ================= -->
+  <section class="page" id="veeam">
+    <div class="crumb">Catálogo · Proteção de Dados</div>
+    <h2 class="page-title">Veeam Backup &amp; Replication</h2>
+    <p class="page-sub">Backup dedicado, réplicas e recuperação. <a href="premissas/Premissa_Backup_Dedicado_VEEAM.md">Premissa completa →</a></p>
+
+    <div class="aud" data-aud="todos">
+      <div class="callout warn"><span class="ico">⚠️</span><span><strong>Versão:</strong> padrão atual é a <strong>v13</strong> (GA nov/2025; 13.0.2 mai/2026) — traz Software Appliance Linux e web UI; upgrade exige 12.3.1+. <span class="pill up">Premissa a atualizar</span></span></div>
+    </div>
+
+    <div class="aud" data-aud="prevenda gestao">
+      <div class="band">Pré-venda</div>
+      <div class="card"><ul>
+        <li><strong>Licenciamento por frontend</strong> (volume protegido); hardware dimensionado pelo <strong>backend</strong> (retenção) — usar a calculadora oficial.</li>
+        <li><strong>Rede:</strong> VLAN exclusiva de backup é pré-requisito (PRM-VBR-005) — validar com o cliente.</li>
+        <li><strong>Réplica como serviço de migração/DR:</strong> ver <a href="#migracoes">Migrações</a> para escopo e pré-requisitos.</li>
+      </ul></div>
+    </div>
+
+    <div class="aud" data-aud="arquitetura gestao">
+      <div class="band">Arquitetura · pode / não pode</div>
+      <div class="dosdonts">
+        <div class="dos"><h4>✅ Pode / recomendado</h4><ul>
+          <li>Regra 3-2-1-1-0; repositório imutável (hardened/object lock) — nativo na v13.</li>
+          <li>SOBR (scale-out) e ReFS/XFS com block cloning.</li>
+          <li>Réplicas com failover planejado para migração de VMs.</li>
+        </ul></div>
+        <div class="donts"><h4>🚫 Não pode / não recomendado</h4><ul>
+          <li>Backup guardado só na mesma infraestrutura de produção.</li>
+          <li>Upgrade direto para v13 sem estar no 12.3.1+ (caminho suportado).</li>
+          <li>SOs/hypervisors fora da matriz da v13 (Windows 2012, vSphere 6.x…).</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="tecnico arquitetura">
+      <div class="band">Implantação · premissas técnicas</div>
+      <div class="grid">
+        <div class="card" data-tags="veeam so windows appliance homologado"><h4>Plataforma homologada <span class="prm">PRM-VBR-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Windows homologado atualizado ou Veeam Software Appliance; v13 padrão.</p></div>
+        <div class="card" data-tags="veeam proxy 1vcpu 2gb task calculadora"><h4>Proxy por task <span class="prm">PRM-VBR-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">1 vCPU + 2 GB por task; sizing pela calculadora oficial (volumetria, mudança, RPO).</p></div>
+        <div class="card" data-tags="veeam repositorio raid6 refs sobr ssd"><h4>Repositório padrão <span class="prm">PRM-VBR-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">SSD RAID-1 (SO/catálogo) + staging RAID-6 (100% da volumetria); ReFS; SOBR recomendado.</p></div>
+        <div class="card" data-tags="veeam retencao diario semanal mensal anual full incremental"><h4>Retenções padrão <span class="prm">PRM-VBR-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">D 7–30, S 15–60, M 30–1825, A 365–1825; incrementais + full semanal; janela 20h–06h.</p></div>
+        <div class="card" data-tags="veeam vlan backup lacp 10gbe teaming"><h4>Rede dedicada <span class="prm">PRM-VBR-005</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">VLAN exclusiva; 4×1 GbE LACP ou 1×10 GbE; teaming na mesma placa.</p></div>
+        <div class="card" data-tags="veeam antivirus kb1999 vspc nomenclatura"><h4>Integrações <span class="prm">PRM-VBR-006</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Exclusões de antivírus (KB1999); VSPC liberado; nome <code>NICKNAME-BKP01-SITE</code>; Zabbix.</p></div>
+        <div class="card" data-tags="veeam 3-2-1-1-0 imutavel hardened object lock"><h4>3-2-1-1-0 e imutabilidade <span class="prm">PRM-VBR-007</span> <span class="pill fx">Flexível</span></h4><p class="desc">3 cópias, 2 mídias, 1 off-site, 1 imutável, 0 erros; avaliar hardened repository.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMMVAULT ================= -->
+  <section class="page" id="commvault">
+    <div class="crumb">Catálogo · Proteção de Dados</div>
+    <h2 class="page-title">Commvault</h2>
+    <p class="page-sub">Backup dedicado com Media Agents e CommCell. <a href="premissas/Premissa_Backup_Dedicado_Commvault.md">Premissa completa →</a></p>
+
+    <div class="aud" data-aud="todos">
+      <div class="callout warn"><span class="ico">⚠️</span><span><strong>Versão:</strong> LTS atual <strong>11.40</strong> (suporte até dez/2027); links da premissa (11.24) a corrigir. <span class="pill up">Atualizar links</span></span></div>
+    </div>
+
+    <div class="aud" data-aud="prevenda gestao">
+      <div class="band">Pré-venda</div>
+      <div class="card"><ul>
+        <li><strong>Frontsize licencia; backend dimensiona</strong> — calcular com a ferramenta do fabricante.</li>
+        <li><strong>BOM:</strong> SSDs para DDB/Index são obrigatórios (PRM-CVLT-002) — não cortar do orçamento.</li>
+        <li><strong>Firewall:</strong> comunicação com CommCell ativa e passiva por host é pré-requisito do cliente.</li>
+      </ul></div>
+    </div>
+
+    <div class="aud" data-aud="arquitetura gestao">
+      <div class="band">Arquitetura · pode / não pode</div>
+      <div class="dosdonts">
+        <div class="dos"><h4>✅ Pode / recomendado</h4><ul>
+          <li>DDB Global (storage pool) desde a ativação; staging segmentado em mount points ≤10 TB.</li>
+          <li>Live Sync entre CommCell ativa e passiva (DR da própria plataforma).</li>
+        </ul></div>
+        <div class="donts"><h4>🚫 Não pode / não recomendado</h4><ul>
+          <li>DDB/Index em disco mecânico (SSD &gt;300 IOPS obrigatório).</li>
+          <li>Apagar manualmente conteúdo de <code>CV_MAGNETIC</code>/<code>CV_SIDB</code>.</li>
+          <li>Agents em versão diferente da CommCell.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="tecnico arquitetura">
+      <div class="band">Implantação · premissas técnicas</div>
+      <div class="grid">
+        <div class="card" data-tags="commvault media agent windows homologado"><h4>SO do Media Agent <span class="prm">PRM-CVLT-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Windows homologado atualizado; agents na versão da CommCell (LTS 11.40).</p></div>
+        <div class="card" data-tags="commvault ddb ssd 300 iops global"><h4>DDB em SSD <span class="prm">PRM-CVLT-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">DDB e Index em SSD RAID-1 &gt;300 IOPS; DDB Global criada na ativação.</p></div>
+        <div class="card" data-tags="commvault particionamento c 200 staging pagefile"><h4>Particionamento <span class="prm">PRM-CVLT-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">C: 200 GB / DDB / Index / staging mount point; page file = ½ RAM.</p></div>
+        <div class="card" data-tags="commvault staging raid6 10tb mount"><h4>Staging segmentado <span class="prm">PRM-CVLT-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">RAID-6 (100% da volumetria); volumes &gt;10 TB em mount points de até 10 TB.</p></div>
+        <div class="card" data-tags="commvault retencao politica"><h4>Retenções padrão <span class="prm">PRM-CVLT-005</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Idem padrão de Backup Dedicado (D/S/M/A); janelas 20h–06h.</p></div>
+        <div class="card" data-tags="commvault commcell live sync firewall nat"><h4>CommCell ativa + passiva <span class="prm">PRM-CVLT-006</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Comunicação com ativa e passiva (Live Sync); firewall por host, inclusive NAT.</p></div>
+        <div class="card" data-tags="commvault nomenclatura stp sch dl"><h4>Nomenclatura <span class="prm">PRM-CVLT-007</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">STP_/SCH_/DL_ com Nickname; proibido "novo/temp".</p></div>
+        <div class="card" data-tags="commvault antivirus fisica robos fitas"><h4>Antivírus e físico <span class="prm">PRM-CVLT-008</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Exclusões nos paths CV; robôs/fitas com segurança física.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MIGRAÇÕES ================= -->
+  <section class="page" id="migracoes">
+    <div class="crumb">Catálogo · Serviços de Projeto</div>
+    <h2 class="page-title">Migrações &amp; Upgrades</h2>
+    <p class="page-sub">Pontos críticos de arquitetura de projeto: como escolher a abordagem, o que o fabricante recomenda, pré-requisitos do nosso lado e do lado do cliente.</p>
+
+    <div class="aud" data-aud="todos arquitetura gestao">
+      <div class="band">Princípio nº 1 <span class="who">· in-place × migração paralela</span></div>
+      <div class="callout never"><span class="ico">🚫</span><span><strong>Não recomendamos upgrade in-place</strong> (atualizar "por cima" do ambiente em produção) para mudanças de versão major de SO, hypervisor ou plataforma de backup. Riscos: herança de problemas e drivers antigos, rollback difícil ou impossível, downtime imprevisível e incompatibilidades descobertas em produção. É também a orientação predominante dos fabricantes para ambientes críticos. <span class="prm">PRM-MIG-002</span></span></div>
+      <div class="callout ok"><span class="ico">✅</span><span><strong>Padrão da casa: migração paralela (greenfield).</strong> Constrói-se o ambiente novo na versão-alvo, migram-se as cargas em ondas com método adequado, valida-se, e o ambiente antigo vira rollback natural até o descomissionamento. Exceções ao in-place (ex.: minor updates, appliances com caminho oficial) exigem plano validado por arquitetura e, quando for exigência do cliente, Risk Letter.</span></div>
+    </div>
+
+    <div class="aud" data-aud="arquitetura prevenda gestao">
+      <div class="band">Matriz de decisão <span class="who">· qual abordagem usar</span></div>
+      <table data-tags="migracao matriz decisao abordagem metodo cenario">
+        <tr><th>Cenário</th><th>Método recomendado</th><th>Quando usar / observações</th></tr>
+        <tr><td>Mesmo vCenter/SSO, novo cluster</td><td>vMotion + Storage vMotion</td><td>Sem downtime; compute e storage podem migrar juntos ou separados.</td></tr>
+        <tr><td>Cloud privada → cloud privada (vCenters distintos)</td><td><strong>Cross vCenter vMotion</strong></td><td>Sem downtime; exige pré-requisitos de versão, rede e permissão (abaixo). <span class="prm">PRM-MIG-003</span></td></tr>
+        <tr><td>Origem fora do nosso controle, grandes volumetrias, necessidade de rollback simples, mudança de site com re-IP</td><td><strong>Réplica Veeam + failover planejado</strong></td><td>Downtime mínimo e controlado no cutover; permite seeding e testes. <span class="prm">PRM-MIG-004</span></td></tr>
+        <tr><td>VMware → XenServer (ou troca de hypervisor)</td><td>Conversão (XenServer Conversion Manager / import OVF)</td><td>Validar guest OS support e drivers (remoção de Tools, instalação de guest agent).</td></tr>
+        <tr><td>Físico → virtual (P2V)</td><td>Veeam Agent → restore como VM / réplica</td><td>Testar boot e drivers em janela; ajustar HAL/storage drivers.</td></tr>
+        <tr><td>Troca de versão de Windows/AD</td><td>Novo servidor + migração de papéis/dados; novo DC + FSMO</td><td>Nunca in-place em DC; file server via DFS/robocopy com ACLs.</td></tr>
+        <tr><td>Troca de storage</td><td>Storage vMotion, replicação nativa do storage ou réplica Veeam</td><td>Escolher pelo downtime tolerado e compatibilidade entre arrays.</td></tr>
+      </table>
+    </div>
+
+    <div class="aud" data-aud="arquitetura tecnico">
+      <div class="band">Cross vCenter vMotion <span class="who">· pré-requisitos (clouds privadas)</span></div>
+      <div class="grid" data-tags="cross vcenter vmotion pre requisitos permissao acesso configuracao">
+        <div class="card"><h4>Do nosso lado (destino)</h4><ul style="font-size:.88rem;margin-left:18px">
+          <li>vCenter 7.0 U1c+ ou 8.x (Advanced Cross vCenter vMotion nativo; entre SSOs distintos, importação direta pela UI).</li>
+          <li>Conectividade validada: 443 entre vCenters; 902 entre hosts (vMotion/NFC); latência compatível com o método.</li>
+          <li>Rede de vMotion/provisioning roteável entre os sites, MTU consistente fim a fim.</li>
+          <li>Usuário com privilégios de vMotion/registro de VM nos dois inventários; mapeamento de redes e datastores de destino preparado.</li>
+          <li>EVC/compatibilidade de CPU avaliada (ou migração com VM desligada para saltos de geração).</li>
+          <li>Capacidade reservada no destino (PRM-VMW-004/008) e monitoração pronta.</li>
+        </ul></div>
+        <div class="card"><h4>Do lado do cliente (origem)</h4><ul style="font-size:.88rem;margin-left:18px">
+          <li>Credencial administrativa do vCenter de origem (ou execução conjunta com a equipe do cliente).</li>
+          <li>Liberação de firewall: 443 (vCenter↔vCenter), 902 (hosts), rotas entre redes de vMotion.</li>
+          <li>Definição de IP: manter IP exige L2 estendida entre sites; senão, plano de re-IP + DNS com TTL reduzido.</li>
+          <li>Backup válido e recente das VMs antes da migração (PRM-MIG-006).</li>
+          <li>Janela aprovada, responsável pelas aplicações para validação pós-migração.</li>
+          <li>Inventário: VMs com Tools atualizado, sem snapshots antigos, sem dispositivos conectados (ISO/USB).</li>
+        </ul></div>
+      </div>
+      <div class="callout tip"><span class="ico">💡</span><span><strong>Volumetria manda no método:</strong> Cross vCenter move a VM pela rede — para dezenas de TB por VM ou links modestos, prefira réplica Veeam com seeding, ou combine (compute por vMotion, dados por replicação de storage).</span></div>
+    </div>
+
+    <div class="aud" data-aud="arquitetura tecnico">
+      <div class="band">Réplica Veeam como migração <span class="who">· pré-requisitos e método</span></div>
+      <div class="grid" data-tags="veeam replica migracao failover planejado seeding re-ip cutover">
+        <div class="card"><h4>Método (resumo)</h4><ul style="font-size:.88rem;margin-left:18px">
+          <li>1. Criar jobs de réplica origem→destino (com <strong>seeding</strong> se a volumetria/link exigirem: carga inicial por backup transportado).</li>
+          <li>2. Ciclos incrementais até o RPO de cutover ficar pequeno (minutos).</li>
+          <li>3. <strong>Failover planejado</strong> na janela: origem pausada, delta final sincronizado, réplica assume — perda zero de dados.</li>
+          <li>4. <strong>Re-IP automático</strong> e mapeamento de redes aplicados pela réplica quando o endereçamento muda.</li>
+          <li>5. Validação com o dono da aplicação; failback disponível como rollback até o aceite; depois, permanent failover e descomissionamento.</li>
+        </ul></div>
+        <div class="card"><h4>Pré-requisitos</h4><ul style="font-size:.88rem;margin-left:18px">
+          <li><strong>Nosso lado:</strong> VBR atual (v13), proxies nas duas pontas, portas de data mover liberadas, repositório para metadata, licenças pelo nº de VMs, capacidade no destino.</li>
+          <li><strong>Lado do cliente:</strong> acesso ao vCenter/hosts de origem com privilégios adequados, firewall liberado (vCenter/hosts/proxies), janela de cutover, validação de consistência de aplicação (VSS/quiesce p/ bancos), plano de rollback acordado.</li>
+          <li><strong>Ambos:</strong> inventário e ondas definidos por criticidade e afinidade de aplicações (PRM-MIG-005/007).</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="arquitetura gestao prevenda">
+      <div class="band">Volumetria e estratégia <span class="who">· antes de prometer prazo</span></div>
+      <div class="card" data-tags="volumetria estrategia ondas janela link throughput calculo prazo">
+        <ul>
+          <li><strong>Conta básica de transferência:</strong> tempo ≈ volumetria ÷ throughput real do link (ex.: 10 TB a 1 Gb/s ≈ 24 h <em>ideais</em>; use 60–70% do nominal). Se não fecha na janela → seeding, ondas ou link temporário.</li>
+          <li><strong>Taxa de alteração</strong> define o delta entre ciclos e o RPO de cutover viável.</li>
+          <li><strong>Ondas de migração:</strong> agrupar por afinidade de aplicação (app + banco juntos), começar por cargas de baixo risco, congelar mudanças na origem durante a onda.</li>
+          <li><strong>Critérios go/no-go</strong> por onda e <strong>rollback</strong> definidos por escrito (PRM-MIG-007); comunicação e responsáveis nomeados.</li>
+          <li><strong>Pós-migração:</strong> validar contadores (PRM-VMW-011), monitoração, backup apontado para o novo ambiente e descomissionamento formal da origem.</li>
+        </ul>
+      </div>
+      <div class="callout never"><span class="ico">🚫</span><span><strong>Nunca:</strong> migrar sem backup válido testado (PRM-MIG-006), prometer prazo sem calcular volumetria × link × janela (PRM-MIG-005), ou fazer cutover sem critério de rollback.</span></div>
+    </div>
+  </section>
+
+  <!-- ================= JORNADA ================= -->
+  <section class="page" id="jornada">
+    <div class="crumb">Biblioteca</div>
+    <h2 class="page-title">Jornada do Projeto</h2>
+    <p class="page-sub">O que cada fase exige, para qualquer produto do catálogo.</p>
+
+    <div class="aud" data-aud="prevenda gestao"><div class="band">Fase 1 · Venda e Pré-vendas</div>
+    <div class="card"><p><strong>Validar:</strong> inventário, modalidade (TM/OSA), disponibilidade (HA/DR, RPO/RTO), volumetria (frontend×backend, bruto×líquido), versões no <a href="#radar">Radar</a>, abordagem de migração na <a href="#migracoes">matriz de decisão</a>, janelas e acessos. <strong>Nunca prometer:</strong> capacidade bruta, versão EOL, thin, migração sem método/janela.</p></div></div>
+
+    <div class="aud" data-aud="arquitetura"><div class="band">Fase 2 · Planejamento e Desenho</div>
+    <div class="card"><p><strong>Entregáveis:</strong> desenho aprovado, levantamento (IPs, VLANs, DNS, NTP), RACI, compatibilidade validada (HCL/VCG/matrizes), abordagem de migração com pré-requisitos dos dois lados, plano com janelas + rollback, dependências do cliente com data.</p></div></div>
+
+    <div class="aud" data-aud="tecnico"><div class="band">Fase 3 · Implementação</div>
+    <div class="card"><p><strong>Sequência:</strong> físico e firmware (GER-005/006) → rede/NTP/DNS/MTU validados antes do software (GER-003) → plataforma conforme premissa do produto → hardening e usuários padrão (GER-002) → monitoramento (GER-004) → testes com evidência (HA, multipath, MTU, restore).</p></div></div>
+
+    <div class="aud" data-aud="tecnico gestao"><div class="band">Fase 4 · Transição e Aceite</div>
+    <div class="card"><p><strong>Critérios:</strong> zero alertas críticos; Runbook/ETI/Topologia no ServiceNow; credenciais e iLO/iDRAC cadastradas; serial aplicado; evidências anexadas; handover ao suporte com particularidades registradas.</p></div></div>
+
+    <div class="aud" data-aud="gestao tecnico"><div class="band">Fase 5 · Suporte e Operação</div>
+    <table>
+      <tr><th>Rotina</th><th>Frequência</th><th>Ref.</th></tr>
+      <tr><td>Alertas Zabbix e saúde das plataformas</td><td>Diária</td><td><span class="prm">PRM-GER-004</span></td></tr>
+      <tr><td>Jobs de backup e taxa de sucesso</td><td>Diária</td><td><span class="prm">PRM-VBR-004</span></td></tr>
+      <tr><td>Snapshots antigos (VM e storage)</td><td>Semanal</td><td><span class="prm">PRM-STG-005</span></td></tr>
+      <tr><td>Capacidade (datastores, SRs, staging, DDB)</td><td>Mensal</td><td><span class="prm">PRM-VMW-008</span></td></tr>
+      <tr><td>Patches e advisories</td><td>Mensal</td><td><span class="prm">PRM-GER-007</span></td></tr>
+      <tr><td>Teste de restore</td><td>Trimestral</td><td><span class="prm">PRM-VBR-007</span></td></tr>
+      <tr><td>Radar de Versões e premissas</td><td>Semestral</td><td><a href="#radar">Radar</a></td></tr>
+    </table></div>
+  </section>
+
+  <!-- ================= PREMISSAS ================= -->
+  <section class="page" id="premissas">
+    <div class="crumb">Biblioteca</div>
+    <h2 class="page-title">Premissas (PRM)</h2>
+    <p class="page-sub">Índice citável em propostas e planos. Prefixos: GER, VMW, XEN, WIN, AD, STG, SW, VBR, CVLT, MIG. Detalhes na página de cada produto; texto integral nos <a href="#docs">documentos originais</a>.</p>
+    <table id="prmTable">
+      <tr><th style="width:128px">Código</th><th>Resumo</th><th style="width:104px">Tipo</th></tr>
+      <tr data-tags="servicenow runbook eti"><td><span class="prm">PRM-GER-001</span></td><td>Documentação completa no ServiceNow (Runbook, ETI, Topologia, credenciais).</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="eqxadmin eqxgerencia"><td><span class="prm">PRM-GER-002</span></td><td>Usuários eqxadmin/eqxgerencia; Administrator renomeado/desabilitado.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="ntp extntp"><td><span class="prm">PRM-GER-003</span></td><td>NTP Equinix em todos os componentes.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="zabbix atlas puppet"><td><span class="prm">PRM-GER-004</span></td><td>Zabbix com template padrão + Atlas/CSR/Puppet. Sem monitoramento, sem aceite.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="fontes ilo idrac"><td><span class="prm">PRM-GER-005</span></td><td>Fontes redundantes em circuitos distintos; iLO/iDRAC cadastrada.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="firmware suu spp bios"><td><span class="prm">PRM-GER-006</span></td><td>Firmware/BIOS/drivers via SUU/SPP antes do SO; BIOS Max Performance.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="versao eogs lifecycle"><td><span class="prm">PRM-GER-007</span></td><td>Somente versões com EoGS &gt; 1 ano da instalação.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware hcl"><td><span class="prm">PRM-VMW-001</span></td><td>Hardware no VMware Compatibility Guide na versão exata.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware iso"><td><span class="prm">PRM-VMW-002</span></td><td>Instalação com ISO customizada do fabricante.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware raid"><td><span class="prm">PRM-VMW-003</span></td><td>SO em RAID-1 SSD/SAS dedicado; datastore local RAID-5+ com 20%.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware memoria nodes"><td><span class="prm">PRM-VMW-004</span></td><td>Memória: VMs + 8 GB/node com reserva por nº de nodes (2=50%…10=10%).</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware vswitch vlan"><td><span class="prm">PRM-VMW-005</span></td><td>vSwitch0 gerência / vSwitch1+ produção; PortGroups padronizados; sem LACP.</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="vmware shaping backup"><td><span class="prm">PRM-VMW-006</span></td><td>Traffic shaping do backup (70% 1 Gb / 10% 10 Gb).</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="vmware multipath mtu"><td><span class="prm">PRM-VMW-007</span></td><td>Multipath RR; iSCSI MTU 9000 validado; HBAs iguais.</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="vmware datastore"><td><span class="prm">PRM-VMW-008</span></td><td>Datastores VMDATA_LUNX_TIERX; VMFS atual; livre por faixa.</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="vmware drs ha"><td><span class="prm">PRM-VMW-009</span></td><td>DRS Fully Automated; HA com reserva de 1 host.</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="vmware thick vmxnet3"><td><span class="prm">PRM-VMW-010</span></td><td>VMs Thick (Eager p/ DB); thin não suportado; VMXNET3; LSI SAS; Hot Add off.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware cpu ready"><td><span class="prm">PRM-VMW-011</span></td><td>Pós-migração: ≤6:1, CPU Ready &lt;5%, balloon/swap 0, latência &lt;15 ms.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware hardening"><td><span class="prm">PRM-VMW-012</span></td><td>Hardening: SSH/Shell off, timeout 900 s, credenciais no SNOW, LCM.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware srm rpo"><td><span class="prm">PRM-VMW-013</span></td><td>Replicação/SRM: link p/ RPO/RTO da ETI; failover testado.</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="vmware acesso cliente"><td><span class="prm">PRM-VMW-014</span></td><td>Acesso do cliente via role ACESSO_CLIENTE.</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="xenserver ha 3"><td><span class="prm">PRM-XEN-001</span></td><td>HA: pool ≥3 hosts licenciados; heartbeat SR ≥4 GB.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="xenserver hcl"><td><span class="prm">PRM-XEN-002</span></td><td>Todo hardware na HCL do XenServer.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="xenserver 16 vcpu"><td><span class="prm">PRM-XEN-003</span></td><td>≤16 vCPU/core; RAM ≤95% standalone; overcommit 30% / proteção &gt;75%.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="xenserver thick 20"><td><span class="prm">PRM-XEN-004</span></td><td>Thick obrigatório; SR 20% livre; latência &lt;30 ms.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="xenserver bond intel"><td><span class="prm">PRM-XEN-005</span></td><td>6+ NICs em bonds; iSCSI dedicado; preferir Intel; sem NAT p/ XenCenter.</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="xenserver multipath wlb"><td><span class="prm">PRM-XEN-006</span></td><td>Multipath RR; WLB Max Performance; SSH no boot; Zabbix Citrix.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="windows contas"><td><span class="prm">PRM-WIN-001</span></td><td>Administrator→eqxadmin; serviços nunca administrativos.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="windows ntfs"><td><span class="prm">PRM-WIN-002</span></td><td>NTFS; C: ≥100 GB; dados em D:.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="windows pagefile"><td><span class="prm">PRM-WIN-003</span></td><td>Page file manual por faixa de RAM; máx 20% do C:.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="windows rdp nla"><td><span class="prm">PRM-WIN-004</span></td><td>RDP NAT 3389+X sequenciais; NLA; via PAs.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="windows wsus"><td><span class="prm">PRM-WIN-005</span></td><td>Updates só via WSUS; download-only; sem restart automático.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="windows uac firewall"><td><span class="prm">PRM-WIN-006</span></td><td>UAC on; firewall nunca desativado; auditoria e logs 512 MB.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="windows mpio"><td><span class="prm">PRM-WIN-007</span></td><td>MPIO RR; HBA 64k em storage compartilhado.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="windows sysprep"><td><span class="prm">PRM-WIN-008</span></td><td>Sysprep /generalize; sem antivírus no template.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="windows zabbix dns"><td><span class="prm">PRM-WIN-009</span></td><td>Puppet/Zabbix/SNMP; DNS Equinix ou do AD (nunca público).</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="ad exclusivo"><td><span class="prm">PRM-AD-001</span></td><td>Host exclusivo AD DS + DNS.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="ad 2 dcs"><td><span class="prm">PRM-AD-002</span></td><td>≥2 DCs/site com antiafinidade; replicação ≤5 min.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="ad fsmo"><td><span class="prm">PRM-AD-003</span></td><td>FSMOs distribuídas; owners no CI.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="ad dsrm"><td><span class="prm">PRM-AD-004</span></td><td>Administrator off; DSRM no SNOW; cliente sem admin (ou Risk Letter).</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="ad gpo senha"><td><span class="prm">PRM-AD-005</span></td><td>GPOs padrão; senha 14/60/24; lockout 6; auditoria DC.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="ad dns"><td><span class="prm">PRM-AD-006</span></td><td>Forwarders Equinix; reversa integrada; scavenging.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="ad virtual time"><td><span class="prm">PRM-AD-007</span></td><td>Time sync do hypervisor off; domínio interno; nível ≥2012 R2.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="ad dcdiag"><td><span class="prm">PRM-AD-008</span></td><td>Health check DCDIAG/repadmin; portas AD liberadas.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="storage fabric"><td><span class="prm">PRM-STG-001</span></td><td>≥2 controladoras × 2 portas em fabrics A/B.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="storage raid0"><td><span class="prm">PRM-STG-002</span></td><td>Sem RAID-0; hotspare; só discos homologados.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="storage 20"><td><span class="prm">PRM-STG-003</span></td><td>Margem líquida ≥20%.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="storage iscsi mtu chap"><td><span class="prm">PRM-STG-004</span></td><td>iSCSI: 10 GbE, VLAN própria, STP off, MTU 9000 validado, CHAP.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="storage snapshot"><td><span class="prm">PRM-STG-005</span></td><td>Perfis BP_Daily e ODDP_Daily nos volumes.</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="storage remote call"><td><span class="prm">PRM-STG-006</span></td><td>Remote call ativo; firmwares atuais; InfoSight/CloudIQ.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="storage hardening"><td><span class="prm">PRM-STG-007</span></td><td>Senhas no SNOW; portas mínimas; logs.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="switch homologado"><td><span class="prm">PRM-SW-001</span></td><td>Só portfólio/custom certified com SFPs homologadas.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="switch hostname ntp"><td><span class="prm">PRM-SW-002</span></td><td>Hostname padrão; NTP Equinix; GMT-3.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="switch ssh acl"><td><span class="prm">PRM-SW-003</span></td><td>Telnet/HTTP off; SSHv2 timeout 10 min + ACL.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="switch firmware"><td><span class="prm">PRM-SW-004</span></td><td>Firmware recomendado; release notes; stack em versão única.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="switch bpdu vlan"><td><span class="prm">PRM-SW-005</span></td><td>BPDU/Root Guard; storm-control; native VLAN não-default.</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="switch stack licencas"><td><span class="prm">PRM-SW-006</span></td><td>Stacking/VSX/VLT/VC; licenças redundantes.</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="switch sts eletrica"><td><span class="prm">PRM-SW-007</span></td><td>2 réguas independentes; STS p/ monofonte.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="switch snmp syslog"><td><span class="prm">PRM-SW-008</span></td><td>SNMP/Zabbix; syslog; backup de config; SNOW completo.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="veeam so"><td><span class="prm">PRM-VBR-001</span></td><td>VBR em plataforma homologada (Windows atual ou Appliance); v13 padrão.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="veeam proxy"><td><span class="prm">PRM-VBR-002</span></td><td>Proxy: 1 vCPU + 2 GB por task; calculadora oficial.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="veeam raid6 refs"><td><span class="prm">PRM-VBR-003</span></td><td>SSD RAID-1 + staging RAID-6; ReFS; SOBR.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="veeam retencao"><td><span class="prm">PRM-VBR-004</span></td><td>Retenções D/S/M/A padrão; incremental + full semanal.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="veeam vlan lacp"><td><span class="prm">PRM-VBR-005</span></td><td>VLAN exclusiva; 4×1 GbE LACP ou 1×10 GbE.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="veeam antivirus vspc"><td><span class="prm">PRM-VBR-006</span></td><td>Exclusões KB1999; VSPC liberado; nomenclatura padrão.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="veeam 3-2-1 imutavel"><td><span class="prm">PRM-VBR-007</span></td><td>3-2-1-1-0; avaliar repositório imutável.</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="commvault so"><td><span class="prm">PRM-CVLT-001</span></td><td>Media Agent homologado; agents na versão da CommCell (11.40 LTS).</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="commvault ddb ssd"><td><span class="prm">PRM-CVLT-002</span></td><td>DDB/Index em SSD RAID-1 &gt;300 IOPS; DDB Global.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="commvault particionamento"><td><span class="prm">PRM-CVLT-003</span></td><td>C:200 GB / DDB / Index / staging; page file ½ RAM.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="commvault staging 10tb"><td><span class="prm">PRM-CVLT-004</span></td><td>Staging RAID-6; mount points ≤10 TB.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="commvault retencao"><td><span class="prm">PRM-CVLT-005</span></td><td>Retenções padrão Backup Dedicado.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="commvault live sync"><td><span class="prm">PRM-CVLT-006</span></td><td>CommCell ativa + passiva (Live Sync); firewall por host.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="commvault nomenclatura"><td><span class="prm">PRM-CVLT-007</span></td><td>STP_/SCH_/DL_ com Nickname.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="commvault antivirus fisica"><td><span class="prm">PRM-CVLT-008</span></td><td>Exclusões de antivírus; segurança física de robôs/fitas.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="migracao matriz decisao"><td><span class="prm">PRM-MIG-001</span></td><td>Abordagem de migração definida pela matriz de decisão e documentada no plano.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="migracao in-place paralelo greenfield"><td><span class="prm">PRM-MIG-002</span></td><td>Upgrade in-place não recomendado (major); padrão é migração paralela; exceções com plano validado e Risk Letter.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="cross vcenter vmotion pre requisitos"><td><span class="prm">PRM-MIG-003</span></td><td>Cross vCenter vMotion só com pré-requisitos validados dos dois lados (versões, 443/902, permissões, rede/EVC, plano de IP).</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="veeam replica failover planejado re-ip"><td><span class="prm">PRM-MIG-004</span></td><td>Migração por réplica Veeam com failover planejado, re-IP mapeado e failback como rollback até o aceite.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="volumetria link janela prazo"><td><span class="prm">PRM-MIG-005</span></td><td>Prazo só após calcular volumetria × throughput real × janela; seeding/ondas quando não fechar.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="backup antes migracao"><td><span class="prm">PRM-MIG-006</span></td><td>Backup válido e testado antes de qualquer migração ou upgrade.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="ondas go no-go rollback"><td><span class="prm">PRM-MIG-007</span></td><td>Ondas com critérios go/no-go e rollback por escrito; congelamento de mudanças na origem.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="pos migracao contadores descomissionamento"><td><span class="prm">PRM-MIG-008</span></td><td>Pós-migração: contadores validados, backup/monitoração apontados ao novo ambiente, origem descomissionada formalmente.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+    </table>
+    <p class="no-results" id="noPrm">Nenhuma premissa encontrada para essa busca.</p>
+  </section>
+
+  <!-- ================= CHECKLISTS ================= -->
+  <section class="page" id="checklists">
+    <div class="crumb">Biblioteca</div>
+    <h2 class="page-title">Checklists</h2>
+    <p class="page-sub">Apoio pessoal (os checks ficam no seu navegador). A evidência oficial vai no Runbook.</p>
+
+    <div class="aud" data-aud="prevenda gestao"><div class="band">Pré-venda</div>
+    <div class="card checklist">
+      <label><input type="checkbox"> Versões-alvo com EoGS &gt; 1 ano (Radar / PRM-GER-007)</label>
+      <label><input type="checkbox"> Hardware na matriz do fabricante</label>
+      <label><input type="checkbox"> Capacidade líquida calculada (storage −20%; backup backend)</label>
+      <label><input type="checkbox"> Abordagem de migração escolhida na matriz (PRM-MIG-001) e prazo calculado (PRM-MIG-005)</label>
+      <label><input type="checkbox"> RPO/RTO definidos; exclusões de escopo escritas</label>
+    </div></div>
+
+    <div class="aud" data-aud="arquitetura tecnico"><div class="band">Pré-implementação</div>
+    <div class="card checklist">
+      <label><input type="checkbox"> Firmwares/BIOS via SUU/SPP (PRM-GER-006)</label>
+      <label><input type="checkbox"> VLANs, NTP/DNS e MTU 9000 validados</label>
+      <label><input type="checkbox"> Acessos, janelas e firewall aprovados (dois lados, se migração)</label>
+      <label><input type="checkbox"> Backup válido antes de migrar (PRM-MIG-006)</label>
+      <label><input type="checkbox"> Plano de rollback por atividade/onda (PRM-MIG-007)</label>
+    </div></div>
+
+    <div class="aud" data-aud="arquitetura tecnico"><div class="band">Migração · cutover</div>
+    <div class="card checklist">
+      <label><input type="checkbox"> Pré-requisitos Cross vCenter ou réplica validados dos dois lados (PRM-MIG-003/004)</label>
+      <label><input type="checkbox"> Delta/RPO de cutover pequeno o suficiente para a janela</label>
+      <label><input type="checkbox"> Congelamento de mudanças comunicado; responsáveis das aplicações de prontidão</label>
+      <label><input type="checkbox"> Re-IP/DNS (TTL reduzido) planejados; critério go/no-go acordado</label>
+      <label><input type="checkbox"> Pós-cutover: contadores, backup e monitoração no novo ambiente (PRM-MIG-008)</label>
+    </div></div>
+
+    <div class="aud" data-aud="tecnico gestao"><div class="band">Entrega e aceite</div>
+    <div class="card checklist">
+      <label><input type="checkbox"> eqxadmin/eqxgerencia criados; credenciais e iLO/iDRAC no ServiceNow</label>
+      <label><input type="checkbox"> Zabbix com template correto + Atlas/CSR ativos</label>
+      <label><input type="checkbox"> Testes com evidência (HA, multipath, MTU, restore)</label>
+      <label><input type="checkbox"> Runbook, ETI e Topologia completos</label>
+      <label><input type="checkbox"> Handover ao suporte com particularidades registradas</label>
+    </div></div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="page" id="faq">
+    <div class="crumb">Biblioteca</div>
+    <h2 class="page-title">FAQ e Erros Comuns</h2>
+    <p class="page-sub">Perguntas que aparecem toda semana, respondidas uma vez.</p>
+
+    <details data-tags="in-place upgrade paralelo porque"><summary>Por que não fazemos upgrade in-place?</summary><div class="body"><p>Porque herda problemas e drivers antigos, dificulta (ou impossibilita) o rollback e transforma incompatibilidades em incidentes de produção. O padrão é migração paralela: ambiente novo na versão-alvo + migração em ondas, com o antigo servindo de rollback (PRM-MIG-002). Exceções: minor updates e caminhos oficiais de appliance, com plano validado.</p></div></details>
+    <details data-tags="cross vcenter quando usar replica veeam"><summary>Cross vCenter vMotion ou réplica Veeam — qual uso?</summary><div class="body"><p>Cross vCenter quando as duas pontas são vSphere suportado, há rede/latência adequada e o objetivo é mover sem downtime dentro do mundo VMware. Réplica Veeam quando a volumetria/link pedem seeding, a origem está fora do nosso controle, há mudança de IP/site, ou se quer rollback simples via failback (PRM-MIG-003/004). A matriz completa está em <a href="#migracoes">Migrações</a>.</p></div></details>
+    <details data-tags="snapshot backup"><summary>Snapshot (VM ou storage) serve como backup?</summary><div class="body"><p>Não. Snapshot depende do volume original. Backup exige cópia independente com retenção e restore testado (PRM-VBR/CVLT).</p></div></details>
+    <details data-tags="thin thick"><summary>Posso usar thin provisioning?</summary><div class="body"><p>Não em ambiente gerenciado (PRM-VMW-010 / PRM-XEN-004): thin estoura datastore silenciosamente e derruba tudo de uma vez.</p></div></details>
+    <details data-tags="vsphere 7 versao"><summary>Cliente quer ativar em vSphere 7. Pode?</summary><div class="body"><p>Não para novas ativações: sem suporte desde out/2025 (PRM-GER-007). Usar vSphere 8+.</p></div></details>
+    <details data-tags="dc snapshot restaurar usn"><summary>Posso restaurar um DC por snapshot?</summary><div class="body"><p><strong>Nunca.</strong> Causa USN rollback e corrompe a replicação do domínio. Recuperação de DC segue método suportado (backup system state / novo DC + FSMO).</p></div></details>
+    <details data-tags="frontend backend backup"><summary>Frontend × backend no backup?</summary><div class="body"><p>Frontend = volume protegido (licença). Backend = disco p/ guardar dados + retenção (hardware). 10 TB de frontend podem virar 30+ TB de backend.</p></div></details>
+    <details data-tags="mtu 9000 teste"><summary>Como valido MTU 9000?</summary><div class="body"><p>Windows: <code>ping -f -l 9000</code> · VMware: <code>vmkping -s 8972 -d</code> · Linux/Xen: <code>ping -M do -s 8972</code>. Falhou = algum ponto sem jumbo (PRM-STG-004).</p></div></details>
+    <details data-tags="pagefile automatico"><summary>Por que o page file não fica automático?</summary><div class="body"><p>Cresce sem controle (enche o C:) ou fica pequeno para dump de kernel. Tamanhos por faixa de RAM na PRM-WIN-003.</p></div></details>
+    <details data-tags="veeam v13 upgrade"><summary>Como ir para o Veeam v13?</summary><div class="body"><p>Upgrade in-place suportado a partir do 12.3.1; verificar SOs/hypervisors que saíram da matriz; janela com rollback. Novas ativações: v13 direto (avaliar Software Appliance).</p></div></details>
+    <p class="no-results" id="noFaq">Nenhuma pergunta encontrada para essa busca.</p>
+  </section>
+
+  <!-- ================= DOCS ================= -->
+  <section class="page" id="docs">
+    <div class="crumb">Biblioteca</div>
+    <h2 class="page-title">Documentos Originais</h2>
+    <p class="page-sub">Premissas completas (fonte: repositório interno), incluídas para consulta e download.</p>
+    <div class="catgrid">
+      <a class="prod" href="premissas/Premissa_VMWARE.md"><span class="t">Premissa VMware</span><span class="d">Rev. 21/11/2023</span></a>
+      <a class="prod" href="premissas/Premissa_XenServer.md"><span class="t">Premissa XenServer</span><span class="d">Rev. 18/12/2019</span></a>
+      <a class="prod" href="premissas/Premissa_Windows.md"><span class="t">Premissa Windows</span><span class="d">Rev. 10/11/2023</span></a>
+      <a class="prod" href="premissas/Premissa_Active_Directory.md"><span class="t">Premissa AD + DNS</span><span class="d">Rev. 10/11/2023</span></a>
+      <a class="prod" href="premissas/Premissa_storage.md"><span class="t">Premissa Storage</span><span class="d">Rev. 13/07/2020</span></a>
+      <a class="prod" href="premissas/Premissa_Switch.md"><span class="t">Premissa Switch</span><span class="d">Portfólio e hardening</span></a>
+      <a class="prod" href="premissas/Premissa_Backup_Dedicado_VEEAM.md"><span class="t">Backup Dedicado Veeam</span><span class="d">Rev. 14/11/2023</span></a>
+      <a class="prod" href="premissas/Premissa_Backup_Dedicado_Commvault.md"><span class="t">Backup Dedicado Commvault</span><span class="d">Rev. 09/09/2025</span></a>
+    </div>
+    <div class="callout warn"><span class="ico">⚠️</span><span><strong>Governança:</strong> documentos com <span class="pill up">Atualizar</span> no <a href="#radar">Radar</a> precisam de revisão — abrir issue no GitHub com dono e prazo.</span></div>
+  </section>
+
+  </div>
+</main>
+</div>
+
+<script>
+// Navegação
+const pages=[...document.querySelectorAll('section.page')];
+const links=[...document.querySelectorAll('#nav a')];
+function show(id){
+  const target=document.getElementById(id)||document.getElementById('inicio');
+  pages.forEach(p=>p.classList.toggle('visible',p===target));
+  links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+target.id));
+  document.getElementById('sidebar').classList.remove('open');
+  window.scrollTo({top:0});
+}
+window.addEventListener('hashchange',()=>show(location.hash.slice(1)));
+show(location.hash.slice(1)||'inicio');
+document.getElementById('menuBtn').addEventListener('click',()=>{
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+// Filtro por perfil (persona)
+const chips=[...document.querySelectorAll('.chip')];
+function setPersona(p){
+  chips.forEach(c=>c.classList.toggle('active',c.dataset.p===p));
+  document.querySelectorAll('.aud').forEach(b=>{
+    const auds=(b.dataset.aud||'todos').split(/\s+/);
+    b.classList.toggle('hidden-by-persona', p!=='todos' && !auds.includes(p) && !auds.includes('todos'));
+  });
+  try{localStorage.setItem('persona',p);}catch(e){}
+}
+chips.forEach(c=>c.addEventListener('click',()=>setPersona(c.dataset.p)));
+try{const saved=localStorage.getItem('persona'); if(saved) setPersona(saved);}catch(e){}
+
+// Busca global
+const searchBox=document.getElementById('searchBox');
+const searchable=[...document.querySelectorAll('[data-tags]')];
+function norm(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()}
+searchBox.addEventListener('input',()=>{
+  const q=norm(searchBox.value.trim());
+  let prmHits=0,faqHits=0;
+  searchable.forEach(el=>{
+    const hay=norm(el.getAttribute('data-tags')+' '+el.textContent);
+    const hit=!q||hay.includes(q);
+    el.classList.toggle('hidden-by-search',!hit);
+    if(hit&&el.closest('#premissas'))prmHits++;
+    if(hit&&el.closest('#faq'))faqHits++;
+  });
+  document.getElementById('noPrm').style.display=(q&&!prmHits)?'block':'none';
+  document.getElementById('noFaq').style.display=(q&&!faqHits)?'block':'none';
+  if(q){
+    const cur=document.querySelector('section.page.visible');
+    if(cur&&!cur.querySelector('[data-tags]:not(.hidden-by-search)')){location.hash='premissas';}
+  }
+});
+
+// Checklists persistentes
+document.querySelectorAll('.checklist input').forEach((cb,i)=>{
+  const key='chk3_'+i;
+  try{cb.checked=localStorage.getItem(key)==='1';}catch(e){}
+  cb.addEventListener('change',()=>{try{localStorage.setItem(key,cb.checked?'1':'0');}catch(e){}});
+});
+</script>
+</body>
+</html>
