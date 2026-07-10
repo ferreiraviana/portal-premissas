@@ -108,13 +108,45 @@ details .body{padding:0 16px 14px;font-size:.89rem}
   .topbar{padding:12px 16px}
 }
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ===== Catalogo 2026: camada visual ===== */
+:root{--ink:#10243e;--ink-2:#173554;--surface:#f3f6f9;--card:#fff;--line:#dce4ec;--text:#26384b;--muted:#66788a;--accent:#087e8b;--accent-2:#176bda;--accent-soft:#e8f5f6;--amber:#9b5b05;--danger:#a43b35;--ok:#22764a;--radius:14px;--shadow-sm:0 1px 2px rgba(16,36,62,.05),0 8px 24px rgba(16,36,62,.04);--shadow-md:0 14px 40px rgba(16,36,62,.11)}
+html{scroll-behavior:smooth}
+body{background:linear-gradient(135deg,#f7f9fb 0,#eef4f7 100%);letter-spacing:-.005em}
+.sidebar{width:284px;background:linear-gradient(180deg,#10243e 0%,#0c1d32 100%);box-shadow:12px 0 36px rgba(9,25,44,.08)}
+.brand{padding:27px 23px 22px;display:grid;grid-template-columns:42px 1fr;column-gap:12px;align-items:center}
+.brand::before{content:"P";display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,#13a2aa,#176bda);color:#fff;font:700 1.15rem var(--font-display);box-shadow:0 8px 22px rgba(8,126,139,.32)}
+.brand h1{font-size:.96rem;letter-spacing:-.02em}.brand .tag{grid-column:2;margin-top:6px;width:max-content;border:0;background:rgba(255,255,255,.08);color:#8edbe0;padding:3px 8px;border-radius:99px}
+nav{padding:14px 12px 24px}.nav-label{padding:18px 12px 6px;color:#6f849a;font-weight:700;letter-spacing:.14em}
+nav a{position:relative;padding:9px 12px 9px 14px;border-radius:9px;color:#c5d1dd;transition:background .18s,color .18s,transform .18s}
+nav a:hover{background:rgba(255,255,255,.07);transform:translateX(2px)}nav a.active{background:linear-gradient(90deg,rgba(8,126,139,.9),rgba(23,107,218,.72));box-shadow:0 7px 18px rgba(0,0,0,.16)}
+nav a.active::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:3px;border-radius:2px;background:#a9f1f0}.sidebar-foot{padding:16px 22px 20px;line-height:1.5;color:#6f849a}
+.topbar{min-height:72px;padding:14px 34px;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-color:rgba(196,209,221,.75)}
+.search{max-width:620px}.search input{height:43px;padding-left:42px;border-radius:11px;background:#f5f8fa;border-color:#d7e1ea;transition:background .18s,box-shadow .18s,border .18s}
+.search input:focus{background:#fff;outline:0;border-color:#3d94db;box-shadow:0 0 0 4px rgba(23,107,218,.11)}.search svg{left:14px;width:17px;height:17px}
+.personas{padding:4px;background:#f0f4f7;border:1px solid #e1e7ed;border-radius:12px;gap:2px}.chip{border:0;background:transparent;padding:7px 12px;border-radius:8px;font-size:.73rem}.chip:hover{background:#fff;border:0}.chip.active{background:#fff;color:var(--ink);box-shadow:0 1px 5px rgba(16,36,62,.13)}
+.content{max-width:1240px;padding:42px clamp(24px,4vw,58px) 80px}.crumb{display:inline-flex;align-items:center;gap:7px;margin-bottom:10px;color:#6b8297;font-size:.65rem;font-weight:700}.crumb::before{content:"";width:18px;height:2px;background:var(--accent);border-radius:2px}
+h2.page-title{font-size:clamp(1.85rem,3vw,2.5rem);letter-spacing:-.045em;line-height:1.12;margin-bottom:10px}p.page-sub{font-size:1rem;line-height:1.75;max-width:76ch;margin-bottom:30px}h3{font-size:1.08rem;margin:34px 0 14px;letter-spacing:-.02em}
+.catalog-hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#102a46 0%,#123b5b 58%,#087e8b 145%);color:#fff;border-radius:24px;padding:clamp(30px,5vw,58px);margin-bottom:34px;box-shadow:var(--shadow-md)}
+.catalog-hero::after{content:"";position:absolute;width:360px;height:360px;right:-110px;top:-190px;border:70px solid rgba(255,255,255,.055);border-radius:50%}.catalog-hero .eyebrow{position:relative;z-index:1;font:600 .7rem var(--font-mono);letter-spacing:.13em;text-transform:uppercase;color:#8de0e3;margin-bottom:14px}
+.catalog-hero h2{position:relative;z-index:1;font:700 clamp(2rem,4.5vw,3.35rem)/1.04 var(--font-display);letter-spacing:-.055em;max-width:740px;margin:0 0 18px;color:#fff}.catalog-hero p{position:relative;z-index:1;color:#ccdae6;font-size:1rem;line-height:1.7;max-width:700px;margin:0}
+.hero-actions{position:relative;z-index:1;display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}.hero-action{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border-radius:10px;text-decoration:none;font:600 .8rem var(--font-display);color:#10243e;background:#fff;transition:transform .18s,box-shadow .18s}.hero-action:hover{transform:translateY(-2px);box-shadow:0 9px 25px rgba(0,0,0,.18)}.hero-action.secondary{color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.24)}
+.catalog-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:-9px 0 34px}.catalog-stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow-sm)}.catalog-stat strong{display:block;color:var(--ink);font:700 1.35rem var(--font-display);letter-spacing:-.04em}.catalog-stat span{font-size:.76rem;color:var(--muted)}
+.catgrid{grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:16px}.prod{position:relative;min-height:148px;padding:21px 20px 18px;border-radius:16px;box-shadow:var(--shadow-sm);overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
+.prod::before{content:"•";display:grid;place-items:center;width:38px;height:38px;margin-bottom:15px;border-radius:11px;background:#eaf4f5;color:var(--accent);font:700 .85rem var(--font-display)}.prod::after{content:"→";position:absolute;right:18px;top:22px;color:#9aabba;transition:transform .2s,color .2s}.prod:hover{transform:translateY(-4px);border-color:#a7cbd2;box-shadow:var(--shadow-md)}.prod:hover::after{transform:translateX(3px);color:var(--accent)}
+.prod[href="#vmware"]::before{content:"VM"}.prod[href="#xenserver"]::before{content:"XS"}.prod[href="#windows"]::before{content:"WS"}.prod[href="#ad"]::before{content:"AD"}.prod[href="#storage"]::before{content:"ST"}.prod[href="#switch"]::before{content:"NW"}.prod[href="#veeam"]::before{content:"VB"}.prod[href="#commvault"]::before{content:"CV"}.prod[href="#migracoes"]::before{content:"MG"}.prod[href="#jornada"]::before{content:"JR"}.prod[href="#premissas"]::before{content:"PR"}.prod[href="#radar"]::before{content:"RD"}.prod .t{font-size:.98rem;margin-bottom:6px}.prod .d{font-size:.81rem;line-height:1.55}
+.card{border-radius:14px;padding:20px 21px;margin-bottom:15px;box-shadow:var(--shadow-sm);transition:border-color .18s,box-shadow .18s}.card:hover{border-color:#c3d4e1;box-shadow:0 10px 28px rgba(16,36,62,.07)}.grid{gap:16px}.band{border:0;padding:0;margin-top:34px;font-size:.72rem;color:#476177}.band::before{content:"";width:5px;height:20px;border-radius:4px;background:linear-gradient(var(--accent),var(--accent-2))}.band .who{margin-left:auto}.pill{padding:3px 9px;font-size:.64rem}.prm{background:#eaf1f6;color:#315a77;border:1px solid #d5e1ea}
+.callout{border-radius:13px;padding:15px 17px;line-height:1.6}table{border-radius:14px;box-shadow:var(--shadow-sm)}th{background:#173554;padding:12px 14px}td{padding:11px 14px}details{border-radius:13px;box-shadow:var(--shadow-sm)}summary{padding:15px 18px}.dosdonts{gap:16px}.dos,.donts{border-radius:14px;padding:19px 21px}.menu-btn{background:#fff;border-color:#cfdae4;box-shadow:var(--shadow-sm)}
+@media (max-width:1050px){.personas{width:100%;overflow-x:auto}.topbar{align-items:center}.search{max-width:none}}
+@media (max-width:880px){.sidebar{position:fixed;z-index:60;inset:0 auto 0 0;width:min(86vw,320px);height:100vh;box-shadow:22px 0 50px rgba(7,21,37,.28)}.sidebar.open{display:flex}.topbar{padding:11px 16px}.content{padding:26px 16px 60px}.catalog-hero{border-radius:18px}.personas{flex-wrap:nowrap}.chip{white-space:nowrap}}
+@media (max-width:600px){body{overflow-x:hidden}.topbar{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px;width:100%;max-width:100vw}.search{min-width:0;width:100%}.search input{min-width:0}.personas{grid-column:1/-1;width:100%;min-width:0;max-width:100%;overflow-x:auto}.content{width:100%;max-width:100vw}.catalog-stats{grid-template-columns:1fr}.catgrid,.grid{grid-template-columns:1fr}.prod{min-height:135px}.catalog-hero{width:100%;padding:28px 22px}.catalog-hero h2{font-size:clamp(1.8rem,9vw,2.35rem);overflow-wrap:anywhere}.band .who{display:none}}
 </style>
 </head>
 <body>
 <div class="layout">
 <aside class="sidebar" id="sidebar">
   <div class="brand">
-    <h1>Catálogo de Produtos<br>Premissas &amp; Boas Práticas</h1>
+    <h1>Catálogo técnico<br>Produtos &amp; Boas Práticas</h1>
     <span class="tag">MSH · v3</span>
   </div>
   <nav id="nav">
@@ -165,13 +197,24 @@ details .body{padding:0 16px 14px;font-size:.89rem}
 
   <!-- ================= CATÁLOGO ================= -->
   <section class="page visible" id="inicio">
-    <div class="crumb">Início</div>
-    <h2 class="page-title">Catálogo de Produtos</h2>
-    <p class="page-sub">Cada produto reúne, em uma página, tudo que pré-venda, arquitetura, analistas, técnicos e gestores precisam: visão do produto, o que validar antes de vender, pontos críticos de arquitetura (o que pode e o que não pode) e as premissas de implantação. Use os filtros de perfil no topo para ver só o que interessa ao seu papel.</p>
+    <div class="catalog-hero">
+      <div class="eyebrow">Catálogo de infraestrutura gerenciada</div>
+      <h2>Decisões técnicas mais claras, do desenho à operação.</h2>
+      <p>Encontre requisitos de pré-venda, padrões de arquitetura, premissas de implantação e checklists organizados por produto e perfil profissional.</p>
+      <div class="hero-actions">
+        <a class="hero-action" href="#comece">Explorar o catálogo <span>→</span></a>
+        <a class="hero-action secondary" href="#premissas">Consultar premissas</a>
+      </div>
+    </div>
+    <div class="catalog-stats" aria-label="Resumo do catálogo">
+      <div class="catalog-stat"><strong>9</strong><span>produtos e serviços técnicos</span></div>
+      <div class="catalog-stat"><strong>4</strong><span>visões por perfil profissional</span></div>
+      <div class="catalog-stat"><strong>1</strong><span>fonte central de boas práticas</span></div>
+    </div>
 
     <h3>Virtualização</h3>
     <div class="catgrid">
-      <a class="prod" href="#vmware"><span class="t">VMware vSphere</span><span class="d">ESXi, vCenter, Replication e SRM para clouds privadas gerenciadas.</span><div class="meta"><span class="pill up">Premissa a atualizar</span></div></a>
+      <a class="prod" href="#vmware"><span class="t">VMware vSphere</span><span class="d">ESX, vCenter, Replication e recuperação para clouds privadas gerenciadas.</span><div class="meta"><span class="pill ok2">Revisado em 2026</span></div></a>
       <a class="prod" href="#xenserver"><span class="t">XenServer / Citrix</span><span class="d">Pools standalone e HA; alternativa de hypervisor.</span><div class="meta"><span class="pill up">Premissa a atualizar</span></div></a>
     </div>
     <h3>Sistemas &amp; Diretório</h3>
@@ -253,7 +296,7 @@ details .body{padding:0 16px 14px;font-size:.89rem}
     <p class="page-sub">Premissa interna × versão atual do fabricante (validado em julho/2026). Guia para novos projetos e para atualização dos documentos.</p>
     <table>
       <tr><th>Produto</th><th>Premissa interna referencia</th><th>Fabricante hoje (jul/2026)</th><th>Ação</th></tr>
-      <tr><td><strong>VMware vSphere</strong></td><td>"Acima da 7.0"; templates 6.7/7.0</td><td>vSphere 7 sem suporte desde out/2025; vSphere 8 até out/2027; VCF 9 GA jun/2025; licenciamento Broadcom por core (subscrição)</td><td><span class="pill up">Atualizar</span> Ativar em vSphere 8+</td></tr>
+      <tr><td><strong>VMware vSphere</strong></td><td>Premissa revisada em jul/2026</td><td>ESX/vCenter 9.1 preferencial quando toda a solução for certificada; vSphere 8.0 U3j como alternativa compatível; vSphere 7 sem suporte desde out/2025</td><td><span class="pill ok2">Vigente</span> Validar BCG e matriz antes de cada projeto</td></tr>
       <tr><td><strong>XenServer</strong></td><td>"6.0 ou superior"; License Server 11.13</td><td>XenServer 8.4 atual (CH 8.2 CU1 EOL); XenServer 9 lançado; licenciamento só via LAS desde 15/04/2026 (XenCenter YYYY.x, edição Premium)</td><td><span class="pill up">Atualizar</span> Reescrever versão/licença</td></tr>
       <tr><td><strong>Windows Server</strong></td><td>2016/2019/2022 (pref. 2019)</td><td>2025 GA (nov/2024); 2019 fora do mainstream; 2016 estendido até jan/2027</td><td><span class="pill up">Atualizar</span> Preferencial 2022/2025</td></tr>
       <tr><td><strong>Veeam B&amp;R</strong></td><td>Era v12 (2023)</td><td>v13 GA nov/2025 (build 13.0.2 mai/2026); Software Appliance Linux; upgrade exige 12.3.1+</td><td><span class="pill up">Atualizar</span> Padronizar v13</td></tr>
@@ -271,7 +314,7 @@ details .body{padding:0 16px 14px;font-size:.89rem}
     <p class="page-sub">Plataforma de virtualização das clouds privadas gerenciadas (ESXi, vCenter, Replication, SRM). <a href="premissas/Premissa_VMWARE.md">Premissa completa →</a></p>
 
     <div class="aud" data-aud="todos">
-      <div class="callout warn"><span class="ico">⚠️</span><span><strong>Versões:</strong> vSphere 7 saiu de suporte em out/2025 — novas ativações em <strong>vSphere 8+</strong> (PRM-GER-007). VCF 9 disponível para nuvem privada completa. <span class="pill up">Premissa a atualizar</span></span></div>
+      <div class="callout ok"><span class="ico">✓</span><span><strong>Versão de referência:</strong> <strong>ESX/vCenter 9.1</strong> para novos ambientes quando toda a solução estiver certificada; <strong>vSphere 8.0 U3j</strong> permanece como alternativa para hardware ou integrações ainda incompatíveis. <span class="pill ok2">Revisado em 09/07/2026</span></span></div>
     </div>
 
     <div class="aud" data-aud="prevenda gestao">
@@ -279,10 +322,10 @@ details .body{padding:0 16px 14px;font-size:.89rem}
       <div class="card"><ul>
         <li><strong>Licenciamento Broadcom:</strong> subscrição por core físico (mínimo 16 cores/CPU contabilizados) — validar a contagem com a matriz comercial antes de enviar.</li>
         <li><strong>Hardware:</strong> servidores na HCL/VCG na versão-alvo (PRM-VMW-001); ISO customizada disponível.</li>
-        <li><strong>Capacidade:</strong> memória calculada com reserva por nº de nodes + 8 GB/host (PRM-VMW-004) — não vender "soma das VMs".</li>
+        <li><strong>Capacidade:</strong> dimensionar pela carga medida, crescimento, overhead e política N+1/N+2 — não vender apenas a soma nominal das VMs.</li>
         <li><strong>DR/Replicação:</strong> RPO/RTO definidos na ETI e link dimensionado (PRM-VMW-013).</li>
       </ul>
-      <div class="callout never"><span class="ico">🚫</span><span><strong>Nunca prometer:</strong> thin provisioning, versão fora de suporte, capacidade bruta como líquida, ou migração sem janela e método definidos (ver <a href="#migracoes">Migrações</a>).</span></div></div>
+      <div class="callout never"><span class="ico">🚫</span><span><strong>Nunca prometer:</strong> versão sem matriz validada, capacidade bruta como líquida ou migração sem janela, método e rollback definidos. Thin provisioning é suportado, mas exige capacity planning e monitoramento.</span></div></div>
     </div>
 
     <div class="aud" data-aud="arquitetura gestao">
@@ -296,7 +339,7 @@ details .body{padding:0 16px 14px;font-size:.89rem}
         </ul></div>
         <div class="donts"><h4>🚫 Não pode / não recomendado</h4><ul>
           <li><strong>Upgrade in-place major sem plano validado</strong> — herda problemas, rollback difícil; preferir paralelo (PRM-MIG-002).</li>
-          <li>Thin provisioning e snapshots &gt; 72 h (PRM-VMW-010).</li>
+          <li>Snapshots permanentes, thin provisioning sem controle de capacidade ou oversubscription sem baseline.</li>
           <li>vCenter em versão inferior à dos hosts; versões mistas de ESXi no cluster além da janela de upgrade.</li>
           <li>Hardware fora da HCL; LACP nos Standard Switches do padrão.</li>
         </ul></div>
@@ -307,16 +350,16 @@ details .body{padding:0 16px 14px;font-size:.89rem}
       <div class="band">Implantação <span class="who">· premissas técnicas</span></div>
       <div class="grid">
         <div class="card" data-tags="vmware hcl vcg quickspecs"><h4>Compatibilidade validada <span class="prm">PRM-VMW-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Servidor e periféricos no VMware Compatibility Guide na versão exata + matriz do fabricante do hardware.</p></div>
-        <div class="card" data-tags="vmware iso customizada hpe dell"><h4>ISO customizada <span class="prm">PRM-VMW-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Mídia customizada HPE/Dell; servidor atualizado via SUU/SPP antes da instalação.</p></div>
-        <div class="card" data-tags="vmware raid so ssd datastore local"><h4>RAID-1 para o SO <span class="prm">PRM-VMW-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">SO em RAID-1 (2× ~300 GB SSD/SAS), nunca para VMs; datastore local RAID-5+ com 20% livre.</p></div>
-        <div class="card" data-tags="vmware memoria reserva nodes 8gb"><h4>Memória por nodes <span class="prm">PRM-VMW-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">RAM das VMs + 8 GB/node, com reserva: 2 nodes = 50%, 3 = 33%, 4 = 25% … 10 = 10%.</p></div>
+        <div class="card" data-tags="vmware imagem lifecycle oem hpe dell"><h4>Imagem homologada <span class="prm">PRM-VMW-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Imagem/add-on OEM ou imagem desejada do Lifecycle Manager, com combinação certificada de firmware e drivers.</p></div>
+        <div class="card" data-tags="vmware boot ssd nvme 128"><h4>Boot persistente <span class="prm">PRM-VMW-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">ESX 9.x: mínimo 128 GB, 128 TBW/5 anos e 100 MB/s; preferir SSD/NVMe/SAS/SATA certificado, sem datastore de VMs.</p></div>
+        <div class="card" data-tags="vmware memoria capacidade n+1 n+2"><h4>Capacidade por workload <span class="prm">PRM-VMW-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">CPU, RAM e I/O por carga medida, crescimento e overhead; garantir operação após perda do maior host em N+1.</p></div>
         <div class="card" data-tags="vmware vswitch portgroup vlan rede"><h4>Padrão de vSwitches <span class="prm">PRM-VMW-005</span> <span class="pill fx">Flexível</span></h4><p class="desc">vSwitch0 gerência (Mgmt/vMotion/Backup/Replication), vSwitch1+ produção; PortGroups <code>REDE_PROD_VLAN_51</code>; sem LACP.</p></div>
-        <div class="card" data-tags="vmware traffic shaping backup"><h4>QoS do backup <span class="prm">PRM-VMW-006</span> <span class="pill fx">Flexível</span></h4><p class="desc">Traffic shaping no VMKernel de backup: 70% (1 Gb) / 10% (10 Gb).</p></div>
-        <div class="card" data-tags="vmware multipath round robin iscsi mtu 9000"><h4>Multipath e MTU <span class="prm">PRM-VMW-007</span> <span class="pill fx">Flexível</span></h4><p class="desc">Round Robin preferencial; HBAs iguais no cluster; iSCSI com MTU 9000 validado (<code>vmkping -s 8972 -d</code>).</p></div>
-        <div class="card" data-tags="vmware datastore vmdata vmfs 20"><h4>Datastores <span class="prm">PRM-VMW-008</span> <span class="pill fx">Flexível</span></h4><p class="desc"><code>VMDATA_LUN02_TIER2</code>; VMFS atual; livre por faixa: &gt;11 TB ≥5%, 1–10 TB ≥10%, &lt;1 TB ≥15% (padrão 20%).</p></div>
-        <div class="card" data-tags="vmware drs ha admission"><h4>DRS + HA <span class="prm">PRM-VMW-009</span> <span class="pill fx">Flexível</span></h4><p class="desc">DRS Fully Automated; HA com reserva de 1 host; heartbeat automático.</p></div>
-        <div class="card" data-tags="vmware thick thin vmxnet3 lsi hot add"><h4>Padrão de VM <span class="prm">PRM-VMW-010</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Thick Lazy (Eager p/ DB); thin não suportado; VMXNET3; LSI Logic SAS; CPU Hot Add off; Tools atual.</p></div>
-        <div class="card" data-tags="vmware cpu ready 6:1 latencia balloon"><h4>Contadores pós-migração <span class="prm">PRM-VMW-011</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">vCPU:pCPU ≤ 6:1; CPU Ready &lt; 5%; balloon/swap 0; latência &lt; 15 ms; drops 0.</p></div>
+        <div class="card" data-tags="vmware nioc qos backup"><h4>QoS por workload <span class="prm">PRM-VMW-006</span> <span class="pill fx">Condicional</span></h4><p class="desc">Usar NIOC/shares/reservas no vDS quando necessário; não impor percentuais fixos sem cálculo e teste.</p></div>
+        <div class="card" data-tags="vmware multipath iscsi mtu"><h4>Multipath e MTU <span class="prm">PRM-VMW-007</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Política conforme o fabricante do array; dois paths independentes. Jumbo frames somente se validados ponta a ponta.</p></div>
+        <div class="card" data-tags="vmware datastore vmfs capacidade"><h4>Datastores <span class="prm">PRM-VMW-008</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">VMFS 6 em novos datastores em bloco; margem livre definida por crescimento, snapshots, UNMAP, contingência e array.</p></div>
+        <div class="card" data-tags="vmware drs ha admission"><h4>DRS + HA <span class="prm">PRM-VMW-009</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">HA com Admission Control e tolerância calculada; DRS no nível aprovado; testar falha, vMotion e manutenção.</p></div>
+        <div class="card" data-tags="vmware thin thick vmxnet3 pvscsi hot add"><h4>Padrão de VM <span class="prm">PRM-VMW-010</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">VMXNET3; PVSCSI/LSI conforme workload; formato de disco por requisito; Hot Add off por padrão; Tools suportado.</p></div>
+        <div class="card" data-tags="vmware cpu ready costop latencia balloon baseline"><h4>Saúde por baseline <span class="prm">PRM-VMW-011</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Correlacionar CPU Ready/Co-Stop, NUMA, balloon/swap, filas, latência e drops com baseline e SLA do workload.</p></div>
         <div class="card" data-tags="vmware hardening ssh shell lockdown"><h4>Hardening <span class="prm">PRM-VMW-012</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Credenciais no SNOW; SSH/Shell off; timeout 900 s; patches via Lifecycle Manager; DNS A/PTR + NTP.</p></div>
         <div class="card" data-tags="vmware srm replication rpo failover"><h4>Replicação e DR <span class="prm">PRM-VMW-013</span> <span class="pill fx">Flexível</span></h4><p class="desc">Link p/ RPO/RTO da ETI; datastore de placeholders; failover testado e documentado.</p></div>
         <div class="card" data-tags="vmware acesso cliente role readonly"><h4>Acesso do cliente <span class="prm">PRM-VMW-014</span> <span class="pill fx">Flexível</span></h4><p class="desc">Grupo CLIENTE + role ACESSO_CLIENTE (ReadOnly ampliada) na raiz do Datacenter.</p></div>
@@ -787,16 +830,16 @@ details .body{padding:0 16px 14px;font-size:.89rem}
       <tr data-tags="firmware suu spp bios"><td><span class="prm">PRM-GER-006</span></td><td>Firmware/BIOS/drivers via SUU/SPP antes do SO; BIOS Max Performance.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="versao eogs lifecycle"><td><span class="prm">PRM-GER-007</span></td><td>Somente versões com EoGS &gt; 1 ano da instalação.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="vmware hcl"><td><span class="prm">PRM-VMW-001</span></td><td>Hardware no VMware Compatibility Guide na versão exata.</td><td><span class="pill ob">Obrigatório</span></td></tr>
-      <tr data-tags="vmware iso"><td><span class="prm">PRM-VMW-002</span></td><td>Instalação com ISO customizada do fabricante.</td><td><span class="pill ob">Obrigatório</span></td></tr>
-      <tr data-tags="vmware raid"><td><span class="prm">PRM-VMW-003</span></td><td>SO em RAID-1 SSD/SAS dedicado; datastore local RAID-5+ com 20%.</td><td><span class="pill ob">Obrigatório</span></td></tr>
-      <tr data-tags="vmware memoria nodes"><td><span class="prm">PRM-VMW-004</span></td><td>Memória: VMs + 8 GB/node com reserva por nº de nodes (2=50%…10=10%).</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware imagem lifecycle oem"><td><span class="prm">PRM-VMW-002</span></td><td>Imagem OEM/LCM com firmware e drivers na combinação homologada.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware boot ssd nvme"><td><span class="prm">PRM-VMW-003</span></td><td>ESX 9.x em boot persistente certificado com mínimo de 128 GB.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware memoria capacidade n+1"><td><span class="prm">PRM-VMW-004</span></td><td>CPU/RAM/I/O pelo workload e crescimento; capacidade N+1/N+2 conforme SLA.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="vmware vswitch vlan"><td><span class="prm">PRM-VMW-005</span></td><td>vSwitch0 gerência / vSwitch1+ produção; PortGroups padronizados; sem LACP.</td><td><span class="pill fx">Flexível</span></td></tr>
-      <tr data-tags="vmware shaping backup"><td><span class="prm">PRM-VMW-006</span></td><td>Traffic shaping do backup (70% 1 Gb / 10% 10 Gb).</td><td><span class="pill fx">Flexível</span></td></tr>
-      <tr data-tags="vmware multipath mtu"><td><span class="prm">PRM-VMW-007</span></td><td>Multipath RR; iSCSI MTU 9000 validado; HBAs iguais.</td><td><span class="pill fx">Flexível</span></td></tr>
-      <tr data-tags="vmware datastore"><td><span class="prm">PRM-VMW-008</span></td><td>Datastores VMDATA_LUNX_TIERX; VMFS atual; livre por faixa.</td><td><span class="pill fx">Flexível</span></td></tr>
-      <tr data-tags="vmware drs ha"><td><span class="prm">PRM-VMW-009</span></td><td>DRS Fully Automated; HA com reserva de 1 host.</td><td><span class="pill fx">Flexível</span></td></tr>
-      <tr data-tags="vmware thick vmxnet3"><td><span class="prm">PRM-VMW-010</span></td><td>VMs Thick (Eager p/ DB); thin não suportado; VMXNET3; LSI SAS; Hot Add off.</td><td><span class="pill ob">Obrigatório</span></td></tr>
-      <tr data-tags="vmware cpu ready"><td><span class="prm">PRM-VMW-011</span></td><td>Pós-migração: ≤6:1, CPU Ready &lt;5%, balloon/swap 0, latência &lt;15 ms.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware nioc qos backup"><td><span class="prm">PRM-VMW-006</span></td><td>NIOC/shares/reservas quando necessário, dimensionados pelo workload.</td><td><span class="pill fx">Condicional</span></td></tr>
+      <tr data-tags="vmware multipath mtu"><td><span class="prm">PRM-VMW-007</span></td><td>Multipath conforme o array; dois paths; MTU validado ponta a ponta.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware datastore"><td><span class="prm">PRM-VMW-008</span></td><td>VMFS 6; capacidade por crescimento, contingência e requisitos do array.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware drs ha"><td><span class="prm">PRM-VMW-009</span></td><td>HA Admission Control e DRS dimensionados; falha e manutenção testadas.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware thin thick vmxnet3"><td><span class="prm">PRM-VMW-010</span></td><td>VMXNET3; SCSI e formato de disco por workload; Hot Add off por padrão.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="vmware cpu ready baseline"><td><span class="prm">PRM-VMW-011</span></td><td>CPU, NUMA, memória, storage e rede avaliados por baseline e SLA.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="vmware hardening"><td><span class="prm">PRM-VMW-012</span></td><td>Hardening: SSH/Shell off, timeout 900 s, credenciais no SNOW, LCM.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="vmware srm rpo"><td><span class="prm">PRM-VMW-013</span></td><td>Replicação/SRM: link p/ RPO/RTO da ETI; failover testado.</td><td><span class="pill fx">Flexível</span></td></tr>
       <tr data-tags="vmware acesso cliente"><td><span class="prm">PRM-VMW-014</span></td><td>Acesso do cliente via role ACESSO_CLIENTE.</td><td><span class="pill fx">Flexível</span></td></tr>
@@ -917,8 +960,8 @@ details .body{padding:0 16px 14px;font-size:.89rem}
     <details data-tags="in-place upgrade paralelo porque"><summary>Por que não fazemos upgrade in-place?</summary><div class="body"><p>Porque herda problemas e drivers antigos, dificulta (ou impossibilita) o rollback e transforma incompatibilidades em incidentes de produção. O padrão é migração paralela: ambiente novo na versão-alvo + migração em ondas, com o antigo servindo de rollback (PRM-MIG-002). Exceções: minor updates e caminhos oficiais de appliance, com plano validado.</p></div></details>
     <details data-tags="cross vcenter quando usar replica veeam"><summary>Cross vCenter vMotion ou réplica Veeam — qual uso?</summary><div class="body"><p>Cross vCenter quando as duas pontas são vSphere suportado, há rede/latência adequada e o objetivo é mover sem downtime dentro do mundo VMware. Réplica Veeam quando a volumetria/link pedem seeding, a origem está fora do nosso controle, há mudança de IP/site, ou se quer rollback simples via failback (PRM-MIG-003/004). A matriz completa está em <a href="#migracoes">Migrações</a>.</p></div></details>
     <details data-tags="snapshot backup"><summary>Snapshot (VM ou storage) serve como backup?</summary><div class="body"><p>Não. Snapshot depende do volume original. Backup exige cópia independente com retenção e restore testado (PRM-VBR/CVLT).</p></div></details>
-    <details data-tags="thin thick"><summary>Posso usar thin provisioning?</summary><div class="body"><p>Não em ambiente gerenciado (PRM-VMW-010 / PRM-XEN-004): thin estoura datastore silenciosamente e derruba tudo de uma vez.</p></div></details>
-    <details data-tags="vsphere 7 versao"><summary>Cliente quer ativar em vSphere 7. Pode?</summary><div class="body"><p>Não para novas ativações: sem suporte desde out/2025 (PRM-GER-007). Usar vSphere 8+.</p></div></details>
+    <details data-tags="thin thick"><summary>Posso usar thin provisioning?</summary><div class="body"><p>No VMware, sim: é suportado quando o projeto inclui capacity planning, alarmes e controle da capacidade física. A escolha entre thin e thick depende de storage, VAAI, desempenho, backup e aplicação. No XenServer, seguir a premissa e a matriz específicas.</p></div></details>
+    <details data-tags="vsphere 7 versao"><summary>Cliente quer ativar em vSphere 7. Pode?</summary><div class="body"><p>Não para novas ativações: o suporte geral terminou em out/2025. Preferir ESX/vCenter 9.1 quando toda a solução estiver certificada ou vSphere 8.0 U3j quando hardware e integrações ainda exigirem a linha 8.</p></div></details>
     <details data-tags="dc snapshot restaurar usn"><summary>Posso restaurar um DC por snapshot?</summary><div class="body"><p><strong>Nunca.</strong> Causa USN rollback e corrompe a replicação do domínio. Recuperação de DC segue método suportado (backup system state / novo DC + FSMO).</p></div></details>
     <details data-tags="frontend backend backup"><summary>Frontend × backend no backup?</summary><div class="body"><p>Frontend = volume protegido (licença). Backend = disco p/ guardar dados + retenção (hardware). 10 TB de frontend podem virar 30+ TB de backend.</p></div></details>
     <details data-tags="mtu 9000 teste"><summary>Como valido MTU 9000?</summary><div class="body"><p>Windows: <code>ping -f -l 9000</code> · VMware: <code>vmkping -s 8972 -d</code> · Linux/Xen: <code>ping -M do -s 8972</code>. Falhou = algum ponto sem jumbo (PRM-STG-004).</p></div></details>
@@ -933,7 +976,7 @@ details .body{padding:0 16px 14px;font-size:.89rem}
     <h2 class="page-title">Documentos Originais</h2>
     <p class="page-sub">Premissas completas (fonte: repositório interno), incluídas para consulta e download.</p>
     <div class="catgrid">
-      <a class="prod" href="premissas/Premissa_VMWARE.md"><span class="t">Premissa VMware</span><span class="d">Rev. 21/11/2023</span></a>
+      <a class="prod" href="premissas/Premissa_VMWARE.md"><span class="t">Premissa VMware</span><span class="d">Rev. 09/07/2026</span></a>
       <a class="prod" href="premissas/Premissa_XenServer.md"><span class="t">Premissa XenServer</span><span class="d">Rev. 18/12/2019</span></a>
       <a class="prod" href="premissas/Premissa_Windows.md"><span class="t">Premissa Windows</span><span class="d">Rev. 10/11/2023</span></a>
       <a class="prod" href="premissas/Premissa_Active_Directory.md"><span class="t">Premissa AD + DNS</span><span class="d">Rev. 10/11/2023</span></a>

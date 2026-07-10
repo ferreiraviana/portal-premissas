@@ -1,7 +1,149 @@
 ![alt text](img/logo_eqx.jpg "Logo EQX")
 
-# Premissa de VMware
+# Premissas de VMware vSphere
 ---
+
+> **Revisão técnica vigente — 09/07/2026.** Esta seção substitui as premissas técnicas legadas existentes abaixo. O conteúdo histórico foi mantido temporariamente para rastreabilidade e deve ser removido após validação dos responsáveis. Antes de cada implantação, repetir as consultas às matrizes e release notes, pois builds, compatibilidade e ciclo de vida mudam continuamente.
+
+## Premissas vigentes (2026)
+
+### Versões de referência
+
+| Produto | Release/build em 09/07/2026 | Uso |
+|---|---|---|
+| VMware ESX | 9.1.0.0100 / 25433460 | Preferencial para novos ambientes quando toda a solução estiver certificada |
+| vCenter Server | 9.1.0.0100 / 25417926 | Com ESX 9.1; manter igual ou superior aos hosts |
+| VMware ESXi | 8.0 Update 3j / 25429389 | Alternativa quando hardware ou integrações ainda não suportarem 9.1 |
+| vCenter Server | 8.0 Update 3j / 25413364 | Com hosts 8.0, conforme matriz |
+| vSphere Replication/Live Recovery | 9.0.5.1 / 25360383 | Validar na matriz; linha nova integra VCF Protection and Recovery |
+
+**Obrigatório**
+
+- Não implantar vSphere 7.0 ou anterior. O suporte geral de vSphere 7.0 terminou em 02/10/2025.
+- Escolher o release mais recente que esteja simultaneamente em suporte, licenciado, homologado no Broadcom Compatibility Guide e compatível com produtos VMware e de terceiros. “Mais novo” não significa automaticamente “compatível”.
+- Consultar release notes e security advisories antes de fixar a build. Aplicar a correção mais recente homologada quando houver vulnerabilidade ou problema operacional relevante.
+- Antes de vSphere 9.x, validar o novo licenciamento por assinatura e as dependências de VCF Operations/VCF Business Services.
+
+### Compatibilidade e planejamento
+
+Antes de compra, instalação ou upgrade:
+
+1. Inventariar versões, builds, drivers, firmwares, componentes/VIBs, plugins e integrações.
+2. Validar servidor, CPU e cada dispositivo de I/O no [Broadcom Compatibility Guide](https://compatibilityguide.broadcom.com/), conferindo modelo, release ESX, driver e firmware. A presença do servidor na lista não certifica isoladamente todos os componentes.
+3. Validar combinações e caminhos de upgrade na [Product Interoperability Matrix](https://interopmatrix.broadcom.com/Interoperability).
+4. Confirmar suporte nos fabricantes de backup, storage, servidor, HBA, NIC, multipath e monitoramento.
+5. Manter ao menos 12 meses de suporte geral previstos após a entrada em produção, salvo plano de atualização aprovado.
+6. Executar pre-checks, revisar problemas conhecidos, advisories, capacidade, janela e rollback; homologar em ambiente representativo.
+
+### Hardware, firmware e boot
+
+- Usar somente hardware certificado para o release-alvo. Firmware e driver devem formar a combinação explicitamente homologada; não usar simplesmente “a última versão”.
+- Preferir imagem/add-on do OEM ou imagem desejada do vSphere Lifecycle Manager correspondente ao modelo certificado. Não instalar drivers/VIBs comunitários ou não assinados em produção.
+- Dimensionar CPU, memória e I/O pela carga medida, crescimento, overhead e política de disponibilidade. Não usar razão universal de vCPU:pCPU nem reserva fixa de RAM.
+- Em N+1, a carga protegida deve operar nos limites aprovados após a perda do maior host; dimensionar N+2 quando o requisito pedir duas falhas.
+- Habilitar virtualização de CPU, IOMMU, Execute Disable/No-Execute e UEFI Secure Boot quando certificados. Usar perfil de energia recomendado pelo OEM; “Maximum Performance” somente quando a latência justificar e houver medição.
+- Para ESX 9.x, usar boot persistente de no mínimo 128 GB, 128 TBW em cinco anos e 100 MB/s. Preferir SSD/NVMe/SAS/SATA certificado. Não usar SD/USB em novas instalações, apesar do suporte limitado informado para VCF 9.0.
+- Não armazenar VMs no dispositivo de boot. Usar redundância, como RAID 1, quando suportada pelo servidor/controlador.
+
+### Instalação e gerenciamento do ESX
+
+- Definir FQDN definitivo, DNS A/PTR funcional e pelo menos três fontes NTP confiáveis e comuns a hosts, vCenter e integrações.
+- Configurar syslog remoto, core dump persistente, gerenciamento redundante e acesso ao BMC antes do aceite.
+- Manter ESX Shell e SSH parados/manual. Habilitar somente por mudança ou incidente, por tempo limitado e com auditoria.
+- Usar Lockdown Mode quando operacionalmente viável e restringir `DCUI.Access` a contas nominativas de emergência.
+- Gerenciar configuração e patches pelo vSphere Lifecycle Manager; preferir imagem única declarativa a baselines legadas onde suportado.
+
+### Rede
+
+- Usar no mínimo dois uplinks, preferencialmente em adaptadores e switches físicos distintos.
+- Separar por VLAN/segmento gerenciamento, vMotion, storage IP, vSAN, replicação, backup e VMs. Separação física é obrigatória quando exigida por risco, desempenho, compliance ou fabricante.
+- Manter port groups, VLANs, MTU, teaming e segurança consistentes entre hosts. Validar MTU ponta a ponta; jumbo frames são opcionais, não uma regra.
+- Não habilitar Promiscuous Mode, MAC Address Changes ou Forged Transmits sem requisito e aprovação.
+- Usar Network I/O Control em vDS quando aplicável. Não impor percentuais fixos de traffic shaping sem cálculo e teste do workload.
+- Standard Switch não suporta LACP. Em Distributed Switch, usar LACP apenas com desenho ponta a ponta suportado.
+- Proteger vMotion e, ao atravessar domínio não confiável, usar criptografia. Manter iLO/iDRAC/BMC em rede administrativa segregada, protegida por firewall e MFA/jump host quando disponível.
+- Em iSCSI, seguir o array para port binding, multipath, MTU e CHAP; usar dois caminhos independentes. Cada VMkernel com port binding deve mapear um único uplink ativo conforme arquitetura suportada.
+
+### Storage e vSAN
+
+- Certificar array, protocolo, firmware, HBA/NIC, driver, VAAI/VASA, SATP/PSP e multipath na Broadcom e no fabricante do storage.
+- Apresentar datastores compartilhados a todos os hosts que executarão as VMs. Usar VMFS 6 em novos datastores em bloco, salvo requisito suportado diferente.
+- Definir multipath exatamente como indicado pelo array. Round Robin não é uma regra universal.
+- Definir margem livre por crescimento, snapshots, thin provisioning, UNMAP, contingência e requisitos do array. O antigo valor fixo de 20% é apenas um alerta inicial, não capacity planning.
+- Dimensionar LUNs por limites, domínio de falha, fila, recuperação e desempenho — não pela quantidade de hosts.
+- vSAN exige ReadyNode/configuração permitida e validação individual de controladora, dispositivo, firmware, driver e NIC. Para ESA, usar os perfis vigentes; o perfil pequeno de referência parte de 16 cores, 128 GB e 10 GbE, mas o workload determina o tamanho final.
+
+### vCenter Server
+
+- Usar exclusivamente VCSA. vCenter para Windows não é suportado desde vSphere 7.0.
+- Implantar com IP estático, FQDN imutável, DNS A/PTR e NTP. Dimensionar pelo número de hosts/VMs e retenção de estatísticas/logs.
+- Manter o vCenter em versão/build igual ou superior aos hosts, exceto combinação temporária explicitamente compatível.
+- Configurar backup nativo file-based para destino externo, criptografado, monitorado e com teste de restauração. Snapshot não substitui backup.
+- Monitorar serviços, banco, partições, certificados e backup. Integrar identidade suportada, conceder acesso a grupos com menor privilégio e evitar uso diário de `administrator@vsphere.local`.
+
+### Cluster, HA e DRS
+
+- Habilitar HA e Admission Control. Dimensionar por falhas de host toleradas ou percentual calculado; não desabilitar Admission Control para obter capacidade aparente.
+- Manter gerenciamento redundante e, quando disponíveis, dois heartbeat datastores independentes. Definir isolamento e respostas APD/PDL conforme o storage e a aplicação.
+- Configurar DRS no grau aprovado. Regras VM-Host/VM-VM precisam de dono, justificativa e revisão periódica.
+- Testar HA, vMotion, DRS, Maintenance Mode e perda de uplink/path antes da produção. Em dois nós, documentar o risco durante manutenção e usar witness/quorum quando exigido.
+
+### Máquinas virtuais
+
+- Validar o guest no Compatibility Guide e mantê-lo suportado pelo seu fabricante. Preferir VMXNET3.
+- Usar PVSCSI para cargas compatíveis que se beneficiem; usar LSI Logic SAS quando requerido. Não fixar um controlador para todas as VMs.
+- Em Linux, preferir `open-vm-tools` da distribuição. Em Windows/outros guests, manter VMware Tools suportado e atualizado.
+- Thin, lazy-zeroed thick e eager-zeroed thick são opções suportadas: escolher por desempenho, capacidade, VAAI, backup, replicação e aplicação. Thin exige monitoramento da capacidade física, não proibição genérica.
+- Desabilitar CPU/Memory Hot Add por padrão; habilitar por necessidade após avaliar NUMA, licenciamento e desempenho.
+- Dimensionar por medição. Correlacionar CPU Ready/Co-Stop, swapping, ballooning, NUMA e latência; não usar limites universais isolados.
+- Atualizar Tools antes da compatibilidade/hardware virtual e tratar essa mudança separadamente. Snapshot deve ser temporário, monitorado e nunca considerado backup.
+
+### Segurança e hardening
+
+- Aplicar o [vSphere Security Configuration Guide](https://core.vmware.com/security-configuration-guide) da versão e registrar desvios.
+- Tratar [VMware Security Advisories](https://support.broadcom.com/web/ecx/security-advisory) conforme criticidade e SLA.
+- Usar TLS/certificados confiáveis, MFA onde suportado, RBAC, contas nominativas e menor privilégio. Revisar acessos periodicamente.
+- Centralizar logs em syslog/SIEM e alertar para logins, privilégios, serviços remotos, firewall e alterações.
+- Restringir interfaces administrativas por firewall e nunca expô-las diretamente à Internet.
+- Habilitar Secure Boot e TPM 2.0 quando certificados; avaliar attestation/Host Encryption conforme risco e licença.
+- Não alterar parâmetros avançados nem desabilitar mitigações de CPU sem orientação expressa da Broadcom.
+
+### Atualização, proteção e recuperação
+
+- Para vSphere isolado, a sequência geral é: vCenter, hosts, VMware Tools e, em mudanças separadas, hardware virtual, vDS e filesystem. VCF, NSX, Protection and Recovery/SRM, Horizon e plugins podem exigir outra ordem; consultar a matriz.
+- Remediar hosts serialmente em Maintenance Mode, validando saúde e capacidade entre nós. Registrar versões/builds, testes e aceite.
+- Proteger VCSA com backup file-based e VMs com produto certificado. Manter cópia imutável/isolada conforme política e testar restauração pelo RTO/RPO.
+- VMware Live Recovery/vSphere Replication está sendo integrado como VCF Protection and Recovery. Validar nome, licença, versão e interoperabilidade do release contratado.
+- Dimensionar replicação por change rate real, RPO, compressão, seed e recuperação. Documentar grupos, mappings, dependências, responsáveis, failover/failback e realizar testes periódicos.
+
+### Monitoramento e aceite
+
+- Atualizar templates internos para vSphere 8.x/9.x. Não reutilizar templates `6.7_7.0` sem homologação.
+- Monitorar hardware/BMC, vCenter, HA/DRS, compliance, CPU Ready/Co-Stop, memória/balloon/swap, storage/paths/latência/filas, rede/drops, capacidade, certificados, backup e replicação.
+- Definir baseline por workload e SLA. Um número isolado não comprova saúde; observar tendências e correlação.
+- O aceite exige evidências de: compatibilidade de cada componente; licenciamento; DNS/NTP; redundância; hardening; backup/restauração; HA/vMotion/DRS; falha de uplink/path; monitoramento; Runbook e exceções aprovadas no ServiceNow.
+
+### Referências oficiais consultadas em 09/07/2026
+
+- [Builds ESX/ESXi — KB 316595](https://knowledge.broadcom.com/external/article/316595/)
+- [Builds vCenter — KB 326316](https://knowledge.broadcom.com/external/article/326316/)
+- [EoGS do vSphere 7.0 — KB 415405](https://knowledge.broadcom.com/external/article/415405/)
+- [Broadcom Compatibility Guide](https://compatibilityguide.broadcom.com/)
+- [Product Interoperability Matrix](https://interopmatrix.broadcom.com/Interoperability)
+- [Upgrade para versão 9 — KB 418259](https://knowledge.broadcom.com/external/article/418259/)
+- [Sequência de atualização — KB 330373](https://knowledge.broadcom.com/external/article/330373/)
+- [Boas práticas de upgrade — KB 339811](https://knowledge.broadcom.com/external/article/339811/)
+- [Risco de vCenter mais antigo que hosts — KB 436818](https://knowledge.broadcom.com/external/article/436818/)
+- [Dispositivo de boot — KB 317631](https://knowledge.broadcom.com/external/article/317631/)
+- [Builds Replication/Live Recovery — KB 319887](https://knowledge.broadcom.com/external/article/319887/)
+- [vSAN ESA ReadyNode Hardware Guidance](https://compatibilityguide.broadcom.com/pages/vsan-esa-readynode-hardware-guidance)
+
+---
+
+## Conteúdo legado (não utilizar sem revalidação)
+
+> As seções abaixo são históricas e contêm referências a versões fora de suporte, links antigos e parâmetros prescritivos substituídos pelas premissas vigentes acima.
+
 
 # Sumário
 - [Objetivo](#objetivo)
