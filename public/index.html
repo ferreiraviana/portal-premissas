@@ -1117,9 +1117,6 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
             <source src="./videos/video1908671803.mp4" type="video/mp4">
             Seu navegador não oferece suporte à reprodução deste vídeo.
           </video>
-          <audio id="portgroupAudio" preload="metadata" aria-hidden="true">
-            <source src="./videos/audio1908671803.m4a" type="audio/mp4">
-          </audio>
         </div>
         <div class="media-meta"><span class="pill">VMware</span><span class="pill">PowerCLI</span><span class="pill">Automação</span><span class="pill">Rede virtual</span></div>
       </article>
@@ -1400,19 +1397,6 @@ document.querySelectorAll('.checklist input').forEach((cb,i)=>{
   cb.addEventListener('change',()=>{try{localStorage.setItem(key,cb.checked?'1':'0');}catch(e){}});
 });
 
-// A gravação foi exportada com vídeo e áudio em arquivos separados.
-const knowledgeVideo=document.getElementById('portgroupVideo');
-const knowledgeAudio=document.getElementById('portgroupAudio');
-if(knowledgeVideo&&knowledgeAudio){
-  const alignKnowledgeAudio=()=>{if(Number.isFinite(knowledgeVideo.currentTime))knowledgeAudio.currentTime=knowledgeVideo.currentTime};
-  knowledgeVideo.addEventListener('play',()=>{alignKnowledgeAudio();knowledgeAudio.playbackRate=knowledgeVideo.playbackRate;knowledgeAudio.play().catch(()=>{})});
-  knowledgeVideo.addEventListener('pause',()=>knowledgeAudio.pause());
-  knowledgeVideo.addEventListener('ended',()=>{knowledgeAudio.pause();knowledgeAudio.currentTime=0});
-  knowledgeVideo.addEventListener('seeking',alignKnowledgeAudio);
-  knowledgeVideo.addEventListener('ratechange',()=>knowledgeAudio.playbackRate=knowledgeVideo.playbackRate);
-  knowledgeVideo.addEventListener('volumechange',()=>{knowledgeAudio.volume=knowledgeVideo.volume;knowledgeAudio.muted=knowledgeVideo.muted});
-  knowledgeVideo.addEventListener('timeupdate',()=>{if(Math.abs(knowledgeAudio.currentTime-knowledgeVideo.currentTime)>.35)alignKnowledgeAudio()});
-}
 const toTop=document.getElementById('toTop');window.addEventListener('scroll',()=>toTop.classList.toggle('visible',scrollY>500),{passive:true});toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>
 </body>
