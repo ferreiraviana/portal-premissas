@@ -171,7 +171,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
 .section-intro{display:flex;justify-content:space-between;align-items:end;gap:24px;margin:42px 0 17px}.section-intro h3{margin:0;font-size:1.35rem}.section-intro p{margin:0;color:var(--muted);font-size:.82rem;max-width:56ch;text-align:right}
 .e2e-flow{position:relative;display:grid;grid-template-columns:repeat(7,minmax(120px,1fr));gap:10px;overflow-x:auto;padding:8px 2px 18px;margin-bottom:26px}.e2e-flow::before{content:"";position:absolute;top:38px;left:45px;right:45px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2));opacity:.28}
 .phase-card{position:relative;z-index:1;min-width:120px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 12px;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--text);transition:transform .18s,border-color .18s,box-shadow .18s}.phase-card:hover{transform:translateY(-4px);border-color:#91c5bf;box-shadow:0 12px 30px rgba(18,35,51,.1)}
-.phase-num{display:grid;place-items:center;width:31px;height:31px;margin-bottom:15px;border-radius:50%;background:var(--ink);color:#fff;border:4px solid #fff;box-shadow:0 0 0 1px var(--line);font:700 .67rem var(--font-mono)}.phase-card:nth-child(n+5) .phase-num{background:var(--accent)}
+.phase-num{display:inline-flex!important;align-items:center;width:auto!important;min-width:52px;height:25px;margin-bottom:15px;padding:0 9px;border-radius:7px;background:var(--ink);color:#fff!important;border:0;box-shadow:none;font:700 .62rem var(--font-display);letter-spacing:.01em}.phase-card:nth-child(n+5) .phase-num{background:var(--accent)}
 .phase-card strong{display:block;font:700 .78rem/1.3 var(--font-display);color:var(--ink);margin-bottom:5px}.phase-card span{display:block;font-size:.7rem;line-height:1.45;color:var(--muted)}
 .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:34px}.team-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;text-decoration:none;color:var(--text)}.team-card:hover{border-color:#91c5bf}.team-card b{display:block;color:var(--ink);font:700 .8rem var(--font-display);margin-bottom:5px}.team-card small{display:block;color:var(--muted);font-size:.7rem;line-height:1.45}.team-card em{display:inline-block;margin-top:10px;color:var(--accent);font:600 .66rem var(--font-display);font-style:normal}
 .internal-note{display:flex;gap:10px;align-items:center;margin:0 0 28px;padding:11px 14px;border:1px solid #d5dfdc;border-radius:11px;background:rgba(255,255,255,.72);color:#536776;font-size:.75rem}.internal-note strong{color:var(--ink)}
@@ -183,7 +183,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
 .to-top{position:fixed;right:25px;bottom:25px;z-index:45;width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);box-shadow:0 10px 30px rgba(18,35,51,.14);cursor:pointer;opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s}.to-top.visible{opacity:1;transform:none;pointer-events:auto}.to-top:hover{color:var(--accent);border-color:#92c5bf}
 .page-header{position:relative;margin:-8px 0 24px;padding:22px 24px 20px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.78);box-shadow:var(--shadow-sm)}.page-header .crumb{margin-bottom:9px}.page-header .page-title{margin-bottom:7px}.page-header .page-sub{margin:0;max-width:78ch}.page-header .page-sub a{font-weight:600}
 .page-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.page-action{display:inline-flex;align-items:center;gap:6px;border:1px solid #d5dfdd;border-radius:8px;background:#fff;color:#526778;padding:7px 10px;font:600 .68rem var(--font-display);cursor:pointer}.page-action:hover,.page-action.active{color:var(--accent);border-color:#8dc3bd;background:#f3faf8}
-.page-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:0 0 28px}.overview-item{position:relative;padding:16px 15px 15px 45px;border:1px solid var(--line);border-radius:13px;background:#fff}.overview-num{position:absolute;left:14px;top:15px;display:grid;place-items:center;width:23px;height:23px;border-radius:7px;background:var(--accent-soft);color:var(--accent);font:700 .64rem var(--font-mono)}.overview-item strong{display:block;color:var(--ink);font:700 .76rem var(--font-display);margin-bottom:3px}.overview-item span{display:block;color:var(--muted);font-size:.7rem;line-height:1.45}
+.page-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:0 0 28px}.overview-item{position:relative;padding:16px 15px 15px 78px;border:1px solid var(--line);border-radius:13px;background:#fff}.overview-num{position:absolute;left:14px;top:15px;display:grid;place-items:center;width:54px;height:23px;border-radius:7px;background:var(--accent-soft);color:var(--accent);font:700 .6rem var(--font-display)}.overview-item strong{display:block;color:var(--ink);font:700 .76rem var(--font-display);margin-bottom:3px}.overview-item span{display:block;color:var(--muted);font-size:.7rem;line-height:1.45}
 .toast{position:fixed;left:50%;bottom:28px;z-index:100;transform:translate(-50%,15px);padding:10px 14px;border-radius:9px;background:var(--ink);color:#fff;font-size:.75rem;box-shadow:0 12px 35px rgba(0,0,0,.22);opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
 .decision-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 25px}.decision-card{padding:17px;border:1px solid var(--line);border-radius:14px;background:#fff}.decision-card .pill{margin-bottom:10px}.decision-card h4{margin:0 0 6px;color:var(--ink);font:700 .82rem var(--font-display)}.decision-card p{margin:0;color:var(--muted);font-size:.72rem;line-height:1.5}.decision-card strong{color:var(--ink)}
 .migration-architecture{margin:12px 0 18px;padding:18px;border:1px solid #29475d;border-radius:16px;background:#10283c;color:#eaf5f4;overflow:auto}.migration-architecture svg{display:block;min-width:820px;width:100%;height:auto}.migration-architecture .node{fill:#183b54;stroke:#63c9bd;stroke-width:2}.migration-architecture .core{fill:#214f69;stroke:#b7dd48}.migration-architecture .repo{fill:#183b54;stroke:#7791a3}.migration-architecture .flow{fill:none;stroke:#85a9ba;stroke-width:2;marker-end:url(#arrow)}.migration-architecture .data{stroke:#b7dd48;stroke-width:3}.migration-architecture text{fill:#edf7f6;font:600 13px var(--font-display)}.migration-architecture .small{fill:#a9c0cc;font:500 11px var(--font-display)}.arch-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:13px;color:#b9ced7;font-size:.68rem}.arch-legend span::before{content:"";display:inline-block;width:18px;height:3px;margin:0 7px 2px 0;background:#85a9ba}.arch-legend .data-key::before{background:#b7dd48}
@@ -203,7 +203,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
   </div>
   <nav id="nav">
     <a href="#inicio" class="active">Visão geral</a>
-    <a href="#jornada">Jornada end to end</a>
+    <a href="#jornada">Jornada de ponta a ponta</a>
     <a href="#comece">Como usar o portal</a>
     <a href="#radar">Radar e governança</a>
     <div class="nav-label">Portfólio · Virtualização</div>
@@ -241,7 +241,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     </div>
     <select class="quick-jump" id="quickJump" aria-label="Ir rapidamente para">
       <option value="">Ir rapidamente para…</option>
-      <option value="jornada">Jornada end to end</option>
+      <option value="jornada">Jornada de ponta a ponta</option>
       <option value="premissas">Biblioteca de premissas</option>
       <option value="checklists">Checklists</option>
       <option value="radar">Radar e governança</option>
@@ -283,21 +283,21 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <div class="recent-grid" id="recentGrid"></div>
     </div>
 
-    <div class="section-intro"><h3>Jornada end to end</h3><p>Selecione uma etapa para acessar orientações, responsabilidades, premissas e critérios de saída.</p></div>
-    <div class="e2e-flow" aria-label="Jornada end to end">
-      <a class="phase-card" href="#jornada"><span class="phase-num">01</span><strong>Intake e qualificação</strong><span>Contexto, escopo inicial e viabilidade.</span></a>
-      <a class="phase-card" href="#jornada"><span class="phase-num">02</span><strong>Pré-venda</strong><span>Premissas, riscos, dependências e sizing.</span></a>
-      <a class="phase-card" href="#jornada"><span class="phase-num">03</span><strong>Handover</strong><span>Transferência clara do vendido para entrega.</span></a>
-      <a class="phase-card" href="#migracoes"><span class="phase-num">04</span><strong>Planejamento</strong><span>Plano, marcos, ondas e responsáveis.</span></a>
-      <a class="phase-card" href="#premissas"><span class="phase-num">05</span><strong>Implementação</strong><span>Execução baseada em padrões e evidências.</span></a>
-      <a class="phase-card" href="#checklists"><span class="phase-num">06</span><strong>Transição e aceite</strong><span>Validação, documentação e go-live.</span></a>
-      <a class="phase-card" href="#faq"><span class="phase-num">07</span><strong>Operação e suporte</strong><span>Estabilização, conhecimento e melhoria.</span></a>
+    <div class="section-intro"><h3>Jornada de ponta a ponta</h3><p>Selecione uma etapa para consultar orientações, responsabilidades, premissas e critérios de conclusão.</p></div>
+    <div class="e2e-flow" aria-label="Jornada de ponta a ponta">
+      <a class="phase-card" href="#jornada"><span class="phase-num">Etapa 1</span><strong>Entrada e qualificação</strong><span>Contexto, escopo inicial e viabilidade.</span></a>
+      <a class="phase-card" href="#jornada"><span class="phase-num">Etapa 2</span><strong>Pré-venda</strong><span>Premissas, riscos, dependências e dimensionamento.</span></a>
+      <a class="phase-card" href="#jornada"><span class="phase-num">Etapa 3</span><strong>Transição comercial</strong><span>Transferência clara do que foi vendido para a equipe de entrega.</span></a>
+      <a class="phase-card" href="#migracoes"><span class="phase-num">Etapa 4</span><strong>Planejamento</strong><span>Plano, marcos, ondas e responsáveis.</span></a>
+      <a class="phase-card" href="#premissas"><span class="phase-num">Etapa 5</span><strong>Implementação</strong><span>Execução baseada em padrões e evidências.</span></a>
+      <a class="phase-card" href="#checklists"><span class="phase-num">Etapa 6</span><strong>Transição e aceite</strong><span>Validação, documentação e entrada em produção.</span></a>
+      <a class="phase-card" href="#faq"><span class="phase-num">Etapa 7</span><strong>Operação e suporte</strong><span>Estabilização, transferência de conhecimento e melhoria contínua.</span></a>
     </div>
 
     <div class="section-intro"><h3>Acesso rápido por área</h3><p>Entre pela perspectiva do seu time e encontre rapidamente o que precisa consumir ou entregar.</p></div>
     <div class="team-grid">
       <a class="team-card" href="#jornada" onclick="setPersona('prevenda')"><b>Vendas e Pré-venda</b><small>Escopo, restrições, dependências e compromissos.</small><em>Ver visão comercial →</em></a>
-      <a class="team-card" href="#jornada" onclick="setPersona('gestao')"><b>IM e Gestão</b><small>Handover, governança, riscos, marcos e aceite.</small><em>Ver gestão da entrega →</em></a>
+      <a class="team-card" href="#jornada" onclick="setPersona('gestao')"><b>IM e Gestão</b><small>Transição comercial, governança, riscos, marcos e aceite.</small><em>Ver gestão da entrega →</em></a>
       <a class="team-card" href="#premissas" onclick="setPersona('arquitetura')"><b>Arquitetura</b><small>Decisões, compatibilidade, padrões e exceções.</small><em>Ver arquitetura →</em></a>
       <a class="team-card" href="#checklists" onclick="setPersona('tecnico')"><b>Implementação</b><small>Pré-requisitos, execução, testes e evidências.</small><em>Ver execução →</em></a>
       <a class="team-card" href="#faq"><b>Operação e Suporte</b><small>Transição, monitoramento, runbook e recorrências.</small><em>Ver suporte →</em></a>
@@ -307,7 +307,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <h3>Virtualização</h3>
     <div class="catgrid">
       <a class="prod" href="#vmware"><span class="t">VMware vSphere</span><span class="d">ESX, vCenter, Replication e recuperação para clouds privadas gerenciadas.</span><div class="meta"><span class="pill ok2">Revisado em 2026</span></div></a>
-      <a class="prod" href="#xenserver"><span class="t">XenServer / Citrix</span><span class="d">Pools standalone e HA; alternativa de hypervisor.</span><div class="meta"><span class="pill ok2">Revisado em 2026</span></div></a>
+      <a class="prod" href="#xenserver"><span class="t">XenServer / Citrix</span><span class="d">Pools autônomos e em HA; alternativa de hipervisor.</span><div class="meta"><span class="pill ok2">Revisado em 2026</span></div></a>
     </div>
     <h3>Sistemas &amp; Diretório</h3>
     <div class="catgrid">
@@ -356,12 +356,12 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
 
     <div class="band">Padrões transversais <span class="who">valem para todo produto</span></div>
     <div class="grid">
-      <div class="card" data-tags="servicenow runbook eti topologia credenciais documentacao"><h4>Documentação no ServiceNow <span class="prm">PRM-GER-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Runbook (snapshot de configurações), ETI (capacity e serviços acordados), Topologia, dados do equipamento e credenciais no módulo de segurança.</p></div>
+      <div class="card" data-tags="servicenow runbook eti topologia credenciais documentacao"><h4>Documentação no ServiceNow <span class="prm">PRM-GER-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Runbook (registro das configurações), ETI (capacidade e serviços acordados), topologia, dados dos equipamentos e credenciais no módulo de segurança.</p></div>
       <div class="card" data-tags="eqxadmin eqxgerencia usuarios senha administrator root"><h4>Usuários padrão Equinix <span class="prm">PRM-GER-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc"><code>eqxadmin</code> e <code>eqxgerencia</code> em todo equipamento; Administrator renomeado/desabilitado; senhas fortes só no ServiceNow.</p></div>
       <div class="card" data-tags="ntp extntp horario"><h4>NTP Equinix em tudo <span class="prm">PRM-GER-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Todos os componentes sincronizados com os NTPs Equinix (<code>extntp.equinix.com.br</code> e réplicas).</p></div>
       <div class="card" data-tags="zabbix monitoramento template atlas csr puppet"><h4>Monitoramento Zabbix + Atlas <span class="prm">PRM-GER-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Template padrão da tecnologia, cadastro no CSR e Puppet quando aplicável. Sem monitoramento, sem aceite.</p></div>
-      <div class="card" data-tags="fontes redundantes ilo idrac circuitos"><h4>Redundância física + iLO/iDRAC <span class="prm">PRM-GER-005</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Fontes redundantes em circuitos distintos (STS p/ monofonte); iLO/iDRAC ativa e cadastrada.</p></div>
-      <div class="card" data-tags="firmware bios suu spp drivers"><h4>Firmware antes do software <span class="prm">PRM-GER-006</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">BIOS/firmware/drivers via SUU/SPP antes do SO; BIOS Max Performance; VT/VT-d p/ hypervisors.</p></div>
+      <div class="card" data-tags="fontes redundantes ilo idrac circuitos"><h4>Redundância física + iLO/iDRAC <span class="prm">PRM-GER-005</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Fontes redundantes em circuitos distintos (STS para equipamento com uma única fonte); iLO/iDRAC ativa e cadastrada.</p></div>
+      <div class="card" data-tags="firmware bios suu spp drivers"><h4>Firmware antes do software <span class="prm">PRM-GER-006</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">BIOS, firmware e drivers via SUU/SPP antes do SO; BIOS em Max Performance; VT/VT-d para hipervisores.</p></div>
       <div class="card" data-tags="versao suporte eogs lifecycle"><h4>Versão com futuro <span class="prm">PRM-GER-007</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Somente versões com fim de suporte a mais de 1 ano da instalação (lifecycle do fabricante).</p></div>
     </div>
 
@@ -374,7 +374,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <tr><td><strong>Cutover</strong></td><td>O momento da virada: produção passa do ambiente antigo para o novo.</td></tr>
       <tr><td><strong>Snapshot</strong></td><td>Foto temporária de VM/volume. Não é backup.</td></tr>
       <tr><td><strong>Thick / Thin</strong></td><td>Thick = espaço todo reservado (padrão). Thin = sob demanda (não suportado no gerenciamento).</td></tr>
-      <tr><td><strong>MTU 9000</strong></td><td>Pacotes grandes p/ tráfego de storage; precisa estar igual em todo o caminho.</td></tr>
+      <tr><td><strong>MTU 9000</strong></td><td>Pacotes grandes para tráfego de storage; a configuração deve ser consistente em todo o caminho.</td></tr>
       <tr><td><strong>Frontend / Backend</strong></td><td>Frontend = volume protegido (licença de backup). Backend = disco para guardar backups + retenção.</td></tr>
       <tr><td><strong>RPO / RTO</strong></td><td>Quanto dado pode ser perdido / em quanto tempo o serviço volta.</td></tr>
       <tr><td><strong>Seeding</strong></td><td>Carga inicial dos dados transportada por mídia física ou pré-cópia, para não depender só do link.</td></tr>
@@ -387,12 +387,12 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <h2 class="page-title">Radar de Versões</h2>
     <p class="page-sub">Premissa interna × versão atual do fabricante (validado em julho/2026). Guia para novos projetos e para atualização dos documentos.</p>
     <table>
-      <tr><th>Produto</th><th>Premissa interna referencia</th><th>Fabricante hoje (jul/2026)</th><th>Ação</th></tr>
+      <tr><th>Produto</th><th>Premissa interna de referência</th><th>Fabricante — cenário em jul/2026</th><th>Ação recomendada</th></tr>
       <tr><td><strong>VMware vSphere</strong></td><td>Premissa revisada em jul/2026</td><td>ESX/vCenter 9.1 preferencial quando toda a solução for certificada; vSphere 8.0 U3j como alternativa compatível; vSphere 7 sem suporte desde out/2025</td><td><span class="pill ok2">Vigente</span> Validar BCG e matriz antes de cada projeto</td></tr>
       <tr><td><strong>XenServer</strong></td><td>Premissa revisada em jul/2026</td><td>XenServer 8.4 produtivo; XenServer 9 permanece preview nesta revisão; validar HCL, licença e matriz</td><td><span class="pill ok2">Vigente</span> Revalidar release por projeto</td></tr>
       <tr><td><strong>Windows Server</strong></td><td>Premissa revisada em jul/2026</td><td>Server 2025 LTSC preferencial; Server 2022 por compatibilidade/licença documentada</td><td><span class="pill ok2">Vigente</span> Revalidar aplicação e hardware</td></tr>
-      <tr><td><strong>Veeam B&amp;R</strong></td><td>Premissa revisada em jul/2026</td><td>v13; build e upgrade validados no Help Center; 3-2-1-1-0 e hardened repository</td><td><span class="pill ok2">Vigente</span> Revalidar matriz e sizing</td></tr>
-      <tr><td><strong>Commvault</strong></td><td>Premissa revisada em jul/2026</td><td>11.40 LTS; sizing, AVX, DDB/index e DR Backup atualizados</td><td><span class="pill ok2">Vigente</span> Aplicar maintenance release recomendado</td></tr>
+      <tr><td><strong>Veeam B&amp;R</strong></td><td>Premissa revisada em jul/2026</td><td>v13; build e atualização validados no Help Center; regra 3-2-1-1-0 e repositório reforçado</td><td><span class="pill ok2">Vigente</span> Revalidar matriz e dimensionamento</td></tr>
+      <tr><td><strong>Commvault</strong></td><td>Premissa revisada em jul/2026</td><td>11.40 LTS; dimensionamento, AVX, DDB, índice e DR Backup atualizados</td><td><span class="pill ok2">Vigente</span> Aplicar a versão de manutenção recomendada</td></tr>
       <tr><td><strong>Storage / Switch / AD</strong></td><td>Práticas de arquitetura</td><td>Válidas; matrizes/firmwares verificados por projeto</td><td><span class="pill ok2">OK</span></td></tr>
     </table>
     <div class="callout tip"><span class="ico">💡</span><span><strong>Regra de ouro (PRM-GER-007):</strong> só ativar versões com fim de suporte a mais de 1 ano — hoje: vSphere 8+, XenServer 8.4+, Windows 2022/2025, VBR 13, Commvault 11.40 LTS.</span></div>
@@ -425,12 +425,12 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <div class="dosdonts">
         <div class="dos"><h4>✅ Pode / recomendado</h4><ul>
           <li>Expandir cluster com hosts idênticos e na HCL; habilitar EVC para misturar gerações de CPU.</li>
-          <li>Migração <strong>paralela</strong> (novo cluster + migração de VMs) para upgrades major — ver <a href="#migracoes">abordagens</a>.</li>
+          <li>Migração <strong>paralela</strong> (novo cluster + migração de VMs) para atualizações de versão principal — consulte as <a href="#migracoes">abordagens</a>.</li>
           <li>Cross vCenter vMotion entre clouds privadas, com pré-requisitos validados (PRM-MIG-003).</li>
           <li>Tierização de datastores com Storage Profiles; SIOC quando suportado.</li>
         </ul></div>
         <div class="donts"><h4>🚫 Não pode / não recomendado</h4><ul>
-          <li><strong>Upgrade in-place major sem plano validado</strong> — herda problemas, rollback difícil; preferir paralelo (PRM-MIG-002).</li>
+          <li><strong>Atualização de versão principal no ambiente atual sem plano validado</strong> — pode herdar problemas e dificultar o rollback; prefira a migração paralela (PRM-MIG-002).</li>
           <li>Snapshots permanentes, thin provisioning sem controle de capacidade ou oversubscription sem baseline.</li>
           <li>vCenter em versão inferior à dos hosts; versões mistas de ESXi no cluster além da janela de upgrade.</li>
           <li>Hardware fora da HCL; LACP nos Standard Switches do padrão.</li>
@@ -453,7 +453,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
         <div class="card" data-tags="vmware thin thick vmxnet3 pvscsi hot add"><h4>Padrão de VM <span class="prm">PRM-VMW-010</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">VMXNET3; PVSCSI/LSI conforme workload; formato de disco por requisito; Hot Add off por padrão; Tools suportado.</p></div>
         <div class="card" data-tags="vmware cpu ready costop latencia balloon baseline"><h4>Saúde por baseline <span class="prm">PRM-VMW-011</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Correlacionar CPU Ready/Co-Stop, NUMA, balloon/swap, filas, latência e drops com baseline e SLA do workload.</p></div>
         <div class="card" data-tags="vmware hardening ssh shell lockdown"><h4>Hardening <span class="prm">PRM-VMW-012</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Credenciais no SNOW; SSH/Shell off; timeout 900 s; patches via Lifecycle Manager; DNS A/PTR + NTP.</p></div>
-        <div class="card" data-tags="vmware srm replication rpo failover"><h4>Replicação e DR <span class="prm">PRM-VMW-013</span> <span class="pill fx">Flexível</span></h4><p class="desc">Link p/ RPO/RTO da ETI; datastore de placeholders; failover testado e documentado.</p></div>
+        <div class="card" data-tags="vmware srm replication rpo failover"><h4>Replicação e DR <span class="prm">PRM-VMW-013</span> <span class="pill fx">Flexível</span></h4><p class="desc">Link dimensionado para o RPO/RTO da ETI; datastore de placeholders; failover testado e documentado.</p></div>
         <div class="card" data-tags="vmware acesso cliente role readonly"><h4>Acesso do cliente <span class="prm">PRM-VMW-014</span> <span class="pill fx">Flexível</span></h4><p class="desc">Grupo CLIENTE + role ACESSO_CLIENTE (ReadOnly ampliada) na raiz do Datacenter.</p></div>
       </div>
     </div>
@@ -463,7 +463,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
   <section class="page" id="xenserver">
     <div class="crumb">Catálogo · Virtualização</div>
     <h2 class="page-title">XenServer / Citrix</h2>
-    <p class="page-sub">Hypervisor Citrix para ambientes standalone e pools em HA. <a href="premissas/Premissa_XenServer.md">Premissa completa →</a></p>
+    <p class="page-sub">Hipervisor Citrix para ambientes autônomos e pools em HA. <a href="premissas/Premissa_XenServer.md">Premissa completa →</a></p>
 
     <div class="aud" data-aud="todos">
       <div class="callout ok"><span class="ico">✓</span><span><strong>Versão:</strong> <strong>XenServer 8.4</strong> é a linha produtiva; XenServer 9 permanece preview nesta revisão e não entra em produção. Validar HCL, licença e release recomendado. <span class="pill ok2">Revisado em 13/07/2026</span></span></div>
@@ -490,7 +490,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
           <li>Thin provisioning (thick obrigatório) e SR com menos de 20% livre.</li>
           <li>Mais de 16 vCPUs por core (limite interno; fabricante permite 32).</li>
           <li>NAT entre hosts e XenCenter; versões EOL (6.x/7.x/CH 8.2).</li>
-          <li>Upgrade in-place saltando major versions fora do caminho suportado.</li>
+          <li>Atualização no ambiente atual que salte versões principais fora do caminho suportado.</li>
         </ul></div>
       </div>
     </div>
@@ -522,7 +522,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <div class="band">Pré-venda</div>
       <div class="card"><ul>
         <li><strong>Licença + serial:</strong> ambiente nunca é entregue sem serial aplicado — prever licenciamento na proposta.</li>
-        <li><strong>Versão:</strong> 2022/2025 para novas ativações; exceção só com aceite formal (Risk Letter).</li>
+        <li><strong>Versão:</strong> 2022/2025 para novas ativações; exceções somente com carta formal de aceite de risco.</li>
         <li><strong>Upgrade de SO:</strong> vender como <em>novo servidor + migração</em>, não in-place (ver <a href="#migracoes">Migrações</a>).</li>
       </ul></div>
     </div>
@@ -536,7 +536,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
           <li>MPIO Round Robin com FC/iSCSI; disco dedicado para page file grande.</li>
         </ul></div>
         <div class="donts"><h4>🚫 Não pode / não recomendado</h4><ul>
-          <li><strong>Upgrade in-place de SO em produção</strong> — risco de drivers/apps herdados; exceções com Risk Letter (PRM-MIG-002).</li>
+          <li><strong>Atualização do SO no ambiente de produção</strong> — risco de drivers e aplicações herdados; exceções exigem carta formal de aceite de risco (PRM-MIG-002).</li>
           <li>Desativar o serviço de firewall do Windows; serviços com conta administrativa.</li>
           <li>Page file automático; template com antivírus ou sem sysprep.</li>
           <li>DNS público em máquina de domínio.</li>
@@ -571,7 +571,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <div class="card"><ul>
         <li><strong>Sempre 2 DCs</strong> por site em produção — propostas com 1 DC só com aceite de risco.</li>
         <li><strong>Host exclusivo:</strong> AD não divide servidor com SQL/IIS — dimensionar VMs próprias.</li>
-        <li><strong>Acesso:</strong> cliente sem acesso administrativo ao DC; se exigir, entrega com Risk Letter.</li>
+        <li><strong>Acesso:</strong> o cliente não recebe acesso administrativo ao DC; exceções exigem carta formal de aceite de risco.</li>
       </ul></div>
     </div>
 
@@ -586,7 +586,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
         <div class="donts"><h4>🚫 Não pode / não recomendado</h4><ul>
           <li><strong>Nunca restaurar/clonar DC por snapshot</strong> — causa USN rollback e corrompe a replicação.</li>
           <li>Upgrade in-place de DC; DC único em produção; funções acumuladas no DC.</li>
-          <li>Sincronizar horário do DC pelo hypervisor; DNS público em membros do domínio.</li>
+          <li>Sincronizar o horário do DC pelo hipervisor; configurar DNS público nos membros do domínio.</li>
           <li>Estender o domínio interno do cliente sem análise (não recomendado).</li>
         </ul></div>
       </div>
@@ -598,10 +598,10 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
         <div class="card" data-tags="ad exclusivo dedicado"><h4>Host exclusivo <span class="prm">PRM-AD-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Somente AD DS + DNS; AD FS/CS em servidores próprios.</p></div>
         <div class="card" data-tags="ad 2 dcs anti afinidade replicacao"><h4>Redundância de DCs <span class="prm">PRM-AD-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">≥2 DCs/site com antiafinidade; replicação inter-site ≤5 min; subnets no Sites and Services.</p></div>
         <div class="card" data-tags="ad fsmo pdc rid schema infra gc"><h4>FSMOs distribuídas <span class="prm">PRM-AD-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">PDC+RID juntos; Schema+DNM com GC; Infrastructure fora de GC; owners no CI.</p></div>
-        <div class="card" data-tags="ad administrator dsrm risk"><h4>Contas e acesso <span class="prm">PRM-AD-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Administrator desabilitado; DSRM no SNOW; cliente sem admin (ou Risk Letter).</p></div>
+        <div class="card" data-tags="ad administrator dsrm risk"><h4>Contas e acesso <span class="prm">PRM-AD-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Administrator desabilitado; credencial DSRM no SNOW; cliente sem acesso administrativo, salvo aceite formal de risco.</p></div>
         <div class="card" data-tags="ad gpo wsus ntp senha 14 60 lockout"><h4>GPOs padrão <span class="prm">PRM-AD-005</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">GPO Equinix (WSUS/NTP NT5DS); senha 14 chars/60 dias/24 histórico; lockout 6; auditoria de DC.</p></div>
         <div class="card" data-tags="ad dns forwarder reversa scavenging"><h4>DNS padrão <span class="prm">PRM-AD-006</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Forwarders Equinix; zona reversa integrada; aging/scavenging; só DNS internos nos membros.</p></div>
-        <div class="card" data-tags="ad virtual time sync local nivel funcional"><h4>DCs virtuais e domínio <span class="prm">PRM-AD-007</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Time sync do hypervisor off; domínio interno (.local); nível ≥2012 R2.</p></div>
+        <div class="card" data-tags="ad virtual time sync local nivel funcional"><h4>DCs virtuais e domínio <span class="prm">PRM-AD-007</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Sincronização de horário do hipervisor desativada; domínio interno (.local); nível funcional ≥ 2012 R2.</p></div>
         <div class="card" data-tags="ad dcdiag repadmin netlogon sysvol portas"><h4>Health check <span class="prm">PRM-AD-008</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">DCDIAG/repadmin no Runbook; NETLOGON/SYSVOL ok; portas AD liberadas; template Zabbix AD.</p></div>
       </div>
     </div>
@@ -690,7 +690,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
         <div class="card" data-tags="switch firmware release notes stack"><h4>Versão recomendada <span class="prm">PRM-SW-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Firmware recomendado pelo fabricante; release notes lidos; stack em versão única.</p></div>
         <div class="card" data-tags="switch bpdu root guard storm native vlan"><h4>Proteções L2 <span class="prm">PRM-SW-005</span> <span class="pill fx">Flexível</span></h4><p class="desc">BPDU/Root Guard; storm-control; native VLAN não-default; descrições nas portas.</p></div>
         <div class="card" data-tags="switch vsx vlt virtual chassis licenca"><h4>Alta disponibilidade <span class="prm">PRM-SW-006</span> <span class="pill fx">Flexível</span></h4><p class="desc">Stacking/VSX/VLT/VC conforme fabricante; licenças redundantes.</p></div>
-        <div class="card" data-tags="switch eletrica sts reguas"><h4>Elétrica e rack <span class="prm">PRM-SW-007</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">2 réguas independentes; STS p/ monofonte; corredores quente/frio.</p></div>
+        <div class="card" data-tags="switch eletrica sts reguas"><h4>Elétrica e rack <span class="prm">PRM-SW-007</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Duas réguas independentes; STS para equipamento com uma única fonte; corredores quente e frio.</p></div>
         <div class="card" data-tags="switch snmp syslog backup config"><h4>Monitoração e backup <span class="prm">PRM-SW-008</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">SNMP/Zabbix; syslog; backup de config; cadastro completo no SNOW.</p></div>
       </div>
     </div>
@@ -726,7 +726,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
         <div class="donts"><h4>🚫 Não pode / não recomendado</h4><ul>
           <li>Backup guardado só na mesma infraestrutura de produção.</li>
           <li>Upgrade direto para v13 sem estar no 12.3.1+ (caminho suportado).</li>
-          <li>SOs/hypervisors fora da matriz da v13 (Windows 2012, vSphere 6.x…).</li>
+          <li>Sistemas operacionais e hipervisores fora da matriz da v13 (Windows 2012, vSphere 6.x…).</li>
         </ul></div>
       </div>
     </div>
@@ -735,7 +735,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <div class="band">Implantação · premissas técnicas</div>
       <div class="grid">
         <div class="card" data-tags="veeam so windows appliance homologado"><h4>Plataforma homologada <span class="prm">PRM-VBR-001</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">Windows homologado atualizado ou Veeam Software Appliance; v13 padrão.</p></div>
-        <div class="card" data-tags="veeam proxy 1vcpu 2gb task calculadora"><h4>Proxy por task <span class="prm">PRM-VBR-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">1 vCPU + 2 GB por task; sizing pela calculadora oficial (volumetria, mudança, RPO).</p></div>
+        <div class="card" data-tags="veeam proxy 1vcpu 2gb task calculadora"><h4>Proxy por tarefa <span class="prm">PRM-VBR-002</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">1 vCPU + 2 GB por tarefa; dimensionamento pela calculadora oficial (volumetria, taxa de alteração e RPO).</p></div>
         <div class="card" data-tags="veeam repositorio raid6 refs sobr ssd"><h4>Repositório padrão <span class="prm">PRM-VBR-003</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">SSD RAID-1 (SO/catálogo) + staging RAID-6 (100% da volumetria); ReFS; SOBR recomendado.</p></div>
         <div class="card" data-tags="veeam retencao diario semanal mensal anual full incremental"><h4>Retenções padrão <span class="prm">PRM-VBR-004</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">D 7–30, S 15–60, M 30–1825, A 365–1825; incrementais + full semanal; janela 20h–06h.</p></div>
         <div class="card" data-tags="veeam vlan backup lacp 10gbe teaming"><h4>Rede dedicada <span class="prm">PRM-VBR-005</span> <span class="pill ob">Obrigatório</span></h4><p class="desc">VLAN exclusiva; 4×1 GbE LACP ou 1×10 GbE; teaming na mesma placa.</p></div>
@@ -752,7 +752,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <p class="page-sub">Backup dedicado com Media Agents e CommCell. <a href="premissas/Premissa_Backup_Dedicado_Commvault.md">Premissa completa →</a></p>
 
     <div class="aud" data-aud="todos">
-      <div class="callout ok"><span class="ico">✓</span><span><strong>Versão:</strong> <strong>Commvault 11.40 LTS</strong>; aplicar maintenance release suportado e validar AVX, sizing, DDB/index e DR Backup. <span class="pill ok2">Revisado em 13/07/2026</span></span></div>
+      <div class="callout ok"><span class="ico">✓</span><span><strong>Versão:</strong> <strong>Commvault 11.40 LTS</strong>; aplicar a versão de manutenção suportada e validar AVX, dimensionamento, DDB, índice e DR Backup. <span class="pill ok2">Revisado em 13/07/2026</span></span></div>
     </div>
 
     <div class="aud" data-aud="prevenda gestao">
@@ -803,18 +803,18 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <div class="aud" data-aud="todos prevenda arquitetura gestao tecnico">
       <div class="band">Comece pela decisão <span class="who">· não pelo produto ou ferramenta</span></div>
       <div class="decision-grid" data-tags="decisao projeto abordagem rto rpo downtime rollback">
-        <div class="decision-card"><span class="pill ok2">01 · Continuidade</span><h4>Qual interrupção é aceitável?</h4><p>Defina <strong>janela, RTO, RPO</strong> e impacto por aplicação. “Sem downtime” precisa ser tecnicamente demonstrável.</p></div>
-        <div class="decision-card"><span class="pill ok2">02 · Compatibilidade</span><h4>Origem e destino conversam?</h4><p>Valide versões, hypervisor, CPU/EVC, redes, storage, drivers, licenças e matrizes do fabricante.</p></div>
-        <div class="decision-card"><span class="pill ok2">03 · Movimento</span><h4>Quanto dado muda e por onde?</h4><p>Meça volumetria, change rate, throughput real, latência e tempo para sincronizar o delta final.</p></div>
-        <div class="decision-card"><span class="pill ok2">04 · Reversão</span><h4>Como voltar com segurança?</h4><p>Defina ponto de retorno, limite de decisão, dono do go/no-go e condição para descomissionar a origem.</p></div>
+        <div class="decision-card"><span class="pill ok2">Critério 1 · Continuidade</span><h4>Qual interrupção é aceitável?</h4><p>Defina <strong>janela, RTO, RPO</strong> e impacto por aplicação. A ausência de indisponibilidade precisa ser tecnicamente demonstrável.</p></div>
+        <div class="decision-card"><span class="pill ok2">Critério 2 · Compatibilidade</span><h4>Origem e destino são compatíveis?</h4><p>Valide versões, hipervisor, CPU/EVC, redes, storage, drivers, licenças e matrizes do fabricante.</p></div>
+        <div class="decision-card"><span class="pill ok2">Critério 3 · Movimento</span><h4>Quanto dado muda e por onde?</h4><p>Meça volumetria, taxa de alteração, vazão real, latência e tempo necessário para sincronizar o delta final.</p></div>
+        <div class="decision-card"><span class="pill ok2">Critério 4 · Reversão</span><h4>Como retornar com segurança?</h4><p>Defina o ponto de retorno, o limite da decisão, o responsável pelo go/no-go e a condição para descomissionar a origem.</p></div>
       </div>
       <div class="callout tip"><span class="ico">💡</span><span><strong>Saída obrigatória da análise:</strong> uma ficha de abordagem com método escolhido, alternativas descartadas, premissas, dependências, cálculo de transferência, ondas, critérios de aceite e rollback. A ferramenta é consequência dessa decisão.</span></div>
     </div>
 
     <div class="aud" data-aud="todos arquitetura gestao">
-      <div class="band">Princípio nº 1 <span class="who">· in-place × migração paralela</span></div>
-      <div class="callout never"><span class="ico">🚫</span><span><strong>In-place não é a escolha padrão para mudanças major.</strong> Pode ser usado quando houver caminho oficial suportado, matriz validada, backup/configuração exportada, teste prévio, janela suficiente e reversão praticável. Sem essas condições, a abordagem transfere risco diretamente para produção. <span class="prm">PRM-MIG-002</span></span></div>
-      <div class="callout ok"><span class="ico">✅</span><span><strong>Padrão da casa: migração paralela (greenfield).</strong> Constrói-se o ambiente novo na versão-alvo, migram-se as cargas em ondas com método adequado, valida-se, e o ambiente antigo vira rollback natural até o descomissionamento. Exceções ao in-place (ex.: minor updates, appliances com caminho oficial) exigem plano validado por arquitetura e, quando for exigência do cliente, Risk Letter.</span></div>
+      <div class="band">Princípio 1 <span class="who">· atualização no ambiente atual × migração paralela</span></div>
+      <div class="callout never"><span class="ico">🚫</span><span><strong>A atualização no ambiente atual (in-place) não é a escolha padrão para mudanças de versão principal.</strong> Ela pode ser usada quando houver caminho oficial suportado, matriz validada, backup ou configuração exportada, teste prévio, janela suficiente e reversão praticável. Sem essas condições, a abordagem transfere o risco diretamente para a produção. <span class="prm">PRM-MIG-002</span></span></div>
+      <div class="callout ok"><span class="ico">✅</span><span><strong>Padrão interno: migração paralela (greenfield).</strong> O novo ambiente é construído na versão-alvo; as cargas são migradas em ondas, validadas e mantidas com possibilidade de retorno ao ambiente antigo até o descomissionamento. Exceções, como atualizações secundárias e appliances com caminho oficial, exigem plano validado pela arquitetura e, quando necessário, carta de aceite de risco.</span></div>
     </div>
 
     <div class="aud" data-aud="arquitetura prevenda gestao">
@@ -824,7 +824,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
         <tr><td>Mesmo vCenter/SSO, novo cluster</td><td>vMotion + Storage vMotion</td><td>Baixo impacto; retorno por nova migração</td><td>CPU/EVC, redes, storage, licenças e duração estimada</td></tr>
         <tr><td>Cloud privada → cloud privada (vCenters distintos)</td><td><strong>Cross vCenter vMotion</strong></td><td>Baixo impacto quando compatível; rollback precisa ser planejado</td><td>Versões, SSO, 443/902, latência, MTU, rede da VM e permissões <span class="prm">PRM-MIG-003</span></td></tr>
         <tr><td>Mudança de site, re-IP, origem externa, grandes volumes ou rollback simples</td><td><strong>Réplica Veeam + failover planejado</strong></td><td>Interrupção controlada no delta final; origem preservada até o aceite</td><td>RPO, change rate, proxies, transporte, portas, espaço e consistência da aplicação <span class="prm">PRM-MIG-004</span></td></tr>
-        <tr><td>VMware → XenServer (ou troca de hypervisor)</td><td>Conversão (XenServer Conversion Manager / import OVF)</td><td>Validar guest OS support e drivers (remoção de Tools, instalação de guest agent).</td></tr>
+        <tr><td>VMware → XenServer (ou troca de hipervisor)</td><td>Conversão (XenServer Conversion Manager / importação de OVF)</td><td>Validar o suporte ao sistema operacional convidado e aos drivers; remover as Tools e instalar o agente adequado.</td></tr>
         <tr><td>Físico → virtual (P2V)</td><td>Veeam Agent → restore como VM / réplica</td><td>Testar boot e drivers em janela; ajustar HAL/storage drivers.</td></tr>
         <tr><td>Troca de versão de Windows/AD</td><td>Novo servidor + migração de papéis/dados; novo DC + FSMO</td><td>Nunca in-place em DC; file server via DFS/robocopy com ACLs.</td></tr>
         <tr><td>Troca de storage</td><td>Storage vMotion, replicação nativa do storage ou réplica Veeam</td><td>Escolher pelo downtime tolerado e compatibilidade entre arrays.</td></tr>
@@ -886,13 +886,13 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
           <li>6. Validar com o dono da aplicação; manter a origem como retorno até o aceite; depois executar permanent failover e descomissionamento formal.</li>
         </ul></div>
         <div class="card"><h4>Pré-requisitos</h4><ul style="font-size:.88rem;margin-left:18px">
-          <li><strong>Nosso lado:</strong> VBR atual (v13), proxies nas duas pontas, portas de data mover liberadas, repositório para metadata, licenças pelo nº de VMs, capacidade no destino.</li>
-          <li><strong>Lado do cliente:</strong> acesso ao vCenter/hosts de origem com privilégios adequados, firewall liberado (vCenter/hosts/proxies), janela de cutover, validação de consistência de aplicação (VSS/quiesce p/ bancos), plano de rollback acordado.</li>
+          <li><strong>Nosso lado:</strong> VBR atual (v13), proxies nas duas pontas, portas do Data Mover liberadas, repositório para metadados, licenças conforme o número de VMs e capacidade disponível no destino.</li>
+          <li><strong>Lado do cliente:</strong> acesso ao vCenter e aos hosts de origem com privilégios adequados, firewall liberado entre vCenter, hosts e proxies, janela de cutover, validação da consistência das aplicações (VSS ou quiesce para bancos de dados) e plano de rollback acordado.</li>
           <li><strong>Ambos:</strong> inventário e ondas definidos por criticidade e afinidade de aplicações (PRM-MIG-005/007).</li>
         </ul></div>
       </div>
       <div class="card" data-tags="runbook implementacao veeam gates go no-go aceite"><h4>Gates de implementação</h4><ol style="font-size:.88rem;margin:8px 0 0 20px">
-        <li><strong>Desenho aprovado:</strong> papéis, sizing, transport mode, redes, portas e segurança.</li>
+        <li><strong>Desenho aprovado:</strong> papéis, dimensionamento, modo de transporte, redes, portas e segurança.</li>
         <li><strong>Piloto aprovado:</strong> uma carga representativa replicada, iniciada em rede isolada e validada.</li>
         <li><strong>Onda pronta:</strong> último job OK, replica Ready, delta dentro do RPO, destino com capacidade e aplicação disponível para teste.</li>
         <li><strong>Go/no-go:</strong> decisão nominal antes de desligar a origem; falha de requisito cancela a onda.</li>
@@ -932,7 +932,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <div class="card"><p><strong>Sequência:</strong> físico e firmware (GER-005/006) → rede/NTP/DNS/MTU validados antes do software (GER-003) → plataforma conforme premissa do produto → hardening e usuários padrão (GER-002) → monitoramento (GER-004) → testes com evidência (HA, multipath, MTU, restore).</p></div></div>
 
     <div class="aud" data-aud="tecnico gestao"><div class="band">Fase 4 · Transição e Aceite</div>
-    <div class="card"><p><strong>Critérios:</strong> zero alertas críticos; Runbook/ETI/Topologia no ServiceNow; credenciais e iLO/iDRAC cadastradas; serial aplicado; evidências anexadas; handover ao suporte com particularidades registradas.</p></div></div>
+    <div class="card"><p><strong>Critérios:</strong> nenhum alerta crítico; Runbook, ETI e topologia no ServiceNow; credenciais e iLO/iDRAC cadastradas; número de série aplicado; evidências anexadas; transição para o suporte com as particularidades registradas.</p></div></div>
 
     <div class="aud" data-aud="gestao tecnico"><div class="band">Fase 5 · Suporte e Operação</div>
     <table>
@@ -973,13 +973,13 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <tr data-tags="vmware thin thick vmxnet3"><td><span class="prm">PRM-VMW-010</span></td><td>VMXNET3; SCSI e formato de disco por workload; Hot Add off por padrão.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="vmware cpu ready baseline"><td><span class="prm">PRM-VMW-011</span></td><td>CPU, NUMA, memória, storage e rede avaliados por baseline e SLA.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="vmware hardening"><td><span class="prm">PRM-VMW-012</span></td><td>Hardening: SSH/Shell off, timeout 900 s, credenciais no SNOW, LCM.</td><td><span class="pill ob">Obrigatório</span></td></tr>
-      <tr data-tags="vmware srm rpo"><td><span class="prm">PRM-VMW-013</span></td><td>Replicação/SRM: link p/ RPO/RTO da ETI; failover testado.</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="vmware srm rpo"><td><span class="prm">PRM-VMW-013</span></td><td>Replicação/SRM: link dimensionado para o RPO/RTO da ETI; failover testado.</td><td><span class="pill fx">Flexível</span></td></tr>
       <tr data-tags="vmware acesso cliente"><td><span class="prm">PRM-VMW-014</span></td><td>Acesso do cliente via role ACESSO_CLIENTE.</td><td><span class="pill fx">Flexível</span></td></tr>
       <tr data-tags="xenserver ha 3"><td><span class="prm">PRM-XEN-001</span></td><td>HA: pool ≥3 hosts licenciados; heartbeat SR ≥4 GB.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="xenserver hcl"><td><span class="prm">PRM-XEN-002</span></td><td>Todo hardware na HCL do XenServer.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="xenserver 16 vcpu"><td><span class="prm">PRM-XEN-003</span></td><td>≤16 vCPU/core; RAM ≤95% standalone; overcommit 30% / proteção &gt;75%.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="xenserver thick 20"><td><span class="prm">PRM-XEN-004</span></td><td>Thick obrigatório; SR 20% livre; latência &lt;30 ms.</td><td><span class="pill ob">Obrigatório</span></td></tr>
-      <tr data-tags="xenserver bond intel"><td><span class="prm">PRM-XEN-005</span></td><td>6+ NICs em bonds; iSCSI dedicado; preferir Intel; sem NAT p/ XenCenter.</td><td><span class="pill fx">Flexível</span></td></tr>
+      <tr data-tags="xenserver bond intel"><td><span class="prm">PRM-XEN-005</span></td><td>Seis ou mais NICs em bonds; iSCSI dedicado; preferir Intel; sem NAT para o XenCenter.</td><td><span class="pill fx">Flexível</span></td></tr>
       <tr data-tags="xenserver multipath wlb"><td><span class="prm">PRM-XEN-006</span></td><td>Multipath RR; WLB Max Performance; SSH no boot; Zabbix Citrix.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="windows contas"><td><span class="prm">PRM-WIN-001</span></td><td>Administrator→eqxadmin; serviços nunca administrativos.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="windows ntfs"><td><span class="prm">PRM-WIN-002</span></td><td>NTFS; C: ≥100 GB; dados em D:.</td><td><span class="pill ob">Obrigatório</span></td></tr>
@@ -993,10 +993,10 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <tr data-tags="ad exclusivo"><td><span class="prm">PRM-AD-001</span></td><td>Host exclusivo AD DS + DNS.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="ad 2 dcs"><td><span class="prm">PRM-AD-002</span></td><td>≥2 DCs/site com antiafinidade; replicação ≤5 min.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="ad fsmo"><td><span class="prm">PRM-AD-003</span></td><td>FSMOs distribuídas; owners no CI.</td><td><span class="pill ob">Obrigatório</span></td></tr>
-      <tr data-tags="ad dsrm"><td><span class="prm">PRM-AD-004</span></td><td>Administrator off; DSRM no SNOW; cliente sem admin (ou Risk Letter).</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="ad dsrm"><td><span class="prm">PRM-AD-004</span></td><td>Administrator desabilitado; credencial DSRM no SNOW; cliente sem acesso administrativo, salvo aceite formal de risco.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="ad gpo senha"><td><span class="prm">PRM-AD-005</span></td><td>GPOs padrão; senha 14/60/24; lockout 6; auditoria DC.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="ad dns"><td><span class="prm">PRM-AD-006</span></td><td>Forwarders Equinix; reversa integrada; scavenging.</td><td><span class="pill ob">Obrigatório</span></td></tr>
-      <tr data-tags="ad virtual time"><td><span class="prm">PRM-AD-007</span></td><td>Time sync do hypervisor off; domínio interno; nível ≥2012 R2.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="ad virtual time"><td><span class="prm">PRM-AD-007</span></td><td>Sincronização de horário do hipervisor desativada; domínio interno; nível funcional ≥ 2012 R2.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="ad dcdiag"><td><span class="prm">PRM-AD-008</span></td><td>Health check DCDIAG/repadmin; portas AD liberadas.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="storage fabric"><td><span class="prm">PRM-STG-001</span></td><td>≥2 controladoras × 2 portas em fabrics A/B.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="storage raid0"><td><span class="prm">PRM-STG-002</span></td><td>Sem RAID-0; hotspare; só discos homologados.</td><td><span class="pill ob">Obrigatório</span></td></tr>
@@ -1011,7 +1011,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <tr data-tags="switch firmware"><td><span class="prm">PRM-SW-004</span></td><td>Firmware recomendado; release notes; stack em versão única.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="switch bpdu vlan"><td><span class="prm">PRM-SW-005</span></td><td>BPDU/Root Guard; storm-control; native VLAN não-default.</td><td><span class="pill fx">Flexível</span></td></tr>
       <tr data-tags="switch stack licencas"><td><span class="prm">PRM-SW-006</span></td><td>Stacking/VSX/VLT/VC; licenças redundantes.</td><td><span class="pill fx">Flexível</span></td></tr>
-      <tr data-tags="switch sts eletrica"><td><span class="prm">PRM-SW-007</span></td><td>2 réguas independentes; STS p/ monofonte.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="switch sts eletrica"><td><span class="prm">PRM-SW-007</span></td><td>Duas réguas independentes; STS para equipamento com uma única fonte.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="switch snmp syslog"><td><span class="prm">PRM-SW-008</span></td><td>SNMP/Zabbix; syslog; backup de config; SNOW completo.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="veeam so"><td><span class="prm">PRM-VBR-001</span></td><td>VBR em plataforma homologada (Windows atual ou Appliance); v13 padrão.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="veeam proxy"><td><span class="prm">PRM-VBR-002</span></td><td>Proxy: 1 vCPU + 2 GB por task; calculadora oficial.</td><td><span class="pill ob">Obrigatório</span></td></tr>
@@ -1029,7 +1029,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <tr data-tags="commvault nomenclatura"><td><span class="prm">PRM-CVLT-007</span></td><td>STP_/SCH_/DL_ com Nickname.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="commvault antivirus fisica"><td><span class="prm">PRM-CVLT-008</span></td><td>Exclusões de antivírus; segurança física de robôs/fitas.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="migracao matriz decisao"><td><span class="prm">PRM-MIG-001</span></td><td>Abordagem de migração definida pela matriz de decisão e documentada no plano.</td><td><span class="pill ob">Obrigatório</span></td></tr>
-      <tr data-tags="migracao in-place paralelo greenfield"><td><span class="prm">PRM-MIG-002</span></td><td>Upgrade in-place não recomendado (major); padrão é migração paralela; exceções com plano validado e Risk Letter.</td><td><span class="pill ob">Obrigatório</span></td></tr>
+      <tr data-tags="migracao in-place paralelo greenfield"><td><span class="prm">PRM-MIG-002</span></td><td>Atualização de versão principal no ambiente atual não recomendada; o padrão é a migração paralela. Exceções exigem plano validado e aceite formal de risco.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="cross vcenter vmotion pre requisitos"><td><span class="prm">PRM-MIG-003</span></td><td>Cross vCenter vMotion só com pré-requisitos validados dos dois lados (versões, 443/902, permissões, rede/EVC, plano de IP).</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="veeam replica failover planejado re-ip"><td><span class="prm">PRM-MIG-004</span></td><td>Migração por réplica Veeam com failover planejado, re-IP mapeado e failback como rollback até o aceite.</td><td><span class="pill ob">Obrigatório</span></td></tr>
       <tr data-tags="volumetria link janela prazo"><td><span class="prm">PRM-MIG-005</span></td><td>Prazo só após calcular volumetria × throughput real × janela; seeding/ondas quando não fechar.</td><td><span class="pill ob">Obrigatório</span></td></tr>
@@ -1079,7 +1079,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <label><input type="checkbox"> Zabbix com template correto + Atlas/CSR ativos</label>
       <label><input type="checkbox"> Testes com evidência (HA, multipath, MTU, restore)</label>
       <label><input type="checkbox"> Runbook, ETI e Topologia completos</label>
-      <label><input type="checkbox"> Handover ao suporte com particularidades registradas</label>
+      <label><input type="checkbox"> Transição para o suporte com as particularidades registradas</label>
     </div></div>
   </section>
 
@@ -1089,16 +1089,16 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <h2 class="page-title">FAQ e Erros Comuns</h2>
     <p class="page-sub">Perguntas que aparecem toda semana, respondidas uma vez.</p>
 
-    <details data-tags="in-place upgrade paralelo porque"><summary>Por que não fazemos upgrade in-place?</summary><div class="body"><p>Porque herda problemas e drivers antigos, dificulta (ou impossibilita) o rollback e transforma incompatibilidades em incidentes de produção. O padrão é migração paralela: ambiente novo na versão-alvo + migração em ondas, com o antigo servindo de rollback (PRM-MIG-002). Exceções: minor updates e caminhos oficiais de appliance, com plano validado.</p></div></details>
+    <details data-tags="in-place upgrade paralelo porque"><summary>Por que a atualização no ambiente atual não é o padrão?</summary><div class="body"><p>Porque ela pode herdar problemas e drivers antigos, dificultar ou impossibilitar o rollback e transformar incompatibilidades em incidentes de produção. O padrão é a migração paralela: ambiente novo na versão-alvo e migração em ondas, com o ambiente antigo disponível para retorno (PRM-MIG-002). Atualizações secundárias e caminhos oficiais de appliances são exceções possíveis, desde que exista um plano validado.</p></div></details>
     <details data-tags="cross vcenter quando usar replica veeam"><summary>Cross vCenter vMotion ou réplica Veeam — qual uso?</summary><div class="body"><p>Cross vCenter quando as duas pontas são vSphere suportado, há rede/latência adequada e o objetivo é mover sem downtime dentro do mundo VMware. Réplica Veeam quando a volumetria/link pedem seeding, a origem está fora do nosso controle, há mudança de IP/site, ou se quer rollback simples via failback (PRM-MIG-003/004). A matriz completa está em <a href="#migracoes">Migrações</a>.</p></div></details>
     <details data-tags="snapshot backup"><summary>Snapshot (VM ou storage) serve como backup?</summary><div class="body"><p>Não. Snapshot depende do volume original. Backup exige cópia independente com retenção e restore testado (PRM-VBR/CVLT).</p></div></details>
     <details data-tags="thin thick"><summary>Posso usar thin provisioning?</summary><div class="body"><p>No VMware, sim: é suportado quando o projeto inclui capacity planning, alarmes e controle da capacidade física. A escolha entre thin e thick depende de storage, VAAI, desempenho, backup e aplicação. No XenServer, seguir a premissa e a matriz específicas.</p></div></details>
     <details data-tags="vsphere 7 versao"><summary>Cliente quer ativar em vSphere 7. Pode?</summary><div class="body"><p>Não para novas ativações: o suporte geral terminou em out/2025. Preferir ESX/vCenter 9.1 quando toda a solução estiver certificada ou vSphere 8.0 U3j quando hardware e integrações ainda exigirem a linha 8.</p></div></details>
     <details data-tags="dc snapshot restaurar usn"><summary>Posso restaurar um DC por snapshot?</summary><div class="body"><p><strong>Nunca.</strong> Causa USN rollback e corrompe a replicação do domínio. Recuperação de DC segue método suportado (backup system state / novo DC + FSMO).</p></div></details>
-    <details data-tags="frontend backend backup"><summary>Frontend × backend no backup?</summary><div class="body"><p>Frontend = volume protegido (licença). Backend = disco p/ guardar dados + retenção (hardware). 10 TB de frontend podem virar 30+ TB de backend.</p></div></details>
+    <details data-tags="frontend backend backup"><summary>O que significam frontend e backend no backup?</summary><div class="body"><p>Frontend é o volume protegido, normalmente usado no licenciamento. Backend é a capacidade necessária para armazenar os backups e atender à retenção. Por isso, 10 TB de frontend podem exigir mais de 30 TB de backend.</p></div></details>
     <details data-tags="mtu 9000 teste"><summary>Como valido MTU 9000?</summary><div class="body"><p>Windows: <code>ping -f -l 9000</code> · VMware: <code>vmkping -s 8972 -d</code> · Linux/Xen: <code>ping -M do -s 8972</code>. Falhou = algum ponto sem jumbo (PRM-STG-004).</p></div></details>
     <details data-tags="pagefile automatico"><summary>Por que o page file não fica automático?</summary><div class="body"><p>Cresce sem controle (enche o C:) ou fica pequeno para dump de kernel. Tamanhos por faixa de RAM na PRM-WIN-003.</p></div></details>
-    <details data-tags="veeam v13 upgrade"><summary>Como ir para o Veeam v13?</summary><div class="body"><p>Upgrade in-place suportado a partir do 12.3.1; verificar SOs/hypervisors que saíram da matriz; janela com rollback. Novas ativações: v13 direto (avaliar Software Appliance).</p></div></details>
+    <details data-tags="veeam v13 upgrade"><summary>Como atualizar para o Veeam v13?</summary><div class="body"><p>A atualização no ambiente atual é suportada a partir da versão 12.3.1. Verifique os sistemas operacionais e hipervisores removidos da matriz e defina uma janela com rollback. Em novas ativações, instale diretamente a v13 e avalie o uso do Software Appliance.</p></div></details>
     <p class="no-results" id="noFaq">Nenhuma pergunta encontrada para essa busca.</p>
   </section>
 
@@ -1190,13 +1190,13 @@ function buildJourney(){
 }
 
 const guideOverviews={
-  comece:[['Escolha a entrada','Produto, etapa ou papel profissional.'],['Filtre seu papel','Veja apenas o que apoia sua decisao.'],['Valide a fonte','Confirme vigencia e referencia oficial.']],
-  radar:[['Consulte o status','Identifique itens vigentes e em revisao.'],['Valide a matriz','Confirme compatibilidade antes de definir.'],['Registre a decisao','Documente versao, excecao e responsavel.']],
-  jornada:[['Confirme a entrada','Alinhe escopo, responsavel e criterio.'],['Execute a fase','Use premissas e entregaveis esperados.'],['Comprove a saida','Registre evidencia, aceite e transicao.']],
-  premissas:[['Busque o codigo','Localize rapidamente o requisito aplicavel.'],['Leia o contexto','Entenda fabricante e pratica interna.'],['Registre excecoes','Formalize impacto, aceite e aprovador.']],
-  checklists:[['Marque localmente','Acompanhe a execucao sem alterar a fonte.'],['Colete evidencias','Associe cada conclusao a uma comprovacao.'],['Formalize o aceite','Encerre com responsavel e transicao.']],
-  faq:[['Pesquise primeiro','Use termos de produto, etapa ou decisao.'],['Aplique com contexto','Confirme se a resposta vale para o projeto.'],['Documente recorrencias','Transforme duvidas repetidas em melhoria.']],
-  docs:[['Abra a fonte','Priorize documentacao oficial do fabricante.'],['Confirme a vigencia','Consulte versao, data e ciclo de suporte.'],['Revalide referencias','Revise links antes de reutilizar a decisao.']]
+  comece:[['Escolha a entrada','Produto, etapa ou papel profissional.'],['Filtre seu papel','Veja apenas o que apoia sua decisão.'],['Valide a fonte','Confirme a vigência e a referência oficial.']],
+  radar:[['Consulte o status','Identifique itens vigentes e em revisão.'],['Valide a matriz','Confirme a compatibilidade antes de definir.'],['Registre a decisão','Documente a versão, a exceção e o responsável.']],
+  jornada:[['Confirme a entrada','Alinhe o escopo, o responsável e o critério.'],['Execute a fase','Use as premissas e os entregáveis esperados.'],['Comprove a saída','Registre a evidência, o aceite e a transição.']],
+  premissas:[['Busque o código','Localize rapidamente o requisito aplicável.'],['Leia o contexto','Entenda a orientação do fabricante e a prática interna.'],['Registre exceções','Formalize o impacto, o aceite e o aprovador.']],
+  checklists:[['Marque localmente','Acompanhe a execução sem alterar a fonte.'],['Colete evidências','Associe cada conclusão a uma comprovação.'],['Formalize o aceite','Encerre com o responsável e a transição.']],
+  faq:[['Pesquise primeiro','Use termos de produto, etapa ou decisão.'],['Aplique com contexto','Confirme se a resposta é válida para o projeto.'],['Documente recorrências','Transforme dúvidas repetidas em melhorias.']],
+  docs:[['Abra a fonte','Priorize a documentação oficial do fabricante.'],['Confirme a vigência','Consulte a versão, a data e o ciclo de suporte.'],['Revalide referências','Revise os links antes de reutilizar a decisão.']]
 };
 function favoriteIds(){try{return JSON.parse(localStorage.getItem('imbr_favorites')||'[]')}catch(e){return[]}}
 function showToast(message){
@@ -1212,15 +1212,15 @@ function buildPageFramework(){
     page.insertBefore(header,crumb||title);[crumb,title,sub].filter(Boolean).forEach(el=>header.appendChild(el));
     const actions=document.createElement('div');actions.className='page-actions';
     const copy=document.createElement('button');copy.type='button';copy.className='page-action';copy.textContent='Copiar link';
-    copy.addEventListener('click',async()=>{const url=location.href.split('#')[0]+'#'+page.id;try{await navigator.clipboard.writeText(url)}catch(e){const input=document.createElement('textarea');input.value=url;document.body.appendChild(input);input.select();document.execCommand('copy');input.remove()}showToast('Link da pagina copiado')});
+    copy.addEventListener('click',async()=>{const url=location.href.split('#')[0]+'#'+page.id;try{await navigator.clipboard.writeText(url)}catch(e){const input=document.createElement('textarea');input.value=url;document.body.appendChild(input);input.select();document.execCommand('copy');input.remove()}showToast('Link da página copiado')});
     const favorite=document.createElement('button');favorite.type='button';favorite.className='page-action';
     const syncFavorite=()=>{const active=favoriteIds().includes(page.id);favorite.classList.toggle('active',active);favorite.textContent=active?'Favoritada':'Favoritar'};syncFavorite();
-    favorite.addEventListener('click',()=>{let ids=favoriteIds();ids=ids.includes(page.id)?ids.filter(id=>id!==page.id):[page.id,...ids].slice(0,12);try{localStorage.setItem('imbr_favorites',JSON.stringify(ids))}catch(e){}syncFavorite();showToast(favorite.classList.contains('active')?'Pagina adicionada aos favoritos':'Pagina removida dos favoritos')});
+    favorite.addEventListener('click',()=>{let ids=favoriteIds();ids=ids.includes(page.id)?ids.filter(id=>id!==page.id):[page.id,...ids].slice(0,12);try{localStorage.setItem('imbr_favorites',JSON.stringify(ids))}catch(e){}syncFavorite();showToast(favorite.classList.contains('active')?'Página adicionada aos favoritos':'Página removida dos favoritos')});
     const print=document.createElement('button');print.type='button';print.className='page-action';print.textContent='Imprimir';print.addEventListener('click',()=>window.print());
     actions.append(copy,favorite,print);header.appendChild(actions);
     const items=guideOverviews[page.id];if(items){
-      const overview=document.createElement('div');overview.className='page-overview';overview.setAttribute('aria-label','Como usar esta pagina');
-      items.forEach(([label,description],i)=>{const item=document.createElement('div');item.className='overview-item';item.innerHTML=`<span class="overview-num">0${i+1}</span><strong>${label}</strong><span>${description}</span>`;overview.appendChild(item)});
+      const overview=document.createElement('div');overview.className='page-overview';overview.setAttribute('aria-label','Como usar esta página');
+      items.forEach(([label,description],i)=>{const item=document.createElement('div');item.className='overview-item';item.innerHTML=`<span class="overview-num">Passo ${i+1}</span><strong>${label}</strong><span>${description}</span>`;overview.appendChild(item)});
       header.insertAdjacentElement('afterend',overview);
     }
   });
