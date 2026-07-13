@@ -14,6 +14,7 @@ O portal oferece:
 - Premissas para Pré-venda, Arquitetura, Implementação e Suporte.
 - Radar de versões e governança técnica.
 - Checklists, matriz de migração e critérios de aceite.
+- Base de conhecimento com vídeos, exemplos e orientações práticas.
 - Acesso aos documentos completos e às fontes oficiais.
 
 O conteúdo apoia decisões, mas não substitui o registro formal de escopo, riscos, exceções, evidências e aprovações nos sistemas oficiais.
@@ -54,6 +55,7 @@ O portal utiliza HTML, CSS e JavaScript, sem framework ou processo de compilaç�
 public/
 ├── index.html                         # Portal
 ├── imagens/                           # Diagramas e recursos visuais
+├── videos/                            # Conteúdos audiovisuais da base
 └── premissas/                         # Documentos técnicos completos
 
 .github/workflows/deploy-pages.yml     # Publicação manual

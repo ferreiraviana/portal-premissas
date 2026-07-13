@@ -187,10 +187,11 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
 .toast{position:fixed;left:50%;bottom:28px;z-index:100;transform:translate(-50%,15px);padding:10px 14px;border-radius:9px;background:var(--ink);color:#fff;font-size:.75rem;box-shadow:0 12px 35px rgba(0,0,0,.22);opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
 .decision-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 25px}.decision-card{padding:17px;border:1px solid var(--line);border-radius:14px;background:#fff}.decision-card .pill{margin-bottom:10px}.decision-card h4{margin:0 0 6px;color:var(--ink);font:700 .82rem var(--font-display)}.decision-card p{margin:0;color:var(--muted);font-size:.72rem;line-height:1.5}.decision-card strong{color:var(--ink)}
 .migration-architecture{margin:12px 0 18px;padding:18px;border:1px solid #29475d;border-radius:16px;background:#101010;color:#eaf5f4;overflow:hidden}.migration-architecture img{display:block;width:100%;height:auto;max-height:680px;object-fit:contain;border-radius:8px}.arch-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:13px;color:#b9ced7;font-size:.68rem}.arch-legend span::before{content:"";display:inline-block;width:18px;height:3px;margin:0 7px 2px 0;background:#85a9ba}.arch-legend .data-key::before{background:#b7dd48}
+.knowledge-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:28px}.knowledge-cat{padding:15px;border:1px solid var(--line);border-radius:13px;background:#fff}.knowledge-cat b{display:block;margin-bottom:4px;color:var(--ink);font:700 .76rem var(--font-display)}.knowledge-cat span{color:var(--muted);font-size:.69rem;line-height:1.45}.media-card{overflow:hidden;margin-bottom:22px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow-sm)}.media-head{display:flex;justify-content:space-between;gap:18px;padding:18px 20px;border-bottom:1px solid var(--line)}.media-head h4{margin:0 0 5px;color:var(--ink);font:700 1rem var(--font-display)}.media-head p{margin:0;color:var(--muted);font-size:.75rem}.media-player{padding:18px;background:#101820}.media-player video{display:block;width:100%;max-height:620px;background:#000;border-radius:9px}.media-meta{display:flex;gap:8px;flex-wrap:wrap;padding:13px 20px}.code-example{position:relative;margin:12px 0 20px;padding:18px;border-radius:13px;background:#10283c;color:#dcebea;overflow:auto}.code-example pre{font:500 .72rem/1.65 var(--font-mono);white-space:pre}.code-example .code-label{display:block;margin-bottom:10px;color:#8bd5cc;font:700 .65rem var(--font-display);text-transform:uppercase;letter-spacing:.08em}
 @media(max-width:1100px){.team-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:900px){.quick-jump{max-width:none;flex:1}.recent-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:900px){.decision-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:700px){.section-intro{display:block}.section-intro p{text-align:left;margin-top:6px}.team-grid{grid-template-columns:1fr 1fr}.e2e-flow{grid-template-columns:repeat(7,160px)}.search-shortcut{display:none}.search input{padding-right:12px}.page-overview,.decision-grid{grid-template-columns:1fr}.page-header{padding:18px 17px}}
+@media(max-width:700px){.section-intro{display:block}.section-intro p{text-align:left;margin-top:6px}.team-grid{grid-template-columns:1fr 1fr}.e2e-flow{grid-template-columns:repeat(7,160px)}.search-shortcut{display:none}.search input{padding-right:12px}.page-overview,.decision-grid,.knowledge-cats{grid-template-columns:1fr}.page-header{padding:18px 17px}.media-head{display:block}.media-head .pill{margin-top:10px}}
 @media(max-width:480px){.team-grid{grid-template-columns:1fr}.catalog-stats{grid-template-columns:1fr}}
 </style>
 </head>
@@ -225,6 +226,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <a href="#premissas">Premissas (PRM)</a>
     <a href="#checklists">Checklists</a>
     <a href="#faq">FAQ e Erros Comuns</a>
+    <a href="#conhecimento">Base de Conhecimento</a>
     <a href="#docs">Documentos Originais</a>
   </nav>
   <div class="sidebar-foot"><strong>Uso interno · Implementation Management BR</strong>Conteúdo colaborativo para orientar decisões, entregas e transições ao longo da jornada.</div>
@@ -245,6 +247,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <option value="premissas">Biblioteca de premissas</option>
       <option value="checklists">Checklists</option>
       <option value="radar">Radar e governança</option>
+      <option value="conhecimento">Base de conhecimento</option>
       <option value="docs">Documentos completos</option>
     </select>
     <div class="personas" role="group" aria-label="Filtrar por perfil">
@@ -1087,6 +1090,89 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <p class="no-results" id="noFaq">Nenhuma pergunta encontrada para essa busca.</p>
   </section>
 
+  <!-- ================= BASE DE CONHECIMENTO ================= -->
+  <section class="page" id="conhecimento">
+    <div class="crumb">Biblioteca · Aprendizado técnico</div>
+    <h2 class="page-title">Base de Conhecimento</h2>
+    <p class="page-sub">Conteúdos práticos para planejar, implementar e sustentar as tecnologias do portfólio com segurança e consistência.</p>
+
+    <div class="aud" data-aud="todos">
+      <div class="band">Tecnologias cobertas <span class="who">· navegação por domínio</span></div>
+      <div class="knowledge-cats" data-tags="base conhecimento tecnologias vmware xenserver windows active directory storage rede veeam commvault migração">
+        <div class="knowledge-cat"><b>Virtualização</b><span>VMware vSphere, PowerCLI, Port Groups, vDS e XenServer.</span></div>
+        <div class="knowledge-cat"><b>Sistemas e diretório</b><span>Windows Server, Active Directory, DNS, identidade e automação.</span></div>
+        <div class="knowledge-cat"><b>Infraestrutura</b><span>Storage SAN, zoning, multipath, Switch TOR, VLAN e conectividade.</span></div>
+        <div class="knowledge-cat"><b>Proteção de dados</b><span>Veeam, Commvault, proxies, repositórios, restauração e replicação.</span></div>
+        <div class="knowledge-cat"><b>Migrações e atualizações</b><span>Escolha de abordagem, ondas, cutover, rollback e aceite.</span></div>
+        <div class="knowledge-cat"><b>Operação e suporte</b><span>Monitoramento, evidências, diagnóstico, documentação e transição.</span></div>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="todos arquitetura tecnico">
+      <div class="band">Conteúdo em destaque <span class="who">· VMware PowerCLI</span></div>
+      <article class="media-card" data-tags="video powershell powercli vmware portgroup port group vlan vds automação script">
+        <div class="media-head"><div><h4>Criação automatizada de Port Groups com PowerShell</h4><p>Automação repetível para criar Port Groups e associar VLANs em um vSphere Distributed Switch.</p></div><span class="pill ok2">Vídeo técnico</span></div>
+        <div class="media-player">
+          <video id="portgroupVideo" controls preload="metadata" playsinline aria-label="Vídeo sobre criação automatizada de Port Groups com PowerShell">
+            <source src="./videos/video1908671803.mp4" type="video/mp4">
+            Seu navegador não oferece suporte à reprodução deste vídeo.
+          </video>
+          <audio id="portgroupAudio" preload="metadata" aria-hidden="true">
+            <source src="./videos/audio1908671803.m4a" type="audio/mp4">
+          </audio>
+        </div>
+        <div class="media-meta"><span class="pill">VMware</span><span class="pill">PowerCLI</span><span class="pill">Automação</span><span class="pill">Rede virtual</span></div>
+      </article>
+
+      <div class="grid">
+        <div class="card"><h4>Quando usar</h4><ul>
+          <li>Criação padronizada de vários Port Groups.</li>
+          <li>Implantação de novos clusters ou ambientes.</li>
+          <li>Replicação de um padrão aprovado entre sites.</li>
+          <li>Redução de erros manuais em nome e VLAN.</li>
+        </ul></div>
+        <div class="card"><h4>Antes de executar</h4><ul>
+          <li>Validar vCenter, vDS, VLAN, nomenclatura e escopo.</li>
+          <li>Usar uma conta com o menor privilégio necessário.</li>
+          <li>Exportar a configuração atual e revisar o arquivo de entrada.</li>
+          <li>Executar primeiro em homologação ou em um conjunto piloto.</li>
+        </ul></div>
+      </div>
+
+      <div class="band">Exemplo de estrutura <span class="who">· adaptar ao padrão do projeto</span></div>
+      <div class="code-example"><span class="code-label">PowerShell · VMware PowerCLI</span><pre><code>Connect-VIServer -Server "vcenter.exemplo.local"
+
+$portGroups = Import-Csv ".\portgroups.csv"
+
+foreach ($item in $portGroups) {
+    $vds = Get-VDSwitch -Name $item.VDSwitch -ErrorAction Stop
+    $existing = Get-VDPortgroup -VDSwitch $vds -Name $item.PortGroup `
+        -ErrorAction SilentlyContinue
+
+    if (-not $existing) {
+        New-VDPortgroup -VDSwitch $vds -Name $item.PortGroup `
+            -VlanId ([int]$item.VlanId)
+    }
+}</code></pre></div>
+
+      <div class="callout warn"><span class="ico">⚠️</span><span><strong>Controle obrigatório:</strong> não execute o exemplo diretamente em produção. Confirme a versão do PowerCLI, os parâmetros disponíveis, o backup da configuração, as permissões, o padrão de nomes e a matriz de VLANs do projeto.</span></div>
+      <div class="callout tip"><span class="ico">💡</span><span><strong>Arquivo de entrada sugerido:</strong> colunas <code>VDSwitch</code>, <code>PortGroup</code> e <code>VlanId</code>. O script deve ser idempotente: se o Port Group já existir, registre o resultado e não o recrie.</span></div>
+    </div>
+
+    <div class="aud" data-aud="todos gestao">
+      <div class="band">Padrão para novos conteúdos <span class="who">· curadoria da base</span></div>
+      <table>
+        <tr><th>Campo</th><th>O que deve informar</th></tr>
+        <tr><td>Objetivo</td><td>Problema resolvido e resultado esperado.</td></tr>
+        <tr><td>Contexto</td><td>Tecnologia, versão, público e cenário aplicável.</td></tr>
+        <tr><td>Pré-requisitos</td><td>Acessos, dependências, riscos e validações.</td></tr>
+        <tr><td>Procedimento</td><td>Passos reproduzíveis, parâmetros e pontos de controle.</td></tr>
+        <tr><td>Validação</td><td>Evidências de sucesso, rollback e responsável pelo aceite.</td></tr>
+        <tr><td>Governança</td><td>Autor, revisão, fonte oficial e data da última validação.</td></tr>
+      </table>
+    </div>
+  </section>
+
   <!-- ================= DOCS ================= -->
   <section class="page" id="docs">
     <div class="crumb">Biblioteca</div>
@@ -1181,7 +1267,8 @@ const guideOverviews={
   premissas:[['Busque o código','Localize rapidamente o requisito aplicável.'],['Leia o contexto','Entenda a orientação do fabricante e a prática interna.'],['Registre exceções','Formalize o impacto, o aceite e o aprovador.']],
   checklists:[['Marque localmente','Acompanhe a execução sem alterar a fonte.'],['Colete evidências','Associe cada conclusão a uma comprovação.'],['Formalize o aceite','Encerre com o responsável e a transição.']],
   faq:[['Pesquise primeiro','Use termos de produto, etapa ou decisão.'],['Aplique com contexto','Confirme se a resposta é válida para o projeto.'],['Documente recorrências','Transforme dúvidas repetidas em melhorias.']],
-  docs:[['Abra a fonte','Priorize a documentação oficial do fabricante.'],['Confirme a vigência','Consulte a versão, a data e o ciclo de suporte.'],['Revalide referências','Revise os links antes de reutilizar a decisão.']]
+  docs:[['Abra a fonte','Priorize a documentação oficial do fabricante.'],['Confirme a vigência','Consulte a versão, a data e o ciclo de suporte.'],['Revalide referências','Revise os links antes de reutilizar a decisão.']],
+  conhecimento:[['Escolha o domínio','Localize a tecnologia ou o problema.'],['Valide o contexto','Confirme versão, cenário e pré-requisitos.'],['Aplique com controle','Teste, registre evidências e preserve o rollback.']]
 };
 function favoriteIds(){try{return JSON.parse(localStorage.getItem('imbr_favorites')||'[]')}catch(e){return[]}}
 function showToast(message){
@@ -1312,6 +1399,20 @@ document.querySelectorAll('.checklist input').forEach((cb,i)=>{
   try{cb.checked=localStorage.getItem(key)==='1';}catch(e){}
   cb.addEventListener('change',()=>{try{localStorage.setItem(key,cb.checked?'1':'0');}catch(e){}});
 });
+
+// A gravação foi exportada com vídeo e áudio em arquivos separados.
+const knowledgeVideo=document.getElementById('portgroupVideo');
+const knowledgeAudio=document.getElementById('portgroupAudio');
+if(knowledgeVideo&&knowledgeAudio){
+  const alignKnowledgeAudio=()=>{if(Number.isFinite(knowledgeVideo.currentTime))knowledgeAudio.currentTime=knowledgeVideo.currentTime};
+  knowledgeVideo.addEventListener('play',()=>{alignKnowledgeAudio();knowledgeAudio.playbackRate=knowledgeVideo.playbackRate;knowledgeAudio.play().catch(()=>{})});
+  knowledgeVideo.addEventListener('pause',()=>knowledgeAudio.pause());
+  knowledgeVideo.addEventListener('ended',()=>{knowledgeAudio.pause();knowledgeAudio.currentTime=0});
+  knowledgeVideo.addEventListener('seeking',alignKnowledgeAudio);
+  knowledgeVideo.addEventListener('ratechange',()=>knowledgeAudio.playbackRate=knowledgeVideo.playbackRate);
+  knowledgeVideo.addEventListener('volumechange',()=>{knowledgeAudio.volume=knowledgeVideo.volume;knowledgeAudio.muted=knowledgeVideo.muted});
+  knowledgeVideo.addEventListener('timeupdate',()=>{if(Math.abs(knowledgeAudio.currentTime-knowledgeVideo.currentTime)>.35)alignKnowledgeAudio()});
+}
 const toTop=document.getElementById('toTop');window.addEventListener('scroll',()=>toTop.classList.toggle('visible',scrollY>500),{passive:true});toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>
 </body>
