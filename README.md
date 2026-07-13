@@ -1,95 +1,134 @@
-# Portal Interno · Implementation Management BR
+# Portal Técnico · Implementation Management BR
 
-Portal colaborativo para orientar o processo de entrega de ponta a ponta — da qualificação da oportunidade à operação e ao suporte.
+> Base interna de referência para decisões, padrões e entregas técnicas ao longo do ciclo de implementação.
 
-Reúne práticas dos fabricantes, padrões internos, premissas técnicas e critérios de decisão em uma referência única para Pré-venda, Arquitetura, Implementation Management, Implementação e Suporte.
+## Sobre o projeto
 
-## Visão executiva
+Este repositório mantém um portal estático que consolida premissas, boas práticas de fabricantes, padrões internos e conhecimento operacional.
 
-O portal oferece:
+O objetivo é oferecer uma referência única, simples e rastreável para os profissionais envolvidos no planejamento, na implementação, na transição e na sustentação dos projetos.
 
-- Jornada de ponta a ponta com sete etapas.
-- Catálogo por produto e serviço técnico.
-- Busca global e filtros por perfil profissional.
-- Premissas para Pré-venda, Arquitetura, Implementação e Suporte.
-- Radar de versões e governança técnica.
-- Checklists, matriz de migração e critérios de aceite.
-- Base de conhecimento com vídeos, exemplos e orientações práticas.
-- Acesso aos documentos completos e às fontes oficiais.
-
-O conteúdo apoia decisões, mas não substitui o registro formal de escopo, riscos, exceções, evidências e aprovações nos sistemas oficiais.
-
-## Jornada
-
-1. Entrada e qualificação
-2. Pré-venda
-3. Transição comercial
-4. Planejamento
-5. Implementação
-6. Transição e aceite
-7. Operação e suporte
-
-Cada etapa deve deixar claros o responsável, as entradas, as dependências, a entrega esperada e o critério de conclusão.
-
-## Portfólio
-
-| Área | Produtos e serviços |
+| Item | Definição |
 |---|---|
-| Virtualização | VMware vSphere e XenServer/Citrix |
-| Sistemas e diretório | Windows Server e Active Directory + DNS |
-| Infraestrutura | Storage SAN e Switch TOR/Rede |
-| Proteção de dados | Veeam Backup & Replication e Commvault |
-| Serviços de projeto | Migrações e atualizações |
+| Público | Uso interno |
+| Responsável | Implementation Management BR |
+| Aplicação | Portal estático em HTML, CSS e JavaScript |
+| Dependências | Nenhuma |
+| Publicação | GitHub Pages por workflow manual |
 
-## Como acessar
+## Principais recursos
 
-- Abra `public/index.html` diretamente no navegador.
-- Use o Live Server no VS Code para editar e visualizar localmente.
-- Publique a pasta `public/` somente em servidor interno ou ambiente com acesso controlado.
+- Jornada de entrega de ponta a ponta.
+- Catálogo técnico organizado por produto e capacidade.
+- Busca global e filtros por contexto profissional.
+- Premissas, checklists e critérios de aceite.
+- Radar de versões e referências oficiais.
+- Matriz de decisão para migrações e atualizações.
+- Base de conhecimento com vídeos e exemplos práticos.
+- Navegação responsiva, favoritos e links diretos.
 
-O portal utiliza HTML, CSS e JavaScript, sem framework ou processo de compilação.
+## Cobertura técnica
 
-## Estrutura
+A organização abaixo representa domínios de conhecimento do portal, não a estrutura organizacional da empresa.
 
-```text
-public/
-├── index.html                         # Portal
-├── imagens/                           # Diagramas e recursos visuais
-├── videos/                            # Conteúdos audiovisuais da base
-└── premissas/                         # Documentos técnicos completos
+| Domínio | Tecnologias e temas |
+|---|---|
+| Plataformas de virtualização | VMware vSphere, PowerCLI e XenServer/Citrix |
+| Sistemas e identidade | Windows Server, Active Directory e DNS |
+| Dados e conectividade | Storage SAN, multipath, Switch TOR, VLAN e redes |
+| Continuidade e proteção | Veeam Backup & Replication, Commvault, restauração e replicação |
+| Transformação de ambientes | Migrações, atualizações, cutover, rollback e transição operacional |
 
-.github/workflows/deploy-pages.yml     # Publicação manual
-README.md
+Novas tecnologias devem ser incorporadas pelo contexto técnico e pela etapa da jornada em que são utilizadas, sem depender do nome de uma área interna.
+
+## Início rápido
+
+Clone o repositório e abra o portal:
+
+```powershell
+git clone https://github.com/ferreiraviana/portal-premissas.git
+cd portal-premissas
+start public/index.html
 ```
 
-## Manutenção do conteúdo
+Para desenvolvimento, abra o projeto no VS Code e utilize o Live Server:
 
-- Use linguagem direta, objetiva e compreensível para diferentes áreas.
-- Valide versões, builds, compatibilidade, licenciamento e suporte nas fontes oficiais.
-- Diferencie requisitos obrigatórios, recomendações e decisões específicas do projeto.
-- Inclua termos e sinônimos em `data-tags` para melhorar a busca.
-- Registre exceções, riscos, responsáveis e aprovações.
-- Revise ortografia, links, responsividade e documentos relacionados.
-- Inclua imagens e alterações do HTML no mesmo commit.
+```powershell
+code .
+```
+
+Não há instalação de pacotes, compilação ou geração de artefatos.
+
+## Estrutura do repositório
+
+```text
+.
+├── public/
+│   ├── index.html             # Interface, conteúdo e comportamentos
+│   ├── imagens/               # Diagramas e recursos visuais
+│   ├── videos/                # Conteúdo audiovisual sanitizado
+│   └── premissas/             # Documentos técnicos completos
+├── .github/workflows/
+│   └── deploy-pages.yml       # Publicação manual no GitHub Pages
+├── .vscode/                   # Configuração recomendada do editor
+└── README.md
+```
+
+## Padrão de conteúdo
+
+Cada conteúdo deve responder objetivamente:
+
+1. Qual problema ou decisão ele apoia?
+2. Em qual contexto e versão ele é válido?
+3. Quais são os pré-requisitos e riscos?
+4. Como implementar e validar?
+5. Qual é o critério de aceite ou rollback?
+6. Qual fonte oficial sustenta a orientação?
+
+Requisitos citáveis devem utilizar um código PRM. Exceções precisam registrar impacto, responsável e aprovação.
+
+## Contribuição
+
+1. Crie uma branch para a alteração.
+2. Atualize o portal e os documentos relacionados.
+3. Inclua imagens e vídeos no mesmo commit das referências no HTML.
+4. Valide busca, links, responsividade, ortografia e informações sensíveis.
+5. Abra um Pull Request com objetivo, impacto e fontes consultadas.
+6. Solicite revisão ao responsável pelo domínio técnico afetado.
+
+Exemplo:
+
+```powershell
+git checkout -b docs/atualiza-premissa
+git add -A
+git commit -m "docs: atualiza premissa técnica"
+git push -u origin docs/atualiza-premissa
+```
 
 ## Governança
 
-- O Radar de Versões deve ser revisado periodicamente e após mudanças relevantes dos fabricantes.
-- Alterações técnicas devem passar por revisão do responsável pelo conteúdo.
-- Arquiteturas implementadas são referências, não regras universais.
-- Implementação e Suporte devem manter evidências e particularidades nos sistemas oficiais.
+- Validar versões, builds, compatibilidade, licenciamento e suporte nas fontes oficiais.
+- Revisar o Radar de Versões periodicamente e após mudanças relevantes.
+- Tratar arquiteturas implementadas como referências, não como regras universais.
+- Manter decisões, evidências e particularidades nos sistemas oficiais do projeto.
+- Preservar linguagem direta, consistência editorial e rastreabilidade das alterações.
 
-## Segurança e publicação
+## Segurança
 
-Os documentos podem conter informações internas, como IPs, nomes de hosts e padrões operacionais. O repositório e o portal devem permanecer em ambiente autorizado.
+Este repositório pode conter informações internas. Antes de qualquer commit ou publicação:
 
-Um repositório privado não torna automaticamente o GitHub Pages privado. Antes de executar o workflow manual de publicação:
+- Remova credenciais, tokens, nomes sensíveis e dados desnecessários.
+- Sanitize capturas, diagramas, áudios e vídeos.
+- Confirme a visibilidade efetiva do GitHub Pages.
+- Verifique os controles de acesso da organização.
+- Obtenha aprovação quando houver conteúdo restrito.
 
-1. Confirme a visibilidade efetiva do site.
-2. Verifique o controle de acesso disponível para a organização.
-3. Remova ou sanitize informações sensíveis.
-4. Obtenha a aprovação de Segurança ou Governança.
+Um repositório privado não torna automaticamente o site do GitHub Pages privado.
+
+## Licença e uso
+
+Conteúdo proprietário para uso interno. Redistribuição, publicação externa ou reutilização fora do contexto autorizado depende de aprovação formal.
 
 ---
 
-Uso interno · Implementation Management BR
+Mantido por **Implementation Management BR**.
