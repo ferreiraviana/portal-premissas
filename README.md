@@ -68,8 +68,8 @@ Recursos disponíveis:
 ├── public/
 │   ├── index.html                         # Portal em HTML, CSS e JavaScript
 │   ├── .nojekyll                          # Publicação sem processamento do Jekyll
-│   ├── Imagens/
-│   │   └── Arquitetura replicação veeam.jpg
+│   ├── imagens/
+│   │   └── arquitetura-replicacao-veeam.jpg
 │   └── premissas/                         # Documentos técnicos completos
 ├── .github/
 │   └── workflows/
@@ -131,7 +131,7 @@ Inclua termos técnicos, variações de escrita e sinônimos que ajudem o usuár
 
 ### Imagens
 
-- Armazene os arquivos em `public/Imagens/`.
+- Armazene os arquivos em `public/imagens/`.
 - Use nomes descritivos e inclua o arquivo no mesmo commit do HTML.
 - Informe texto alternativo no elemento `<img>`.
 - Comprima imagens sem prejudicar a leitura de rótulos e diagramas.
@@ -176,7 +176,7 @@ Um repositório privado não torna automaticamente o site do GitHub Pages privad
 
 ```powershell
 git checkout -b atualiza-portal
-git add public/index.html public/premissas public/Imagens README.md
+git add public/index.html public/premissas public/imagens README.md
 git commit -m "Atualiza conteúdo do portal"
 git push -u origin atualiza-portal
 ```

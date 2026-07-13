@@ -857,7 +857,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <div class="aud" data-aud="arquitetura tecnico">
       <div class="band">Réplica Veeam como migração <span class="who">· pré-requisitos e método</span></div>
       <div class="migration-architecture" data-tags="arquitetura veeam proxy local remoto repository data mover portas">
-        <img src="Imagens/Arquitetura%20replica%C3%A7%C3%A3o%20veeam.jpg" alt="Arquitetura de replicação Veeam com Backup Server orquestrador, proxies local e remoto, hosts VMware de origem e destino e servidor de backup do cliente" loading="lazy">
+        <img src="./imagens/arquitetura-replicacao-veeam.jpg" alt="Arquitetura de replicação Veeam com Backup Server orquestrador, proxies local e remoto, hosts VMware de origem e destino e servidor de backup do cliente" loading="lazy">
         <div class="arch-legend"><span>Plano de controle e acesso à infraestrutura</span><span class="data-key">Caminho dos dados de réplica</span><span>Diagrama do projeto implementado</span><span>* Revalidar direção e portas para a versão aplicada ao novo projeto</span></div>
       </div>
       <div class="callout tip"><span class="ico">↔</span><span><strong>Leitura do desenho:</strong> o Backup Server orquestra; ele não deve ser presumido como caminho dos dados. Proxies locais reduzem tráfego desnecessário e concentram o processamento perto de cada vSphere. Para VBR 13, a referência oficial inclui 443/902 para VMware e 6162 ou 2500–3300 para serviços de transporte em diversos fluxos; firewall deve ser derivado da tabela oficial para os papéis realmente usados.</span></div>
