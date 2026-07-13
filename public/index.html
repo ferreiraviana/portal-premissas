@@ -176,8 +176,14 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
 .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:34px}.team-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;text-decoration:none;color:var(--text)}.team-card:hover{border-color:#91c5bf}.team-card b{display:block;color:var(--ink);font:700 .8rem var(--font-display);margin-bottom:5px}.team-card small{display:block;color:var(--muted);font-size:.7rem;line-height:1.45}.team-card em{display:inline-block;margin-top:10px;color:var(--accent);font:600 .66rem var(--font-display);font-style:normal}
 .internal-note{display:flex;gap:10px;align-items:center;margin:0 0 28px;padding:11px 14px;border:1px solid #d5dfdc;border-radius:11px;background:rgba(255,255,255,.72);color:#536776;font-size:.75rem}.internal-note strong{color:var(--ink)}
 .portfolio-heading{padding-top:8px;border-top:1px solid var(--line)}
+.quick-jump{height:43px;max-width:190px;padding:0 34px 0 13px;border:1px solid #d7e1df;border-radius:11px;background:#fff;color:#425769;font:600 .74rem var(--font-display);cursor:pointer}
+.search-shortcut{position:absolute;right:11px;top:50%;transform:translateY(-50%);pointer-events:none;border:1px solid #d6e0e5;border-bottom-width:2px;border-radius:5px;padding:2px 6px;background:#fff;color:#80909d;font:600 .61rem var(--font-mono)}
+.search input{padding-right:58px}.recent-wrap{margin:0 0 34px}.recent-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.recent-link{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);text-decoration:none;font:600 .74rem var(--font-display)}.recent-link:hover{border-color:#8fc5bf;background:#f5fbfa}.recent-link::after{content:"↗";color:var(--accent)}
+.nav-label{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}.nav-label::after{content:"−";font-size:.8rem;color:#7890a4}.nav-label.collapsed::after{content:"+"}.nav-section{overflow:hidden}.nav-section.collapsed{display:none}
+.to-top{position:fixed;right:25px;bottom:25px;z-index:45;width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);box-shadow:0 10px 30px rgba(18,35,51,.14);cursor:pointer;opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s}.to-top.visible{opacity:1;transform:none;pointer-events:auto}.to-top:hover{color:var(--accent);border-color:#92c5bf}
 @media(max-width:1100px){.team-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:700px){.section-intro{display:block}.section-intro p{text-align:left;margin-top:6px}.team-grid{grid-template-columns:1fr 1fr}.e2e-flow{grid-template-columns:repeat(7,160px)}}
+@media(max-width:900px){.quick-jump{max-width:none;flex:1}.recent-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.section-intro{display:block}.section-intro p{text-align:left;margin-top:6px}.team-grid{grid-template-columns:1fr 1fr}.e2e-flow{grid-template-columns:repeat(7,160px)}.search-shortcut{display:none}.search input{padding-right:12px}}
 @media(max-width:480px){.team-grid{grid-template-columns:1fr}.catalog-stats{grid-template-columns:1fr}}
 </style>
 </head>
@@ -224,7 +230,16 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input id="searchBox" type="search" placeholder="Buscar etapa, entrega, time, produto ou premissa…" aria-label="Buscar no portal" autocomplete="off" aria-expanded="false" aria-controls="searchResults">
       <div class="search-results" id="searchResults" role="listbox" aria-label="Resultados da busca"></div>
+      <span class="search-shortcut">Ctrl K</span>
     </div>
+    <select class="quick-jump" id="quickJump" aria-label="Ir rapidamente para">
+      <option value="">Ir rapidamente para…</option>
+      <option value="jornada">Jornada end to end</option>
+      <option value="premissas">Biblioteca de premissas</option>
+      <option value="checklists">Checklists</option>
+      <option value="radar">Radar e governança</option>
+      <option value="docs">Documentos completos</option>
+    </select>
     <div class="personas" role="group" aria-label="Filtrar por perfil">
       <button class="chip active" data-p="todos">Todos</button>
       <button class="chip" data-p="prevenda">Pré-venda</button>
@@ -255,6 +270,11 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     </div>
 
     <div class="internal-note"><span>●</span><span><strong>Base colaborativa interna:</strong> use este portal como ponto de partida. Decisões específicas devem permanecer registradas nos sistemas oficiais e no projeto.</span></div>
+
+    <div class="recent-wrap" id="recentWrap" hidden>
+      <div class="section-intro"><h3>Acessados recentemente</h3><p>Continue rapidamente de onde parou.</p></div>
+      <div class="recent-grid" id="recentGrid"></div>
+    </div>
 
     <div class="section-intro"><h3>Jornada end to end</h3><p>Selecione uma etapa para acessar orientações, responsabilidades, premissas e critérios de saída.</p></div>
     <div class="e2e-flow" aria-label="Jornada end to end">
@@ -1062,11 +1082,38 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
 </main>
 </div>
 
+<button class="to-top" id="toTop" type="button" aria-label="Voltar ao topo">↑</button>
+
 <script>
 // Navegação
 const pages=[...document.querySelectorAll('section.page')];
 const links=[...document.querySelectorAll('#nav a')];
 const productPages=new Set(['vmware','xenserver','windows','ad','storage','switch','veeam','commvault','migracoes']);
+
+function buildSidebarGroups(){
+  document.querySelectorAll('#nav .nav-label').forEach((label,i)=>{
+    const group=document.createElement('div');group.className='nav-section';
+    let next=label.nextElementSibling;
+    while(next&&!next.classList.contains('nav-label')){const move=next;next=next.nextElementSibling;group.appendChild(move)}
+    label.insertAdjacentElement('afterend',group);
+    const key='nav_group_'+i,saved=localStorage.getItem(key),collapsed=saved===null?true:saved==='1';
+    label.classList.toggle('collapsed',collapsed);group.classList.toggle('collapsed',collapsed);
+    label.setAttribute('role','button');label.tabIndex=0;label.setAttribute('aria-expanded',String(!collapsed));
+    const toggle=()=>{const state=!group.classList.contains('collapsed');group.classList.toggle('collapsed',state);label.classList.toggle('collapsed',state);label.setAttribute('aria-expanded',String(!state));try{localStorage.setItem(key,state?'1':'0')}catch(e){}};
+    label.addEventListener('click',toggle);label.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});
+  });
+}
+
+function recentIds(){try{return JSON.parse(localStorage.getItem('imbr_recent')||'[]')}catch(e){return []}}
+function rememberPage(page){
+  if(page.id==='inicio')return;const ids=[page.id,...recentIds().filter(id=>id!==page.id)].slice(0,4);
+  try{localStorage.setItem('imbr_recent',JSON.stringify(ids))}catch(e){}renderRecent();
+}
+function renderRecent(){
+  const wrap=document.getElementById('recentWrap'),grid=document.getElementById('recentGrid');if(!wrap||!grid)return;
+  const items=recentIds().map(id=>document.getElementById(id)).filter(Boolean);wrap.hidden=!items.length;grid.innerHTML='';
+  items.forEach(page=>{const a=document.createElement('a');a.className='recent-link';a.href='#'+page.id;a.textContent=pageLabel(page);grid.appendChild(a)});
+}
 
 function slug(s){return norm(s).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,55)}
 function pageLabel(page){return page.querySelector('.page-title')?.textContent.trim()||'Catálogo'}
@@ -1112,15 +1159,20 @@ function show(id){
   pages.forEach(p=>p.classList.toggle('visible',p===target));
   links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+target.id));
   document.getElementById('sidebar').classList.remove('open');
+  const active=links.find(a=>a.getAttribute('href')==='#'+target.id);if(active?.parentElement.classList.contains('nav-section')){active.parentElement.classList.remove('collapsed');active.parentElement.previousElementSibling?.classList.remove('collapsed');active.parentElement.previousElementSibling?.setAttribute('aria-expanded','true')}
   window.scrollTo({top:0});
   updateToc(target);
+  rememberPage(target);
 }
+buildSidebarGroups();
 buildJourney();
+renderRecent();
 window.addEventListener('hashchange',()=>show(location.hash.slice(1)));
 show(location.hash.slice(1)||'inicio');
 document.getElementById('menuBtn').addEventListener('click',()=>{
   document.getElementById('sidebar').classList.toggle('open');
 });
+document.getElementById('quickJump').addEventListener('change',e=>{if(e.target.value){location.hash=e.target.value;e.target.value=''}});
 
 // Filtro por perfil (persona)
 const chips=[...document.querySelectorAll('.chip')];
@@ -1171,6 +1223,12 @@ function runSearch(){
 }
 searchBox.addEventListener('input',runSearch);
 searchBox.addEventListener('focus',()=>{if(searchBox.value.trim())runSearch()});
+searchBox.addEventListener('keydown',e=>{
+  const items=[...searchResults.querySelectorAll('.search-result')];if(!items.length)return;
+  let current=items.findIndex(x=>x.classList.contains('focused'));
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();items.forEach(x=>x.classList.remove('focused'));current=e.key==='ArrowDown'?(current+1)%items.length:(current<=0?items.length-1:current-1);items[current].classList.add('focused');items[current].scrollIntoView({block:'nearest'})}
+  if(e.key==='Enter'&&current>=0){e.preventDefault();items[current].click()}
+});
 document.addEventListener('click',e=>{if(!e.target.closest('.search'))closeSearch()});
 document.addEventListener('keydown',e=>{
   if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'||(e.key==='/'&&!/input|textarea/i.test(document.activeElement.tagName))){e.preventDefault();searchBox.focus();searchBox.select()}
@@ -1183,6 +1241,7 @@ document.querySelectorAll('.checklist input').forEach((cb,i)=>{
   try{cb.checked=localStorage.getItem(key)==='1';}catch(e){}
   cb.addEventListener('change',()=>{try{localStorage.setItem(key,cb.checked?'1':'0');}catch(e){}});
 });
+const toTop=document.getElementById('toTop');window.addEventListener('scroll',()=>toTop.classList.toggle('visible',scrollY>500),{passive:true});toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>
 </body>
 </html>
