@@ -3,6 +3,54 @@
 # Premissa de Backup Dedicado Commvault
 ---
 
+> **Revisão vigente — 13/07/2026.** Baseada na linha Commvault 11.40 LTS e documentação oficial atual. Integra práticas do fabricante aos processos internos da implementação ao suporte.
+
+## Premissas vigentes 2026
+
+### Versão, plataforma e sizing
+
+- **[Fabricante]** Commvault 11.40 é a LTS de referência deste ciclo. Aplicar maintenance release recomendado após validar compatibility matrix, release notes e caminho de upgrade.
+- **[Interno]** CommServe, MediaAgents, clients, access nodes, Command Center e plug-ins devem permanecer em combinação suportada; não exigir versão idêntica sem consultar a matriz de backward compatibility.
+- **[Fabricante]** CommServe 11.40 requer CPU com AVX para a versão segura do MongoDB. Validar CPU antes de upgrade/instalação.
+- **[Interno]** Sizing usa FET, backend, streams, janela, data type, dedupe ratio real, retenção, replication/auxiliary copy, index e restore. Valores antigos de disco/IOPS não são universais.
+- **[Fabricante]** DDB e index cache devem seguir a tabela vigente. Para dedupe, usar SSD enterprise local dedicado; self-encrypting NVMe não é suportado para DDB/index na orientação atual.
+- **[Fabricante]** Index cache deve ser local; não usar network drive. Separar metadata/DDB/index dos dados de backup e do SO conforme sizing.
+
+### Arquitetura, resiliência e proteção
+
+- **[Interno]** Aplicar 3-2-1-1-0, cópia off-site e imutável/WORM quando suportado. Produção e backup não compartilham o mesmo failure domain.
+- **[Interno]** CommServe resiliente conforme criticidade (LiveSync/arquitetura suportada), MediaAgents redundantes e data paths distribuídos pelo desenho.
+- **[Fabricante]** DR Backup: ao menos um full diário e differential várias vezes ao dia conforme RPO. Export deve ficar fora do CommServe; usar política/cópia WORM quando disponível.
+- **[Interno]** Testar recuperação do CommServe/CommCell e manter procedure, mídia, credenciais e chaves fora do ambiente primário.
+- **[Interno]** Libraries/mount paths, DDB partitions, storage pools e streams devem refletir limites, rebuild, data aging e restore; não particionar sempre em volumes de 10 TB.
+
+### Segurança e operação
+
+- **[Interno]** MFA, SSO quando suportado, RBAC, contas nominativas e separação de security/backup officers. Credenciais e encryption keys no cofre; break-glass testado.
+- **[Interno]** Segmentar CommServe, Command Center, MediaAgents, clients, storage e cloud; abrir somente portas oficiais por fluxo. Proteger consoles da Internet.
+- **[Interno]** EDR obrigatório; exclusões apenas conforme documentação Commvault, com menor escopo e aprovação. Não excluir volumes de backup indiscriminadamente.
+- **[Interno]** Monitorar jobs/SLA, auxiliary copy, DR backup, DDB/index, data aging, capacity, hardware, certificados, licenças e security alerts.
+- **[Interno]** Atualizações por ondas: CommServe/infraestrutura/clientes na sequência oficial, com DR backup válido, prechecks, compatibilidade e rollback.
+
+### Políticas, aceite e suporte
+
+- **[Interno]** Retenção, schedules, full/incremental/synthetic full e copies são definidos por RPO/RTO/ETI; não aplicar perfil universal sem aprovação.
+- **[Interno]** Nomenclatura deve manter vínculo com Account/CI do ServiceNow, mas não incluir segredos nem depender apenas de nome para ownership.
+- **[Interno]** Aceite: backup e auxiliary copy, DR backup, restore granular/full, DDB/index, data aging, capacidade, monitoramento, segurança e Runbook testados.
+- **[Interno]** Suporte: revisar falhas e SLA diariamente; health/DDB/capacity periodicamente; preservar logs e job IDs; escalar com support bundle e linha do tempo.
+
+### Referências oficiais
+
+- [Commvault 11.40 documentation](https://documentation.commvault.com/11.40/)
+- [MediaAgent system requirements](https://documentation.commvault.com/11.40/commcell-console/mediaagent_system_requirements.html)
+- [CommServe hardware specifications](https://documentation.commvault.com/11.40/commcell-console/hardware_specifications_for_commserve_server.html)
+- [MediaAgent sizing without deduplication](https://documentation.commvault.com/11.40/commcell-console/hardware_specifications_for_non_deduplication_mode.html)
+- [Performing a DR Backup](https://documentation.commvault.com/11.40/commcell-console/performing_disaster_recovery_dr_backup.html)
+
+## Conteúdo legado — histórico interno
+
+> Windows/OMSA, volumes, IOPS, 10 TB, paths e retenções fixas abaixo só valem quando confirmados pela documentação e sizing vigente.
+
 # Sumário
 -   [Objetivo](#objetivo)
 -   [Responsabilidades](#responsabilidade)
@@ -376,4 +424,3 @@ ems-operations-infrastructure-amer@equinix.com
   
   
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=Premissa.Backup.Dedicado.md&left_color=gray&right_color=red)  
-

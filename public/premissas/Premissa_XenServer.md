@@ -3,6 +3,50 @@
 # Premissa de XenServer
 ---
 
+> **Revisão vigente — 13/07/2026.** Une documentação XenServer a padrões internos de implantação e suporte. Substitui referências 5.x/6.x/7.x conflitantes.
+
+## Premissas vigentes 2026
+
+### Versão e licenciamento
+
+- **[Fabricante]** XenServer 8.4 é a linha produtiva de referência. XenServer 9 é preview nesta revisão e não deve ser usado em produção.
+- **[Interno]** Fixar release/build somente após validar lifecycle, HCL, guest support, storage, backup, monitoramento e caminho de upgrade.
+- **[Interno]** Licença/entitlement e mecanismo de ativação devem ser validados antes da proposta. Recursos como HA não podem ser prometidos sem edição/licença compatível.
+
+### Arquitetura e capacidade
+
+- **[Fabricante]** Todo servidor, CPU, NIC, HBA, GPU e storage deve constar na Hardware Compatibility List para o release exato.
+- **[Interno]** Pool deve ter hosts homogêneos ou CPU masking compatível. N+1 é o mínimo para HA; três hosts são o padrão interno para manter proteção durante manutenção.
+- **[Interno]** Dimensionar CPU, RAM, storage e rede pelo workload e pela falha tolerada. Razões fixas de vCPU/core e percentuais universais são apenas gatilhos de investigação.
+- **[Fabricante]** HA depende de shared storage/heartbeat íntegros e capacidade para reiniciar VMs. Testar perda de host e fencing antes do aceite.
+- **[Interno]** Separar gerenciamento, storage, migração, backup e VMs por VLAN/rede; usar bonds redundantes em switches/NICs distintos.
+
+### Instalação, atualização e segurança
+
+- **[Interno]** Instalar com mídia suportada e firmware/driver homologado pelo OEM/HCL; não aplicar automaticamente o firmware mais novo.
+- **[Fabricante]** Aplicar updates pelo XenCenter/mecanismo suportado, com prechecks. Em pools, seguir ordem e requisitos do release; desabilitar HA quando o procedimento oficial exigir.
+- **[Interno]** XenCenter compatível, executado em estação/jump host gerenciado. Não expor management interface à Internet nem permitir NAT que prejudique comunicação/diagnóstico.
+- **[Interno]** Contas nominativas, RBAC, cofre, MFA no acesso intermediário, SSH restrito e temporário, NTP/DNS e logs remotos.
+- **[Interno]** MTU jumbo somente se suportado e testado ponta a ponta. Multipath e política de paths seguem o fabricante do storage; Round Robin não é universal.
+
+### VMs, backup, aceite e suporte
+
+- **[Fabricante]** Guest OS, drivers e XenServer VM Tools devem estar na matriz e suportados; atualizar Tools antes de recursos que dependam deles.
+- **[Interno]** Thin/thick, SR e snapshots dependem do backend e SLA. Snapshots são temporários e não substituem backup.
+- **[Interno]** Aceite: pool/HA, live migration, perda de uplink/path, backup/restore, patches, monitoramento, capacidade e Runbook testados.
+- **[Interno]** Operação monitora host/pool, HA, SR, multipath, NIC/bond, hardware, backup e crescimento; executar health check antes/depois de mudanças.
+
+### Referências oficiais
+
+- [XenServer 8.4 documentation](https://docs.xenserver.com/en-us/xenserver/8/)
+- [XenServer 8.4 PDF documentation](https://docs.xenserver.com/en-us/xenserver/8/xenserver-8.4.pdf)
+- [XenServer 9 preview documentation](https://docs.xenserver.com/en-us/xenserver/9/)
+- [XenServer Hardware Compatibility List](https://hcl.xenserver.com/)
+
+## Conteúdo legado — histórico interno
+
+> Referências a 5.x/6.x/7.x, .NET 3.5, SSH permanente, Round Robin universal e limites fixos não prevalecem sobre esta seção.
+
 
 # Sumário
 -   [Objetivo](#objetivo)
@@ -217,7 +261,6 @@ Não serão aceitos NAT’s entre os hosts Xenservers e o XenCenter.
 | Revisor Responsável          | Validador Responsável     | Atualizado |
 |------------------------------|---------------------------|------------|
 | Rodolfo Martins              |                           | 18/12/2019 |
-
 
 
 

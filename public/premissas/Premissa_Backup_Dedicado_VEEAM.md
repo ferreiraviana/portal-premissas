@@ -3,6 +3,54 @@
 # Premissa de Backup Dedicado Veeam
 ---
 
+> **Revisão vigente — 13/07/2026.** Combina Veeam v13 e o Best Practice Guide com padrões internos de implementação, proteção contra ransomware e suporte. Substitui regras conflitantes abaixo.
+
+## Premissas vigentes 2026
+
+### Versão, requisitos e desenho
+
+- **[Fabricante]** Veeam Backup & Replication 13 é a linha atual; a build de referência deve ser obtida no Help Center/KB no início do projeto. Não fixar build neste documento.
+- **[Interno]** Validar matriz de hypervisor, OS, application plug-ins, storage, object storage, tape, VSPC e caminho de upgrade antes da proposta.
+- **[Interno]** Seguir Assess → Design → Build → Operate → Secure. Sizing parte de workloads, change rate, janela, RPO/RTO, retenção, GFS, restore e throughput medido.
+- **[Fabricante]** Dimensionar backup server, proxies, repositories, mount/gateway servers e tarefas concorrentes separadamente. Valores por task são ponto de partida, não garantia.
+- **[Interno]** Licença, socket/instance/workload, capacidade, suporte e features devem estar formalizados na ETI/BOM.
+
+### Arquitetura de proteção
+
+- **[Interno]** Aplicar 3-2-1-1-0: três cópias, dois meios, uma off-site, uma offline/air-gapped/imutável e zero erros verificados.
+- **[Fabricante]** Preferir Hardened Repository Linux/Infrastructure Appliance com imutabilidade e autenticação por certificado ou single-use credentials. Não manter credencial persistente de administração no VBR.
+- **[Fabricante]** Em hardened repository manual, preferir servidor físico/local storage, XFS, rede redundante e permissões mínimas. NFS/SMB montado não é backend suportado para hardened repository.
+- **[Interno]** Repositório não deve compartilhar o mesmo storage/failure domain da produção. Imutabilidade deve exceder janela de detecção/response e retenção operacional.
+- **[Condicional]** ReFS 64 KB ou XFS 4 KB/Fast Clone conforme OS e matriz; RAID 6/60 e stripe 128/256 KB são referências Veeam para certos repositórios, sujeitos ao OEM e workload.
+- **[Interno]** Criptografar backups fora do domínio de segurança e proteger chaves/senhas em cofre separado; testar recuperação das chaves.
+
+### Segurança e operação
+
+- **[Fabricante]** Usar MFA, Security Officer quando disponível, contas separadas, menor privilégio, TLS suportado e hardening guide. Backup server não deve ser estação de uso geral.
+- **[Interno]** Segmentar management, data mover, repository e object storage; liberar somente portas documentadas. EDR/exclusões seguem Veeam e aprovação de Segurança.
+- **[Interno]** Config backup do VBR deve ser criptografado, armazenado fora do backup server e testado. Proteger VSPC/Enterprise Manager como componentes privilegiados.
+- **[Interno]** Habilitar health checks, malware detection/scan quando licenciados, SureBackup/restore verification conforme criticidade e alertas de capacity/job/SLA.
+- **[Interno]** Atualizar VBR, componentes, appliances e OS por ondas após release notes, backup de configuração, compatibilidade e rollback.
+
+### Jobs, aceite e suporte
+
+- **[Interno]** Definir RPO/RTO, retenção e GFS por política/ETI; não usar retenção padrão universal. Active/synthetic full depende de repository, chain, janela e imutabilidade.
+- **[Interno]** Testar file-level, application-item e full VM/bare-metal restore conforme escopo. Backup “Success” sem restore testado não conclui aceite.
+- **[Interno]** Aceite: 3-2-1-1-0, jobs, cópias, imutabilidade, configuração, restore, capacity, alertas, VSPC/monitoramento e Runbook validados.
+- **[Interno]** Suporte: revisar diariamente jobs/SLA/capacity/immutability; investigar warnings recorrentes; coletar logs antes de reiniciar; registrar causa e prevenção.
+
+### Referências oficiais
+
+- [Veeam Backup & Replication v13 system requirements](https://helpcenter.veeam.com/docs/vbr/userguide/system_requirements.html?ver=13)
+- [Veeam Hardened Repository](https://helpcenter.veeam.com/docs/vbr/userguide/hardened_repository.html?ver=13)
+- [Hardened Repository requirements](https://helpcenter.veeam.com/docs/vbr/userguide/hardened_repository_limitations.html?ver=13)
+- [Veeam Backup & Replication Best Practice Guide](https://bp.veeam.com/vbr/)
+- [General security considerations](https://helpcenter.veeam.com/docs/vbr/userguide/general_security_considerations.html?ver=13)
+
+## Conteúdo legado — histórico interno
+
+> OS, OMSA, RAID, retenções, tasks e agentes com valores fixos abaixo só valem quando confirmados pela matriz e pelo sizing vigente.
+
 # Sumário
 -   [Objetivo](#objetivo)
 -   [Especificação](#especificação)
@@ -350,4 +398,3 @@ Dúvidas sobre projetos e ativação podem ser enviadas para o e-mail:
   
   
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=Premissa.Backup.Dedicado.md&left_color=gray&right_color=red)  
-

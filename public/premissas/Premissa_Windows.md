@@ -3,6 +3,53 @@
 # Premissas de S.O. Windows
 ---
 
+> **Revisão vigente — 13/07/2026.** Combina práticas Microsoft com padrões internos da implementação ao suporte e substitui regras legadas conflitantes.
+
+## Premissas vigentes 2026
+
+### Versão e compatibilidade
+
+- **[Fabricante]** Windows Server 2025 é o LTSC atual (mainstream até 13/11/2029; extended até 14/11/2034). Server 2022 encerra mainstream em 13/10/2026.
+- **[Interno]** Novas implementações: Server 2025 preferencial; Server 2022 somente por compatibilidade/licença. Server 2019/2016 são legado e não entram em novas ativações.
+- **[Interno]** Preferir Server Core quando aplicação e operação suportarem. Annual Channel somente para containers/casos compatíveis com atualização frequente.
+- **[Fabricante]** Validar Windows Server Catalog, OEM e matriz da aplicação para edição, CPU, NIC, HBA, firmware, driver, cluster e hypervisor.
+- **[Interno]** Aplicar recipe de firmware/driver compatível e recomendado pelo OEM; não usar automaticamente “o mais novo”.
+
+### Dimensionamento, build e segurança
+
+- **[Interno]** Dimensionar CPU, RAM, pagefile, discos e rede por workload, SLA e crescimento. Pagefile System Managed por padrão; tamanho manual somente por dump/aplicação com justificativa.
+- **[Fabricante]** Aplicar Microsoft Security Baseline/OSConfig da função após teste. Server 2025 inclui Secure Boot, TLS 1.2+, SMB 3 e Kerberos AES.
+- **[Interno]** UEFI Secure Boot, TPM 2.0 e VBS/Credential Guard quando compatíveis; desvios exigem exceção formal.
+- **[Interno]** Windows LAPS, contas nominativas, MFA no caminho administrativo, cofre e menor privilégio. Renomear Administrator não substitui controles.
+- **[Interno]** RDP somente via rede/jump host autorizado, NLA/TLS e firewall. Não usar NAT sequencial como padrão de segurança.
+- **[Fabricante]** Desabilitar SMBv1 e protocolos/ciphers legados; auditar NTLM antes de restringir. Firewall nunca deve ser desligado.
+
+### Atualização, proteção e operação
+
+- **[Interno]** Atualizações via plataforma corporativa aprovada (WSUS, Azure Update Manager ou equivalente), com anéis, janela, backup e rollback. Preview updates não entram por padrão.
+- **[Condicional]** Hotpatch Server 2025 exige edição/serviço suportado e gestão compatível; validar GA/licença antes de usar.
+- **[Interno]** EDR obrigatório; exclusões só quando documentadas pelo fabricante, com menor escopo e aprovação de Segurança.
+- **[Interno]** Monitorar CPU, RAM/pagefile, discos, serviços, eventos, updates, certificados, backup e hardware usando baseline/SLA, não thresholds universais.
+- **[Interno]** Templates: generalizados, corrigidos, sem credenciais/chaves/agents duplicados e testados após clone.
+- **[Interno]** Backup application-aware quando necessário, com teste de restore. Snapshot/checkpoint não é backup.
+
+### Aceite e suporte
+
+- **[Interno]** ServiceNow deve conter owner, função, versão/build, IP/DNS, volumes, janela, backup, monitoramento, exceções e Runbook.
+- **[Interno]** Aceite: patch compliance, baseline, EDR, firewall, DNS/NTP, licença, backup/restore, monitoramento e acessos validados.
+- **[Interno]** Em incidentes, registrar impacto e linha do tempo, preservar logs e coletar evidências antes de reiniciar quando possível; documentar causa, correção e prevenção.
+
+### Referências oficiais
+
+- [Windows Server release information](https://learn.microsoft.com/windows/release-health/windows-server-release-info)
+- [Windows Server 2025 lifecycle](https://learn.microsoft.com/lifecycle/products/windows-server-2025)
+- [What's new in Windows Server 2025](https://learn.microsoft.com/windows-server/get-started/whats-new-windows-server-2025)
+- [Windows Server 2025 security baseline](https://learn.microsoft.com/windows-server/security/osconfig/osconfig-how-to-configure-security-baselines)
+
+## Conteúdo legado — histórico interno
+
+> Versões antigas, pagefile fixo, NAT RDP, firmware “sempre mais recente” e agentes com build fixa não prevalecem sobre esta seção.
+
 # Sumário
 - [Objetivo](#objetivo)
 - [Documentação](#documentação)

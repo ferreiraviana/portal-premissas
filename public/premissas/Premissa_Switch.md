@@ -3,6 +3,50 @@
 # Premissas de Switch
 ---
 
+> **Revisão vigente — 13/07/2026.** Premissa multivendor para switching. A documentação do modelo/release prevalece; padrões internos cobrem implantação, governança e suporte.
+
+## Premissas vigentes 2026
+
+### Plataforma, versão e desenho
+
+- **[Interno]** Novas aquisições devem estar no portfólio homologado, com suporte pelo contrato, fontes redundantes e ópticos/DACs certificados.
+- **[Fabricante]** Selecionar release recomendado para produção da família (Cisco recommended release, Juniper suggested release, Aruba/Dell recommended release), após release notes, PSIRT e lifecycle. Não usar “latest” como regra.
+- **[Interno]** Pares stack/VSX/VLT/VC/MLAG usam release e hardware compatíveis; versão mista somente na janela e se o fabricante suportar ISSU/upgrade.
+- **[Interno]** Desenho documenta VLAN/VRF, STP domain/root, LAG/MLAG, routing, MTU, oversubscription, domínios de falha e capacidade.
+
+### Segurança e gerenciamento
+
+- **[Interno]** Management em VRF/VLAN dedicada, protegido por ACL/firewall e jump host. Proibir Telnet, HTTP, SNMPv1/v2c e serviços de descoberta desnecessários.
+- **[Fabricante]** Usar SSHv2, HTTPS/TLS suportado, SNMPv3 authPriv, AAA central (TACACS+/RADIUS), RBAC e certificados. Conta local break-glass no cofre.
+- **[Interno]** NTP autenticado quando disponível, syslog/SIEM, banners, timeout, logging de comandos/configurações e backup automático versionado.
+- **[Interno]** Segredos nunca no documento. Rotação e acesso seguem política corporativa; MFA no caminho administrativo quando o equipamento não suportar diretamente.
+
+### Camada 2, uplinks e proteção
+
+- **[Fabricante]** STP deve permanecer habilitado onde há L2. Definir root primário/secundário; BPDU Guard/edge em portas de acesso e Root/Loop Guard onde o desenho exigir.
+- **[Interno]** Storm control, DHCP snooping, Dynamic ARP Inspection, IP Source Guard e port-security devem ser avaliados/testados por segmento antes de impor.
+- **[Interno]** Trunks permitem apenas VLANs necessárias; native VLAN não deve transportar usuário/gerência. Portas não usadas ficam desabilitadas em VLAN de quarentena.
+- **[Fabricante]** LACP/MLAG/VLT/VSX segue limites e topologia do modelo. Não configurar port-channel estático ou LACP sem correspondência ponta a ponta.
+- **[Interno]** MTU deve ser consistente ponta a ponta. Jumbo frames somente por requisito e teste; não aplicar globalmente sem análise.
+
+### Camada 3, mudança e suporte
+
+- **[Interno]** Routing protocols exigem autenticação quando suportada, passive-interface, filtros/prefix-lists, sumarização e limites de adjacência conforme projeto.
+- **[Interno]** Mudança exige backup, diff, health check, console/OOB, rollback, janela e validação de redundância. Preservar `show tech/support` antes de reboot quando possível.
+- **[Interno]** Aceite: failover de uplink/peer/fonte, STP, LACP/MLAG, routing, MTU, monitoração, syslog, AAA, backup e documentação testados.
+- **[Interno]** Operação monitora CPU/RAM, temperatura, fontes/fans, interfaces/errors/discards, transceivers, STP changes, LAG/peers, routing e config drift.
+
+### Referências oficiais
+
+- [Cisco recommended releases for Catalyst](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/214946-recommended-releases-for-catalyst-2960-3.html)
+- [Juniper switch configuration best practices](https://www.juniper.net/documentation/us/en/software/mist/mist-wired/topics/concept/best-practices-wired-config.html)
+- [Aruba AOS-CX hardening guides](https://www.arubanetworks.com/techdocs/AOS-CX/)
+- Documentação SmartFabric OS10/Dell Networking do modelo no Dell Support.
+
+## Conteúdo legado — histórico interno
+
+> Comandos e limites abaixo são exemplos por plataforma; só aplicar após confirmar modelo, sistema operacional e release.
+
 # Sumário
 -   [Objetivo](#objetivo)
 -   [Documentação](#documentação)

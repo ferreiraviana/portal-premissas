@@ -3,6 +3,50 @@
 # Premissas de Storage
 ---
 
+> **Revisão vigente — 13/07/2026.** Premissa multivendor: a matriz e o guia do modelo/firmware prevalecem. Esta seção integra requisitos do fabricante ao processo interno de implementação e suporte.
+
+## Premissas vigentes 2026
+
+### Seleção, suporte e compatibilidade
+
+- **[Interno]** Storage, controladoras, discos, transceivers, HBAs/NICs, switches, protocolo, multipath, OS/hypervisor e backup devem estar simultaneamente suportados.
+- **[Fabricante]** Usar release recomendado para produção do modelo, não automaticamente o mais novo. Revisar release notes, advisories, drive firmware e matriz de upgrade/downgrade.
+- **[Interno]** Garantia e suporte devem cobrir o contrato, com entitlement, contatos, acesso ao portal e procedimento de escalonamento testados.
+- **[Interno]** Sizing por capacidade líquida, IOPS, throughput, latência, data reduction realista, crescimento, snapshots, rebuild, replicação, backup e falhas toleradas.
+
+### Disponibilidade e conectividade
+
+- **[Interno]** Eliminar SPOF: duas controladoras/nós quando a plataforma suportar, fontes/circuitos distintos, fabrics A/B e no mínimo dois paths por host.
+- **[Fabricante]** RAID/erasure coding, spare, pool, tier e política multipath devem seguir workload e recomendação específica do array.
+- **[Interno]** FC: zoning single initiator/single target preferencial, aliases padronizados e validação de speed/BB credits quando aplicável.
+- **[Interno]** iSCSI/NVMe-TCP: VLAN/VRF dedicada, paths independentes, CHAP/TLS quando suportado e sem roteamento assimétrico. Jumbo frames são opcionais e exigem teste ponta a ponta.
+- **[Condicional]** NFS/SMB/NVMe-oF devem seguir matriz do consumidor e do array, inclusive locking, multipath, ANA e limites de sessão.
+
+### Segurança, dados e operação
+
+- **[Interno]** Rede de gerenciamento segregada, RBAC, contas nominativas, MFA quando disponível, cofre, TLS/certificados, syslog/SIEM e serviços/portas mínimos.
+- **[Fabricante]** Habilitar encryption at rest/in flight e secure erase quando licenciados/suportados; proteger chaves fora do array e testar recuperação.
+- **[Interno]** Snapshots/replicação não substituem backup. Definir retenção, consistência, imutabilidade e cópia isolada conforme RPO/RTO.
+- **[Interno]** Capacity threshold deve considerar thin provisioning e tempo de expansão. 20% pode ser alerta inicial, não regra universal.
+- **[Interno]** Ativar call-home/cloud analytics conforme política, validar envio de dados e testar abertura automática de chamado.
+
+### Mudança, aceite e suporte
+
+- **[Interno]** Upgrade exige backup de configuração, health check, compatibilidade ponta a ponta, janela, redundância íntegra e rollback aprovado.
+- **[Interno]** Aceite: failover de controladora/path/uplink, host rescan, performance baseline, alertas, call-home, backup/restore, documentação e capacidade validados.
+- **[Interno]** Suporte monitora capacity, latency, cache, ports/paths, media wear, rebuild, replication, snapshots e hardware; preservar support bundle antes de reiniciar quando possível.
+- **[Interno]** Registrar no ServiceNow serial, modelo, firmware, licenças, pools/volumes/LUNs, hosts, zoning, rede, owners, suporte e Runbook.
+
+### Referências oficiais obrigatórias por projeto
+
+- Matriz de interoperabilidade/HCL do fabricante do array e do consumidor.
+- Release recomendado, release notes, security advisories, host connectivity guide e best practices do protocolo do modelo.
+- Guias oficiais do fabricante de hypervisor/OS, HBA/NIC e switches SAN/LAN envolvidos.
+
+## Conteúdo legado — histórico interno
+
+> Regras fixas de RAID, 20% livre, MTU 9000, Round Robin ou “último firmware” só valem se confirmadas para o modelo e workload.
+
 # Sumário
 -   [Objetivo](#objetivo)
 -   [Escopo](#escopo)

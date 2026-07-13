@@ -2,6 +2,54 @@
 
 # Premissa Active Directory + DNS Server
 
+> **Revisão vigente — 13/07/2026.** Esta seção combina práticas Microsoft com padrões internos de implementação e suporte e substitui regras legadas conflitantes. Revalidar lifecycle, matriz e baseline em cada projeto.
+
+## Premissas vigentes 2026
+
+### Versão, arquitetura e disponibilidade
+
+- **[Fabricante]** Usar o maior nível funcional suportado. O nível 2025 aceita somente DCs Server 2025; ambientes mistos 2016/2019/2022/2025 ficam no nível funcional 2016.
+- **[Interno]** Novas florestas/DCs: Windows Server 2025; Server 2022 somente por compatibilidade documentada. Não criar novos DCs 2016/2019.
+- **[Condicional]** Database pages de 32 KB é opção forest-wide e exige todos os DCs compatíveis, laboratório, backup e plano de recuperação; não habilitar automaticamente.
+- **[Interno]** Manter ao menos dois DCs graváveis por domínio/site crítico, com DNS e Global Catalog, distribuídos entre hosts e domínios de falha. RODC somente por análise.
+- **[Interno]** DC dedicado a AD DS/DNS e componentes aprovados de segurança, backup e monitoramento.
+
+### Segurança Tier 0
+
+- **[Fabricante]** Tratar DCs, contas privilegiadas, AD CS, Entra Connect e estações de administração como Tier 0; credenciais Tier 0 não acessam Tier 1/2.
+- **[Interno]** Contas administrativas nominativas/separadas, PAW ou jump host Tier 0, MFA quando suportado, cofre corporativo e break-glass controlado.
+- **[Fabricante]** Aplicar baseline Microsoft testada: Secure Boot, TLS 1.2+, SMB 3, Kerberos AES, Credential Guard/LSASS protection quando compatíveis.
+- **[Fabricante]** Auditar LDAP signing e channel binding, corrigir clientes e então impor LDAP signing, LDAPS/TLS e channel binding. Proibir simple bind desprotegido.
+- **[Interno]** Restringir RDP/WinRM por firewall/jump host, bloquear navegação nos DCs e centralizar eventos de privilégios, GPO, trusts, DNS e replicação no SIEM.
+
+### DNS, tempo, identidades e replicação
+
+- **[Fabricante]** DNS integrado ao AD, updates dinâmicos seguros e forwarders corporativos; não usar DNS público diretamente no DC.
+- **[Fabricante]** PDC Emulator do forest root sincroniza com NTP externo aprovado; demais membros seguem a hierarquia NT5DS.
+- **[Interno]** Sites/Subnets e links devem refletir a rede real. Monitorar `repadmin`, `dcdiag`, DFSR/SYSVOL, DNS e diferença de horário.
+- **[Condicional]** Scavenging somente após inventário e piloto para não remover registros válidos.
+- **[Fabricante]** Preferir gMSA/dMSA, eliminar SPNs duplicados e migrar Kerberos RC4 para AES após auditoria.
+- **[Interno]** Delegar por grupos/OU e menor privilégio. Trusts exigem owner, justificativa, direção, selective authentication quando aplicável e revisão.
+
+### Backup, recuperação, aceite e suporte
+
+- **[Fabricante]** Proteger System State/full server com produto AD-aware. Snapshot/checkpoint não é estratégia de backup.
+- **[Interno]** Manter forest recovery offline, inventário FSMO/DNS/GC e credenciais protegidas; testar restauração isolada ao menos anualmente.
+- **[Interno]** Aceite: `dcdiag`, `repadmin /replsummary`, SYSVOL/NETLOGON, DNS, NTP, baseline, backup/restore, monitoramento e documentação sem erro crítico.
+- **[Interno]** Operação: revisar diariamente replicação/backup; mensalmente eventos/capacidade; trimestralmente privilégios e contas inativas; anualmente forest recovery.
+
+### Referências oficiais
+
+- [AD DS functional levels](https://learn.microsoft.com/windows-server/identity/ad-ds/active-directory-functional-levels)
+- [What's new in Windows Server 2025 — AD DS](https://learn.microsoft.com/windows-server/get-started/whats-new-windows-server-2025)
+- [Tier model for AD DS](https://learn.microsoft.com/windows-server/identity/ad-ds/tier-model)
+- [Securing domain controllers](https://learn.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)
+- [Active Directory forest recovery](https://learn.microsoft.com/windows-server/identity/ad-ds/manage/forest-recovery-guide/ad-forest-recovery-procedures)
+
+## Conteúdo legado — histórico interno
+
+> Regras abaixo sobre nível 2012 R2, versões antigas ou valores fixos só valem quando não conflitarem com esta seção.
+
 # Sumário
 -   [Objetivo](#objetivo)
 -   [Sistemas operacionais suportados](#sistemas-operacionais-suportados)

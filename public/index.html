@@ -280,11 +280,11 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <h3>Virtualização</h3>
     <div class="catgrid">
       <a class="prod" href="#vmware"><span class="t">VMware vSphere</span><span class="d">ESX, vCenter, Replication e recuperação para clouds privadas gerenciadas.</span><div class="meta"><span class="pill ok2">Revisado em 2026</span></div></a>
-      <a class="prod" href="#xenserver"><span class="t">XenServer / Citrix</span><span class="d">Pools standalone e HA; alternativa de hypervisor.</span><div class="meta"><span class="pill up">Premissa a atualizar</span></div></a>
+      <a class="prod" href="#xenserver"><span class="t">XenServer / Citrix</span><span class="d">Pools standalone e HA; alternativa de hypervisor.</span><div class="meta"><span class="pill ok2">Revisado em 2026</span></div></a>
     </div>
     <h3>Sistemas &amp; Diretório</h3>
     <div class="catgrid">
-      <a class="prod" href="#windows"><span class="t">Windows Server</span><span class="d">SO gerenciado: hardening, updates, storage e templates.</span><div class="meta"><span class="pill up">Premissa a atualizar</span></div></a>
+      <a class="prod" href="#windows"><span class="t">Windows Server</span><span class="d">SO gerenciado: hardening, updates, storage e templates.</span><div class="meta"><span class="pill ok2">Revisado em 2026</span></div></a>
       <a class="prod" href="#ad"><span class="t">Active Directory + DNS</span><span class="d">Controladores de domínio e DNS em produção.</span><div class="meta"><span class="pill ok2">Vigente</span></div></a>
     </div>
     <h3>Infraestrutura</h3>
@@ -294,8 +294,8 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     </div>
     <h3>Proteção de Dados</h3>
     <div class="catgrid">
-      <a class="prod" href="#veeam"><span class="t">Veeam Backup &amp; Replication</span><span class="d">Backup dedicado, réplicas e imutabilidade.</span><div class="meta"><span class="pill up">Premissa a atualizar</span></div></a>
-      <a class="prod" href="#commvault"><span class="t">Commvault</span><span class="d">Backup dedicado com Media Agents e CommCell.</span><div class="meta"><span class="pill up">Links a atualizar</span></div></a>
+      <a class="prod" href="#veeam"><span class="t">Veeam Backup &amp; Replication</span><span class="d">Backup dedicado, réplicas e imutabilidade.</span><div class="meta"><span class="pill ok2">Revisado em 2026</span></div></a>
+      <a class="prod" href="#commvault"><span class="t">Commvault</span><span class="d">Backup dedicado com Media Agents e CommCell.</span><div class="meta"><span class="pill ok2">Revisado em 2026</span></div></a>
     </div>
     <h3>Serviços de Projeto</h3>
     <div class="catgrid">
@@ -362,10 +362,10 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <table>
       <tr><th>Produto</th><th>Premissa interna referencia</th><th>Fabricante hoje (jul/2026)</th><th>Ação</th></tr>
       <tr><td><strong>VMware vSphere</strong></td><td>Premissa revisada em jul/2026</td><td>ESX/vCenter 9.1 preferencial quando toda a solução for certificada; vSphere 8.0 U3j como alternativa compatível; vSphere 7 sem suporte desde out/2025</td><td><span class="pill ok2">Vigente</span> Validar BCG e matriz antes de cada projeto</td></tr>
-      <tr><td><strong>XenServer</strong></td><td>"6.0 ou superior"; License Server 11.13</td><td>XenServer 8.4 atual (CH 8.2 CU1 EOL); XenServer 9 lançado; licenciamento só via LAS desde 15/04/2026 (XenCenter YYYY.x, edição Premium)</td><td><span class="pill up">Atualizar</span> Reescrever versão/licença</td></tr>
+      <tr><td><strong>XenServer</strong></td><td>Premissa revisada em jul/2026</td><td>XenServer 8.4 produtivo; XenServer 9 permanece preview nesta revisão; validar HCL, licença e matriz</td><td><span class="pill ok2">Vigente</span> Revalidar release por projeto</td></tr>
       <tr><td><strong>Windows Server</strong></td><td>2016/2019/2022 (pref. 2019)</td><td>2025 GA (nov/2024); 2019 fora do mainstream; 2016 estendido até jan/2027</td><td><span class="pill up">Atualizar</span> Preferencial 2022/2025</td></tr>
       <tr><td><strong>Veeam B&amp;R</strong></td><td>Era v12 (2023)</td><td>v13 GA nov/2025 (build 13.0.2 mai/2026); Software Appliance Linux; upgrade exige 12.3.1+</td><td><span class="pill up">Atualizar</span> Padronizar v13</td></tr>
-      <tr><td><strong>Commvault</strong></td><td>Docs 11.24</td><td>LTS 11.40 (suporte até dez/2027); 2024E/11.36 até jun/2027</td><td><span class="pill up">Atualizar</span> Corrigir links p/ 11.40</td></tr>
+      <tr><td><strong>Commvault</strong></td><td>Premissa revisada em jul/2026</td><td>11.40 LTS; sizing, AVX, DDB/index e DR Backup atualizados</td><td><span class="pill ok2">Vigente</span> Aplicar maintenance release recomendado</td></tr>
       <tr><td><strong>Storage / Switch / AD</strong></td><td>Práticas de arquitetura</td><td>Válidas; matrizes/firmwares verificados por projeto</td><td><span class="pill ok2">OK</span></td></tr>
     </table>
     <div class="callout tip"><span class="ico">💡</span><span><strong>Regra de ouro (PRM-GER-007):</strong> só ativar versões com fim de suporte a mais de 1 ano — hoje: vSphere 8+, XenServer 8.4+, Windows 2022/2025, VBR 13, Commvault 11.40 LTS.</span></div>
@@ -439,7 +439,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <p class="page-sub">Hypervisor Citrix para ambientes standalone e pools em HA. <a href="premissas/Premissa_XenServer.md">Premissa completa →</a></p>
 
     <div class="aud" data-aud="todos">
-      <div class="callout warn"><span class="ico">⚠️</span><span><strong>Versões e licença:</strong> premissa cita 6.x/7.x (EOL). Atual: <strong>XenServer 8.4</strong> (updates via CDN) e XenServer 9; licenciamento exclusivamente via <strong>LAS</strong> desde 15/04/2026 (XenCenter YYYY.x, edição Premium). <span class="pill up">Premissa a atualizar</span></span></div>
+      <div class="callout ok"><span class="ico">✓</span><span><strong>Versão:</strong> <strong>XenServer 8.4</strong> é a linha produtiva; XenServer 9 permanece preview nesta revisão e não entra em produção. Validar HCL, licença e release recomendado. <span class="pill ok2">Revisado em 13/07/2026</span></span></div>
     </div>
 
     <div class="aud" data-aud="prevenda gestao">
@@ -488,7 +488,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <p class="page-sub">SO gerenciado em servidores físicos e virtuais. <a href="premissas/Premissa_Windows.md">Premissa completa →</a></p>
 
     <div class="aud" data-aud="todos">
-      <div class="callout warn"><span class="ico">⚠️</span><span><strong>Versões:</strong> preferencial atualizado para <strong>2022/2025</strong> (2019 fora do mainstream; 2016 morre em jan/2027). <span class="pill up">Premissa a atualizar</span></span></div>
+      <div class="callout ok"><span class="ico">✓</span><span><strong>Versão:</strong> <strong>Windows Server 2025</strong> é o LTSC preferencial; Server 2022 somente por compatibilidade/licença documentada. <span class="pill ok2">Revisado em 13/07/2026</span></span></div>
     </div>
 
     <div class="aud" data-aud="prevenda gestao">
@@ -676,7 +676,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <p class="page-sub">Backup dedicado, réplicas e recuperação. <a href="premissas/Premissa_Backup_Dedicado_VEEAM.md">Premissa completa →</a></p>
 
     <div class="aud" data-aud="todos">
-      <div class="callout warn"><span class="ico">⚠️</span><span><strong>Versão:</strong> padrão atual é a <strong>v13</strong> (GA nov/2025; 13.0.2 mai/2026) — traz Software Appliance Linux e web UI; upgrade exige 12.3.1+. <span class="pill up">Premissa a atualizar</span></span></div>
+      <div class="callout ok"><span class="ico">✓</span><span><strong>Versão:</strong> <strong>Veeam v13</strong>, com build e caminho de upgrade validados no Help Center; arquitetura inclui 3-2-1-1-0 e hardened repository. <span class="pill ok2">Revisado em 13/07/2026</span></span></div>
     </div>
 
     <div class="aud" data-aud="prevenda gestao">
@@ -725,7 +725,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <p class="page-sub">Backup dedicado com Media Agents e CommCell. <a href="premissas/Premissa_Backup_Dedicado_Commvault.md">Premissa completa →</a></p>
 
     <div class="aud" data-aud="todos">
-      <div class="callout warn"><span class="ico">⚠️</span><span><strong>Versão:</strong> LTS atual <strong>11.40</strong> (suporte até dez/2027); links da premissa (11.24) a corrigir. <span class="pill up">Atualizar links</span></span></div>
+      <div class="callout ok"><span class="ico">✓</span><span><strong>Versão:</strong> <strong>Commvault 11.40 LTS</strong>; aplicar maintenance release suportado e validar AVX, sizing, DDB/index e DR Backup. <span class="pill ok2">Revisado em 13/07/2026</span></span></div>
     </div>
 
     <div class="aud" data-aud="prevenda gestao">
@@ -1042,13 +1042,13 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <p class="page-sub">Premissas completas (fonte: repositório interno), incluídas para consulta e download.</p>
     <div class="catgrid">
       <a class="prod" href="premissas/Premissa_VMWARE.md"><span class="t">Premissa VMware</span><span class="d">Rev. 09/07/2026</span></a>
-      <a class="prod" href="premissas/Premissa_XenServer.md"><span class="t">Premissa XenServer</span><span class="d">Rev. 18/12/2019</span></a>
-      <a class="prod" href="premissas/Premissa_Windows.md"><span class="t">Premissa Windows</span><span class="d">Rev. 10/11/2023</span></a>
-      <a class="prod" href="premissas/Premissa_Active_Directory.md"><span class="t">Premissa AD + DNS</span><span class="d">Rev. 10/11/2023</span></a>
-      <a class="prod" href="premissas/Premissa_storage.md"><span class="t">Premissa Storage</span><span class="d">Rev. 13/07/2020</span></a>
+      <a class="prod" href="premissas/Premissa_XenServer.md"><span class="t">Premissa XenServer</span><span class="d">Rev. 13/07/2026</span></a>
+      <a class="prod" href="premissas/Premissa_Windows.md"><span class="t">Premissa Windows</span><span class="d">Rev. 13/07/2026</span></a>
+      <a class="prod" href="premissas/Premissa_Active_Directory.md"><span class="t">Premissa AD + DNS</span><span class="d">Rev. 13/07/2026</span></a>
+      <a class="prod" href="premissas/Premissa_storage.md"><span class="t">Premissa Storage</span><span class="d">Rev. 13/07/2026</span></a>
       <a class="prod" href="premissas/Premissa_Switch.md"><span class="t">Premissa Switch</span><span class="d">Portfólio e hardening</span></a>
-      <a class="prod" href="premissas/Premissa_Backup_Dedicado_VEEAM.md"><span class="t">Backup Dedicado Veeam</span><span class="d">Rev. 14/11/2023</span></a>
-      <a class="prod" href="premissas/Premissa_Backup_Dedicado_Commvault.md"><span class="t">Backup Dedicado Commvault</span><span class="d">Rev. 09/09/2025</span></a>
+      <a class="prod" href="premissas/Premissa_Backup_Dedicado_VEEAM.md"><span class="t">Backup Dedicado Veeam</span><span class="d">Rev. 13/07/2026</span></a>
+      <a class="prod" href="premissas/Premissa_Backup_Dedicado_Commvault.md"><span class="t">Backup Dedicado Commvault</span><span class="d">Rev. 13/07/2026</span></a>
     </div>
     <div class="callout warn"><span class="ico">⚠️</span><span><strong>Governança:</strong> documentos com <span class="pill up">Atualizar</span> no <a href="#radar">Radar</a> precisam de revisão — abrir issue no GitHub com dono e prazo.</span></div>
   </section>
