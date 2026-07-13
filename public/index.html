@@ -181,9 +181,13 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
 .search input{padding-right:58px}.recent-wrap{margin:0 0 34px}.recent-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.recent-link{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);text-decoration:none;font:600 .74rem var(--font-display)}.recent-link:hover{border-color:#8fc5bf;background:#f5fbfa}.recent-link::after{content:"↗";color:var(--accent)}
 .nav-label{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}.nav-label::after{content:"−";font-size:.8rem;color:#7890a4}.nav-label.collapsed::after{content:"+"}.nav-section{overflow:hidden}.nav-section.collapsed{display:none}
 .to-top{position:fixed;right:25px;bottom:25px;z-index:45;width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);box-shadow:0 10px 30px rgba(18,35,51,.14);cursor:pointer;opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s}.to-top.visible{opacity:1;transform:none;pointer-events:auto}.to-top:hover{color:var(--accent);border-color:#92c5bf}
+.page-header{position:relative;margin:-8px 0 24px;padding:22px 24px 20px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.78);box-shadow:var(--shadow-sm)}.page-header .crumb{margin-bottom:9px}.page-header .page-title{margin-bottom:7px}.page-header .page-sub{margin:0;max-width:78ch}.page-header .page-sub a{font-weight:600}
+.page-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.page-action{display:inline-flex;align-items:center;gap:6px;border:1px solid #d5dfdd;border-radius:8px;background:#fff;color:#526778;padding:7px 10px;font:600 .68rem var(--font-display);cursor:pointer}.page-action:hover,.page-action.active{color:var(--accent);border-color:#8dc3bd;background:#f3faf8}
+.page-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:0 0 28px}.overview-item{position:relative;padding:16px 15px 15px 45px;border:1px solid var(--line);border-radius:13px;background:#fff}.overview-num{position:absolute;left:14px;top:15px;display:grid;place-items:center;width:23px;height:23px;border-radius:7px;background:var(--accent-soft);color:var(--accent);font:700 .64rem var(--font-mono)}.overview-item strong{display:block;color:var(--ink);font:700 .76rem var(--font-display);margin-bottom:3px}.overview-item span{display:block;color:var(--muted);font-size:.7rem;line-height:1.45}
+.toast{position:fixed;left:50%;bottom:28px;z-index:100;transform:translate(-50%,15px);padding:10px 14px;border-radius:9px;background:var(--ink);color:#fff;font-size:.75rem;box-shadow:0 12px 35px rgba(0,0,0,.22);opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
 @media(max-width:1100px){.team-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:900px){.quick-jump{max-width:none;flex:1}.recent-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:700px){.section-intro{display:block}.section-intro p{text-align:left;margin-top:6px}.team-grid{grid-template-columns:1fr 1fr}.e2e-flow{grid-template-columns:repeat(7,160px)}.search-shortcut{display:none}.search input{padding-right:12px}}
+@media(max-width:700px){.section-intro{display:block}.section-intro p{text-align:left;margin-top:6px}.team-grid{grid-template-columns:1fr 1fr}.e2e-flow{grid-template-columns:repeat(7,160px)}.search-shortcut{display:none}.search input{padding-right:12px}.page-overview{grid-template-columns:1fr}.page-header{padding:18px 17px}}
 @media(max-width:480px){.team-grid{grid-template-columns:1fr}.catalog-stats{grid-template-columns:1fr}}
 </style>
 </head>
@@ -256,8 +260,8 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
   <section class="page visible" id="inicio">
     <div class="catalog-hero">
       <div class="eyebrow">Implementation Management BR · Portal interno</div>
-      <h2>Uma visão única da oportunidade à operação.</h2>
-      <p>Conectamos pessoas, decisões, entregáveis e padrões técnicos para que todas as áreas saibam o que acontece, quem participa e o que precisa estar pronto em cada etapa.</p>
+      <h2>Da oportunidade à operação, sem perder contexto.</h2>
+      <p>Um ponto único para entender a etapa, o responsável, a entrega esperada e o padrão técnico aplicável.</p>
       <div class="hero-actions">
         <a class="hero-action" href="#jornada">Percorrer a jornada <span>→</span></a>
         <a class="hero-action secondary" href="#premissas">Consultar base técnica</a>
@@ -383,8 +387,8 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <tr><th>Produto</th><th>Premissa interna referencia</th><th>Fabricante hoje (jul/2026)</th><th>Ação</th></tr>
       <tr><td><strong>VMware vSphere</strong></td><td>Premissa revisada em jul/2026</td><td>ESX/vCenter 9.1 preferencial quando toda a solução for certificada; vSphere 8.0 U3j como alternativa compatível; vSphere 7 sem suporte desde out/2025</td><td><span class="pill ok2">Vigente</span> Validar BCG e matriz antes de cada projeto</td></tr>
       <tr><td><strong>XenServer</strong></td><td>Premissa revisada em jul/2026</td><td>XenServer 8.4 produtivo; XenServer 9 permanece preview nesta revisão; validar HCL, licença e matriz</td><td><span class="pill ok2">Vigente</span> Revalidar release por projeto</td></tr>
-      <tr><td><strong>Windows Server</strong></td><td>2016/2019/2022 (pref. 2019)</td><td>2025 GA (nov/2024); 2019 fora do mainstream; 2016 estendido até jan/2027</td><td><span class="pill up">Atualizar</span> Preferencial 2022/2025</td></tr>
-      <tr><td><strong>Veeam B&amp;R</strong></td><td>Era v12 (2023)</td><td>v13 GA nov/2025 (build 13.0.2 mai/2026); Software Appliance Linux; upgrade exige 12.3.1+</td><td><span class="pill up">Atualizar</span> Padronizar v13</td></tr>
+      <tr><td><strong>Windows Server</strong></td><td>Premissa revisada em jul/2026</td><td>Server 2025 LTSC preferencial; Server 2022 por compatibilidade/licença documentada</td><td><span class="pill ok2">Vigente</span> Revalidar aplicação e hardware</td></tr>
+      <tr><td><strong>Veeam B&amp;R</strong></td><td>Premissa revisada em jul/2026</td><td>v13; build e upgrade validados no Help Center; 3-2-1-1-0 e hardened repository</td><td><span class="pill ok2">Vigente</span> Revalidar matriz e sizing</td></tr>
       <tr><td><strong>Commvault</strong></td><td>Premissa revisada em jul/2026</td><td>11.40 LTS; sizing, AVX, DDB/index e DR Backup atualizados</td><td><span class="pill ok2">Vigente</span> Aplicar maintenance release recomendado</td></tr>
       <tr><td><strong>Storage / Switch / AD</strong></td><td>Práticas de arquitetura</td><td>Válidas; matrizes/firmwares verificados por projeto</td><td><span class="pill ok2">OK</span></td></tr>
     </table>
@@ -1083,6 +1087,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
 </div>
 
 <button class="to-top" id="toTop" type="button" aria-label="Voltar ao topo">↑</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 // Navegação
@@ -1141,6 +1146,43 @@ function buildJourney(){
   });
 }
 
+const guideOverviews={
+  comece:[['Escolha a entrada','Produto, etapa ou papel profissional.'],['Filtre seu papel','Veja apenas o que apoia sua decisao.'],['Valide a fonte','Confirme vigencia e referencia oficial.']],
+  radar:[['Consulte o status','Identifique itens vigentes e em revisao.'],['Valide a matriz','Confirme compatibilidade antes de definir.'],['Registre a decisao','Documente versao, excecao e responsavel.']],
+  jornada:[['Confirme a entrada','Alinhe escopo, responsavel e criterio.'],['Execute a fase','Use premissas e entregaveis esperados.'],['Comprove a saida','Registre evidencia, aceite e transicao.']],
+  premissas:[['Busque o codigo','Localize rapidamente o requisito aplicavel.'],['Leia o contexto','Entenda fabricante e pratica interna.'],['Registre excecoes','Formalize impacto, aceite e aprovador.']],
+  checklists:[['Marque localmente','Acompanhe a execucao sem alterar a fonte.'],['Colete evidencias','Associe cada conclusao a uma comprovacao.'],['Formalize o aceite','Encerre com responsavel e transicao.']],
+  faq:[['Pesquise primeiro','Use termos de produto, etapa ou decisao.'],['Aplique com contexto','Confirme se a resposta vale para o projeto.'],['Documente recorrencias','Transforme duvidas repetidas em melhoria.']],
+  docs:[['Abra a fonte','Priorize documentacao oficial do fabricante.'],['Confirme a vigencia','Consulte versao, data e ciclo de suporte.'],['Revalide referencias','Revise links antes de reutilizar a decisao.']]
+};
+function favoriteIds(){try{return JSON.parse(localStorage.getItem('imbr_favorites')||'[]')}catch(e){return[]}}
+function showToast(message){
+  const toast=document.getElementById('toast');if(!toast)return;toast.textContent=message;toast.classList.add('show');
+  clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>toast.classList.remove('show'),2200);
+}
+function buildPageFramework(){
+  pages.filter(page=>page.id!=='inicio').forEach(page=>{
+    if(page.querySelector(':scope > .page-header'))return;
+    const crumb=page.querySelector(':scope > .crumb'),title=page.querySelector(':scope > .page-title'),sub=page.querySelector(':scope > .page-sub');
+    if(!title)return;
+    const header=document.createElement('div');header.className='page-header';
+    page.insertBefore(header,crumb||title);[crumb,title,sub].filter(Boolean).forEach(el=>header.appendChild(el));
+    const actions=document.createElement('div');actions.className='page-actions';
+    const copy=document.createElement('button');copy.type='button';copy.className='page-action';copy.textContent='Copiar link';
+    copy.addEventListener('click',async()=>{const url=location.href.split('#')[0]+'#'+page.id;try{await navigator.clipboard.writeText(url)}catch(e){const input=document.createElement('textarea');input.value=url;document.body.appendChild(input);input.select();document.execCommand('copy');input.remove()}showToast('Link da pagina copiado')});
+    const favorite=document.createElement('button');favorite.type='button';favorite.className='page-action';
+    const syncFavorite=()=>{const active=favoriteIds().includes(page.id);favorite.classList.toggle('active',active);favorite.textContent=active?'Favoritada':'Favoritar'};syncFavorite();
+    favorite.addEventListener('click',()=>{let ids=favoriteIds();ids=ids.includes(page.id)?ids.filter(id=>id!==page.id):[page.id,...ids].slice(0,12);try{localStorage.setItem('imbr_favorites',JSON.stringify(ids))}catch(e){}syncFavorite();showToast(favorite.classList.contains('active')?'Pagina adicionada aos favoritos':'Pagina removida dos favoritos')});
+    const print=document.createElement('button');print.type='button';print.className='page-action';print.textContent='Imprimir';print.addEventListener('click',()=>window.print());
+    actions.append(copy,favorite,print);header.appendChild(actions);
+    const items=guideOverviews[page.id];if(items){
+      const overview=document.createElement('div');overview.className='page-overview';overview.setAttribute('aria-label','Como usar esta pagina');
+      items.forEach(([label,description],i)=>{const item=document.createElement('div');item.className='overview-item';item.innerHTML=`<span class="overview-num">0${i+1}</span><strong>${label}</strong><span>${description}</span>`;overview.appendChild(item)});
+      header.insertAdjacentElement('afterend',overview);
+    }
+  });
+}
+
 function updateToc(page){
   const toc=document.getElementById('tocNav');toc.innerHTML='';
   const items=[...page.querySelectorAll(':scope > h3, :scope > .section-intro h3, :scope > .aud > .band, :scope > .aud .band')]
@@ -1166,6 +1208,7 @@ function show(id){
 }
 buildSidebarGroups();
 buildJourney();
+buildPageFramework();
 renderRecent();
 window.addEventListener('hashchange',()=>show(location.hash.slice(1)));
 show(location.hash.slice(1)||'inicio');
