@@ -185,9 +185,12 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
 .page-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.page-action{display:inline-flex;align-items:center;gap:6px;border:1px solid #d5dfdd;border-radius:8px;background:#fff;color:#526778;padding:7px 10px;font:600 .68rem var(--font-display);cursor:pointer}.page-action:hover,.page-action.active{color:var(--accent);border-color:#8dc3bd;background:#f3faf8}
 .page-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:0 0 28px}.overview-item{position:relative;padding:16px 15px 15px 45px;border:1px solid var(--line);border-radius:13px;background:#fff}.overview-num{position:absolute;left:14px;top:15px;display:grid;place-items:center;width:23px;height:23px;border-radius:7px;background:var(--accent-soft);color:var(--accent);font:700 .64rem var(--font-mono)}.overview-item strong{display:block;color:var(--ink);font:700 .76rem var(--font-display);margin-bottom:3px}.overview-item span{display:block;color:var(--muted);font-size:.7rem;line-height:1.45}
 .toast{position:fixed;left:50%;bottom:28px;z-index:100;transform:translate(-50%,15px);padding:10px 14px;border-radius:9px;background:var(--ink);color:#fff;font-size:.75rem;box-shadow:0 12px 35px rgba(0,0,0,.22);opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
+.decision-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 25px}.decision-card{padding:17px;border:1px solid var(--line);border-radius:14px;background:#fff}.decision-card .pill{margin-bottom:10px}.decision-card h4{margin:0 0 6px;color:var(--ink);font:700 .82rem var(--font-display)}.decision-card p{margin:0;color:var(--muted);font-size:.72rem;line-height:1.5}.decision-card strong{color:var(--ink)}
+.migration-architecture{margin:12px 0 18px;padding:18px;border:1px solid #29475d;border-radius:16px;background:#10283c;color:#eaf5f4;overflow:auto}.migration-architecture svg{display:block;min-width:820px;width:100%;height:auto}.migration-architecture .node{fill:#183b54;stroke:#63c9bd;stroke-width:2}.migration-architecture .core{fill:#214f69;stroke:#b7dd48}.migration-architecture .repo{fill:#183b54;stroke:#7791a3}.migration-architecture .flow{fill:none;stroke:#85a9ba;stroke-width:2;marker-end:url(#arrow)}.migration-architecture .data{stroke:#b7dd48;stroke-width:3}.migration-architecture text{fill:#edf7f6;font:600 13px var(--font-display)}.migration-architecture .small{fill:#a9c0cc;font:500 11px var(--font-display)}.arch-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:13px;color:#b9ced7;font-size:.68rem}.arch-legend span::before{content:"";display:inline-block;width:18px;height:3px;margin:0 7px 2px 0;background:#85a9ba}.arch-legend .data-key::before{background:#b7dd48}
 @media(max-width:1100px){.team-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:900px){.quick-jump{max-width:none;flex:1}.recent-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:700px){.section-intro{display:block}.section-intro p{text-align:left;margin-top:6px}.team-grid{grid-template-columns:1fr 1fr}.e2e-flow{grid-template-columns:repeat(7,160px)}.search-shortcut{display:none}.search input{padding-right:12px}.page-overview{grid-template-columns:1fr}.page-header{padding:18px 17px}}
+@media(max-width:900px){.decision-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.section-intro{display:block}.section-intro p{text-align:left;margin-top:6px}.team-grid{grid-template-columns:1fr 1fr}.e2e-flow{grid-template-columns:repeat(7,160px)}.search-shortcut{display:none}.search input{padding-right:12px}.page-overview,.decision-grid{grid-template-columns:1fr}.page-header{padding:18px 17px}}
 @media(max-width:480px){.team-grid{grid-template-columns:1fr}.catalog-stats{grid-template-columns:1fr}}
 </style>
 </head>
@@ -795,21 +798,32 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
   <section class="page" id="migracoes">
     <div class="crumb">Catálogo · Serviços de Projeto</div>
     <h2 class="page-title">Migrações &amp; Upgrades</h2>
-    <p class="page-sub">Pontos críticos de arquitetura de projeto: como escolher a abordagem, o que o fabricante recomenda, pré-requisitos do nosso lado e do lado do cliente.</p>
+    <p class="page-sub">Escolha orientada por risco, compatibilidade, volumetria e janela — da análise inicial ao cutover, rollback e aceite.</p>
+
+    <div class="aud" data-aud="todos prevenda arquitetura gestao tecnico">
+      <div class="band">Comece pela decisão <span class="who">· não pelo produto ou ferramenta</span></div>
+      <div class="decision-grid" data-tags="decisao projeto abordagem rto rpo downtime rollback">
+        <div class="decision-card"><span class="pill ok2">01 · Continuidade</span><h4>Qual interrupção é aceitável?</h4><p>Defina <strong>janela, RTO, RPO</strong> e impacto por aplicação. “Sem downtime” precisa ser tecnicamente demonstrável.</p></div>
+        <div class="decision-card"><span class="pill ok2">02 · Compatibilidade</span><h4>Origem e destino conversam?</h4><p>Valide versões, hypervisor, CPU/EVC, redes, storage, drivers, licenças e matrizes do fabricante.</p></div>
+        <div class="decision-card"><span class="pill ok2">03 · Movimento</span><h4>Quanto dado muda e por onde?</h4><p>Meça volumetria, change rate, throughput real, latência e tempo para sincronizar o delta final.</p></div>
+        <div class="decision-card"><span class="pill ok2">04 · Reversão</span><h4>Como voltar com segurança?</h4><p>Defina ponto de retorno, limite de decisão, dono do go/no-go e condição para descomissionar a origem.</p></div>
+      </div>
+      <div class="callout tip"><span class="ico">💡</span><span><strong>Saída obrigatória da análise:</strong> uma ficha de abordagem com método escolhido, alternativas descartadas, premissas, dependências, cálculo de transferência, ondas, critérios de aceite e rollback. A ferramenta é consequência dessa decisão.</span></div>
+    </div>
 
     <div class="aud" data-aud="todos arquitetura gestao">
       <div class="band">Princípio nº 1 <span class="who">· in-place × migração paralela</span></div>
-      <div class="callout never"><span class="ico">🚫</span><span><strong>Não recomendamos upgrade in-place</strong> (atualizar "por cima" do ambiente em produção) para mudanças de versão major de SO, hypervisor ou plataforma de backup. Riscos: herança de problemas e drivers antigos, rollback difícil ou impossível, downtime imprevisível e incompatibilidades descobertas em produção. É também a orientação predominante dos fabricantes para ambientes críticos. <span class="prm">PRM-MIG-002</span></span></div>
+      <div class="callout never"><span class="ico">🚫</span><span><strong>In-place não é a escolha padrão para mudanças major.</strong> Pode ser usado quando houver caminho oficial suportado, matriz validada, backup/configuração exportada, teste prévio, janela suficiente e reversão praticável. Sem essas condições, a abordagem transfere risco diretamente para produção. <span class="prm">PRM-MIG-002</span></span></div>
       <div class="callout ok"><span class="ico">✅</span><span><strong>Padrão da casa: migração paralela (greenfield).</strong> Constrói-se o ambiente novo na versão-alvo, migram-se as cargas em ondas com método adequado, valida-se, e o ambiente antigo vira rollback natural até o descomissionamento. Exceções ao in-place (ex.: minor updates, appliances com caminho oficial) exigem plano validado por arquitetura e, quando for exigência do cliente, Risk Letter.</span></div>
     </div>
 
     <div class="aud" data-aud="arquitetura prevenda gestao">
       <div class="band">Matriz de decisão <span class="who">· qual abordagem usar</span></div>
       <table data-tags="migracao matriz decisao abordagem metodo cenario">
-        <tr><th>Cenário</th><th>Método recomendado</th><th>Quando usar / observações</th></tr>
-        <tr><td>Mesmo vCenter/SSO, novo cluster</td><td>vMotion + Storage vMotion</td><td>Sem downtime; compute e storage podem migrar juntos ou separados.</td></tr>
-        <tr><td>Cloud privada → cloud privada (vCenters distintos)</td><td><strong>Cross vCenter vMotion</strong></td><td>Sem downtime; exige pré-requisitos de versão, rede e permissão (abaixo). <span class="prm">PRM-MIG-003</span></td></tr>
-        <tr><td>Origem fora do nosso controle, grandes volumetrias, necessidade de rollback simples, mudança de site com re-IP</td><td><strong>Réplica Veeam + failover planejado</strong></td><td>Downtime mínimo e controlado no cutover; permite seeding e testes. <span class="prm">PRM-MIG-004</span></td></tr>
+        <tr><th>Cenário</th><th>Abordagem candidata</th><th>Impacto / rollback</th><th>Confirme antes de escolher</th></tr>
+        <tr><td>Mesmo vCenter/SSO, novo cluster</td><td>vMotion + Storage vMotion</td><td>Baixo impacto; retorno por nova migração</td><td>CPU/EVC, redes, storage, licenças e duração estimada</td></tr>
+        <tr><td>Cloud privada → cloud privada (vCenters distintos)</td><td><strong>Cross vCenter vMotion</strong></td><td>Baixo impacto quando compatível; rollback precisa ser planejado</td><td>Versões, SSO, 443/902, latência, MTU, rede da VM e permissões <span class="prm">PRM-MIG-003</span></td></tr>
+        <tr><td>Mudança de site, re-IP, origem externa, grandes volumes ou rollback simples</td><td><strong>Réplica Veeam + failover planejado</strong></td><td>Interrupção controlada no delta final; origem preservada até o aceite</td><td>RPO, change rate, proxies, transporte, portas, espaço e consistência da aplicação <span class="prm">PRM-MIG-004</span></td></tr>
         <tr><td>VMware → XenServer (ou troca de hypervisor)</td><td>Conversão (XenServer Conversion Manager / import OVF)</td><td>Validar guest OS support e drivers (remoção de Tools, instalação de guest agent).</td></tr>
         <tr><td>Físico → virtual (P2V)</td><td>Veeam Agent → restore como VM / réplica</td><td>Testar boot e drivers em janela; ajustar HAL/storage drivers.</td></tr>
         <tr><td>Troca de versão de Windows/AD</td><td>Novo servidor + migração de papéis/dados; novo DC + FSMO</td><td>Nunca in-place em DC; file server via DFS/robocopy com ACLs.</td></tr>
@@ -842,13 +856,34 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
 
     <div class="aud" data-aud="arquitetura tecnico">
       <div class="band">Réplica Veeam como migração <span class="who">· pré-requisitos e método</span></div>
+      <div class="migration-architecture" data-tags="arquitetura veeam proxy local remoto repository data mover portas">
+        <svg viewBox="0 0 1080 390" role="img" aria-labelledby="veeamArchTitle veeamArchDesc">
+          <title id="veeamArchTitle">Arquitetura de referência para migração por réplica Veeam</title>
+          <desc id="veeamArchDesc">O backup server orquestra proxies próximos aos ambientes VMware de origem e destino. O tráfego de dados percorre o caminho entre proxies, e um repositório auxiliar pode fornecer seeding e recuperação.</desc>
+          <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#85a9ba"/></marker></defs>
+          <rect class="node" x="25" y="145" width="165" height="82" rx="12"/><text x="108" y="178" text-anchor="middle">VMware origem</text><text class="small" x="108" y="199" text-anchor="middle">Source host / vCenter</text>
+          <rect class="node" x="245" y="145" width="155" height="82" rx="12"/><text x="322" y="178" text-anchor="middle">Proxy local</text><text class="small" x="322" y="199" text-anchor="middle">Leitura próxima à origem</text>
+          <rect class="core" x="455" y="32" width="170" height="82" rx="12"/><text x="540" y="65" text-anchor="middle">Backup Server</text><text class="small" x="540" y="86" text-anchor="middle">Controle e orquestração</text>
+          <rect class="node" x="680" y="145" width="155" height="82" rx="12"/><text x="757" y="178" text-anchor="middle">Proxy remoto</text><text class="small" x="757" y="199" text-anchor="middle">Escrita próxima ao destino</text>
+          <rect class="node" x="890" y="145" width="165" height="82" rx="12"/><text x="972" y="178" text-anchor="middle">VMware destino</text><text class="small" x="972" y="199" text-anchor="middle">Target host / vCenter</text>
+          <rect class="repo" x="655" y="295" width="205" height="70" rx="12"/><text x="757" y="326" text-anchor="middle">Repositório auxiliar</text><text class="small" x="757" y="347" text-anchor="middle">Seed, restore e mount server</text>
+          <path class="flow" d="M190 186 L245 186"/><text class="small" x="217" y="172" text-anchor="middle">443 / 902*</text>
+          <path class="flow" d="M455 87 L400 145"/><path class="flow" d="M625 87 L680 145"/><text class="small" x="540" y="132" text-anchor="middle">Controle dos componentes*</text>
+          <path class="flow data" d="M400 186 L680 186"/><text x="540" y="171" text-anchor="middle">Data Mover · link dimensionado*</text>
+          <path class="flow" d="M835 186 L890 186"/><text class="small" x="862" y="172" text-anchor="middle">443 / 902*</text>
+          <path class="flow" d="M757 227 L757 295"/><text class="small" x="770" y="265">Seed / restore*</text>
+        </svg>
+        <div class="arch-legend"><span>Plano de controle e acesso à infraestrutura</span><span class="data-key">Caminho preferencial dos dados de réplica</span><span>* Validar direção e portas na matriz da versão implantada</span></div>
+      </div>
+      <div class="callout tip"><span class="ico">↔</span><span><strong>Leitura do desenho:</strong> o Backup Server orquestra; ele não deve ser presumido como caminho dos dados. Proxies locais reduzem tráfego desnecessário e concentram o processamento perto de cada vSphere. Para VBR 13, a referência oficial inclui 443/902 para VMware e 6162 ou 2500–3300 para serviços de transporte em diversos fluxos; firewall deve ser derivado da tabela oficial para os papéis realmente usados.</span></div>
       <div class="grid" data-tags="veeam replica migracao failover planejado seeding re-ip cutover">
         <div class="card"><h4>Método (resumo)</h4><ul style="font-size:.88rem;margin-left:18px">
           <li>1. Criar jobs de réplica origem→destino (com <strong>seeding</strong> se a volumetria/link exigirem: carga inicial por backup transportado).</li>
           <li>2. Ciclos incrementais até o RPO de cutover ficar pequeno (minutos).</li>
-          <li>3. <strong>Failover planejado</strong> na janela: origem pausada, delta final sincronizado, réplica assume — perda zero de dados.</li>
-          <li>4. <strong>Re-IP automático</strong> e mapeamento de redes aplicados pela réplica quando o endereçamento muda.</li>
-          <li>5. Validação com o dono da aplicação; failback disponível como rollback até o aceite; depois, permanent failover e descomissionamento.</li>
+          <li>3. Executar teste isolado da réplica e registrar tempo, consistência, rede e dependências antes da janela.</li>
+          <li>4. <strong>Failover planejado:</strong> confirmar job íntegro e réplica Ready; sincronizar o delta, desligar a origem e iniciar a réplica. Tratar RPO zero como objetivo sujeito à conclusão bem-sucedida do processo.</li>
+          <li>5. Aplicar network mapping e <strong>re-IP</strong> quando necessário; validar DNS, rotas, firewall, certificados e integrações.</li>
+          <li>6. Validar com o dono da aplicação; manter a origem como retorno até o aceite; depois executar permanent failover e descomissionamento formal.</li>
         </ul></div>
         <div class="card"><h4>Pré-requisitos</h4><ul style="font-size:.88rem;margin-left:18px">
           <li><strong>Nosso lado:</strong> VBR atual (v13), proxies nas duas pontas, portas de data mover liberadas, repositório para metadata, licenças pelo nº de VMs, capacidade no destino.</li>
@@ -856,6 +891,14 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
           <li><strong>Ambos:</strong> inventário e ondas definidos por criticidade e afinidade de aplicações (PRM-MIG-005/007).</li>
         </ul></div>
       </div>
+      <div class="card" data-tags="runbook implementacao veeam gates go no-go aceite"><h4>Gates de implementação</h4><ol style="font-size:.88rem;margin:8px 0 0 20px">
+        <li><strong>Desenho aprovado:</strong> papéis, sizing, transport mode, redes, portas e segurança.</li>
+        <li><strong>Piloto aprovado:</strong> uma carga representativa replicada, iniciada em rede isolada e validada.</li>
+        <li><strong>Onda pronta:</strong> último job OK, replica Ready, delta dentro do RPO, destino com capacidade e aplicação disponível para teste.</li>
+        <li><strong>Go/no-go:</strong> decisão nominal antes de desligar a origem; falha de requisito cancela a onda.</li>
+        <li><strong>Aceite:</strong> aplicação, monitoração, backup, desempenho e documentação confirmados antes do permanent failover.</li>
+      </ol></div>
+      <p class="src">Referência operacional: Veeam Backup &amp; Replication 13 — User Guide, seções Ports, VMware vSphere e Planned Failover. Revalidar na build aplicada ao projeto.</p>
     </div>
 
     <div class="aud" data-aud="arquitetura gestao prevenda">
