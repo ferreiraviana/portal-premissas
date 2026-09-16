@@ -1595,7 +1595,8 @@ async function runAutomatedHldAnalysis(){
   document.getElementById('analysisCoverage').textContent=coverage+'%';
   document.getElementById('analysisCritical').textContent=critical;
   document.getElementById('analysisPremises').textContent=premiseDocs.length;
-  document.getElementById('hldFindingsList').innerHTML=findings.sort((a,b)=>({high:0,medium:1,ok:2}[a.level]-({high:0,medium:1,ok:2}[b.level])).map(f=>`<div class="finding ${f.level}"><div class="finding-head"><b>${safeHtml(f.title)}</b><span>${f.level==='high'?'Atenção crítica':f.level==='medium'?'Validar':'Evidência localizada'}</span></div><p>${safeHtml(f.detail)}</p></div>`).join('');
+  const findingOrder=['high','medium','ok'];
+  document.getElementById('hldFindingsList').innerHTML=findings.sort((a,b)=>findingOrder.indexOf(a.level)-findingOrder.indexOf(b.level)).map(f=>`<div class="finding ${f.level}"><div class="finding-head"><b>${safeHtml(f.title)}</b><span>${f.level==='high'?'Atenção crítica':f.level==='medium'?'Validar':'Evidência localizada'}</span></div><p>${safeHtml(f.detail)}</p></div>`).join('');
   document.getElementById('hldAnalysisState').classList.add('visible');
   document.getElementById('hldFindings').value=findings.filter(f=>f.level!=='ok').map(f=>`[${f.level==='high'?'BLOQUEANTE':'CONDICIONANTE'}] ${f.title}: ${f.detail}`).join('\n\n');saveHld();
   button.disabled=false;button.textContent='Analisar novamente';
