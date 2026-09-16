@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js"></script>
 <title>Implementation Management BR · Portal End to End</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -143,6 +145,7 @@ nav a.active::before{content:"";position:absolute;left:0;top:9px;bottom:9px;widt
 .step-num{display:grid;place-items:center;width:21px;height:21px;border-radius:50%;background:#edf2f6;color:#587086;font:700 .62rem var(--font-mono)}.journey-step.current .step-num{background:var(--accent);color:#fff}
 .page-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:-16px 0 24px}.page-tool{border:1px solid var(--line);background:#fff;color:var(--muted);padding:7px 10px;border-radius:8px;font:600 .7rem var(--font-display);cursor:pointer}.page-tool:hover{border-color:#9bc7ce;color:var(--accent)}
 .hld-status{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 28px}.hld-stat{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow-sm)}.hld-stat strong{display:block;color:var(--ink);font:700 1.2rem var(--font-display)}.hld-stat span{color:var(--muted);font-size:.72rem}.hld-form{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:16px}.hld-field{display:flex;flex-direction:column;gap:6px}.hld-field.full{grid-column:1/-1}.hld-field label{color:var(--ink);font:600 .74rem var(--font-display)}.hld-field input,.hld-field select,.hld-field textarea{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--text);font:400 .82rem var(--font-body)}.hld-field textarea{min-height:88px;resize:vertical}.hld-field input:focus,.hld-field select:focus,.hld-field textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,125,118,.1)}.hld-actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 25px}.hld-btn{border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);padding:9px 13px;font:600 .74rem var(--font-display);cursor:pointer}.hld-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.hld-progress{height:8px;margin:8px 0 5px;border-radius:99px;background:#e8eef3;overflow:hidden}.hld-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .2s}.hld-checks{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}.hld-check{display:flex;gap:9px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #edf1f4;font-size:.82rem}.hld-check input{margin-top:4px;accent-color:var(--accent)}.hld-check strong{display:block;color:var(--ink);font-size:.78rem}.hld-check small{display:block;color:var(--muted);line-height:1.45}.decision-row{display:grid;grid-template-columns:130px 1fr;gap:12px;align-items:start;padding:12px 0;border-bottom:1px solid var(--line)}.decision-row:last-child{border-bottom:0}.decision-row b{color:var(--ink);font:700 .76rem var(--font-display)}.decision-row span{font-size:.82rem;color:var(--muted)}
+.hld-upload{border:2px dashed #a8c9c5;border-radius:16px;padding:26px;text-align:center;background:linear-gradient(145deg,#f8fcfb,#eef6f5);transition:border-color .2s,background .2s}.hld-upload.drag{border-color:var(--accent);background:#e6f4f1}.hld-upload input{position:absolute;inline-size:1px;block-size:1px;opacity:0}.hld-upload label{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border-radius:9px;background:var(--ink);color:#fff;font:600 .76rem var(--font-display);cursor:pointer}.hld-upload p{margin:10px auto 0;max-width:62ch;color:var(--muted);font-size:.78rem}.hld-files{display:grid;gap:8px;margin:14px 0}.hld-file{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;font-size:.76rem}.hld-file b{color:var(--ink)}.hld-file span{color:var(--muted)}.analysis-state{display:none;margin-top:18px}.analysis-state.visible{display:block}.analysis-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:15px 0}.analysis-metric{padding:14px;border-radius:12px;background:#f5f8f8;border:1px solid var(--line)}.analysis-metric strong{display:block;font:700 1.15rem var(--font-display);color:var(--ink)}.analysis-metric span{font-size:.68rem;color:var(--muted)}.analysis-list{display:grid;gap:9px}.finding{padding:13px 14px;border:1px solid var(--line);border-left:4px solid #8da1b2;border-radius:10px;background:#fff}.finding.high{border-left-color:#bd3b3b}.finding.medium{border-left-color:#d78a20}.finding.ok{border-left-color:#18846f}.finding-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:5px}.finding-head b{color:var(--ink);font-size:.8rem}.finding-head span{font:700 .62rem var(--font-mono);text-transform:uppercase}.finding p{margin:0;color:var(--muted);font-size:.76rem;line-height:1.5}.analysis-disclaimer{font-size:.72rem;color:var(--muted);margin-top:14px}.hld-btn:disabled{opacity:.55;cursor:not-allowed}
 h2.page-title{font-size:clamp(1.85rem,3vw,2.5rem);letter-spacing:-.045em;line-height:1.12;margin-bottom:10px}p.page-sub{font-size:1rem;line-height:1.75;max-width:76ch;margin-bottom:30px}h3{font-size:1.08rem;margin:34px 0 14px;letter-spacing:-.02em}
 .catalog-hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#102a46 0%,#123b5b 58%,#087e8b 145%);color:#fff;border-radius:24px;padding:clamp(30px,5vw,58px);margin-bottom:34px;box-shadow:var(--shadow-md)}
 .catalog-hero::after{content:"";position:absolute;width:360px;height:360px;right:-110px;top:-190px;border:70px solid rgba(255,255,255,.055);border-radius:50%}.catalog-hero .eyebrow{position:relative;z-index:1;font:600 .7rem var(--font-mono);letter-spacing:.13em;text-transform:uppercase;color:#8de0e3;margin-bottom:14px}
@@ -157,7 +160,7 @@ h2.page-title{font-size:clamp(1.85rem,3vw,2.5rem);letter-spacing:-.045em;line-he
 @media (max-width:1180px){.doc-shell{grid-template-columns:minmax(0,1fr)}.page-toc{display:none}}
 @media (max-width:1050px){.personas{width:100%;overflow-x:auto}.topbar{align-items:center}.search{max-width:none}}
 @media (max-width:880px){.sidebar{position:fixed;z-index:60;inset:0 auto 0 0;width:min(86vw,320px);height:100vh;box-shadow:22px 0 50px rgba(7,21,37,.28)}.sidebar.open{display:flex}.topbar{padding:11px 16px}.content{padding:26px 16px 60px}.catalog-hero{border-radius:18px}.personas{flex-wrap:nowrap}.chip{white-space:nowrap}}
-@media (max-width:600px){body{overflow-x:hidden}.topbar{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px;width:100%;max-width:100vw}.search{min-width:0;width:100%}.search input{min-width:0}.personas{grid-column:1/-1;width:100%;min-width:0;max-width:100%;overflow-x:auto}.content{width:100%;max-width:100vw}.catalog-stats,.hld-status,.hld-form,.hld-checks{grid-template-columns:1fr}.hld-field.full{grid-column:auto}.catgrid,.grid{grid-template-columns:1fr}.prod{min-height:135px}.catalog-hero{width:100%;padding:28px 22px}.catalog-hero h2{font-size:clamp(1.8rem,9vw,2.35rem);overflow-wrap:anywhere}.band .who{display:none}.decision-row{grid-template-columns:1fr;gap:3px}}
+@media (max-width:600px){body{overflow-x:hidden}.topbar{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px;width:100%;max-width:100vw}.search{min-width:0;width:100%}.search input{min-width:0}.personas{grid-column:1/-1;width:100%;min-width:0;max-width:100%;overflow-x:auto}.content{width:100%;max-width:100vw}.catalog-stats,.hld-status,.hld-form,.hld-checks,.analysis-summary{grid-template-columns:1fr}.hld-field.full{grid-column:auto}.catgrid,.grid{grid-template-columns:1fr}.prod{min-height:135px}.catalog-hero{width:100%;padding:28px 22px}.catalog-hero h2{font-size:clamp(1.8rem,9vw,2.35rem);overflow-wrap:anywhere}.band .who{display:none}.decision-row{grid-template-columns:1fr;gap:3px}}
 
 /* ===== Implementation Management BR ===== */
 :root{--ink:#172333;--ink-2:#21344a;--surface:#f4f6f5;--text:#273849;--muted:#687887;--line:#dce3e1;--accent:#007d76;--accent-2:#5b4ad0;--accent-soft:#e6f4f1;--lime:#c9f269;--shadow-md:0 18px 55px rgba(18,35,51,.14)}
@@ -814,6 +817,32 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
       <div class="hld-stat"><strong>Local</strong><span>rascunho salvo no navegador</span></div>
     </div>
     <div class="callout tip"><span class="ico">ℹ️</span><span><strong>Uso do processo:</strong> esta página organiza a atividade e gera um resumo. O HLD aprovado, o parecer, os riscos e as evidências devem permanecer anexados ao registro oficial do projeto.</span></div>
+
+    <div class="aud" data-aud="todos arquitetura tecnico gestao">
+      <div class="band">Análise automatizada <span class="who">· upload e triagem técnica</span></div>
+      <div class="card" data-tags="hld upload pdf docx analise automatizada viabilidade arquitetura riscos">
+        <div class="hld-upload" id="hldDropZone">
+          <input id="hldFiles" type="file" multiple accept=".pdf,.docx,.txt,.md,.csv,.json,.html">
+          <label for="hldFiles">Selecionar HLD e anexos</label>
+          <p>Arraste arquivos PDF, DOCX, Markdown ou texto. A leitura ocorre localmente no navegador; os documentos não são enviados para um servidor.</p>
+        </div>
+        <div class="hld-files" id="hldFileList" aria-live="polite"></div>
+        <div class="hld-actions">
+          <button class="hld-btn primary" id="runHldAnalysis" type="button" disabled>Analisar arquitetura</button>
+          <button class="hld-btn" id="clearHldFiles" type="button" disabled>Remover arquivos</button>
+        </div>
+        <div class="analysis-state" id="hldAnalysisState" aria-live="polite">
+          <div class="analysis-summary">
+            <div class="analysis-metric"><strong id="analysisFeasibility">—</strong><span>viabilidade preliminar</span></div>
+            <div class="analysis-metric"><strong id="analysisCoverage">—</strong><span>cobertura do HLD</span></div>
+            <div class="analysis-metric"><strong id="analysisCritical">—</strong><span>pontos críticos</span></div>
+            <div class="analysis-metric"><strong id="analysisPremises">—</strong><span>premissas consultadas</span></div>
+          </div>
+          <div class="analysis-list" id="hldFindingsList"></div>
+          <p class="analysis-disclaimer">Triagem baseada em evidências textuais, premissas internas e controles de arquitetura. Diagramas, tabelas como imagem, compatibilidade exata e decisões contratuais exigem validação do especialista e consulta à matriz vigente do fabricante.</p>
+        </div>
+      </div>
+    </div>
 
     <div class="aud" data-aud="todos arquitetura gestao">
       <div class="band">1 · Identificar a solicitação <span class="who">· entrada mínima</span></div>
@@ -1486,6 +1515,98 @@ document.addEventListener('keydown',e=>{
 const hldFields=[...document.querySelectorAll('[data-hld-field]')];
 const hldChecks=[...document.querySelectorAll('[data-hld-check]')];
 const hldKey='portal_hld_draft_v1';
+const hldUploads={files:[],texts:[]};
+const premiseSources=[
+  {file:'Premissa_VMWARE.md',label:'VMware vSphere',terms:['vmware','vsphere','esxi','vcenter','vsan','nsx']},
+  {file:'Premissa_XenServer.md',label:'XenServer / Citrix',terms:['xenserver','xcp-ng','citrix hypervisor']},
+  {file:'Premissa_Windows.md',label:'Windows Server',terms:['windows server','failover cluster','hyper-v']},
+  {file:'Premissa_Active_Directory.md',label:'Active Directory e DNS',terms:['active directory','domain controller','controlador de dominio','dns','ad ds']},
+  {file:'Premissa_storage.md',label:'Storage SAN',terms:['storage','san','lun','fibre channel','iscsi','multipath','zoning']},
+  {file:'Premissa_Switch.md',label:'Switch e rede',terms:['switch','vlan','tor','ethernet','bgp','ospf']},
+  {file:'Premissa_Backup_Dedicado_VEEAM.md',label:'Veeam',terms:['veeam','backup & replication','surebackup']},
+  {file:'Premissa_Backup_Dedicado_Commvault.md',label:'Commvault',terms:['commvault','commcell','media agent']}
+];
+const architectureControls=[
+  {name:'Escopo e requisitos',level:'high',need:2,terms:['objetivo','escopo','requisito','fora do escopo','premissa','restricao'],action:'Defina objetivo, limites, requisitos mensuráveis, premissas e exclusões.'},
+  {name:'Versões e compatibilidade',level:'high',need:2,terms:['versao','build','firmware','compatibilidade','hcl','interoperabilidade','licenca','ciclo de vida'],action:'Informe versões, builds, firmware, licenças e evidências das matrizes do fabricante.'},
+  {name:'Capacidade e desempenho',level:'high',need:3,terms:['cpu','memoria','ram','iops','throughput','capacidade','crescimento','dimensionamento','latencia'],action:'Inclua baseline, pico, crescimento, reserva, limites e memória de cálculo.'},
+  {name:'Rede e conectividade',level:'high',need:3,terms:['vlan','ip','enderecamento','dns','ntp','mtu','rota','firewall','porta','largura de banda'],action:'Documente fluxos, portas, VLANs, IPs, DNS/NTP, MTU, rotas, latência e banda.'},
+  {name:'Disponibilidade e continuidade',level:'high',need:3,terms:['alta disponibilidade','redundancia','cluster','quorum','sla','slo','rpo','rto','failover','zona de falha'],action:'Demonstre zonas de falha, redundância, quorum, SLA, RPO/RTO e comportamento em falhas.'},
+  {name:'Proteção e recuperação',level:'high',need:2,terms:['backup','restauracao','restore','replicacao','retencao','imutabilidade','recuperacao de desastre','dr'],action:'Defina proteção, retenção, restauração, replicação e testes de recuperação.'},
+  {name:'Segurança',level:'high',need:3,terms:['mfa','menor privilegio','rbac','hardening','criptografia','certificado','vulnerabilidade','segregacao','auditoria','log'],action:'Inclua identidade, privilégios, hardening, criptografia, certificados, logging e exceções.'},
+  {name:'Migração e reversão',level:'medium',need:2,terms:['migracao','cutover','rollback','backout','onda','janela','go no-go','reversao'],action:'Defina estratégia, ondas, janela, go/no-go, ponto de retorno e rollback testado.'},
+  {name:'Operação e suporte',level:'medium',need:3,terms:['monitoramento','alerta','observabilidade','runbook','suporte','escalonamento','patch','capacidade','descomissionamento'],action:'Detalhe monitoramento, alertas, runbook, patching, capacidade, suporte e descomissionamento.'},
+  {name:'Responsabilidades e dependências',level:'medium',need:2,terms:['raci','responsavel','dependencia','terceiro','cliente','fornecedor','prazo'],action:'Associe dependências e entregas a responsáveis e prazos.'},
+  {name:'Testes e aceite',level:'high',need:2,terms:['criterio de aceite','plano de teste','teste funcional','teste de desempenho','evidencia','homologacao','aceite'],action:'Defina testes, evidências esperadas, critérios mensuráveis e aprovadores.'}
+];
+function safeHtml(value){const el=document.createElement('span');el.textContent=value;return el.innerHTML}
+async function extractHldFile(file){
+  const ext=file.name.split('.').pop().toLowerCase();
+  if(file.size>25*1024*1024)throw new Error('Arquivo maior que 25 MB');
+  if(ext==='pdf'){
+    if(!window.pdfjsLib)throw new Error('Leitor de PDF indisponível. Verifique o acesso à CDN.');
+    pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    const pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise;let text='';
+    for(let page=1;page<=pdf.numPages;page++){const content=await (await pdf.getPage(page)).getTextContent();text+='\n'+content.items.map(x=>x.str).join(' ')}
+    return text;
+  }
+  if(ext==='docx'){
+    if(!window.mammoth)throw new Error('Leitor de DOCX indisponível. Verifique o acesso à CDN.');
+    return (await mammoth.extractRawText({arrayBuffer:await file.arrayBuffer()})).value;
+  }
+  const raw=await file.text();
+  return ext==='html'?new DOMParser().parseFromString(raw,'text/html').body.textContent:raw;
+}
+function renderHldFiles(){
+  const list=document.getElementById('hldFileList');list.innerHTML=hldUploads.files.map((f,i)=>`<div class="hld-file"><b>${safeHtml(f.name)}</b><span>${(f.size/1024/1024).toFixed(2)} MB · ${hldUploads.texts[i]?.error?'erro':'pronto'}</span></div>`).join('');
+  document.getElementById('runHldAnalysis').disabled=!hldUploads.files.length;
+  document.getElementById('clearHldFiles').disabled=!hldUploads.files.length;
+}
+async function receiveHldFiles(files){
+  hldUploads.files=[...files];hldUploads.texts=hldUploads.files.map(()=>({loading:true}));renderHldFiles();
+  hldUploads.texts=await Promise.all(hldUploads.files.map(async file=>{try{return {text:await extractHldFile(file)}}catch(error){return {error:error.message,text:''}}}));renderHldFiles();
+}
+function addFinding(list,title,level,detail){list.push({title,level,detail})}
+async function runAutomatedHldAnalysis(){
+  const button=document.getElementById('runHldAnalysis');button.disabled=true;button.textContent='Analisando…';
+  const raw=hldUploads.texts.map(x=>x.text||'').join('\n');const text=norm(raw);const findings=[];
+  if(text.length<500)addFinding(findings,'Conteúdo insuficiente','high','O material extraído possui pouco texto. Confirme se o PDF é digital; arquivos apenas com imagens exigem OCR e revisão manual.');
+  let covered=0,critical=0;
+  architectureControls.forEach(control=>{
+    const hits=control.terms.filter(term=>text.includes(norm(term)));const ok=hits.length>=control.need;
+    if(ok){covered++;addFinding(findings,control.name,'ok',`Evidências localizadas: ${hits.slice(0,5).join(', ')}. Confirme a qualidade e os valores apresentados.`)}
+    else{if(control.level==='high')critical++;addFinding(findings,control.name,control.level,`${control.action} Evidências localizadas: ${hits.length?hits.join(', '):'nenhuma'}.`)}
+  });
+  if(/(?:password|senha|-password)\s*[:=]?\s*["']?\S{4,}/i.test(raw)) {critical++;addFinding(findings,'Possível credencial exposta','high','O documento aparenta conter senha ou segredo. Remova ou masque antes de armazenar, compartilhar ou anexar ao projeto.')}
+  if(/\b(?:vsphere|esxi)\s*6(?:\.|\b)|windows server\s*2008|tls\s*1\.0/i.test(raw)){critical++;addFinding(findings,'Tecnologia potencialmente obsoleta','high','Foi localizada uma versão ou protocolo legado. Valide suporte, caminho de atualização e exceção formal na matriz vigente do fabricante.')}
+  if(/sem redund[aâ]ncia|ponto [uú]nico de falha|single point of failure/i.test(raw)){critical++;addFinding(findings,'Ponto único de falha declarado','high','O desenho declara ausência de redundância. Avalie impacto, SLA, mitigação e aceite formal do risco.')}
+  const relevant=premiseSources.filter(source=>source.terms.some(term=>text.includes(norm(term))));
+  const sources=relevant.length?relevant:premiseSources;
+  const loaded=await Promise.all(sources.map(async source=>{try{const response=await fetch(`premissas/${source.file}`);return response.ok?{...source,text:await response.text()}:null}catch(e){return null}}));
+  const premiseDocs=loaded.filter(Boolean);const references=premiseDocs.map(p=>p.label).join(', ');
+  addFinding(findings,'Premissas internas para conferência','medium',references?`Revise os itens aplicáveis em: ${references}. A correspondência textual não substitui a validação item a item.`:'Não foi possível carregar a biblioteca de premissas.');
+  premiseDocs.forEach(source=>{
+    const lines=source.text.split(/\r?\n/).map(line=>line.replace(/^[-*#>\d.\s]+/,'').replace(/\[([^\]]+)\]\([^\)]+\)/g,'$1').replace(/[*`|]/g,'').trim()).filter(line=>line.length>35&&line.length<260);
+    const ranked=lines.map(line=>({line,score:architectureControls.flatMap(c=>c.terms).filter(term=>norm(line).includes(norm(term))&&text.includes(norm(term))).length+(norm(line).includes('obrigatorio')?4:0)})).filter(item=>item.score>0).sort((a,b)=>b.score-a.score).slice(0,2);
+    if(ranked.length)addFinding(findings,`Premissa · ${source.label}`,'medium',ranked.map(item=>item.line).join(' | '));
+  });
+  const coverage=Math.round(covered/architectureControls.length*100);const feasibility=critical===0&&coverage>=75?'Viável':critical<=2&&coverage>=50?'Condicionada':'Inconclusiva';
+  document.getElementById('analysisFeasibility').textContent=feasibility;
+  document.getElementById('analysisCoverage').textContent=coverage+'%';
+  document.getElementById('analysisCritical').textContent=critical;
+  document.getElementById('analysisPremises').textContent=premiseDocs.length;
+  document.getElementById('hldFindingsList').innerHTML=findings.sort((a,b)=>({high:0,medium:1,ok:2}[a.level]-({high:0,medium:1,ok:2}[b.level])).map(f=>`<div class="finding ${f.level}"><div class="finding-head"><b>${safeHtml(f.title)}</b><span>${f.level==='high'?'Atenção crítica':f.level==='medium'?'Validar':'Evidência localizada'}</span></div><p>${safeHtml(f.detail)}</p></div>`).join('');
+  document.getElementById('hldAnalysisState').classList.add('visible');
+  document.getElementById('hldFindings').value=findings.filter(f=>f.level!=='ok').map(f=>`[${f.level==='high'?'BLOQUEANTE':'CONDICIONANTE'}] ${f.title}: ${f.detail}`).join('\n\n');saveHld();
+  button.disabled=false;button.textContent='Analisar novamente';
+}
+const hldInput=document.getElementById('hldFiles'),hldDrop=document.getElementById('hldDropZone');
+hldInput?.addEventListener('change',e=>receiveHldFiles(e.target.files));
+['dragenter','dragover'].forEach(type=>hldDrop?.addEventListener(type,e=>{e.preventDefault();hldDrop.classList.add('drag')}));
+['dragleave','drop'].forEach(type=>hldDrop?.addEventListener(type,e=>{e.preventDefault();hldDrop.classList.remove('drag')}));
+hldDrop?.addEventListener('drop',e=>receiveHldFiles(e.dataTransfer.files));
+document.getElementById('runHldAnalysis')?.addEventListener('click',runAutomatedHldAnalysis);
+document.getElementById('clearHldFiles')?.addEventListener('click',()=>{hldUploads.files=[];hldUploads.texts=[];hldInput.value='';document.getElementById('hldAnalysisState').classList.remove('visible');renderHldFiles()});
 function hldState(){return {fields:Object.fromEntries(hldFields.map(el=>[el.id,el.value])),checks:hldChecks.map(el=>el.checked)}}
 function updateHldProgress(){
   if(!hldChecks.length)return;

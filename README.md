@@ -24,7 +24,7 @@ O objetivo é oferecer uma referência única, simples e rastreável para os pro
 - Premissas, checklists e critérios de aceite.
 - Radar de versões e referências oficiais.
 - Matriz de decisão para migrações e atualizações.
-- Processo interativo para análise de HLD, registro de achados e emissão de parecer.
+- Análise assistida de HLD com upload local, confronto com premissas, registro de achados e parecer.
 - Base de conhecimento com vídeos e exemplos práticos.
 - Navegação responsiva, favoritos e links diretos.
 
