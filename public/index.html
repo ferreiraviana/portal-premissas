@@ -142,6 +142,7 @@ nav a.active::before{content:"";position:absolute;left:0;top:9px;bottom:9px;widt
 .journey-step:last-child{border-right:0}.journey-step:hover{background:#f3f8fa;color:var(--accent)}.journey-step.current{color:var(--ink);background:#eef7f7}.journey-step.current::after{content:"";position:absolute;left:14px;right:14px;bottom:0;height:3px;background:var(--accent);border-radius:3px 3px 0 0}
 .step-num{display:grid;place-items:center;width:21px;height:21px;border-radius:50%;background:#edf2f6;color:#587086;font:700 .62rem var(--font-mono)}.journey-step.current .step-num{background:var(--accent);color:#fff}
 .page-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:-16px 0 24px}.page-tool{border:1px solid var(--line);background:#fff;color:var(--muted);padding:7px 10px;border-radius:8px;font:600 .7rem var(--font-display);cursor:pointer}.page-tool:hover{border-color:#9bc7ce;color:var(--accent)}
+.hld-status{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 28px}.hld-stat{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow-sm)}.hld-stat strong{display:block;color:var(--ink);font:700 1.2rem var(--font-display)}.hld-stat span{color:var(--muted);font-size:.72rem}.hld-form{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:16px}.hld-field{display:flex;flex-direction:column;gap:6px}.hld-field.full{grid-column:1/-1}.hld-field label{color:var(--ink);font:600 .74rem var(--font-display)}.hld-field input,.hld-field select,.hld-field textarea{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--text);font:400 .82rem var(--font-body)}.hld-field textarea{min-height:88px;resize:vertical}.hld-field input:focus,.hld-field select:focus,.hld-field textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,125,118,.1)}.hld-actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 25px}.hld-btn{border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);padding:9px 13px;font:600 .74rem var(--font-display);cursor:pointer}.hld-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.hld-progress{height:8px;margin:8px 0 5px;border-radius:99px;background:#e8eef3;overflow:hidden}.hld-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .2s}.hld-checks{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}.hld-check{display:flex;gap:9px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #edf1f4;font-size:.82rem}.hld-check input{margin-top:4px;accent-color:var(--accent)}.hld-check strong{display:block;color:var(--ink);font-size:.78rem}.hld-check small{display:block;color:var(--muted);line-height:1.45}.decision-row{display:grid;grid-template-columns:130px 1fr;gap:12px;align-items:start;padding:12px 0;border-bottom:1px solid var(--line)}.decision-row:last-child{border-bottom:0}.decision-row b{color:var(--ink);font:700 .76rem var(--font-display)}.decision-row span{font-size:.82rem;color:var(--muted)}
 h2.page-title{font-size:clamp(1.85rem,3vw,2.5rem);letter-spacing:-.045em;line-height:1.12;margin-bottom:10px}p.page-sub{font-size:1rem;line-height:1.75;max-width:76ch;margin-bottom:30px}h3{font-size:1.08rem;margin:34px 0 14px;letter-spacing:-.02em}
 .catalog-hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#102a46 0%,#123b5b 58%,#087e8b 145%);color:#fff;border-radius:24px;padding:clamp(30px,5vw,58px);margin-bottom:34px;box-shadow:var(--shadow-md)}
 .catalog-hero::after{content:"";position:absolute;width:360px;height:360px;right:-110px;top:-190px;border:70px solid rgba(255,255,255,.055);border-radius:50%}.catalog-hero .eyebrow{position:relative;z-index:1;font:600 .7rem var(--font-mono);letter-spacing:.13em;text-transform:uppercase;color:#8de0e3;margin-bottom:14px}
@@ -150,13 +151,13 @@ h2.page-title{font-size:clamp(1.85rem,3vw,2.5rem);letter-spacing:-.045em;line-he
 .catalog-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:-9px 0 34px}.catalog-stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow-sm)}.catalog-stat strong{display:block;color:var(--ink);font:700 1.35rem var(--font-display);letter-spacing:-.04em}.catalog-stat span{font-size:.76rem;color:var(--muted)}
 .catgrid{grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:16px}.prod{position:relative;min-height:148px;padding:21px 20px 18px;border-radius:16px;box-shadow:var(--shadow-sm);overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
 .prod::before{content:"•";display:grid;place-items:center;width:38px;height:38px;margin-bottom:15px;border-radius:11px;background:#eaf4f5;color:var(--accent);font:700 .85rem var(--font-display)}.prod::after{content:"→";position:absolute;right:18px;top:22px;color:#9aabba;transition:transform .2s,color .2s}.prod:hover{transform:translateY(-4px);border-color:#a7cbd2;box-shadow:var(--shadow-md)}.prod:hover::after{transform:translateX(3px);color:var(--accent)}
-.prod[href="#vmware"]::before{content:"VM"}.prod[href="#xenserver"]::before{content:"XS"}.prod[href="#windows"]::before{content:"WS"}.prod[href="#ad"]::before{content:"AD"}.prod[href="#storage"]::before{content:"ST"}.prod[href="#switch"]::before{content:"NW"}.prod[href="#veeam"]::before{content:"VB"}.prod[href="#commvault"]::before{content:"CV"}.prod[href="#migracoes"]::before{content:"MG"}.prod[href="#jornada"]::before{content:"JR"}.prod[href="#premissas"]::before{content:"PR"}.prod[href="#radar"]::before{content:"RD"}.prod .t{font-size:.98rem;margin-bottom:6px}.prod .d{font-size:.81rem;line-height:1.55}
+.prod[href="#vmware"]::before{content:"VM"}.prod[href="#xenserver"]::before{content:"XS"}.prod[href="#windows"]::before{content:"WS"}.prod[href="#ad"]::before{content:"AD"}.prod[href="#storage"]::before{content:"ST"}.prod[href="#switch"]::before{content:"NW"}.prod[href="#veeam"]::before{content:"VB"}.prod[href="#commvault"]::before{content:"CV"}.prod[href="#migracoes"]::before{content:"MG"}.prod[href="#analise-hld"]::before{content:"HD"}.prod[href="#jornada"]::before{content:"JR"}.prod[href="#premissas"]::before{content:"PR"}.prod[href="#radar"]::before{content:"RD"}.prod .t{font-size:.98rem;margin-bottom:6px}.prod .d{font-size:.81rem;line-height:1.55}
 .card{border-radius:14px;padding:20px 21px;margin-bottom:15px;box-shadow:var(--shadow-sm);transition:border-color .18s,box-shadow .18s}.card:hover{border-color:#c3d4e1;box-shadow:0 10px 28px rgba(16,36,62,.07)}.grid{gap:16px}.band{border:0;padding:0;margin-top:34px;font-size:.72rem;color:#476177}.band::before{content:"";width:5px;height:20px;border-radius:4px;background:linear-gradient(var(--accent),var(--accent-2))}.band .who{margin-left:auto}.pill{padding:3px 9px;font-size:.64rem}.prm{background:#eaf1f6;color:#315a77;border:1px solid #d5e1ea}
 .callout{border-radius:13px;padding:15px 17px;line-height:1.6}table{border-radius:14px;box-shadow:var(--shadow-sm)}th{background:#173554;padding:12px 14px}td{padding:11px 14px}details{border-radius:13px;box-shadow:var(--shadow-sm)}summary{padding:15px 18px}.dosdonts{gap:16px}.dos,.donts{border-radius:14px;padding:19px 21px}.menu-btn{background:#fff;border-color:#cfdae4;box-shadow:var(--shadow-sm)}
 @media (max-width:1180px){.doc-shell{grid-template-columns:minmax(0,1fr)}.page-toc{display:none}}
 @media (max-width:1050px){.personas{width:100%;overflow-x:auto}.topbar{align-items:center}.search{max-width:none}}
 @media (max-width:880px){.sidebar{position:fixed;z-index:60;inset:0 auto 0 0;width:min(86vw,320px);height:100vh;box-shadow:22px 0 50px rgba(7,21,37,.28)}.sidebar.open{display:flex}.topbar{padding:11px 16px}.content{padding:26px 16px 60px}.catalog-hero{border-radius:18px}.personas{flex-wrap:nowrap}.chip{white-space:nowrap}}
-@media (max-width:600px){body{overflow-x:hidden}.topbar{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px;width:100%;max-width:100vw}.search{min-width:0;width:100%}.search input{min-width:0}.personas{grid-column:1/-1;width:100%;min-width:0;max-width:100%;overflow-x:auto}.content{width:100%;max-width:100vw}.catalog-stats{grid-template-columns:1fr}.catgrid,.grid{grid-template-columns:1fr}.prod{min-height:135px}.catalog-hero{width:100%;padding:28px 22px}.catalog-hero h2{font-size:clamp(1.8rem,9vw,2.35rem);overflow-wrap:anywhere}.band .who{display:none}}
+@media (max-width:600px){body{overflow-x:hidden}.topbar{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px;width:100%;max-width:100vw}.search{min-width:0;width:100%}.search input{min-width:0}.personas{grid-column:1/-1;width:100%;min-width:0;max-width:100%;overflow-x:auto}.content{width:100%;max-width:100vw}.catalog-stats,.hld-status,.hld-form,.hld-checks{grid-template-columns:1fr}.hld-field.full{grid-column:auto}.catgrid,.grid{grid-template-columns:1fr}.prod{min-height:135px}.catalog-hero{width:100%;padding:28px 22px}.catalog-hero h2{font-size:clamp(1.8rem,9vw,2.35rem);overflow-wrap:anywhere}.band .who{display:none}.decision-row{grid-template-columns:1fr;gap:3px}}
 
 /* ===== Implementation Management BR ===== */
 :root{--ink:#172333;--ink-2:#21344a;--surface:#f4f6f5;--text:#273849;--muted:#687887;--line:#dce3e1;--accent:#007d76;--accent-2:#5b4ad0;--accent-soft:#e6f4f1;--lime:#c9f269;--shadow-md:0 18px 55px rgba(18,35,51,.14)}
@@ -220,6 +221,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <a href="#veeam">Veeam B&amp;R</a>
     <a href="#commvault">Commvault</a>
     <div class="nav-label">Serviços de Projeto</div>
+    <a href="#analise-hld">Análise de HLD</a>
     <a href="#migracoes">Migrações &amp; Upgrades</a>
     <div class="nav-label">Biblioteca</div>
     <a href="#jornada">Jornada do Projeto</a>
@@ -244,6 +246,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     <select class="quick-jump" id="quickJump" aria-label="Ir rapidamente para">
       <option value="">Ir rapidamente para…</option>
       <option value="jornada">Jornada de ponta a ponta</option>
+      <option value="analise-hld">Análise de HLD</option>
       <option value="premissas">Biblioteca de premissas</option>
       <option value="checklists">Checklists</option>
       <option value="radar">Radar e governança</option>
@@ -329,6 +332,7 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
     </div>
     <h3>Serviços de Projeto</h3>
     <div class="catgrid">
+      <a class="prod" href="#analise-hld"><span class="t">Análise de HLD</span><span class="d">Revise requisitos, arquitetura, riscos, premissas, evidências e parecer em um único processo.</span><div class="meta"><span class="pill ok2">Processo do time</span></div></a>
       <a class="prod" href="#migracoes"><span class="t">Migrações &amp; Upgrades</span><span class="d">Como escolher a abordagem: Cross vCenter, réplica Veeam, in-place × paralelo, volumetria e cutover.</span><div class="meta"><span class="pill ok2">Novo</span></div></a>
     </div>
 
@@ -798,6 +802,94 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
   </section>
 
   <!-- ================= MIGRAÇÕES ================= -->
+  <section class="page" id="analise-hld">
+    <div class="crumb">Processos do time · Arquitetura</div>
+    <h2 class="page-title">Análise de HLD</h2>
+    <p class="page-sub">Processo orientado a evidências para revisar o High-Level Design, confrontar decisões com requisitos, premissas internas e documentação vigente dos fabricantes e emitir um parecer claro para o projeto.</p>
+
+    <div class="hld-status" aria-label="Resumo da análise">
+      <div class="hld-stat"><strong>6</strong><span>etapas de revisão</span></div>
+      <div class="hld-stat"><strong id="hldProgressValue">0%</strong><span>itens concluídos</span></div>
+      <div class="hld-stat"><strong>3</strong><span>resultados possíveis</span></div>
+      <div class="hld-stat"><strong>Local</strong><span>rascunho salvo no navegador</span></div>
+    </div>
+    <div class="callout tip"><span class="ico">ℹ️</span><span><strong>Uso do processo:</strong> esta página organiza a atividade e gera um resumo. O HLD aprovado, o parecer, os riscos e as evidências devem permanecer anexados ao registro oficial do projeto.</span></div>
+
+    <div class="aud" data-aud="todos arquitetura gestao">
+      <div class="band">1 · Identificar a solicitação <span class="who">· entrada mínima</span></div>
+      <div class="card" data-tags="hld projeto solicitacao escopo responsavel prazo criticidade">
+        <div class="hld-form">
+          <div class="hld-field"><label for="hldProject">Projeto ou oportunidade</label><input id="hldProject" data-hld-field placeholder="Nome ou identificador"></div>
+          <div class="hld-field"><label for="hldOwner">Responsável pela análise</label><input id="hldOwner" data-hld-field placeholder="Nome do responsável"></div>
+          <div class="hld-field"><label for="hldDomain">Domínio principal</label><select id="hldDomain" data-hld-field><option value="">Selecione…</option><option>Virtualização</option><option>Sistemas e identidade</option><option>Storage</option><option>Rede</option><option>Proteção de dados</option><option>Multitecnologia</option></select></div>
+          <div class="hld-field"><label for="hldCriticality">Criticidade</label><select id="hldCriticality" data-hld-field><option value="">Selecione…</option><option>Baixa</option><option>Média</option><option>Alta</option><option>Missão crítica</option></select></div>
+          <div class="hld-field full"><label for="hldScope">Objetivo, escopo e resultado esperado</label><textarea id="hldScope" data-hld-field placeholder="Descreva o problema, os limites do escopo e o resultado esperado."></textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="todos arquitetura tecnico gestao">
+      <div class="band">2 · Validar a qualidade do HLD <span class="who">· completude e rastreabilidade</span></div>
+      <div class="card hld-checks" data-tags="hld requisitos diagrama dependencias premissas riscos decisoes">
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Objetivo e limites</strong><small>Problema, escopo, exclusões, premissas e restrições estão explícitos.</small></span></label>
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Requisitos rastreáveis</strong><small>Requisitos funcionais e não funcionais possuem origem e critério mensurável.</small></span></label>
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Diagramas consistentes</strong><small>Componentes, fluxos, zonas de falha, interfaces e limites estão representados.</small></span></label>
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Dependências e responsáveis</strong><small>Entradas do cliente, terceiros, licenças e responsáveis possuem prazo.</small></span></label>
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Riscos e exceções</strong><small>Probabilidade, impacto, mitigação, aceite e risco residual foram documentados.</small></span></label>
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Critérios de aceite</strong><small>Desempenho, disponibilidade, segurança e testes possuem saída verificável.</small></span></label>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="todos arquitetura tecnico">
+      <div class="band">3 · Revisar os domínios técnicos <span class="who">· visão ponta a ponta</span></div>
+      <div class="grid" data-tags="hld capacidade disponibilidade seguranca rede storage backup monitoramento operacao">
+        <div class="card"><h4>Plataforma e capacidade</h4><ul><li>Versões, builds, licenças e ciclo de suporte.</li><li>Compatibilidade de hardware, drivers, firmware e integrações.</li><li>CPU, memória, IOPS, throughput, crescimento e reserva.</li></ul></div>
+        <div class="card"><h4>Disponibilidade e continuidade</h4><ul><li>SLA/SLO, RPO e RTO mensuráveis.</li><li>Zonas de falha, quorum, redundância e comportamento em falhas.</li><li>Backup, replicação, restauração e testes de recuperação.</li></ul></div>
+        <div class="card"><h4>Rede, dados e storage</h4><ul><li>VLAN, endereçamento, DNS, NTP, MTU, rotas e firewall.</li><li>Capacidade útil, snapshots, multipath, zoning e crescimento.</li><li>Largura de banda, latência e dependências externas.</li></ul></div>
+        <div class="card"><h4>Segurança e operação</h4><ul><li>Menor privilégio, MFA, hardening, criptografia e logging.</li><li>Monitoramento, alertas, patching, certificados e automação.</li><li>Runbook, RACI, suporte, escalonamento e descomissionamento.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="todos arquitetura tecnico">
+      <div class="band">4 · Confrontar padrões e premissas <span class="who">· fabricante + base interna</span></div>
+      <div class="card hld-checks" data-tags="hld fabricante matriz compatibilidade lifecycle premissas">
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Premissas internas</strong><small>Itens aplicáveis da <a href="#premissas">biblioteca PRM</a> foram citados no parecer.</small></span></label>
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Compatibilidade</strong><small>HCL, matrizes de interoperabilidade e caminhos de atualização foram validados.</small></span></label>
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Ciclo de vida</strong><small>A versão terá suporte durante o horizonte do projeto e da operação.</small></span></label>
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Segurança e dimensionamento</strong><small>Baselines, limites e calculadoras oficiais foram aplicados ao cenário.</small></span></label>
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Referências vigentes</strong><small>Links, versões e data da consulta constam no parecer.</small></span></label>
+      </div>
+      <div class="callout warn"><span class="ico">⚠️</span><span><strong>Ordem de precedência:</strong> requisito contratual e regulatório → documentação vigente do fabricante → premissa interna → decisão específica aprovada. Divergências exigem risco e aceite formal.</span></div>
+    </div>
+
+    <div class="aud" data-aud="todos arquitetura gestao">
+      <div class="band">5 · Registrar achados e parecer <span class="who">· decisão acionável</span></div>
+      <div class="card">
+        <div class="decision-row"><b>Bloqueante</b><span>Impede a aprovação: incompatibilidade, requisito crítico ausente, risco não aceito ou violação obrigatória.</span></div>
+        <div class="decision-row"><b>Condicionante</b><span>Permite avançar somente após ação ou evidência com responsável e prazo definidos.</span></div>
+        <div class="decision-row"><b>Recomendação</b><span>Melhoria que reduz risco ou custo, mas não impede o desenho no contexto analisado.</span></div>
+        <div class="hld-form" style="margin-top:16px">
+          <div class="hld-field full"><label for="hldFindings">Achados, riscos e ações</label><textarea id="hldFindings" data-hld-field placeholder="Classificação | descrição | referência | ação | responsável | prazo"></textarea></div>
+          <div class="hld-field"><label for="hldDecision">Parecer</label><select id="hldDecision" data-hld-field><option value="">Selecione…</option><option>Aprovado</option><option>Aprovado com condicionantes</option><option>Reprovado para revisão</option></select></div>
+          <div class="hld-field"><label for="hldReviewDate">Data-alvo ou revisão</label><input id="hldReviewDate" data-hld-field type="date"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="aud" data-aud="todos arquitetura gestao">
+      <div class="band">6 · Emitir e encerrar <span class="who">· saída do processo</span></div>
+      <div class="card hld-checks">
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Parecer revisado</strong><small>Achados objetivos, priorizados e vinculados às evidências.</small></span></label>
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Responsáveis confirmados</strong><small>Cada condicionante possui dono e prazo acordado.</small></span></label>
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Registro oficial atualizado</strong><small>HLD, parecer, evidências e aceite foram anexados ao projeto.</small></span></label>
+        <label class="hld-check"><input type="checkbox" data-hld-check><span><strong>Próximo gate definido</strong><small>Revisão, LLD, implementação ou devolução possui critério de entrada.</small></span></label>
+      </div>
+      <div class="hld-progress" aria-label="Progresso da análise"><span id="hldProgressBar"></span></div>
+      <p class="src" id="hldProgressText">0 verificações concluídas.</p>
+      <div class="hld-actions"><button class="hld-btn primary" id="copyHldSummary" type="button">Copiar resumo da análise</button><button class="hld-btn" type="button" onclick="window.print()">Imprimir parecer</button><button class="hld-btn" id="resetHld" type="button">Limpar rascunho</button></div>
+    </div>
+  </section>
+
   <section class="page" id="migracoes">
     <div class="crumb">Catálogo · Serviços de Projeto</div>
     <h2 class="page-title">Migrações &amp; Upgrades</h2>
@@ -1388,6 +1480,36 @@ document.addEventListener('click',e=>{if(!e.target.closest('.search'))closeSearc
 document.addEventListener('keydown',e=>{
   if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'||(e.key==='/'&&!/input|textarea/i.test(document.activeElement.tagName))){e.preventDefault();searchBox.focus();searchBox.select()}
   if(e.key==='Escape'){closeSearch();searchBox.blur()}
+});
+
+// Workspace local da análise de HLD
+const hldFields=[...document.querySelectorAll('[data-hld-field]')];
+const hldChecks=[...document.querySelectorAll('[data-hld-check]')];
+const hldKey='portal_hld_draft_v1';
+function hldState(){return {fields:Object.fromEntries(hldFields.map(el=>[el.id,el.value])),checks:hldChecks.map(el=>el.checked)}}
+function updateHldProgress(){
+  if(!hldChecks.length)return;
+  const done=hldChecks.filter(el=>el.checked).length,total=hldChecks.length,pct=Math.round(done/total*100);
+  document.getElementById('hldProgressValue').textContent=pct+'%';
+  document.getElementById('hldProgressBar').style.width=pct+'%';
+  document.getElementById('hldProgressText').textContent=`${done} de ${total} verificações concluídas.`;
+}
+function saveHld(){try{localStorage.setItem(hldKey,JSON.stringify(hldState()))}catch(e){}updateHldProgress()}
+try{
+  const saved=JSON.parse(localStorage.getItem(hldKey)||'null');
+  if(saved){hldFields.forEach(el=>{if(saved.fields?.[el.id]!==undefined)el.value=saved.fields[el.id]});hldChecks.forEach((el,i)=>el.checked=!!saved.checks?.[i])}
+}catch(e){}
+hldFields.forEach(el=>el.addEventListener('input',saveHld));
+hldChecks.forEach(el=>el.addEventListener('change',saveHld));
+updateHldProgress();
+document.getElementById('copyHldSummary')?.addEventListener('click',async()=>{
+  const done=hldChecks.filter(el=>el.checked).length;
+  const text=['ANÁLISE DE HLD',`Projeto: ${document.getElementById('hldProject').value||'Não informado'}`,`Responsável: ${document.getElementById('hldOwner').value||'Não informado'}`,`Domínio: ${document.getElementById('hldDomain').value||'Não informado'}`,`Criticidade: ${document.getElementById('hldCriticality').value||'Não informada'}`,`Progresso: ${done}/${hldChecks.length}`,`Parecer: ${document.getElementById('hldDecision').value||'Pendente'}`,`Data-alvo: ${document.getElementById('hldReviewDate').value||'Não informada'}`,'','Escopo:',document.getElementById('hldScope').value||'Não informado','','Achados e ações:',document.getElementById('hldFindings').value||'Não informados'].join('\n');
+  try{await navigator.clipboard.writeText(text);showToast('Resumo da análise copiado.')}catch(e){alert('Não foi possível copiar automaticamente. Use a opção de impressão.')}
+});
+document.getElementById('resetHld')?.addEventListener('click',()=>{
+  if(!confirm('Limpar todo o rascunho local desta análise?'))return;
+  hldFields.forEach(el=>el.value='');hldChecks.forEach(el=>el.checked=false);try{localStorage.removeItem(hldKey)}catch(e){}updateHldProgress();
 });
 
 // Checklists persistentes
