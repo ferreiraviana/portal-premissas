@@ -4,7 +4,7 @@ Conector local entre o portal e o Claude Code. Ele escuta somente em `127.0.0.1`
 
 ## Pré-requisitos
 
-1. Instale o Claude Code seguindo a [documentação oficial](https://docs.anthropic.com/en/docs/claude-code/getting-started).
+1. Instale o Claude Code CLI ou a extensão oficial do Claude Code para VS Code seguindo a [documentação oficial](https://docs.anthropic.com/en/docs/claude-code/getting-started). O conector localiza automaticamente o binário da extensão.
 2. Execute `claude` no terminal e autentique a conta Claude Pro, Max ou Console.
 3. Confirme com `claude --version`.
 

@@ -11,10 +11,19 @@ $maxDocumentChars = 1500000
 
 function Find-Claude {
     $command = Get-Command claude -ErrorAction SilentlyContinue
-    if (-not $command) {
-        throw "Claude Code nao encontrado. Instale e autentique o CLI antes de iniciar o agente."
+    if ($command) { return $command.Source }
+
+    $extensionRoot = Join-Path $env:USERPROFILE ".vscode\extensions"
+    if (Test-Path -LiteralPath $extensionRoot) {
+        $extensionBinary = Get-ChildItem -LiteralPath $extensionRoot -Directory -Filter "anthropic.claude-code-*" -ErrorAction SilentlyContinue |
+            Sort-Object { try { [version](($_.Name -replace '^anthropic\.claude-code-', '') -replace '-win32-x64$', '') } catch { [version]'0.0' } } -Descending |
+            ForEach-Object { Join-Path $_.FullName "resources\native-binary\claude.exe" } |
+            Where-Object { Test-Path -LiteralPath $_ } |
+            Select-Object -First 1
+        if ($extensionBinary) { return $extensionBinary }
     }
-    return $command.Source
+
+    throw "Claude Code nao encontrado no PATH nem na extensao do VS Code."
 }
 
 function Test-Origin([string]$origin) {
@@ -190,7 +199,7 @@ try {
             if (-not (Test-Origin $origin)) { Send-Json $stream 403 @{ error = "Origem nao autorizada." } $origin; continue }
             if ($http.Method -eq "OPTIONS") { Send-HttpResponse $stream 204 ([byte[]]@()) "text/plain" $origin; continue }
             if ($http.Method -eq "GET" -and $http.Path -eq "/health") {
-                $available = [bool](Get-Command claude -ErrorAction SilentlyContinue)
+                $available = try { [bool](Find-Claude) } catch { $false }
                 Send-Json $stream 200 @{ status = "ok"; claudeAvailable = $available; version = "1.0.0" } $origin
                 continue
             }
