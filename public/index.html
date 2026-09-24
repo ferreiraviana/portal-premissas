@@ -218,6 +218,52 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @media(max-width:880px){.sidebar{width:min(88vw,300px)}.side-actions{padding-top:3px}.catalog-hero{min-height:auto;padding:34px 28px}.topbar{min-height:62px}}
 @media(max-width:600px){html,body,.layout,main{width:100%;max-width:100%;overflow-x:hidden}main,.doc-shell,.content{min-width:0;max-width:100vw}.topbar{display:grid;grid-template-columns:1fr;gap:8px}.menu-btn,.search,.quick-jump,.personas{width:100%;min-width:0;max-width:100%;grid-column:1}.search input,.quick-jump{width:100%}.personas{overflow-x:auto}.catalog-hero{width:calc(100vw - 32px);max-width:calc(100vw - 32px);padding:29px 22px}.catalog-hero h2,.catalog-hero p{max-width:calc(100vw - 76px);overflow-wrap:anywhere}.catalog-stats{grid-template-columns:1fr}.catalog-stat{padding:12px 15px}.catalog-stat span{font-size:.68rem}.hero-actions{display:grid}.hero-action{justify-content:center}.content{padding-top:22px}}
 @media(max-width:420px){.catalog-stats{grid-template-columns:1fr}.side-actions{grid-template-columns:1fr 1fr}}
+
+/* ===== Direcao visual consultiva · 2026 ===== */
+:root{
+  --ink:#17202a;--ink-2:#26313d;--surface:#f5f5f7;--card:#fff;
+  --text:#1d1d1f;--muted:#6e6e73;--line:#d9d9de;
+  --accent:#0066cc;--accent-2:#004f9e;--accent-soft:#edf5ff;
+  --lime:#7db7ff;--shadow-sm:0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 18px 48px rgba(0,0,0,.09);
+  --font-display:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
+  --font-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
+}
+body{background:var(--surface);color:var(--text);font-size:15px;letter-spacing:0}
+.sidebar{background:#1d2733;border-right:1px solid #303b47;width:272px}
+.brand::before{background:#f5f5f7;color:#17202a;box-shadow:none;border-radius:10px}
+.brand h1{font-weight:650;letter-spacing:-.02em}.brand .tag{color:#b9d8ff;background:rgba(0,102,204,.18)}
+.side-action.primary{background:#0066cc;border-color:#1976d2}.side-action.primary span{color:#dcecff}
+.side-action:hover{border-color:#6aa9e9}.nav-label{color:#8998a8}
+nav a{color:#d1d8df}nav a:hover{background:#293746;transform:none}
+nav a.active{background:#fff;color:#17202a;box-shadow:none}nav a.active::before{background:#0066cc}
+.topbar{background:rgba(255,255,255,.92);border-color:#dedee3;box-shadow:none;backdrop-filter:saturate(180%) blur(18px)}
+.search input,.quick-jump{background:#fff;border-color:#d2d2d7}.search input:focus{border-color:#0066cc;box-shadow:0 0 0 4px rgba(0,102,204,.12)}
+.personas{background:#f0f0f2;border-color:#dedee3}.chip.active{color:#1d1d1f}
+.doc-shell>.content{max-width:1160px}.page-toc{background:#fafafa;border-color:#e3e3e7}
+.catalog-hero{min-height:390px;padding:54px 58px;background:#17202a;border-radius:24px;box-shadow:none}
+.catalog-hero::before{display:none}.catalog-hero::after{width:420px;height:420px;right:-160px;top:-220px;border:76px solid rgba(0,102,204,.16)}
+.catalog-hero .eyebrow{color:#7db7ff;letter-spacing:.11em}
+.catalog-hero h2{max-width:820px;font-size:clamp(2.35rem,5vw,4rem);line-height:1.02;letter-spacing:-.055em}
+.catalog-hero p{max-width:660px;color:#c7cbd1;font-size:1.05rem;line-height:1.6}
+.hero-action{border-radius:999px;padding:11px 18px}.hero-action.primary-alt{background:#0066cc;border-color:#0066cc}.hero-action.secondary{border-color:#59636e}
+.catalog-stats{gap:14px}.catalog-stat{padding:20px;border-color:#e1e1e5;border-radius:16px}.catalog-stat strong{color:#1d1d1f;font-size:1.45rem}.catalog-stat span{color:#6e6e73}
+.internal-note{background:#fff;border-color:#e1e1e5;color:#5f6368;border-radius:14px}
+.section-intro{margin-top:46px}.section-intro h3{font-size:1.45rem;letter-spacing:-.035em}.section-intro p{color:#6e6e73}
+.phase-card,.team-card,.prod,.card,.page-header,.hld-stat,details{border-color:#e1e1e5;background:#fff;box-shadow:none}
+.phase-card:hover,.team-card:hover,.prod:hover{border-color:#a7c7e8;box-shadow:0 12px 30px rgba(0,0,0,.07)}
+.phase-num,.phase-card:nth-child(n+5) .phase-num{background:#edf5ff;color:#0066cc!important}
+.team-card em,.prod::after,a{color:#0066cc}.prod::before{background:#edf5ff;color:#0066cc}
+.band{color:#4d5966}.band::before{background:#0066cc}.prm{background:#f0f0f2;color:#3f4c59;border-color:#dedee3}
+.page-header{background:#fff}.page-action:hover,.page-action.active{color:#0066cc;border-color:#8dbbea;background:#f4f9ff}
+.hld-upload{border-color:#9bbfe3;background:#f7fbff}.hld-upload.drag{border-color:#0066cc;background:#edf5ff}
+.hld-upload label,.hld-btn.primary{background:#0066cc;border-color:#0066cc}.hld-btn.agent{background:#17202a;border-color:#17202a}
+.agent-bar.connected{border-color:#b9d6c4;background:#f1f8f3}.agent-help{color:#0066cc}
+.callout.tip{background:#edf5ff;border-color:#bfd8f2;color:#174d82}
+.journey-step.current{background:#edf5ff}.journey-step.current::after,.journey-step.current .step-num{background:#0066cc}
+:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline-color:rgba(0,102,204,.38)}
+@media(max-width:880px){.catalog-hero{padding:38px 30px;min-height:auto}}
+@media(max-width:600px){.catalog-hero{padding:34px 24px}.catalog-hero h2{font-size:clamp(2rem,11vw,2.8rem)}}
 </style>
 </head>
 <body>
@@ -297,8 +343,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <section class="page visible" id="inicio">
     <div class="catalog-hero">
       <div class="eyebrow">Implementation Management BR · Portal interno</div>
-      <h2>Decida, implemente e sustente com o mesmo contexto.</h2>
-      <p>Análise de arquitetura, premissas técnicas e orientações da jornada reunidas em um único ponto de trabalho.</p>
+      <h2>Decisões técnicas claras. Entregas mais consistentes.</h2>
+      <p>Um espaço único para analisar arquiteturas, consultar padrões e conduzir cada etapa da implementação com contexto e rastreabilidade.</p>
       <div class="hero-actions">
         <a class="hero-action primary-alt" href="#analise-hld">Analisar um HLD <span>→</span></a>
         <a class="hero-action" href="#premissas">Consultar premissas</a>
@@ -311,14 +357,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="catalog-stat"><strong>10</strong><span>produtos, serviços e processos</span></div>
     </div>
 
-    <div class="internal-note"><span>●</span><span><strong>Base colaborativa interna:</strong> use este portal como ponto de partida. Decisões específicas devem permanecer registradas nos sistemas oficiais e no projeto.</span></div>
+    <div class="internal-note"><span>●</span><span><strong>Referência interna:</strong> consulte, valide e avance. Registre decisões, riscos e aprovações nos sistemas oficiais do projeto.</span></div>
 
     <div class="recent-wrap" id="recentWrap" hidden>
       <div class="section-intro"><h3>Acessados recentemente</h3><p>Continue rapidamente de onde parou.</p></div>
       <div class="recent-grid" id="recentGrid"></div>
     </div>
 
-    <div class="section-intro"><h3>Jornada de ponta a ponta</h3><p>Selecione uma etapa para consultar orientações, responsabilidades, premissas e critérios de conclusão.</p></div>
+    <div class="section-intro"><h3>Jornada de ponta a ponta</h3><p>Entenda o objetivo, os responsáveis e o critério de conclusão de cada etapa.</p></div>
     <div class="e2e-flow" aria-label="Jornada de ponta a ponta">
       <a class="phase-card" href="#jornada"><span class="phase-num">Etapa 1</span><strong>Entrada e qualificação</strong><span>Contexto, escopo inicial e viabilidade.</span></a>
       <a class="phase-card" href="#jornada"><span class="phase-num">Etapa 2</span><strong>Pré-venda</strong><span>Premissas, riscos, dependências e dimensionamento.</span></a>
@@ -329,7 +375,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       <a class="phase-card" href="#faq"><span class="phase-num">Etapa 7</span><strong>Operação e suporte</strong><span>Estabilização, transferência de conhecimento e melhoria contínua.</span></a>
     </div>
 
-    <div class="section-intro"><h3>Acesso rápido por área</h3><p>Entre pela perspectiva do seu time e encontre rapidamente o que precisa consumir ou entregar.</p></div>
+    <div class="section-intro"><h3>Acesso por responsabilidade</h3><p>Encontre o conteúdo que orienta as decisões e entregas da sua função.</p></div>
     <div class="team-grid">
       <a class="team-card" href="#jornada" onclick="setPersona('prevenda')"><b>Vendas e Pré-venda</b><small>Escopo, restrições, dependências e compromissos.</small><em>Ver visão comercial →</em></a>
       <a class="team-card" href="#jornada" onclick="setPersona('gestao')"><b>IM e Gestão</b><small>Transição comercial, governança, riscos, marcos e aceite.</small><em>Ver gestão da entrega →</em></a>
@@ -338,7 +384,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       <a class="team-card" href="#faq"><b>Operação e Suporte</b><small>Transição, monitoramento, runbook e recorrências.</small><em>Ver suporte →</em></a>
     </div>
 
-    <div class="section-intro portfolio-heading"><h3>Portfólio por tecnologia</h3><p>Premissas e boas práticas técnicas que sustentam as entregas do time.</p></div>
+    <div class="section-intro portfolio-heading"><h3>Referências técnicas</h3><p>Premissas, padrões e práticas que sustentam as entregas do time.</p></div>
     <h3>Virtualização</h3>
     <div class="catgrid">
       <a class="prod" href="#vmware"><span class="t">VMware vSphere</span><span class="d">ESX, vCenter, Replication e recuperação para clouds privadas gerenciadas.</span><div class="meta"><span class="pill ok2">Revisado em 2026</span></div></a>
@@ -378,7 +424,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <section class="page" id="comece">
     <div class="crumb">Biblioteca</div>
     <h2 class="page-title">Comece por aqui</h2>
-    <p class="page-sub">Como o catálogo funciona e o vocabulário essencial, em linguagem simples.</p>
+    <p class="page-sub">Encontre rapidamente o conteúdo certo para cada decisão, etapa e responsabilidade.</p>
 
     <div class="band">Como cada página de produto é organizada</div>
     <table>
@@ -420,8 +466,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <!-- ================= RADAR ================= -->
   <section class="page" id="radar">
     <div class="crumb">Governança</div>
-    <h2 class="page-title">Radar de Versões</h2>
-    <p class="page-sub">Premissa interna × versão atual do fabricante (validado em julho/2026). Guia para novos projetos e para atualização dos documentos.</p>
+    <h2 class="page-title">Radar de versões</h2>
+    <p class="page-sub">Acompanhe versões de referência, ciclos de suporte e premissas que exigem revisão antes de cada projeto.</p>
     <table>
       <tr><th>Produto</th><th>Premissa interna de referência</th><th>Fabricante — cenário em jul/2026</th><th>Ação recomendada</th></tr>
       <tr><td><strong>VMware vSphere</strong></td><td>Premissa revisada em jul/2026</td><td>ESX/vCenter 9.1 preferencial quando toda a solução for certificada; vSphere 8.0 U3j como alternativa compatível; vSphere 7 sem suporte desde out/2025</td><td><span class="pill ok2">Vigente</span> Validar BCG e matriz antes de cada projeto</td></tr>
@@ -834,7 +880,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <section class="page" id="analise-hld">
     <div class="crumb">Processos do time · Arquitetura</div>
     <h2 class="page-title">Análise de HLD</h2>
-    <p class="page-sub">Processo orientado a evidências para revisar o High-Level Design, confrontar decisões com requisitos, premissas internas e documentação vigente dos fabricantes e emitir um parecer claro para o projeto.</p>
+    <p class="page-sub">Envie o desenho, confronte decisões com requisitos e premissas vigentes e gere um parecer técnico rastreável.</p>
 
     <div class="hld-status" aria-label="Resumo da análise">
       <div class="hld-stat"><strong>6</strong><span>etapas de revisão</span></div>
@@ -965,8 +1011,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
   <section class="page" id="migracoes">
     <div class="crumb">Catálogo · Serviços de Projeto</div>
-    <h2 class="page-title">Migrações &amp; Upgrades</h2>
-    <p class="page-sub">Escolha orientada por risco, compatibilidade, volumetria e janela — da análise inicial ao cutover, rollback e aceite.</p>
+    <h2 class="page-title">Migrações e upgrades</h2>
+    <p class="page-sub">Defina a abordagem com base em risco, compatibilidade, volumetria, janela, rollback e critérios de aceite.</p>
 
     <div class="aud" data-aud="todos prevenda arquitetura gestao tecnico">
       <div class="band">Comece pela decisão <span class="who">· não pelo produto ou ferramenta</span></div>
@@ -1072,8 +1118,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <!-- ================= JORNADA ================= -->
   <section class="page" id="jornada">
     <div class="crumb">Biblioteca</div>
-    <h2 class="page-title">Jornada do Projeto</h2>
-    <p class="page-sub">O que cada fase exige, para qualquer produto do catálogo.</p>
+    <h2 class="page-title">Jornada do projeto</h2>
+    <p class="page-sub">Entradas, responsabilidades, entregáveis e critérios de conclusão de cada fase.</p>
 
     <div class="aud" data-aud="prevenda gestao"><div class="band">Fase 1 · Venda e Pré-vendas</div>
     <div class="card"><p><strong>Validar:</strong> inventário, modalidade (TM/OSA), disponibilidade (HA/DR, RPO/RTO), volumetria (frontend×backend, bruto×líquido), versões no <a href="#radar">Radar</a>, abordagem de migração na <a href="#migracoes">matriz de decisão</a>, janelas e acessos. <strong>Nunca prometer:</strong> capacidade bruta, versão EOL, thin, migração sem método/janela.</p></div></div>
@@ -1104,7 +1150,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <section class="page" id="premissas">
     <div class="crumb">Biblioteca</div>
     <h2 class="page-title">Premissas (PRM)</h2>
-    <p class="page-sub">Índice citável em propostas e planos. Prefixos: GER, VMW, XEN, WIN, AD, STG, SW, VBR, CVLT, MIG. Detalhes na página de cada produto; texto integral nos <a href="#docs">documentos originais</a>.</p>
+    <p class="page-sub">Consulte os padrões internos por domínio e use seus identificadores em propostas, planos e decisões técnicas.</p>
     <table id="prmTable">
       <tr><th style="width:128px">Código</th><th>Resumo</th><th style="width:104px">Tipo</th></tr>
       <tr data-tags="servicenow runbook eti"><td><span class="prm">PRM-GER-001</span></td><td>Documentação completa no ServiceNow (Runbook, ETI, Topologia, credenciais).</td><td><span class="pill ob">Obrigatório</span></td></tr>
@@ -1197,7 +1243,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <section class="page" id="checklists">
     <div class="crumb">Biblioteca</div>
     <h2 class="page-title">Checklists</h2>
-    <p class="page-sub">Apoio pessoal (os checks ficam no seu navegador). A evidência oficial vai no Runbook.</p>
+    <p class="page-sub">Valide os pontos essenciais da execução. Registre as evidências oficiais no runbook do projeto.</p>
 
     <div class="aud" data-aud="prevenda gestao"><div class="band">Pré-venda</div>
     <div class="card checklist">
@@ -1239,8 +1285,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <!-- ================= FAQ ================= -->
   <section class="page" id="faq">
     <div class="crumb">Biblioteca</div>
-    <h2 class="page-title">FAQ e Erros Comuns</h2>
-    <p class="page-sub">Perguntas que aparecem toda semana, respondidas uma vez.</p>
+    <h2 class="page-title">Dúvidas e erros recorrentes</h2>
+    <p class="page-sub">Respostas objetivas para situações frequentes de planejamento, implementação e suporte.</p>
 
     <details data-tags="in-place upgrade paralelo porque"><summary>Por que a atualização no ambiente atual não é o padrão?</summary><div class="body"><p>Porque ela pode herdar problemas e drivers antigos, dificultar ou impossibilitar o rollback e transformar incompatibilidades em incidentes de produção. O padrão é a migração paralela: ambiente novo na versão-alvo e migração em ondas, com o ambiente antigo disponível para retorno (PRM-MIG-002). Atualizações secundárias e caminhos oficiais de appliances são exceções possíveis, desde que exista um plano validado.</p></div></details>
     <details data-tags="cross vcenter quando usar replica veeam"><summary>Cross vCenter vMotion ou réplica Veeam — qual uso?</summary><div class="body"><p>Cross vCenter quando as duas pontas são vSphere suportado, há rede/latência adequada e o objetivo é mover sem downtime dentro do mundo VMware. Réplica Veeam quando a volumetria/link pedem seeding, a origem está fora do nosso controle, há mudança de IP/site, ou se quer rollback simples via failback (PRM-MIG-003/004). A matriz completa está em <a href="#migracoes">Migrações</a>.</p></div></details>
@@ -1259,7 +1305,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <section class="page" id="conhecimento">
     <div class="crumb">Biblioteca · Aprendizado técnico</div>
     <h2 class="page-title">Base de Conhecimento</h2>
-    <p class="page-sub">Conteúdos práticos para planejar, implementar e sustentar as tecnologias do portfólio com segurança e consistência.</p>
+    <p class="page-sub">Guias e demonstrações para executar atividades técnicas com segurança, consistência e rastreabilidade.</p>
 
     <div class="aud" data-aud="todos">
       <div class="band">Tecnologias cobertas <span class="who">· navegação por domínio</span></div>
@@ -1338,8 +1384,8 @@ foreach ($item in $portGroups) {
   <!-- ================= DOCS ================= -->
   <section class="page" id="docs">
     <div class="crumb">Biblioteca</div>
-    <h2 class="page-title">Documentos Originais</h2>
-    <p class="page-sub">Premissas completas (fonte: repositório interno), incluídas para consulta e download.</p>
+    <h2 class="page-title">Documentos de referência</h2>
+    <p class="page-sub">Acesse as premissas completas mantidas no repositório interno.</p>
     <div class="catgrid">
       <a class="prod" href="premissas/Premissa_VMWARE.md"><span class="t">Premissa VMware</span><span class="d">Rev. 09/07/2026</span></a>
       <a class="prod" href="premissas/Premissa_XenServer.md"><span class="t">Premissa XenServer</span><span class="d">Rev. 13/07/2026</span></a>
