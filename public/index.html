@@ -197,6 +197,26 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
 @media(max-width:900px){.decision-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.section-intro{display:block}.section-intro p{text-align:left;margin-top:6px}.team-grid{grid-template-columns:1fr 1fr}.e2e-flow{grid-template-columns:repeat(7,160px)}.search-shortcut{display:none}.search input{padding-right:12px}.page-overview,.decision-grid,.knowledge-cats{grid-template-columns:1fr}.page-header{padding:18px 17px}.media-head{display:block}.media-head .pill{margin-top:10px}}
 @media(max-width:480px){.team-grid{grid-template-columns:1fr}.catalog-stats{grid-template-columns:1fr}}
+/* ===== Experiência 2026 · navegação e leitura ===== */
+:root{--ink:#14263a;--ink-2:#1d344a;--surface:#f4f7f7;--card:#fff;--text:#263849;--muted:#66798b;--line:#dbe4e5;--accent:#087f78;--accent-2:#3267c8;--accent-soft:#e8f4f2;--lime:#9ee1d7;--shadow-sm:0 4px 14px rgba(20,38,58,.055);--shadow-md:0 18px 48px rgba(20,38,58,.12)}
+html{scroll-padding-top:80px}body{background:#f4f7f7;color:var(--text)}section.page{scroll-margin-top:80px}
+.layout{min-height:100vh}.sidebar{width:272px;background:#14263a;box-shadow:none;border-right:1px solid rgba(255,255,255,.06)}
+.brand{padding:24px 20px 19px;border-bottom:0}.brand::before{width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,#0b9b91,#3f6fd1);box-shadow:0 8px 22px rgba(8,127,120,.24)}.brand h1{font-size:.96rem;line-height:1.35}.brand .tag{color:#bcece4;background:rgba(158,225,215,.1);letter-spacing:.08em}
+.side-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 16px 14px}.side-action{display:flex;min-height:54px;flex-direction:column;justify-content:center;padding:10px 11px;border:1px solid rgba(255,255,255,.1);border-radius:11px;color:#dce8ef;text-decoration:none;background:rgba(255,255,255,.035);transition:.18s ease}.side-action:hover{background:rgba(255,255,255,.08);border-color:rgba(158,225,215,.38);transform:translateY(-1px)}.side-action b{font:650 .7rem var(--font-display)}.side-action span{margin-top:3px;color:#8fa5b7;font-size:.61rem}.side-action.primary{background:#087f78;border-color:#15958c;color:#fff}.side-action.primary span{color:#c8f0eb}
+nav{padding:3px 12px 22px}nav>a{margin:2px 0;font-size:.77rem}nav a.active{background:#fff;color:#14263a;box-shadow:0 5px 18px rgba(2,15,28,.18)}nav a.active::before{background:var(--accent);left:5px}.nav-label{padding:17px 12px 7px;color:#7f94a7;font-size:.6rem}.nav-label:hover{color:#c8d5df}.sidebar-foot{background:rgba(0,0,0,.09);padding:15px 18px 17px}
+.topbar{min-height:68px;padding:11px 28px;background:rgba(255,255,255,.94);border-bottom:1px solid #dce5e8;box-shadow:0 3px 14px rgba(20,38,58,.035)}.search{max-width:680px}.search input{height:44px;background:#f7f9fa;border-color:#d7e1e4}.search input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(8,127,120,.1)}.quick-jump{height:44px;background:#fff;border-color:#d7e1e4}.personas{background:#f3f6f7;border-color:#dfe6e8}.chip.active{color:var(--accent)}
+.doc-shell{grid-template-columns:minmax(0,1fr) 220px}.doc-shell>.content{max-width:1120px;padding-top:34px}.page-toc{padding:29px 18px;background:#f8faf9;border-left-color:#e0e7e8}.page-toc-title{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}.page-toc a{padding:7px 8px 7px 12px}
+.catalog-hero{min-height:350px;display:flex;flex-direction:column;justify-content:center;margin-bottom:22px;padding:44px 52px;background:linear-gradient(122deg,#18314a 0%,#16485a 65%,#087f78 140%);border-radius:20px;box-shadow:0 20px 50px rgba(20,38,58,.14)}.catalog-hero::before{opacity:.55}.catalog-hero::after{right:-90px;top:-210px}.catalog-hero h2{max-width:760px;font-size:clamp(2.1rem,4vw,3.25rem);line-height:1.02;margin-bottom:16px}.catalog-hero p{max-width:660px;color:#d7e2e9;font-size:.98rem}.catalog-hero .eyebrow{color:#9ee1d7}.hero-actions{margin-top:23px}.hero-action{padding:11px 16px}.hero-action.primary-alt{color:#fff;background:#087f78;border:1px solid #26aaa0}.hero-action.secondary{background:rgba(255,255,255,.07)}
+.catalog-stats{gap:10px;margin:0 0 24px}.catalog-stat{padding:14px 17px;border-radius:12px;border-top:0;box-shadow:none}.catalog-stat strong{font-size:1.22rem;color:var(--accent)}.catalog-stat span{font-size:.72rem}.internal-note{margin-bottom:30px;background:#eef6f4;border-color:#cfe4e0;color:#476474}
+.section-intro{margin:38px 0 15px}.section-intro h3{font-size:1.2rem}.section-intro p{font-size:.78rem}.e2e-flow{gap:8px;padding-bottom:12px}.phase-card{padding:14px 12px;border-radius:12px;box-shadow:none}.phase-card:hover{box-shadow:0 8px 22px rgba(20,38,58,.08)}.phase-num{background:#253b51}.phase-card:nth-child(n+5) .phase-num{background:#087f78}
+.team-grid{gap:10px}.team-card{padding:15px;border-radius:12px;transition:.18s ease}.team-card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(20,38,58,.07)}.team-card em{color:var(--accent)}
+.catgrid{gap:12px}.prod{min-height:138px;border-radius:14px;box-shadow:none}.prod:hover{box-shadow:0 10px 26px rgba(20,38,58,.08)}.prod::before{background:var(--accent-soft);color:var(--accent)}
+.page-header,.card,details,table,.hld-stat{box-shadow:none}.page-header{border-radius:16px}.card{border-radius:12px}.band::before{background:var(--accent)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(50,103,200,.28);outline-offset:2px}
+@media(max-width:1180px){.doc-shell{grid-template-columns:minmax(0,1fr)}.doc-shell>.content{max-width:1050px}.page-toc{display:none}}
+@media(max-width:880px){.sidebar{width:min(88vw,300px)}.side-actions{padding-top:3px}.catalog-hero{min-height:auto;padding:34px 28px}.topbar{min-height:62px}}
+@media(max-width:600px){html,body,.layout,main{width:100%;max-width:100%;overflow-x:hidden}main,.doc-shell,.content{min-width:0;max-width:100vw}.topbar{display:grid;grid-template-columns:1fr;gap:8px}.menu-btn,.search,.quick-jump,.personas{width:100%;min-width:0;max-width:100%;grid-column:1}.search input,.quick-jump{width:100%}.personas{overflow-x:auto}.catalog-hero{width:calc(100vw - 32px);max-width:calc(100vw - 32px);padding:29px 22px}.catalog-hero h2,.catalog-hero p{max-width:calc(100vw - 76px);overflow-wrap:anywhere}.catalog-stats{grid-template-columns:1fr}.catalog-stat{padding:12px 15px}.catalog-stat span{font-size:.68rem}.hero-actions{display:grid}.hero-action{justify-content:center}.content{padding-top:22px}}
+@media(max-width:420px){.catalog-stats{grid-template-columns:1fr}.side-actions{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -205,6 +225,10 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
   <div class="brand">
     <h1>Implementation<br>Management BR</h1>
     <span class="tag">PORTAL INTERNO · BR</span>
+  </div>
+  <div class="side-actions" aria-label="Ações rápidas">
+    <a class="side-action primary" href="#analise-hld"><b>Analisar HLD</b><span>Upload e parecer</span></a>
+    <a class="side-action" href="#premissas"><b>Premissas</b><span>Base técnica</span></a>
   </div>
   <nav id="nav">
     <a href="#inicio" class="active">Visão geral</a>
@@ -272,17 +296,18 @@ nav a.active{background:linear-gradient(90deg,#007d76,#4262c8)}nav a.active::bef
   <section class="page visible" id="inicio">
     <div class="catalog-hero">
       <div class="eyebrow">Implementation Management BR · Portal interno</div>
-      <h2>Da oportunidade à operação, sem perder contexto.</h2>
-      <p>Um ponto único para entender a etapa, o responsável, a entrega esperada e o padrão técnico aplicável.</p>
+      <h2>Decida, implemente e sustente com o mesmo contexto.</h2>
+      <p>Análise de arquitetura, premissas técnicas e orientações da jornada reunidas em um único ponto de trabalho.</p>
       <div class="hero-actions">
-        <a class="hero-action" href="#jornada">Percorrer a jornada <span>→</span></a>
-        <a class="hero-action secondary" href="#premissas">Consultar base técnica</a>
+        <a class="hero-action primary-alt" href="#analise-hld">Analisar um HLD <span>→</span></a>
+        <a class="hero-action" href="#premissas">Consultar premissas</a>
+        <a class="hero-action secondary" href="#jornada">Percorrer a jornada</a>
       </div>
     </div>
     <div class="catalog-stats" aria-label="Resumo do catálogo">
       <div class="catalog-stat"><strong>7</strong><span>etapas conectadas de ponta a ponta</span></div>
-      <div class="catalog-stat"><strong>5</strong><span>grupos de atuação integrados</span></div>
-      <div class="catalog-stat"><strong>9</strong><span>produtos e serviços documentados</span></div>
+      <div class="catalog-stat"><strong>8</strong><span>premissas técnicas centralizadas</span></div>
+      <div class="catalog-stat"><strong>10</strong><span>produtos, serviços e processos</span></div>
     </div>
 
     <div class="internal-note"><span>●</span><span><strong>Base colaborativa interna:</strong> use este portal como ponto de partida. Decisões específicas devem permanecer registradas nos sistemas oficiais e no projeto.</span></div>
