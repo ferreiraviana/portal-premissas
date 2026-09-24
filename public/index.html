@@ -146,6 +146,7 @@ nav a.active::before{content:"";position:absolute;left:0;top:9px;bottom:9px;widt
 .page-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:-16px 0 24px}.page-tool{border:1px solid var(--line);background:#fff;color:var(--muted);padding:7px 10px;border-radius:8px;font:600 .7rem var(--font-display);cursor:pointer}.page-tool:hover{border-color:#9bc7ce;color:var(--accent)}
 .hld-status{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 28px}.hld-stat{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow-sm)}.hld-stat strong{display:block;color:var(--ink);font:700 1.2rem var(--font-display)}.hld-stat span{color:var(--muted);font-size:.72rem}.hld-form{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:16px}.hld-field{display:flex;flex-direction:column;gap:6px}.hld-field.full{grid-column:1/-1}.hld-field label{color:var(--ink);font:600 .74rem var(--font-display)}.hld-field input,.hld-field select,.hld-field textarea{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--text);font:400 .82rem var(--font-body)}.hld-field textarea{min-height:88px;resize:vertical}.hld-field input:focus,.hld-field select:focus,.hld-field textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,125,118,.1)}.hld-actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 25px}.hld-btn{border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);padding:9px 13px;font:600 .74rem var(--font-display);cursor:pointer}.hld-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.hld-progress{height:8px;margin:8px 0 5px;border-radius:99px;background:#e8eef3;overflow:hidden}.hld-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .2s}.hld-checks{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}.hld-check{display:flex;gap:9px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #edf1f4;font-size:.82rem}.hld-check input{margin-top:4px;accent-color:var(--accent)}.hld-check strong{display:block;color:var(--ink);font-size:.78rem}.hld-check small{display:block;color:var(--muted);line-height:1.45}.decision-row{display:grid;grid-template-columns:130px 1fr;gap:12px;align-items:start;padding:12px 0;border-bottom:1px solid var(--line)}.decision-row:last-child{border-bottom:0}.decision-row b{color:var(--ink);font:700 .76rem var(--font-display)}.decision-row span{font-size:.82rem;color:var(--muted)}
 .hld-upload{border:2px dashed #a8c9c5;border-radius:16px;padding:26px;text-align:center;background:linear-gradient(145deg,#f8fcfb,#eef6f5);transition:border-color .2s,background .2s}.hld-upload.drag{border-color:var(--accent);background:#e6f4f1}.hld-upload input{position:absolute;inline-size:1px;block-size:1px;opacity:0}.hld-upload label{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border-radius:9px;background:var(--ink);color:#fff;font:600 .76rem var(--font-display);cursor:pointer}.hld-upload p{margin:10px auto 0;max-width:62ch;color:var(--muted);font-size:.78rem}.hld-files{display:grid;gap:8px;margin:14px 0}.hld-file{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;font-size:.76rem}.hld-file b{color:var(--ink)}.hld-file span{color:var(--muted)}.analysis-state{display:none;margin-top:18px}.analysis-state.visible{display:block}.analysis-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:15px 0}.analysis-metric{padding:14px;border-radius:12px;background:#f5f8f8;border:1px solid var(--line)}.analysis-metric strong{display:block;font:700 1.15rem var(--font-display);color:var(--ink)}.analysis-metric span{font-size:.68rem;color:var(--muted)}.analysis-list{display:grid;gap:9px}.finding{padding:13px 14px;border:1px solid var(--line);border-left:4px solid #8da1b2;border-radius:10px;background:#fff}.finding.high{border-left-color:#bd3b3b}.finding.medium{border-left-color:#d78a20}.finding.ok{border-left-color:#18846f}.finding-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:5px}.finding-head b{color:var(--ink);font-size:.8rem}.finding-head span{font:700 .62rem var(--font-mono);text-transform:uppercase}.finding p{margin:0;color:var(--muted);font-size:.76rem;line-height:1.5}.analysis-disclaimer{font-size:.72rem;color:var(--muted);margin-top:14px}.hld-btn:disabled{opacity:.55;cursor:not-allowed}
+.agent-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 0 2px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:#f7f9fa}.agent-status{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.74rem}.agent-dot{width:9px;height:9px;border-radius:50%;background:#9aa8b4;box-shadow:0 0 0 4px rgba(154,168,180,.12)}.agent-bar.connected{border-color:#b9ddd7;background:#f0f8f6}.agent-bar.connected .agent-dot{background:#16826f;box-shadow:0 0 0 4px rgba(22,130,111,.12)}.agent-bar.error{border-color:#ead3ad;background:#fff9ef}.agent-bar.error .agent-dot{background:#d18a20}.agent-help{color:var(--accent);font:600 .68rem var(--font-display);text-decoration:none}.agent-analysis{display:none;margin-top:20px}.agent-analysis.visible{display:block}.agent-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:12px}.agent-head h4{margin:0;color:var(--ink);font:700 1rem var(--font-display)}.agent-head p{margin:4px 0 0;color:var(--muted);font-size:.72rem}.agent-verdict{display:inline-flex;padding:5px 9px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font:700 .66rem var(--font-display);text-transform:uppercase}.agent-section{margin-top:18px}.agent-section h5{margin:0 0 9px;color:var(--ink);font:700 .78rem var(--font-display)}.agent-items{display:grid;gap:8px}.agent-item{padding:12px 13px;border:1px solid var(--line);border-left:4px solid #8ca1b2;border-radius:9px;background:#fff}.agent-item.blocker{border-left-color:#b83c3c}.agent-item.condition{border-left-color:#d38a25}.agent-item.recommendation{border-left-color:#3470c8}.agent-item strong{display:block;color:var(--ink);font-size:.78rem}.agent-item p{margin:5px 0 0;color:var(--muted);font-size:.73rem;line-height:1.5}.agent-item small{display:block;margin-top:6px;color:#72889a;font-size:.65rem}.hld-btn.agent{background:#253b78;border-color:#253b78;color:#fff}
 h2.page-title{font-size:clamp(1.85rem,3vw,2.5rem);letter-spacing:-.045em;line-height:1.12;margin-bottom:10px}p.page-sub{font-size:1rem;line-height:1.75;max-width:76ch;margin-bottom:30px}h3{font-size:1.08rem;margin:34px 0 14px;letter-spacing:-.02em}
 .catalog-hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#102a46 0%,#123b5b 58%,#087e8b 145%);color:#fff;border-radius:24px;padding:clamp(30px,5vw,58px);margin-bottom:34px;box-shadow:var(--shadow-md)}
 .catalog-hero::after{content:"";position:absolute;width:360px;height:360px;right:-110px;top:-190px;border:70px solid rgba(255,255,255,.055);border-radius:50%}.catalog-hero .eyebrow{position:relative;z-index:1;font:600 .7rem var(--font-mono);letter-spacing:.13em;text-transform:uppercase;color:#8de0e3;margin-bottom:14px}
@@ -852,9 +853,27 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
           <p>Arraste arquivos PDF, DOCX, Markdown ou texto. A leitura ocorre localmente no navegador; os documentos não são enviados para um servidor.</p>
         </div>
         <div class="hld-files" id="hldFileList" aria-live="polite"></div>
+        <div class="agent-bar" id="claudeAgentBar">
+          <div class="agent-status"><span class="agent-dot"></span><span id="claudeAgentStatus">Verificando agente Claude local…</span></div>
+          <a class="agent-help" href="https://github.com/ferreiraviana/portal-premissas/tree/main/local-agent" target="_blank" rel="noopener">Como conectar</a>
+        </div>
         <div class="hld-actions">
-          <button class="hld-btn primary" id="runHldAnalysis" type="button" disabled>Analisar arquitetura</button>
+          <button class="hld-btn agent" id="runClaudeAnalysis" type="button" disabled>Analisar com Claude</button>
+          <button class="hld-btn primary" id="runHldAnalysis" type="button" disabled>Executar triagem local</button>
           <button class="hld-btn" id="clearHldFiles" type="button" disabled>Remover arquivos</button>
+        </div>
+        <div class="agent-analysis" id="claudeAnalysisState" aria-live="polite">
+          <div class="agent-head"><div><h4>Parecer do agente Claude</h4><p id="claudeAnalysisSummary"></p></div><span class="agent-verdict" id="claudeAnalysisVerdict">—</span></div>
+          <div class="analysis-summary">
+            <div class="analysis-metric"><strong id="claudeFeasibility">—</strong><span>viabilidade</span></div>
+            <div class="analysis-metric"><strong id="claudeConfidence">—</strong><span>confiança da análise</span></div>
+            <div class="analysis-metric"><strong id="claudeBlockers">—</strong><span>bloqueantes</span></div>
+            <div class="analysis-metric"><strong id="claudeConditions">—</strong><span>condicionantes</span></div>
+          </div>
+          <div class="agent-section"><h5>Achados priorizados</h5><div class="agent-items" id="claudeFindings"></div></div>
+          <div class="agent-section"><h5>Perguntas em aberto</h5><div class="agent-items" id="claudeQuestions"></div></div>
+          <div class="hld-actions"><button class="hld-btn" id="copyClaudeReport" type="button">Copiar parecer completo</button></div>
+          <p class="analysis-disclaimer">A análise do agente apoia a decisão, mas não substitui validação de compatibilidade na fonte vigente, aprovação de segurança nem aceite formal do arquiteto responsável.</p>
         </div>
         <div class="analysis-state" id="hldAnalysisState" aria-live="polite">
           <div class="analysis-summary">
@@ -1541,6 +1560,8 @@ const hldFields=[...document.querySelectorAll('[data-hld-field]')];
 const hldChecks=[...document.querySelectorAll('[data-hld-check]')];
 const hldKey='portal_hld_draft_v1';
 const hldUploads={files:[],texts:[]};
+const claudeAgentEndpoint='http://127.0.0.1:4317';
+let claudeAgentConnected=false,claudeLastReport=null;
 const premiseSources=[
   {file:'Premissa_VMWARE.md',label:'VMware vSphere',terms:['vmware','vsphere','esxi','vcenter','vsan','nsx']},
   {file:'Premissa_XenServer.md',label:'XenServer / Citrix',terms:['xenserver','xcp-ng','citrix hypervisor']},
@@ -1585,6 +1606,7 @@ async function extractHldFile(file){
 function renderHldFiles(){
   const list=document.getElementById('hldFileList');list.innerHTML=hldUploads.files.map((f,i)=>`<div class="hld-file"><b>${safeHtml(f.name)}</b><span>${(f.size/1024/1024).toFixed(2)} MB · ${hldUploads.texts[i]?.error?'erro':'pronto'}</span></div>`).join('');
   document.getElementById('runHldAnalysis').disabled=!hldUploads.files.length;
+  document.getElementById('runClaudeAnalysis').disabled=!hldUploads.files.length||!claudeAgentConnected;
   document.getElementById('clearHldFiles').disabled=!hldUploads.files.length;
 }
 async function receiveHldFiles(files){
@@ -1592,6 +1614,43 @@ async function receiveHldFiles(files){
   hldUploads.texts=await Promise.all(hldUploads.files.map(async file=>{try{return {text:await extractHldFile(file)}}catch(error){return {error:error.message,text:''}}}));renderHldFiles();
 }
 function addFinding(list,title,level,detail){list.push({title,level,detail})}
+function setClaudeAgentStatus(state,message){
+  const bar=document.getElementById('claudeAgentBar');bar.classList.toggle('connected',state==='connected');bar.classList.toggle('error',state==='error');
+  document.getElementById('claudeAgentStatus').textContent=message;claudeAgentConnected=state==='connected';renderHldFiles();
+}
+async function checkClaudeAgent(){
+  try{
+    const response=await fetch(`${claudeAgentEndpoint}/health`,{cache:'no-store'});if(!response.ok)throw new Error('indisponível');
+    const health=await response.json();
+    if(!health.claudeAvailable)throw new Error('Claude Code não encontrado pelo conector');
+    setClaudeAgentStatus('connected','Agente Claude conectado e pronto');
+  }catch(error){setClaudeAgentStatus('error','Agente local desconectado · inicie o conector para usar o Claude')}
+}
+function agentClass(classification){return classification==='bloqueante'?'blocker':classification==='condicionante'?'condition':classification==='recomendacao'?'recommendation':''}
+function renderClaudeReport(report){
+  claudeLastReport=report;const findings=Array.isArray(report.achados)?report.achados:[],questions=Array.isArray(report.perguntasAbertas)?report.perguntasAbertas:[];
+  document.getElementById('claudeAnalysisSummary').textContent=report.resumoExecutivo||'Análise concluída.';
+  document.getElementById('claudeAnalysisVerdict').textContent=(report.parecer||'pendente').replaceAll('_',' ');
+  document.getElementById('claudeFeasibility').textContent=(report.viabilidade?.status||'inconclusiva').replaceAll('_',' ');
+  document.getElementById('claudeConfidence').textContent=`${Math.max(0,Math.min(100,Number(report.confianca)||0))}%`;
+  document.getElementById('claudeBlockers').textContent=findings.filter(x=>x.classificacao==='bloqueante').length;
+  document.getElementById('claudeConditions').textContent=findings.filter(x=>x.classificacao==='condicionante').length;
+  document.getElementById('claudeFindings').innerHTML=findings.length?findings.map(item=>`<div class="agent-item ${agentClass(item.classificacao)}"><strong>${safeHtml(item.titulo||'Achado')}</strong><p>${safeHtml(item.impacto||item.evidencia||'')}</p><p><b>Recomendação:</b> ${safeHtml(item.recomendacao||'Validar com o responsável.')}</p><small>${safeHtml((item.classificacao||'observacao')+' · '+(item.dominio||'geral')+' · '+(item.fonte||'sem fonte informada'))}</small></div>`).join(''):'<div class="agent-item"><strong>Nenhum achado retornado</strong><p>Revise o conteúdo e confirme se o documento possui evidências suficientes.</p></div>';
+  document.getElementById('claudeQuestions').innerHTML=questions.length?questions.map(question=>`<div class="agent-item condition"><strong>Validação necessária</strong><p>${safeHtml(question)}</p></div>`).join(''):'<div class="agent-item"><p>Nenhuma pergunta adicional retornada.</p></div>';
+  document.getElementById('claudeAnalysisState').classList.add('visible');
+  document.getElementById('hldFindings').value=findings.map(item=>`[${(item.classificacao||'observacao').toUpperCase()}] ${item.titulo}: ${item.impacto||item.evidencia||''}\nAção: ${item.recomendacao||''}\nFonte: ${item.fonte||''}`).join('\n\n');saveHld();
+}
+async function runClaudeHldAnalysis(){
+  const button=document.getElementById('runClaudeAnalysis'),raw=hldUploads.texts.map((x,i)=>`\n--- ${hldUploads.files[i]?.name||'arquivo'} ---\n${x.text||''}`).join('\n');
+  if(!raw.trim()){showToast('Os arquivos não possuem texto extraível');return}
+  button.disabled=true;button.textContent='Claude analisando…';document.getElementById('claudeAnalysisState').classList.remove('visible');
+  const payload={files:hldUploads.files.map(file=>file.name),documentText:raw,metadata:{projeto:document.getElementById('hldProject').value,dominio:document.getElementById('hldDomain').value,criticidade:document.getElementById('hldCriticality').value,escopo:document.getElementById('hldScope').value}};
+  try{
+    const response=await fetch(`${claudeAgentEndpoint}/analyze`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const data=await response.json();
+    if(!response.ok)throw new Error(data.error||'Falha no agente local');renderClaudeReport(data.analysis);showToast(`Análise Claude concluída em ${data.elapsedSeconds||'—'}s`);
+  }catch(error){setClaudeAgentStatus('error','Falha na comunicação com o agente local');alert(`Não foi possível concluir a análise: ${error.message}`)}
+  finally{button.textContent='Analisar com Claude';button.disabled=!claudeAgentConnected||!hldUploads.files.length}
+}
 async function runAutomatedHldAnalysis(){
   const button=document.getElementById('runHldAnalysis');button.disabled=true;button.textContent='Analisando…';
   const raw=hldUploads.texts.map(x=>x.text||'').join('\n');const text=norm(raw);const findings=[];
@@ -1627,12 +1686,15 @@ async function runAutomatedHldAnalysis(){
   button.disabled=false;button.textContent='Analisar novamente';
 }
 const hldInput=document.getElementById('hldFiles'),hldDrop=document.getElementById('hldDropZone');
+checkClaudeAgent();
 hldInput?.addEventListener('change',e=>receiveHldFiles(e.target.files));
 ['dragenter','dragover'].forEach(type=>hldDrop?.addEventListener(type,e=>{e.preventDefault();hldDrop.classList.add('drag')}));
 ['dragleave','drop'].forEach(type=>hldDrop?.addEventListener(type,e=>{e.preventDefault();hldDrop.classList.remove('drag')}));
 hldDrop?.addEventListener('drop',e=>receiveHldFiles(e.dataTransfer.files));
 document.getElementById('runHldAnalysis')?.addEventListener('click',runAutomatedHldAnalysis);
-document.getElementById('clearHldFiles')?.addEventListener('click',()=>{hldUploads.files=[];hldUploads.texts=[];hldInput.value='';document.getElementById('hldAnalysisState').classList.remove('visible');renderHldFiles()});
+document.getElementById('runClaudeAnalysis')?.addEventListener('click',runClaudeHldAnalysis);
+document.getElementById('copyClaudeReport')?.addEventListener('click',async()=>{if(!claudeLastReport)return;try{await navigator.clipboard.writeText(JSON.stringify(claudeLastReport,null,2));showToast('Parecer do Claude copiado')}catch(e){alert('Não foi possível copiar o parecer.')}});
+document.getElementById('clearHldFiles')?.addEventListener('click',()=>{hldUploads.files=[];hldUploads.texts=[];claudeLastReport=null;hldInput.value='';document.getElementById('hldAnalysisState').classList.remove('visible');document.getElementById('claudeAnalysisState').classList.remove('visible');renderHldFiles()});
 function hldState(){return {fields:Object.fromEntries(hldFields.map(el=>[el.id,el.value])),checks:hldChecks.map(el=>el.checked)}}
 function updateHldProgress(){
   if(!hldChecks.length)return;

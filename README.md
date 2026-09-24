@@ -13,7 +13,7 @@ O objetivo é oferecer uma referência única, simples e rastreável para os pro
 | Público | Uso interno |
 | Responsável | Implementation Management BR |
 | Aplicação | Portal estático em HTML, CSS e JavaScript |
-| Dependências | Nenhuma |
+| Dependências | Nenhuma para consulta; Claude Code opcional para análise especializada de HLD |
 | Publicação | GitHub Pages por workflow manual |
 
 ## Principais recursos
@@ -24,7 +24,7 @@ O objetivo é oferecer uma referência única, simples e rastreável para os pro
 - Premissas, checklists e critérios de aceite.
 - Radar de versões e referências oficiais.
 - Matriz de decisão para migrações e atualizações.
-- Análise assistida de HLD com upload local, confronto com premissas, registro de achados e parecer.
+- Análise de HLD com triagem local e agente Claude Code opcional para parecer especializado.
 - Base de conhecimento com vídeos e exemplos práticos.
 - Navegação responsiva, favoritos e links diretos.
 
@@ -58,7 +58,7 @@ Para desenvolvimento, abra o projeto no VS Code e utilize o Live Server:
 code .
 ```
 
-Não há instalação de pacotes, compilação ou geração de artefatos.
+Não há instalação de pacotes, compilação ou geração de artefatos para consultar o portal. Para usar o agente de HLD, consulte [`local-agent/README.md`](local-agent/README.md).
 
 ## Estrutura do repositório
 
@@ -71,6 +71,7 @@ Não há instalação de pacotes, compilação ou geração de artefatos.
 │   └── premissas/             # Documentos técnicos completos
 ├── .github/workflows/
 │   └── deploy-pages.yml       # Publicação manual no GitHub Pages
+├── local-agent/                  # Conector local opcional com Claude Code
 ├── .vscode/                   # Configuração recomendada do editor
 └── README.md
 ```
