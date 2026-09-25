@@ -7,7 +7,8 @@ $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $premiseRoot = Join-Path $repoRoot "public\premissas"
 $maxBodyBytes = 8MB
-$maxDocumentChars = 320000
+$maxDocumentChars = 180000
+$maxPremiseChars = 150000
 $analysisTimeoutMs = 600000
 
 function Find-Claude {
@@ -83,15 +84,41 @@ function Read-HttpRequest($stream) {
     return @{ Method=$requestParts[0]; Path=($requestParts[1] -split '\?')[0]; Headers=$headers; TooLarge=$false; Body=[Text.Encoding]::UTF8.GetString($bodyBytes, 0, $offset) }
 }
 
-function Read-Premises {
-    $documents = Get-ChildItem -LiteralPath $premiseRoot -Filter "*.md" | Sort-Object Name
-    return ($documents | ForEach-Object {
-        "`n--- FONTE INTERNA: $($_.Name) ---`n" + [IO.File]::ReadAllText($_.FullName, [Text.Encoding]::UTF8)
-    }) -join "`n"
+function Read-Premises([string]$document) {
+    $catalog = @(
+        @{ File="Premissa_VMWARE.md"; Terms=@("vmware","vsphere","esxi","vcenter","vsan","nsx") },
+        @{ File="Premissa_XenServer.md"; Terms=@("xenserver","citrix hypervisor","xcp-ng") },
+        @{ File="Premissa_Windows.md"; Terms=@("windows server","hyper-v","failover cluster") },
+        @{ File="Premissa_Active_Directory.md"; Terms=@("active directory","domain controller","controlador de dominio","dns","ad ds") },
+        @{ File="Premissa_storage.md"; Terms=@("storage","san","fibre channel","iscsi","lun","multipath") },
+        @{ File="Premissa_Switch.md"; Terms=@("switch","vlan","ethernet","tor","bgp","ospf") },
+        @{ File="Premissa_Backup_Dedicado_VEEAM.md"; Terms=@("veeam","backup & replication","surebackup") },
+        @{ File="Premissa_Backup_Dedicado_Commvault.md"; Terms=@("commvault","commcell","media agent") }
+    )
+    $lower = $document.ToLowerInvariant()
+    $ranked = foreach ($item in $catalog) {
+        $score = 0
+        foreach ($term in $item.Terms) { $score += ([regex]::Matches($lower, [regex]::Escape($term))).Count }
+        if ($score -gt 0) { [pscustomobject]@{ File=$item.File; Score=$score } }
+    }
+    if (-not $ranked) { $ranked = @([pscustomobject]@{ File="Premissa_VMWARE.md"; Score=1 }) }
+    $selected = $ranked | Sort-Object Score -Descending | Select-Object -First 4
+    $result = New-Object Text.StringBuilder
+    foreach ($item in $selected) {
+        $path = Join-Path $premiseRoot $item.File
+        if (-not (Test-Path -LiteralPath $path)) { continue }
+        $content = [IO.File]::ReadAllText($path, [Text.Encoding]::UTF8)
+        $remaining = $maxPremiseChars - $result.Length
+        if ($remaining -le 0) { break }
+        $header = "`n--- FONTE INTERNA: $($item.File) ---`n"
+        [void]$result.Append($header)
+        $remaining = $maxPremiseChars - $result.Length
+        [void]$result.Append($content.Substring(0, [Math]::Min($content.Length, $remaining)))
+    }
+    return $result.ToString()
 }
 
 function Build-Prompt($request) {
-    $premises = Read-Premises
     $metadata = $request.metadata | ConvertTo-Json -Depth 5 -Compress
     $files = (($request.files | ForEach-Object { [string]$_ }) -join ", ")
     $document = ([string]$request.documentText) -replace '[\t ]+', ' ' -replace '(\r?\n){3,}', "`n`n"
@@ -100,6 +127,7 @@ function Build-Prompt($request) {
         $tailChars = $maxDocumentChars - $headChars
         $document = $document.Substring(0, $headChars) + "`n`n[CONTEUDO INTERMEDIARIO REDUZIDO PELO CONECTOR]`n`n" + $document.Substring($document.Length - $tailChars)
     }
+    $premises = Read-Premises $document
 
     return @"
 Voce e um arquiteto principal de infraestrutura responsavel por revisar um High-Level Design.
@@ -116,6 +144,7 @@ REGRAS
 6. Cite o nome do arquivo de premissa e a secao utilizada. Para achados do HLD, inclua evidencia curta ou indique explicitamente que a evidencia esta ausente.
 7. Um parecer "aprovado" exige evidencias suficientes; na duvida, use "aprovado_com_condicionantes" ou "reprovado_para_revisao".
 8. Responda somente com JSON valido, sem markdown e sem texto antes ou depois.
+9. Nao use ferramentas, pesquisa web, leitura de arquivos ou subagentes. Trabalhe exclusivamente com o HLD e as premissas incluídos neste prompt.
 
 FORMATO OBRIGATORIO
 {
@@ -151,10 +180,10 @@ function Invoke-ClaudeAnalysis([string]$prompt) {
     $info = New-Object Diagnostics.ProcessStartInfo
     if ([IO.Path]::GetExtension($claudePath) -in ".cmd", ".bat") {
         $info.FileName = $env:ComSpec
-        $info.Arguments = "/d /s /c `"`"$claudePath`" -p --output-format json --max-turns 1 --permission-mode plan`""
+        $info.Arguments = "/d /s /c `"`"$claudePath`" -p --output-format json --max-turns 1 --permission-mode plan --tools=`""
     } else {
         $info.FileName = $claudePath
-        $info.Arguments = "-p --output-format json --max-turns 1 --permission-mode plan"
+        $info.Arguments = "-p --output-format json --max-turns 1 --permission-mode plan --tools="
     }
     $info.WorkingDirectory = $repoRoot
     $info.UseShellExecute = $false
@@ -177,7 +206,11 @@ function Invoke-ClaudeAnalysis([string]$prompt) {
     }
     $stdout = $stdoutTask.Result
     $stderr = $stderrTask.Result
-    if ($process.ExitCode -ne 0) { throw "Claude Code encerrou com erro: $stderr" }
+    if ($process.ExitCode -ne 0) {
+        $detail = if (-not [string]::IsNullOrWhiteSpace($stderr)) { $stderr.Trim() } elseif (-not [string]::IsNullOrWhiteSpace($stdout)) { $stdout.Trim() } else { "sem detalhes retornados" }
+        if ($detail.Length -gt 1200) { $detail = $detail.Substring(0, 1200) }
+        throw "Claude Code encerrou com codigo $($process.ExitCode): $detail"
+    }
 
     $outer = $stdout | ConvertFrom-Json
     $resultText = if ($outer.result) { [string]$outer.result } else { [string]$stdout }
@@ -205,7 +238,7 @@ try {
             if ($http.Method -eq "OPTIONS") { Send-HttpResponse $stream 204 ([byte[]]@()) "text/plain" $origin; continue }
             if ($http.Method -eq "GET" -and $http.Path -eq "/health") {
                 $available = try { [bool](Find-Claude) } catch { $false }
-                Send-Json $stream 200 @{ status = "ok"; claudeAvailable = $available; version = "1.0.0" } $origin
+                Send-Json $stream 200 @{ status = "ok"; claudeAvailable = $available; version = "1.1.0" } $origin
                 continue
             }
             if ($http.Method -ne "POST" -or $http.Path -ne "/analyze") { Send-Json $stream 404 @{ error = "Rota nao encontrada." } $origin; continue }
