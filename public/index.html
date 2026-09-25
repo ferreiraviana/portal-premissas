@@ -1694,7 +1694,10 @@ async function runClaudeHldAnalysis(){
   try{
     const response=await fetch(`${claudeAgentEndpoint}/analyze`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const data=await response.json();
     if(!response.ok)throw new Error(data.error||'Falha no agente local');renderClaudeReport(data.analysis);showToast(`Análise Claude concluída em ${data.elapsedSeconds||'—'}s`);
-  }catch(error){setClaudeAgentStatus('error','Falha na comunicação com o agente local');alert(`Não foi possível concluir a análise: ${error.message}`)}
+  }catch(error){
+    setClaudeAgentStatus(claudeAgentConnected?'connected':'error',claudeAgentConnected?'Agente conectado · a análise não foi concluída':'Falha na comunicação com o agente local');
+    alert(`Não foi possível concluir a análise: ${error.message}`)
+  }
   finally{button.textContent='Analisar com Claude';button.disabled=!claudeAgentConnected||!hldUploads.files.length}
 }
 async function runAutomatedHldAnalysis(){

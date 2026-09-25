@@ -7,7 +7,8 @@ $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $premiseRoot = Join-Path $repoRoot "public\premissas"
 $maxBodyBytes = 8MB
-$maxDocumentChars = 1500000
+$maxDocumentChars = 320000
+$analysisTimeoutMs = 600000
 
 function Find-Claude {
     $command = Get-Command claude -ErrorAction SilentlyContinue
@@ -93,8 +94,12 @@ function Build-Prompt($request) {
     $premises = Read-Premises
     $metadata = $request.metadata | ConvertTo-Json -Depth 5 -Compress
     $files = (($request.files | ForEach-Object { [string]$_ }) -join ", ")
-    $document = [string]$request.documentText
-    if ($document.Length -gt $maxDocumentChars) { $document = $document.Substring(0, $maxDocumentChars) }
+    $document = ([string]$request.documentText) -replace '[\t ]+', ' ' -replace '(\r?\n){3,}', "`n`n"
+    if ($document.Length -gt $maxDocumentChars) {
+        $headChars = [int]($maxDocumentChars * 0.75)
+        $tailChars = $maxDocumentChars - $headChars
+        $document = $document.Substring(0, $headChars) + "`n`n[CONTEUDO INTERMEDIARIO REDUZIDO PELO CONECTOR]`n`n" + $document.Substring($document.Length - $tailChars)
+    }
 
     return @"
 Voce e um arquiteto principal de infraestrutura responsavel por revisar um High-Level Design.
@@ -166,9 +171,9 @@ function Invoke-ClaudeAnalysis([string]$prompt) {
     $process.StandardInput.Close()
     $stdoutTask = $process.StandardOutput.ReadToEndAsync()
     $stderrTask = $process.StandardError.ReadToEndAsync()
-    if (-not $process.WaitForExit(300000)) {
+    if (-not $process.WaitForExit($analysisTimeoutMs)) {
         try { $process.Kill() } catch {}
-        throw "A analise excedeu o limite de 5 minutos."
+        throw "A analise excedeu o limite de 10 minutos. Reduza os anexos ou divida o HLD em partes."
     }
     $stdout = $stdoutTask.Result
     $stderr = $stderrTask.Result
